@@ -4,3 +4,5 @@ This is a web crawler app without any authentication model just for testing web 
 To run it do python manage.py develop
 python manage.py runserver
 
+then run test cases
+
