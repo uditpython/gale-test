@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html >
+<head>
+
+
+<link rel="stylesheet" href="{% static 'gale/style.css' %}" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script> -->
+<script src="{% static 'js/webcrawler.js' %}"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body ng-app="webcrawler" ng-controller="webcrawlerController">
+ 
+<span ng-bind = "img_url"> </span>
+<h2>GALE Testing</h2>
+<p>Enter the URL and depth level</p>
+<form ng-submit="tocrawl(url,depth)">
+    <input type = "text" ng-model="url" placeholder="URL..">
+    <input  type="number" min="0" id="depth" name="depth" ng-model="depth" placeholder="Depth..">
+    <input type = "submit" value = "submit">
+</form>
+<br>
+
+<h2 ng-show="final_data.links.length > 0">Links Present in Seed webpage and other related  webpages.</h2>
+<div ng-repeat = "links in final_data.links">
+<span ng-bind = "links"> </span>
+
+</div>
+
+</br>
+
+<br>
+{% verbatim %}
+<h2 ng-show="final_data.images.length > 0">Images Present in Seed webpage and other related  webpages.</h2>
+<div ng-repeat = "links in final_data.images">
+<img ng-src="{{links}} "  style="  float: left; width: 15%;height:15%; margin-right: 1%; margin-bottom: 0.5em;" />
+</div>
+{% endverbatim %}    
+</br>
+
+</body>
+</html>
