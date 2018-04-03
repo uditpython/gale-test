@@ -1,6 +1,6 @@
 var app = angular.module('webcrawler', []);
 app.controller('webcrawlerController', function($scope, $http) {
-
+  //  javascript angular
         
         $scope.tocrawl = function(url,depth){
         
@@ -27,6 +27,8 @@ app.controller('webcrawlerController', function($scope, $http) {
             url = "http://" + url;
             }
               
+              
+          // forming the url    
         var data = {url:url,depth:depth};
         var back_url  = '/web_crawler/';
  

@@ -12,6 +12,10 @@ from gale_test.settings import NUMBER_OF_THREADS
 import Queue
 queue=Queue.Queue()
 
+
+
+
+## crawler class to store explored and yet to be explored web pages.
 class Crawler:
 
     
@@ -31,6 +35,9 @@ def home(request):
     template = 'gale/index.html'
     return render(request,template)
 
+
+
+## function getting the data from url
 def get_data(url,session=None):
     
     
@@ -41,8 +48,10 @@ def get_data(url,session=None):
         crawler.explored_list.append(url)
     except:
         return None 
-    
+    ## using beautiful soup for parsing html##
     soup = BeautifulSoup(url_data.text,"html.parser")
+    
+    ## getting all the href values
     s1 = soup.find_all('a', href=True)
     links_to_be_shown = []
     for link in s1:
@@ -54,11 +63,13 @@ def get_data(url,session=None):
                 final_link = url+link['href']
             else:
                 final_link = link['href']
-            
+            ## checking if url has http or https
             if urlparse(final_link).scheme in ['http','https'] :
                 links_to_be_shown.append(final_link)   
     
     tags_shown = []
+    
+    ## getting all the image values tags
     tags=soup.findAll('img')
     for tag in tags:
        
@@ -79,9 +90,11 @@ def get_data(url,session=None):
         except:
             pass
         
-    
+    ## storing unique links and images ##
     links_to_be_shown = list(set(links_to_be_shown))
     tags_shown = list(set(tags_shown))
+    
+    ## returning the data
     data = {}
     data['links'] = links_to_be_shown
     data['images'] = tags_shown
@@ -91,6 +104,11 @@ def get_data(url,session=None):
     
     
 def validate_images(image_list,session):
+    
+       ## validate the image if its a url
+       
+       
+       ## nit using now as it was affecting the performance of crwaler ###
         valid_images = []
         for images in image_list:
            response = session.get(images)
@@ -99,6 +117,11 @@ def validate_images(image_list,session):
         return valid_images
     
 def validate_urls(url_list,session):
+    
+        ## validate the links if its a proper url
+       
+       
+       ## nit using now as it was affecting the performance of crawler ###
         
         valid_urls = []
         for i in url_list:
@@ -152,37 +175,54 @@ def crawl(seed_urls_to_be_expolred):
 
 
     
+## view for web crawler ##
 
 
 def web_crawler(request):
-    
+    ### get the url ##
     url = request.GET.get('url',None)
-    
+    ## get the depth ##
     depth = int(request.GET.get('depth',None))
-    session = requests.Session()
     
+    ## create a session ##
+    session = requests.Session()
+    ## get the data from the seed url##
     data = get_data(url,session)
+    
+    ## copying the links from seed web page to be explored ##
     seed_urls_to_be_expolred = data['links']
+    
+    
     seed_urls_explored = []
+    
+    ## images explored in the seed page ##
     images_list = data['images']
     if depth == 0:
-        
+        ## if depth is 0 then no need to furthur exploration
         seed_urls_explored = seed_urls_to_be_expolred
         
     else:
+        
+       
         depth_initial = 1
         
-        
+         ## if depth is greater than 1 then loop over the number of depth ##
         while depth_initial <= depth:
-            
+            ## emptying the temp url
             temp_urls = []
             crawler.images_list = []
             crawler.link_list = []
-            
+            ## len of to be explored list is greater than 0
             if len(seed_urls_to_be_expolred) > 0:
+                ## multi threading to crawl multi pages ##
                 
+                ## create worker ##
                 create_workers()
+                
+                ## call the work after creating the workers ##
                 crawl(seed_urls_to_be_expolred)
+                
+                ## temp urls from class of crawler
                 temp_urls += crawler.link_list
                 images_list +=  crawler.images_list
                 
