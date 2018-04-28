@@ -5,7 +5,6 @@ from ortools.constraint_solver import routing_enums_pb2
 def distance(x1, y1, x2, y2):
     # Manhattan distance
     dist = abs(x1 - x2) + abs(y1 - y2)
-
     return dist
 class CreateDistanceCallback(object):
   """Create callback to calculate distances between points."""
