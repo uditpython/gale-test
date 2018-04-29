@@ -6,7 +6,7 @@ from ortools.constraint_solver import routing_enums_pb2
 def distance(lat1, lon1, lat2, lon2):
     from math import sin, cos, sqrt, atan2, radians
     
-    # Manhattan distance
+
     R = 6373.0
     lat1 = radians(lat1)
     lon1 = radians(lon1)
@@ -266,7 +266,7 @@ def create_data_array():
     volume = []
     volume.append(float(0))
     
-    with open('/Users/Deepak/git/gale-test/gale_test/gale/output_new.csv') as csvfile:
+    with open('gale/output_new.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
                

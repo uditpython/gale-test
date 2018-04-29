@@ -6,10 +6,10 @@ import time
 from django.shortcuts import render
 from django.http.response import HttpResponse
 import json
-from urllib.parse import urlparse
+from urlparse import urlparse
 from bs4 import BeautifulSoup
 from gale_test.settings import NUMBER_OF_THREADS
-import queue as Queue
+import Queue
 
 import math
 from ortools.constraint_solver import pywrapcp
