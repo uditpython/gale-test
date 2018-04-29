@@ -6,10 +6,10 @@ import time
 from django.shortcuts import render
 from django.http.response import HttpResponse
 import json
-from urlparse import urlparse
+from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from gale_test.settings import NUMBER_OF_THREADS
-import Queue
+import queue as Queue
 
 import math
 from ortools.constraint_solver import pywrapcp
@@ -170,7 +170,7 @@ def create_data_array():
 #   demands = [0, 19, 21, 6, 19, 7, 12, 16, 6, 16, 8, 14, 21, 16, 3, 22, 18,
 #              19, 1, 24, 8, 12, 4, 8, 24, 24, 2, 20, 15, 2, 14, 9]
     
-    print len(locations), sum(demands)
+    print(len(locations), sum(demands))
     start_times =  [0] * len(locations)
     
     # tw_duration is the width of the time windows.
