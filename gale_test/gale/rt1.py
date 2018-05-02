@@ -3,6 +3,23 @@ from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
 
 
+
+def distance1(lat1, lon1, lat2, lon2):
+    import json
+    import urllib
+    import googlemaps
+    gmaps = googlemaps.Client(key='AIzaSyBOtRLrxD2JLwjM5_7Z8iFRCYHbpdQrvjo')
+    location1 = lat1,lon1
+    location2 = lat2,lon2
+    result = gmaps.distance_matrix(location1, location2, mode='transit')
+    driving_distance = result['rows'][0]['elements'][0]['distance']['value']
+    driving_distance = driving_distance/1000
+    print driving_distance,distance1(lat1, lon1, lat2, lon2)
+    return driving_distance
+
+
+
+
 def distance(lat1, lon1, lat2, lon2):
     from math import sin, cos, sqrt, atan2, radians
     
@@ -42,6 +59,7 @@ class CreateDistanceCallback(object):
         self.matrix[from_node][to_node] = distance(x1, y1, x2, y2)
 
   def Distance(self, from_node, to_node):
+
     return int(self.matrix[from_node][to_node])
 
 
@@ -138,7 +156,7 @@ def main():
     demands_callback = demands_at_locations.Demand
 
     # Adding capacity dimension constraints.
-    VehicleCapacity = 800
+    VehicleCapacity = 750
     NullCapacitySlack = 0
     fix_start_cumul_to_zero = True
     capacity = "Capacity"
@@ -199,6 +217,7 @@ def main():
       
       size = len(locations)
       # Solution cost.
+      
       print "Total distance of all routes: " + str(assignment.ObjectiveValue()) + "\n"
       # Inspect solution.
       capacity_dimension = routing.GetDimensionOrDie(capacity);
@@ -209,8 +228,20 @@ def main():
         index = routing.Start(vehicle_nbr)
         plan_output = 'Route {0}:'.format(vehicle_nbr)
         plan1 = []
+        dist = 0
+        number_del = 0
         while not routing.IsEnd(index):
+          
           node_index = routing.IndexToNode(index)
+          number_del += 1
+          if node_index == 0:
+              node_prev = 0
+              dist += 0
+        
+          else:
+              
+              dist += distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+              node_prev = node_index
           load_var = capacity_dimension.CumulVar(index)
           vol_var = volume_dimension.CumulVar(index)
           time_var = time_dimension.CumulVar(index)
@@ -238,8 +269,10 @@ def main():
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
         print plan_output
-        print "\n"
         
+        print "\n"
+        print dist, number_del
+        print "\n"
         if len(plan1) == 2 and plan1[1][0] == 0:
             pass
         else:    
@@ -302,14 +335,14 @@ def create_data_array():
 #   demands = [0, 19, 21, 6, 19, 7, 12, 16, 6, 16, 8, 14, 21, 16, 3, 22, 18,
 #              19, 1, 24, 8, 12, 4, 8, 24, 24, 2, 20, 15, 2, 14, 9]
     
-    print len(locations), sum(demands)
+    print len(locations), sum(demands),sum(volume),len(address)
     
     
     
     start_times =  [0] * len(locations)
     
     # tw_duration is the width of the time windows.
-    tw_duration = 43200
+    tw_duration = 37800
     
     # In this example, the width is the same at each location, so we define the end times to be
     # start times + tw_duration. For problems in which the time window widths vary by location,
@@ -318,6 +351,7 @@ def create_data_array():
     
     for i in range(len(start_times)):
       end_times[i] = start_times[i] + tw_duration
+    
     data = [locations, demands, start_times, end_times,volume]
     
     return data
