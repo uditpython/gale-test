@@ -4,7 +4,7 @@ app.controller('webcrawlerController', function($scope, $http) {
         $scope.carname = "TATA ACE";
         $scope.center_codinates = "[12.844123, 77.682088]";
    
-    var colorsDynamic=['ff8a80','880e4f','4a148c','311b92','3d5afe','76ff03','f57c00','5d4037','0000ff','008080']
+    var colorsDynamic=['FF4233','33FDFF','FF33FB','94FF33','3335FF','76ff03','239B56','34495E','D68910','6E2C00','F1C40F','E6B0AA','EAECEE','5499C7','FEF9E7']
   
     
     $scope.vm= {};

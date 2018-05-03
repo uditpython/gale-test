@@ -4,25 +4,26 @@ from ortools.constraint_solver import routing_enums_pb2
 
 
 
-def distance1(lat1, lon1, lat2, lon2):
-    import json
-    import urllib
-    import googlemaps
-    gmaps = googlemaps.Client(key='AIzaSyBOtRLrxD2JLwjM5_7Z8iFRCYHbpdQrvjo')
-    location1 = lat1,lon1
-    location2 = lat2,lon2
-    result = gmaps.distance_matrix(location1, location2, mode='transit')
-    driving_distance = result['rows'][0]['elements'][0]['distance']['value']
-    driving_distance = driving_distance/1000
-    print driving_distance,distance1(lat1, lon1, lat2, lon2)
-    return driving_distance
+# def distance1(lat1, lon1, lat2, lon2):
+#     import json
+#     import urllib
+#     import googlemaps
+#     gmaps = googlemaps.Client(key='AIzaSyBOtRLrxD2JLwjM5_7Z8iFRCYHbpdQrvjo')
+#     location1 = lat1,lon1
+#     location2 = lat2,lon2
+#     result = gmaps.distance_matrix(location1, location2, mode='transit')
+#     driving_distance = result['rows'][0]['elements'][0]['distance']['value']
+#     driving_distance = driving_distance/1000
+#     print driving_distance,distance1(lat1, lon1, lat2, lon2)
+#     return driving_distance
 
 
 
 
 def distance(lat1, lon1, lat2, lon2):
-    from math import sin, cos, sqrt, atan2, radians
     
+    from math import sin, cos, sqrt, atan2, radians
+    lat11, lon11, lat21, lon21 = lat1, lon1, lat2, lon2
 
     R = 6373.0
     lat1 = radians(lat1)
@@ -133,6 +134,7 @@ def main():
   start_times = data[2]
   end_times = data[3]
   volume = data[4]
+  address = data[5]
   num_locations = len(locations)
   depot = 0
   num_vehicles = 17
@@ -172,10 +174,10 @@ def main():
     VolumeCapacity = 10607700000;
     NullVolumeSlack = 0;
     fix_start_cumul_to_zero = True
-    volume = "Volume"
+    volumes = "Volume"
 
     routing.AddDimension(volume_callback, NullVolumeSlack, VolumeCapacity,
-                         fix_start_cumul_to_zero, volume)
+                         fix_start_cumul_to_zero, volumes)
     
     
     
@@ -209,9 +211,9 @@ def main():
       time_dimension.CumulVar(location).SetRange(start, end)
     # Solve displays a solution if any.
     
-    search_parameters.time_limit_ms = 30000
-    search_parameters.solution_limit = 100
-    
+#     search_parameters.time_limit_ms = 30000
+#     search_parameters.solution_limit = 100
+#     
     assignment = routing.SolveWithParameters(search_parameters)
     if assignment:
       
@@ -222,29 +224,57 @@ def main():
       # Inspect solution.
       capacity_dimension = routing.GetDimensionOrDie(capacity);
       time_dimension = routing.GetDimensionOrDie(time);
-      volume_dimension = routing.GetDimensionOrDie(volume);
+      volume_dimension = routing.GetDimensionOrDie(volumes);
       plans = []
+      
+      distances = []
+      cum_distance = []
+      address1 = []
+      truck = []
+      
+      volume1 = []
+      cum_volume = []
+      time_range = []
+      weight = []
+      cum_weight = []
       for vehicle_nbr in range(num_vehicles):
         index = routing.Start(vehicle_nbr)
         plan_output = 'Route {0}:'.format(vehicle_nbr)
         plan1 = []
         dist = 0
         number_del = 0
+        
         while not routing.IsEnd(index):
           
           node_index = routing.IndexToNode(index)
+          
+          
+          
+          
+          
           number_del += 1
           if node_index == 0:
               node_prev = 0
               dist += 0
-        
+              dist1 = 0
           else:
               
-              dist += distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+              dist1 =  distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+              dist += dist1
               node_prev = node_index
+          distances.append(dist1)
+          cum_distance.append(dist)
+          address1.append(address[node_index])
+          truck.append("Truck" + str(vehicle_nbr+1))
+          weight.append(demands[node_index])
+          
+          volume1.append(volume[node_index])
           load_var = capacity_dimension.CumulVar(index)
           vol_var = volume_dimension.CumulVar(index)
           time_var = time_dimension.CumulVar(index)
+          cum_weight.append(assignment.Value(load_var))
+          cum_volume.append(assignment.Value(vol_var))
+          time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
           plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
           plan_output += \
                     " {node_index} Load({load}) Vol({vol}) Time({tmin}, {tmax}) -> ".format(
@@ -254,11 +284,25 @@ def main():
                         tmin=str(assignment.Min(time_var)),
                         tmax=str(assignment.Max(time_var)))
           index = assignment.Value(routing.NextVar(index))
-
+        
         node_index = routing.IndexToNode(index)
+        
+        dist1 =  distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+        dist += dist1
+        node_prev = node_index
+        distances.append(dist1)
+        cum_distance.append(dist)
+        address1.append(address[node_index])
+        truck.append("Truck" + str(vehicle_nbr+1))
+        weight.append(demands[node_index])
+        volume1.append(volume[node_index])
         load_var = capacity_dimension.CumulVar(index)
         vol_var = volume_dimension.CumulVar(index)
         time_var = time_dimension.CumulVar(index)
+        cum_weight.append(assignment.Value(load_var))
+        cum_volume.append(assignment.Value(vol_var))
+        time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
+
         plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
 
         plan_output += \
@@ -269,7 +313,9 @@ def main():
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
         print plan_output
-        
+        import pandas
+        df = pandas.DataFrame(data={"Truck": truck, "Address": address1,"distance":distances,"cum_distance":cum_distance,"weight":weight,"cum_weight": cum_weight, "volume":volume1,"cum_vol":cum_volume,"time_range":time_range})
+        df.to_csv('gale/result_route_03_05.csv', index=False)
         print "\n"
         print dist, number_del
         print "\n"
@@ -296,16 +342,18 @@ def create_data_array():
     
     locations1 = []
     address = []
+    address.append("Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100")
     volume = []
     volume.append(float(0))
     
-    with open('gale/output_new.csv') as csvfile:
+    with open('gale/output_new_18_04_2018.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
                
             try:
                 volume_ind = float(row['Length'])*float(row['Height'])*float(row['Height'])
                 ind = row['location'].index(",")
+                
                 check = row['ADDRESS']
                 if check in address:
                     ind = address.index(check)
@@ -342,7 +390,7 @@ def create_data_array():
     start_times =  [0] * len(locations)
     
     # tw_duration is the width of the time windows.
-    tw_duration = 37800
+    tw_duration = 43200
     
     # In this example, the width is the same at each location, so we define the end times to be
     # start times + tw_duration. For problems in which the time window widths vary by location,
@@ -352,7 +400,7 @@ def create_data_array():
     for i in range(len(start_times)):
       end_times[i] = start_times[i] + tw_duration
     
-    data = [locations, demands, start_times, end_times,volume]
+    data = [locations, demands, start_times, end_times,volume,address]
     
     return data
 if __name__ == '__main__':
