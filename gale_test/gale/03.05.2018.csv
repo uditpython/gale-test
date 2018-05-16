@@ -1,0 +1,761 @@
+﻿S.NO,Tracking Id,RECIVER NAME,ADDRESS,STATE,CITY,PIN,Weight,Length,Width,Height
+1,722107464157,Fathima Medicals & General Stores,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,Bangalore,560026,5.07,43.61,40.59,31.6
+2,722107464539,M D Sameer,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,BENGALURU,560070,2.27,35.61,22.91,15.29
+3,722107439261,chaitanya provision store,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,Bangalore,560070,0.87,22.4,16.89,11.99
+4,722107439582,chaitanya provision store,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,Bangalore,560070,17.23,54,37.01,35
+5,722107468797,AYUSH SUPER MARKET,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,Bangalore,560102,2.09,101.3,9.5,9.5
+6,722107469534,AYUSH SUPER MARKET,"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Karnataka,Bangalore,560102,2.09,101.3,9.5,9.5
+7,722107442469,AYUSH SUPER MARKET,"Shri Nidhi Pharma,No. 3,mnt complex, jigani,, Jigani main rd",Karnataka,Bangalore,560102,4.95,43.61,40.59,31.6
+8,722107472596,K G STORE,"Lion Super Market,plot#ca4/3, jigani industrial area, Apc Circle Bus stop,, Anekal taluk",Karnataka,Bangalor,560027,3.5,43.61,40.59,31.6
+9,722107445101,BHAVANI GENERAL STORES,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,BANGALORE,560061,8.53,43.61,40.59,31.6
+10,722107446245,Bangalore medicals,"Lion Super Market,plot#ca4/3, jigani industrial area, Apc Circle Bus stop,, Anekal taluk",Karnataka,Bangalore,560039,1.53,22.4,16.89,11.99
+11,722107474316,Bangalore medicals,"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Karnataka,Bangalore,560039,8.75,43.61,40.59,31.6
+12,722107475436,MANOJ MEDICALS & GENERAL STORES,"Lion Super Market,plot#ca4/3, jigani industrial area, Apc Circle Bus stop,, Anekal taluk",Karnataka,Bangalore,560083,5.8,43.61,40.59,31.6
+13,722107476297,PRINCE MEDICALS,"SRI LAKSHMI VENKTESHWARA PROVISION STORE,Vinaya Nagar Jigani, Bangalore",Karnataka,Bangalore,560068,1.98,35.61,22.91,15.29
+14,722107477157,KAILASH CHAND GEHLOT,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,BANGALORE,560027,9.35,43.61,40.59,31.6
+15,722107479656,BHAVANI GENERAL STORES,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BANGALORE,560061,4.3,48.3,37.5,11.4
+16,722107480553,BHAVANI GENERAL STORES,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BANGALORE,560061,10.3,45.39,35.79,10.59
+17,722107455506,BARAKATH STORE,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,Bangalore,560078,4.3,48.3,37.5,11.4
+18,722107483912,Bhavani Medical and General stores,"Pristine Store H Block Ajmera Stone Park 1st Cross,, Neeladri Road, Electronic City Phases 1",Karnataka,Bangalore,562107,8.85,43.61,40.59,31.6
+19,722107457302,RAVI MEDICALS AND GENERAL STORE,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BANGALORE,560026,7.72,43.61,40.59,31.6
+20,722107458101,PRATAP G,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BANGALORE,560061,2.58,43.61,40.59,31.6
+21,712100870260,Bhavani Medical and General stores,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,Bangalore,562107,11.16,54,37.01,35
+22,712100870345,Bhavani Medical and General stores,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,Bangalore,562107,12.01,43.61,40.59,31.6
+23,722107462009,SRI MOOKAMBIKA MEDICALS,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,BANGALORE,560018,2.93,43.61,40.59,31.6
+24,722107491719,Care chemist,"PRAKRUTHI HERBAL STORE,No 2 RATHNMMA BUILDING, NEAR THIRUPALYA BUS Stop, Anekal",Karnataka,Bangalore,560029,19.73,54,37.01,35
+25,722107490996,T M STORE,"Calcutta Enterprises near muthyalamma temple, Ambedkar Road hebbagodi anekal taluk",Karnataka,Bangalore,560047,23.7,43.61,40.59,31.6
+26,722107463143,Care chemist,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,Bangalore,560029,0.61,22.4,16.89,11.99
+27,722107492037,PAI PHARMA,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BANGALORE,560027,7.34,35.61,22.91,15.29
+28,722107497674,Bangalore medicals,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,Bangalore,560039,13.11,43.61,40.59,31.6
+29,712100870925,SRI GANESH MEDICALS,"Sri Lakshmi Narasimha swamy Provision Stores,Suragajakanahalli, Suragajakanahalli",Karnataka,BANGALORE,560076,4.61,43.61,40.59,31.6
+30,722107470165,anjanayappa,"Calcutta Enterprises near muthyalamma temple, Ambedkar Road hebbagodi anekal taluk",Karnataka,bilekalli,560076,20.88,43.61,40.59,31.6
+31,722107470301,syed Ali Siddiq,"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Karnataka,BENGALURU,560047,21.09,43.61,40.59,31.6
+32,722107470400,shanmugam,"SRI LAKSHMI VENKTESHWARA PROVISION STORE,Vinaya Nagar Jigani, Bangalore",Karnataka,banglore,560002,8.34,43.61,40.59,31.6
+33,722107498138,anjanayappa,"Pristine Store H Block Ajmera Stone Park 1st Cross,, Neeladri Road, Electronic City Phases 1",Karnataka,bilekalli,560076,21.96,43.61,40.59,31.6
+34,722107498213,Thanaram,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,Bangalore,560105,9.8,43.61,40.59,31.6
+35,722107470462,CHANDRASHEKHAR,"HEERA MEDICAL AND GENERAL STORES,no,122,01 salam buildibg, bettadasanapur,beguru(post) bangalore-560068",Karnataka,BANGALORE,560047,19.14,43.61,40.59,31.6
+36,722107498251,P RAJA,"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Karnataka,bangalore,560068,16.5,43.61,40.59,31.6
+37,712100871007,Greenbubbles Startup Services PVT ,"Biswal Super Market,No 30/28, Thirupalya village,Neo Town opp of GM infinite,, Electronic city Ph1",Karnataka,BENGALURU,560102,6.51,43.61,40.59,31.6
+38,722107470608,Sri Ganesha Oil Store,"Sri Lakshmi Narasimha swamy Provision Stores,Suragajakanahalli, Suragajakanahalli",Karnataka,Bangalore,560099,10.67,43.61,40.59,31.6
+39,722107498497,Gs traders,"Pristine Store H Block Ajmera Stone Park 1st Cross,, Neeladri Road, Electronic City Phases 1",Karnataka,Bangalore,560068,14.2,43.61,40.59,31.6
+40,722107470783,Sri Ganesha Oil Store,"Karthikmedicals&General stores,Sy no307,Shop no 1,venkatarajappabelding,jigani Main road, Jigani",Karnataka,Bangalore,560099,20.02,43.61,40.59,31.6
+41,722107470844,Sri Ganesha Oil Store,"HIRA PROVISION AND GENERAL STORES,NO.218/1,2,3,51/8A,BETTADASANA PURA ROAD,, DODDATOGUR,ELECTRONIC CITY POST",Karnataka,Bangalore,560099,10.92,43.61,40.59,31.6
+42,722107498794,Srinivas setty store,"Manjunatha a,NPS enterprises, LIG 1, B7,Shop 7,Surya city, Anekal road, Chandapur",Karnataka,Bangalore,562107,24.34,43.61,40.59,31.6
+43,722107498893,Manjunatha medicals and general st,"Karthikmedicals&General stores,Sy no307,Shop no 1,venkatarajappabelding,jigani Main road, Jigani",Karnataka,Bangalore,560081,21.44,54,37.01,35
+44,722107470868,PRASAD,"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Karnataka,banaglore,560083,23.05,43.61,40.59,31.6
+45,722107470943,Mahalakshmi Provision stores,"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Karnataka,Bangalore,562107,7.62,43.61,40.59,31.6
+46,712100869714,Emami Frank Ross Ltd,"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Karnataka,BENGALURU,560098,20.07,21.1,15.6,5.2
+47,722107498978,Balaji medicals and general store,"S V R Medical and General Stores,No.335/52/4, Lakshmamma building, Hennagara Bus stop, Hennagara Village, Anekal Taluk",Karnataka,Bangalore,560068,14.79,54,37.01,35
+48,722107498930,Lakshmi store,"S V R Medical and General Stores,No.335/52/4, Lakshmamma building, Hennagara Bus stop, Hennagara Village, Anekal Taluk",Karnataka,Bangalore,562125,7.62,43.61,40.59,31.6
+49,722107498954,Shiva shankarapa,"Manjunatha a,NPS enterprises, LIG 1, B7,Shop 7,Surya city, Anekal road, Chandapur",Karnataka,Bangalore,562107,4.1,35.61,22.91,15.29
+50,722107471001,ASHIRWAD GENERAL STORE,"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Karnataka,Bangalore,560083,1.41,35.61,22.91,15.29
+51,722107471100,Mahalakshmi Provision stores,"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Karnataka,Bangalore,562107,7.56,23.5,20.8,13
+52,722107471148,SKANDA TRADERS,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560053,8.42,43.61,40.59,31.6
+53,722107499098,C n Venkatesh babu,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560050,1.84,38.99,32,7.75
+54,722107471162,Brahma,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bommanahalli,560068,10.55,43.61,40.59,31.6
+55,722107471223,Naresh babu sc,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560029,7.28,35.61,22.91,15.29
+56,722107499159,Mahalakshmi Provision stores,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,562107,18.04,43.61,40.59,31.6
+57,722107499210,Sri Ganesha Oil Store,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560099,20.02,43.61,40.59,31.6
+58,722107471360,C n Venkatesh babu,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560050,12.64,24.9,14.9,11.1
+59,722107471322,Mahalakshmi Provision stores,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,562107,10.82,43.61,40.59,31.6
+60,712100869738,Emami Frank Ross Ltd,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,BENGALURU,560098,17.28,54,37.01,35
+61,722107471605,Mohanlal,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore 98,560098,6.46,43.61,40.59,31.6
+62,722107499357,C n Venkatesh babu,"Pushanjali Provision Store,Kachanayakanahalli, Hennagara hobli, Anekal Taluk",Karnataka,Bangalore,560050,5.54,43.61,40.59,31.6
+63,722107499371,VISHWANATH BS,"SHREE MANJUNATHA PROVISION STORE,THIRUPALYA HEBBAGODI, MAIN ROAD BNG",Karnataka,BANGALORE,560085,8.03,43.61,40.59,31.6
+64,712100871083,Emami Frank Ross Ltd,"NO.1 & 2, JIGANI MAIN ROAD, SANTHE BEEDHI,",Karnataka,BENGALURU,560098,15.14,20.8,15.5,5.2
+65,722107471704,Mahalakshmi Provision stores,"K G STORE,#12 16TH CROSS 3RD MAIN S R NAGAR, Bangalore",Karnataka,Bangalore,562107,9.29,43.61,40.59,31.6
+66,722107499418,Sri Ganesha Oil Store,"Care chemist,No.66/149/72/a-1,shop no-2,grd floor, 16th cross main,thavarekere main road,btm 1st stage",Karnataka,Bangalore,560099,9.57,43.61,40.59,31.6
+67,712100869752,Emami Frank Ross Ltd,"Care chemist,No.66/149/72/a-1,shop no-2,grd floor, 16th cross main,thavarekere main road,btm 1st stage",Karnataka,BENGALURU,560098,15.55,54,37.01,35
+68,722107471728,AKSHAYA super bazaar,"PAI PHARMA,#16/3,SUBBAIAH CIRCLE,, OPP SHIVA TEMPLE, MISSION ROAD",Karnataka,BENGALURU,560098,2.31,22.4,16.89,11.99
+69,722107499456,SHIVAKUMAR L,"Suprabhata Stores,No.46,between 6n 7 th cross, 1st main, balaji nagar",Karnataka,banaglore,560083,9.18,43.61,40.59,31.6
+70,722107499494,Srinivasa stores,"SRMP traders,Behind ayappa temple, Madiwala hosur main road",Karnataka,BENGALURU,562107,3.22,43.61,40.59,31.6
+71,722107471865,Mahalakshmi Provision stores,"Pawan provision store,No.1,16th main,10th cross, Opp madduramma temple,tavarekere",Karnataka,Bangalore,562107,18.94,54,37.01,35
+72,722107471902,Sri Guru Raghavendra rice traders,"Srikanth enterprises,No.129-27, 10th cross,venkateshwara layout, SG palya",Karnataka,Opposite shanthi Sagar hotel,560061,23.28,43.61,40.59,31.6
+73,722107471964,Balaji medicals and general store,"AMRUTH PHARMA MEDICALS AND GENERAL STORES,K.NO-62-13/10/1, 3RD MAIN, 14TH CROSS, WILSON GARDEN",Karnataka,Bangalore,560068,17,54,37.01,35
+74,722107471889,Sri Shridi Sai M.S.Medicals and Ge,"Suprabhata Stores,No.46,between 6n 7 th cross, 1st main, balaji nagar",Karnataka,Bangalore,562107,5.73,43.61,40.59,31.6
+75,722107471988,Balaji medicals and general store,"Suprabhata Stores,No.46,between 6n 7 th cross, 1st main, balaji nagar",Karnataka,Bangalore,560068,16.6,54,37.01,35
+76,722107472022,new bharath medicals &general stor,"SRMP traders,Behind ayappa temple, Madiwala hosur main road",Karnataka,Bangalore,560039,3.81,43.61,40.59,31.6
+77,722107499579,MAHARAJA FOOD CITY,"PREMA MEDICALS,SHOP NO -0.1.1ST MAIN, SUDDAGUNTE PALYA BANGALORE",Karnataka,banalore,560076,18.69,54,37.01,35
+78,722107472169,SNEHA PROVISION STORES,"Srikanth enterprises,No.129-27, 10th cross,venkateshwara layout, SG palya",Karnataka,Bangalore,560026,6.35,43.61,40.59,31.6
+79,722107472183,SRI SAI CHANDRA MEDICALS,"Srikanth enterprises,No.129-27, 10th cross,venkateshwara layout, SG palya",Karnataka,Bangalore,560099,1.15,38.99,32,7.75
+80,722107472220,Prakash,"sri chowdeswari prv store,No.66/2, 4 th main near balaji theatre,balaji nagar",Karnataka,Bangalore,562106,7.9,43.61,40.59,31.6
+81,722107472244,Balaji medicals and general store,"model medical store,no 103, 104 brigade road, ashok nagar",Karnataka,Bangalore,560068,14.91,54,37.01,35
+82,722107499654,Shrinidhi pharma,"BrainyClan5 Home Decor Pvt Ltd,No 013, 1st Cross 13th Main, Aicoboonagar BTM 1st stage",Karnataka,BENGALURU,560105,2.51,35.61,22.91,15.29
+83,722107499678,tippu medicals,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,banglore,560018,4.36,43.61,40.59,31.6
+84,722107499692,SRMP traders,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560068,5.34,38.99,32,7.75
+85,722107472381,ABDUL RASHID,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560047,7.26,43.61,40.59,31.6
+86,722107472404,Lion Super Market,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560105,24,21.69,10.01,9
+87,722107472480,Shree Maruthi Medicals and General,"BrainyClan5 Home Decor Pvt Ltd,No 013, 1st Cross 13th Main, Aicoboonagar BTM 1st stage",Karnataka,BANGALORE,560068,3.88,43.61,40.59,31.6
+88,722107499975,Lakshmi Venkateshwara Medicals and,"BrainyClan5 Home Decor Pvt Ltd,No 013, 1st Cross 13th Main, Aicoboonagar BTM 1st stage",Karnataka,Bangalore,562107,7.49,33,21.5,15.2
+89,722107472503,SRI VENKATESWARA STORES,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,BANGALORE,560030,8.1,54,37.01,35
+90,722107472725,Sri Guru Raghavendra rice traders,"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Karnataka,Opposite shanthi Sagar hotel,560061,6.71,43.61,40.59,31.6
+91,722107472701,Sri Ganesha Oil Store,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560099,23.94,54,37.01,35
+92,722107472640,Lion Super Market,"D.MAHALAKSHMI PROVISION STORES,NO-146 MAIN ROAD, SAMPANGERAM NAGAR",Karnataka,Bangalore,560105,12.3,43.61,40.59,31.6
+93,722107500091,SRI VENKATESWARA STORES,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,BANGALORE,560030,3.28,43.61,40.59,31.6
+94,722107472824,SRI SAI CHANDRA MEDICALS,"SRMP traders,Behind ayappa temple, Madiwala hosur main road",Karnataka,Bangalore,560099,1.05,22.4,16.89,11.99
+95,722107472800,Mahalakshmi Provision stores,"Chamundi medicals and general stores,9\1 1st cross shop no3 madiwala bangalore Karnataka 560068",Karnataka,Bangalore,562107,24.8,43.61,40.59,31.6
+96,712100869776,Emami Frank Ross Ltd,"BrainyClan5 Home Decor Pvt Ltd,No 013, 1st Cross 13th Main, Aicoboonagar BTM 1st stage",Karnataka,BENGALURU,560098,13.7,43.61,40.59,31.6
+97,722107500213,SRI VENKATESWARA STORES,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,BANGALORE,560030,15.28,43.61,40.59,31.6
+98,722107472862,Venkatesh,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,562107,8.44,43.61,40.59,31.6
+99,722107472886,Sri Guru Raghavendra rice traders,"chaitanya medicals,NO20/62,1st main road,marutinagar,madivala,bangalore-68",Karnataka,Opposite shanthi Sagar hotel,560061,18.18,54,37.01,35
+100,722107500251,Nisar kt,"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,2.61,43.61,40.59,31.6
+101,722107473005,NEW HAPPY HOME SUPER MARKET,"Infant medicals,#149,1 st mai,10th main, S.G.Palya",Karnataka,Bengaluru,560098,2.01,38.99,32,7.75
+102,722107472947,CHANDAN STORE,"Akshay provision store,#19/2,1st main,, 5th cross,balaji nagar",Karnataka,banaglore,560076,10.89,43.61,40.59,31.6
+103,722107473142,Srinivasa,"D.MAHALAKSHMI PROVISION STORES,NO-146 MAIN ROAD, SAMPANGERAM NAGAR",Karnataka,Bangalore,562107,2.45,43.61,40.59,31.6
+104,722107500374,Nisar kt,"Lukonet Technologies Private Limited,No.6, Saleh Arcadia, Flat No.205, Leonard Lane, Richmond Town",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,1.08,22.4,16.89,11.99
+105,722107500411,SHAHID MEDICAL and General Stores,"N.R.N MEDICALS,NO.23,15TH CROSS,2ND MAIN, LAKKASANDRA",Karnataka,Bangalore,560026,6.06,43.61,40.59,31.6
+106,722107473388,RAGHAVENDRA RAO B,"Lukonet Technologies Private Limited,No.6, Saleh Arcadia, Flat No.205, Leonard Lane, Richmond Town",Karnataka,Bangalore,560085,17.36,37.8,27,7
+107,722107473548,sri kamadhenu enterprises,"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Karnataka,Bangalore,560098,0.57,22.4,16.89,11.99
+108,712100871144,Emami Frank Ross Ltd,"Sri Lakshminarasimha stores,No.32 6th cross c main, Balaji nagar ( near good earth school",Karnataka,BENGALURU,560098,20.4,54,37.01,35
+109,722107473562,Lakshmi Venkateshwara Medicals and,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,562107,2.5,38.99,32,7.75
+110,722107500718,ASHIRWAD GENERAL STORE,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560083,9.17,43.61,40.59,31.6
+111,722107500855,Manjanna,"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Karnataka,Bangalore,560082,0.95,22.4,16.89,11.99
+112,712100871168,Emami Frank Ross Ltd,"BrainyClan5 Home Decor Pvt Ltd,No 013, 1st Cross 13th Main, Aicoboonagar BTM 1st stage",Karnataka,BENGALURU,560098,18.47,54,37.01,35
+113,722107500893,Samar home needs,"sri chowdeswari prv store,No.66/2, 4 th main near balaji theatre,balaji nagar",Karnataka,Banagalore,560029,10.77,54,37.01,35
+114,722107500992,Global Medicals,"model medical store,no 103, 104 brigade road, ashok nagar",Karnataka,Bangalore,560026,0.2,22.4,16.89,11.99
+115,722107473722,RAJESHAWAR PROVISION STORE,"Pawan provision store,No.1,16th main,10th cross, Opp madduramma temple,tavarekere",Karnataka,BANGALORE,560019,2.2,43.61,40.59,31.6
+116,722107473845,Lion Super Market,"SRINIVASA ENTERPRISES,95-2, SG PALYA",Karnataka,Bangalore,560105,23.41,43.61,40.59,31.6
+117,722107473807,Mahalakshmi Provision stores,"Blue bird india,No 65/26/12,3rd crosd.,2nd main,Balaji nagar, Bannerghatta road",Karnataka,Bangalore,562107,7.7,43.61,40.59,31.6
+118,722107501159,Manoj super bazaar,"Care chemist,No.66/149/72/a-1,shop no-2,grd floor, 16th cross main,thavarekere main road,btm 1st stage",Karnataka,Bangalore,560026,7.95,43.61,40.59,31.6
+119,722107473982,Sri Guru Raghavendra rice traders,"SRINIVASA ENTERPRISES,95-2, SG PALYA",Karnataka,Opposite shanthi Sagar hotel,560061,0.5,22.4,16.89,11.99
+120,722107473968,SHANMUGA TRADERS,"D.MAHALAKSHMI PROVISION STORES,NO-146 MAIN ROAD, SAMPANGERAM NAGAR",Karnataka,BANGALORE,560050,9.72,43.61,40.59,31.6
+121,712100871328,SRI GANESH MEDICALS,"Rose general store,#4/3,kgn complex, 2nd block, 4th cross, koramangala near kaveri hospital",Karnataka,BANGALORE,560076,13.69,53.19,37.69,29.21
+122,722107474026,RAJESH TP,"METARAIN DISTRIBUTORS PRIVATE LIMITED,Unit 1, 1st Floor, 20/1, 1st cross, CKC-Garden, Sudhama nagar",Karnataka,Bangalore,560078,17.01,43.61,40.59,31.6
+123,722107501234,Sree vinayaka medical stores,"SRI RAMAKRISHNA DEPARTMENTAL STORES,279,H SIDDDAIAH ROAD, WILSON GARDEN",Karnataka,Bangalore,560004,1.2,35.61,22.91,15.29
+124,722107474163,Srinivas setty store,"Sri raghavendra stores,No.320,7th main,15th cross, Lakkasandra extension",Karnataka,Bangalore,562107,2.64,35.61,22.91,15.29
+125,722107474224,PRASHANTH B N,"DINESH PHARMA,130/C,EEAST ROAD,2ND CROSS, BEEMANNA GARDEN, NEW NO.1,SHANTHI NAGAR",Karnataka,BANGALORE,560018,3.52,43.61,40.59,31.6
+126,722107501371,Mahalakshmi Provision stores,"Sri mahalakshmi traders,no.58/D,M,M NIVAS, Near g anesha temple garvebavi palya",Karnataka,Bangalore,562107,13.14,54,37.01,35
+127,722107501432,Srinivasa,"Balaji medicals and general store,Survey no. 4,shop no 1 Hongasandra,Begur main road, opp to reliance fresh",Karnataka,Bangalore,562107,16.35,43.61,40.59,31.6
+128,722107501777,Pawan provision store,"Brahmi enterprises,NGR residency , opp Reddy school, 15th cross , NGR Layout, Roopena Aghara",Karnataka,Bangalore,560029,15.57,27.71,21.89,20.9
+129,722107474422,P RAJA,"Balaji medicals and general store,Survey no. 4,shop no 1 Hongasandra,Begur main road, opp to reliance fresh",Karnataka,bangalore,560068,8.27,43.61,40.59,31.6
+130,722107474569,SHINOJ V,"Balaji medicals and general store,Survey no. 4,shop no 1 Hongasandra,Begur main road, opp to reliance fresh",Karnataka,Bangalore,560047,21.5,43.61,40.59,31.6
+131,722107474941,Sri Durga Medicals,"Balaji medicals and general store,Survey no. 4,shop no 1 Hongasandra,Begur main road, opp to reliance fresh",Karnataka,Bangalore,560026,12.92,64.49,51.21,44.2
+132,722107474729,Srikanth enterprises,"Shree Maruthi Medicals and General Stores,K. No. 30/2-3, Parappana Agrahara main road,, near AECS layout A block, Singasandra",Karnataka,Bangalore,560029,24.06,43.61,40.59,31.6
+133,722107502095,Sri Guru Raghavendra rice traders,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,Opposite shanthi Sagar hotel,560061,6.97,43.61,40.59,31.6
+134,722107501999,POOJA MEDICALS & GENERAL STORES.,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,Bangalore,560068,5.15,43.61,40.59,31.6
+135,722107475047,AMRUTH PHARMA MEDICALS AND GENERAL,"Sri mahalakshmi traders,no.58/D,M,M NIVAS, Near g anesha temple garvebavi palya",Karnataka,BENGALURU,560030,4.57,43.61,40.59,31.6
+136,722107502255,G K ENTERPRISES,"NEW KARNATAKA STORE,#10 NOOR MAHAL 5TH CROSS BHANU NURSING HOME ROAD, VIRATNAGAR",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+137,722107475122,Ashraya Medicals,"Balaji medicals and general store,Survey no. 4,shop no 1 Hongasandra,Begur main road, opp to reliance fresh",Karnataka,Bangalore,560076,3.93,43.61,40.59,31.6
+138,722107475108,Gs traders,"HMJ MEDICAL,NO-55, G FLOOR, 3RD CROSS, 3RD MAIN ROAD, BEGUR ROAD, BEHIND MASJID, VIRAT NAGAR, BOMMANAHALLI",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+139,722107475146,G K ENTERPRISES,"Sri mahalakshmi traders,no.58/D,M,M NIVAS, Near g anesha temple garvebavi palya",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+140,722107502194,Gs traders,"HMJ MEDICAL,NO-55, G FLOOR, 3RD CROSS, 3RD MAIN ROAD, BEGUR ROAD, BEHIND MASJID, VIRAT NAGAR, BOMMANAHALLI",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+141,722107502231,SNEHA PROVISION STORES,"NAVEEN PROVISION STORE,NEAR ANJANEYA TEMPLE,DODDABEGUR, BEGUR",Karnataka,Bangalore,560026,6.77,43.61,40.59,31.6
+142,722107475245,G K ENTERPRISES,"Sri Ganesh Medicals and General Stores,No-384/1,Shop No-4,Near Govt Hospital, Begur Road, Begur",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+143,722107502316,G K ENTERPRISES,"Bangalore Medical Centre,shop No.2,Khata No.2/2,Begur Road, Devarachikkanahalli,I.I.M Post",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+144,722107502439,G K ENTERPRISES,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+145,722107475382,NEW HAPPY HOME SUPER MARKET,"Hansikaa medicals,HANSIKAA MEDICALS#9 SY No 5/11 Ground floor 1st main, RS Road Devarachikkanahalli BTM 4th stage",Karnataka,Bengaluru,560098,24.03,54,37.01,35
+146,722107502392,Gs traders,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+147,722107502293,G K ENTERPRISES,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+148,722107475320,Prakash,"Ganesh medical and general store,#140/8/1, shop no#5, ground floor, an la reddy layout,, mylsandra,begur kappa road",Karnataka,BENGALURU,562107,16.21,43.61,40.59,31.6
+149,722107475269,G K ENTERPRISES,"Sri basavashwara traders,Govinda reddy bld, Balajinagar",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+150,722107475368,G K ENTERPRISES,"AMANATH PROVISION STORE,amanath provision store, 58 d c halli main road kaveri nagar bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+151,722107502354,G K ENTERPRISES,"VINAYAKA PRIOVASION STORE,G B PALAYA, SRI RAMA TEMPAL",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+152,722107475221,G K ENTERPRISES,"AMANATH PROVISION STORE,amanath provision store, 58 d c halli main road kaveri nagar bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+153,722107502279,G K ENTERPRISES,"NAVEEN PROVISION STORE,NEAR ANJANEYA TEMPLE,DODDABEGUR, BEGUR",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+154,722107475283,Gs traders,"Ayoka Essentials,#306,Salarpuria Greenage Juniper Block, Bommanahalli,Hosur Road",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+155,722107475528,G K ENTERPRISES,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+156,722107502576,G K ENTERPRISES,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+157,722107502538,Gs traders,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,Bangalore,560068,6.4,43.61,40.59,31.6
+158,722107475542,G K ENTERPRISES,"VINAYAKA PRIOVASION STORE,G B PALAYA, SRI RAMA TEMPAL",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+159,722107475443,Gs traders,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+160,722107502491,G K ENTERPRISES,"VINAYAKA PRIOVASION STORE,G B PALAYA, SRI RAMA TEMPAL",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+161,722107475504,Gs traders,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+162,722107475481,G K ENTERPRISES,"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+163,722107475580,G K ENTERPRISES,"LAKSHMI PROVISION STORE,No,55/2a/5, ward 190, garvebhavi palya lakshmi layout, Bommanahalli post",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+164,722107502613,G K ENTERPRISES,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+165,722107502514,Gs traders,"Ayoka Essentials,#306,Salarpuria Greenage Juniper Block, Bommanahalli,Hosur Road",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+166,722107502590,G K ENTERPRISES,"Sri basavashwara traders,Govinda reddy bld, Balajinagar",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+167,722107475603,MM MEDICALS AND GENERAL STORES,"Shanthi Medicals,Khatha no. 290, site no. 41/48/49, Vinayaka layout, Shanthipura, Electronic city, Phase-II",Karnataka,BANGALORE,560050,3.37,43.61,40.59,31.6
+168,722107502774,Gs traders,"Hansikaa medicals,HANSIKAA MEDICALS#9 SY No 5/11 Ground floor 1st main, RS Road Devarachikkanahalli BTM 4th stage",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+169,722107502835,Naresh babu sc,"PAWAN PROVISION STORE,1/2,10/34,Ground floor,N.G.R.LAYOUT, OP GHOUSIA MASJID,, VIRAT NAGAR,BOMMANAHALLI.",Karnataka,Bangalore,560029,10.35,54,37.01,35
+170,722107475801,Gs traders,"PAWAN PROVISION STORE,1/2,10/34,Ground floor,N.G.R.LAYOUT, OP GHOUSIA MASJID,, VIRAT NAGAR,BOMMANAHALLI.",Karnataka,Bangalore,560068,7.59,53.19,31.19,24.99
+171,722107502637,G K ENTERPRISES,"Bangalore Medical Centre,shop No.2,Khata No.2/2,Begur Road, Devarachikkanahalli,I.I.M Post",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+172,722107475740,K.G.N. MEDICALS,"LAKSHMI PROVISION STORE,No,55/2a/5, ward 190, garvebhavi palya lakshmi layout, Bommanahalli post",Karnataka,Bangalore,560047,8.62,43.61,40.59,31.6
+173,722107502699,G K ENTERPRISES,"SHRI BALAJI PROVISION STORE,shri balaji provision store, 16/1,11th main MLA Layout hongsandra bng",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+174,722107475726,Gs traders,"MALNAD PROVISION STORE,2ND MAIN BEGUR ROAD, HONGASANDRA",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+175,722107502750,G K ENTERPRISES,"Shanthi Medicals,Khatha no. 290, site no. 41/48/49, Vinayaka layout, Shanthipura, Electronic city, Phase-II",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+176,722107502859,G K ENTERPRISES,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+177,722107502798,G K ENTERPRISES,"Arafa provision store,Arafa store 16th main road D cross, New mico layout, hongasandra",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+178,722107502811,G K ENTERPRISES,"APOORVA RICE TRADERS,NO.220/1,KODANDA RAMA REDDY BUILDING,BEGUR MAIN ROAD,, AISHWARYA BAR,HONGASANDRA",Karnataka,BENGALURU,560019,0.3,101.8,1.4,0.61
+179,722107475900,Gs traders,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+180,722107502934,SRI LAKSHMI ADINARAYANA MEDICALS,"APOORVA RICE TRADERS,NO.220/1,KODANDA RAMA REDDY BUILDING,BEGUR MAIN ROAD,, AISHWARYA BAR,HONGASANDRA",Karnataka,Bangalore,560076,2.65,38.99,32,7.75
+181,722107475948,Gs traders,"Bhavani provision store,Aai Matha Provision stors No 87 Doddnagmangla village",Karnataka,Bangalore,560068,7.8,52.5,28.8,24.31
+182,722107503016,anjanayappa,"Arafa provision store,Arafa store 16th main road D cross, New mico layout, hongasandra",Karnataka,bilekalli,560076,18.31,43.61,40.59,31.6
+183,722107476228,raviraj poojari,"MALNAD PROVISION STORE,2ND MAIN BEGUR ROAD, HONGASANDRA",Karnataka,Bengaluru,560061,3.85,43.61,40.59,31.6
+184,722107503337,SURYA TRADERS,"PRABHASHREE PROVISION STORE,prabhashree provision store, singasandra manipal road bangalore 68",Karnataka,Bangalore,560061,5.04,43.61,40.59,31.6
+185,722107476365,raviraj poojari,"S L N PROVISION STORE,19th CROSS VISHWARA PRIYA LAY OUT, BEGUR BNG",Karnataka,Bengaluru,560061,2.61,43.61,40.59,31.6
+186,722107503597,MOHAMMED ASHARAF,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,BANGALORE,560068,2.89,35.61,22.91,15.29
+187,712100869974,SNEHA MEDICALS,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,banglore,560062,8.86,43.61,40.59,31.6
+188,722107503696,SNEHA MEDICALS,"S L A TREADARS,S L A TRADERS, 8th main hongadandra begur main road bangalore 68",Karnataka,banglore,560062,2.68,43.61,40.59,31.6
+189,722107476662,SRI VENKATESWARA STORES,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,BANGALORE,560030,4.3,48.3,37.5,11.4
+190,722107503658,Mahalakshmi Provision stores,"MALNAD PROVISION STORE,2ND MAIN BEGUR ROAD, HONGASANDRA",Karnataka,Bangalore,562107,15.49,33.71,23.9,17.4
+191,712100871366,KIRANA TRADING CO,"SRI SRINIVASA STORE,No.37/1, yeshas complex, hosur main road, Singasandra",Karnataka,BANGALORE,560002,24.66,43.61,40.59,31.6
+192,722107476884,Gs traders,"CHATRA PROVISION STORE,chatra provision store, chikka begur bng",Karnataka,Bangalore,560068,11.08,63.91,39.5,27.79
+193,722107476846,Naresh babu sc,"B B STORE,CHIKKA BEGUR, Bangalore 68",Karnataka,Bangalore,560029,5.44,43.61,40.59,31.6
+194,722107503993,anjanayappa,"NEW KARNATAKA STORE,#10 NOOR MAHAL 5TH CROSS BHANU NURSING HOME ROAD, VIRATNAGAR",Karnataka,bilekalli,560076,13.98,32.59,20.29,14.71
+195,722107476921,PRASAD,"CHATRA PROVISION STORE,chatra provision store, chikka begur bng",Karnataka,banaglore,560083,4.83,43.61,40.59,31.6
+196,722107504297,Karan medical stores,"CHATRA PROVISION STORE,chatra provision store, chikka begur bng",Karnataka,BANGALORE,560061,4.41,43.61,40.59,31.6
+197,722107504419,Gs traders,"CHATRA PROVISION STORE,chatra provision store, chikka begur bng",Karnataka,Bangalore,560068,11,52.71,29.31,25.81
+198,722107504211,Global Medicals,"JAGADAMBA TRADERS,59/15,Shankarnag road,, Viratnagar Bommanahalli",Karnataka,Bangalore,560026,3.26,38.99,32,7.75
+199,722107477126,ABDUL RASHID,"SEETHA BARAVASHAVARA PROVISION STORE,seetha baravashara provision store, chikka begur hosur road bng",Karnataka,Bangalore,560047,0.48,22.4,16.89,11.99
+200,722107504037,K-P-STORE,"SRI MOOKAMBIKA MEDICALS,NO.40/9/1,2ND MAIN ROAD,VITTAL NAGAR, CHAMARAJPET",Karnataka,BANGALORE,560082,19.57,34.49,26.39,23.8
+201,722107504099,syed Ali Siddiq,"Sri Sanjeevi provision stores tours&travels,Sanjeevi provision store, #1358, 5th cross,near ashoknagar post office",Karnataka,BENGALURU,560047,13.98,32.59,20.29,14.71
+202,722107504570,SRMP traders,"Sri Sanjeevi provision stores tours&travels,Sanjeevi provision store, #1358, 5th cross,near ashoknagar post office",Karnataka,Bangalore,560068,17.22,46,31.09,19.3
+203,722107477447,Manjanna,"Sri Sanjeevi provision stores tours&travels,Sanjeevi provision store, #1358, 5th cross,near ashoknagar post office",Karnataka,Bangalore,560082,8.4,43.61,40.59,31.6
+204,722107477362,Gs traders,"tippu medicals,no 1 masjid complex, tippu nagar chamrajpet",Karnataka,Bangalore,560068,5.13,30.61,23.29,19.51
+205,722107504792,P.R SUBBARAMAIAH SETTY AND SONS,"BALAJI MEDICALS CENTRE,139 old no 26 9th main 3rd block, jayanagar",Karnataka,BANGALORE,560002,11.82,43.61,40.59,31.6
+206,722107477461,CHANDRASHEKHAR,"RAJESHAWAR PROVISION STORE,NO.1258/19,GROUND FLOOR, KAVI RANNA ROAD,, HANUMANTHANAGAR",Karnataka,BANGALORE,560047,14.41,43.31,32.69,29.49
+207,722107477621,CHANDRASHEKHAR,"BALAJI MEDICALS CENTRE,139 old no 26 9th main 3rd block, jayanagar",Karnataka,BANGALORE,560047,12.52,51.69,30.4,22
+208,722107477720,Mahalakshmi Provision stores,"SHANMUGA TRADERS,NO 1634 80FT ROAD SBM COLONY MAIN ROAD, SBM COLONY",Karnataka,Bangalore,562107,1.95,109.19,16.51,15.19
+209,722107505096,raviraj poojari,"Sree vinayaka medical stores,No.37/46 Gandhi bazaar main road",Karnataka,Bengaluru,560061,16.52,54,37.01,35
+210,722107505034,ANANDA C A,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560029,2.48,35.61,22.91,15.29
+211,722107505072,Sri Guru Raghavendra rice traders,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Opposite shanthi Sagar hotel,560061,24.9,50,49.5,21
+212,722107505317,SRI VINAYAKA TRADERS,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560002,14,24.89,21.11,11.3
+213,722107505379,Prakash,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BENGALURU,562107,1.95,109.19,16.51,15.19
+214,722107505270,Prakash,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BENGALURU,562107,1.95,109.19,16.51,15.19
+215,722107478109,SHANMUGA TRADERS,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560050,2.09,101.3,9.5,9.5
+216,722107505614,SHAHID MEDICAL and General Stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560026,1.16,35.61,22.91,15.29
+217,722107505553,SRI VINAYAKA TRADERS,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560002,14.76,43.61,40.59,31.6
+218,722107505812,Mahalaxmi provision stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560062,7.6,43.61,40.59,31.6
+219,712100870390,SV.R Medicals and general stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560099,5.65,43.61,40.59,31.6
+220,722107505737,Vamsi Medicals,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560047,1.95,109.19,16.51,15.19
+221,722107478420,Udupi Stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bengaluru,560085,6.32,43.61,40.59,31.6
+222,722107478321,Sree vinayaka medical stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560004,1.25,22.4,16.89,11.99
+223,722107478307,Srikanth enterprises,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560029,14.06,39.8,29.31,24.41
+224,722107478567,Gs traders,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560068,6.56,49.6,47.3,29.1
+225,722107478666,SRI VINAYAKA TRADERS,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560002,14,38.89,27.89,25.2
+226,722107478604,Mahalakshmi Provision stores,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,562107,19.8,54,37.01,35
+227,722107478581,Balaji medicals and general store,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560068,6,53.11,35.41,11.1
+228,722107478543,Srikanth enterprises,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560029,14.61,43.61,40.59,31.6
+229,722107505997,MM MEDICALS AND GENERAL STORES,"MM MEDICALS AND GENERAL STORES,#185/4, 11th main, kalappa block, ground floor,, SRINAGAR",Karnataka,BANGALORE,560050,0.98,35.61,22.91,15.29
+230,722107478529,Sri Guru Raghavendra rice traders,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Opposite shanthi Sagar hotel,560061,14,24.89,21.11,11.3
+231,722107506178,HMJ MEDICAL,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,BANGALORE,560068,0.69,38.99,32,7.75
+232,722107478703,P RAJA,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,bangalore,560068,2.09,101.3,9.5,9.5
+233,722107478802,SURYA TRADERS,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560061,5.3,43.61,40.59,31.6
+234,722107478901,Sri Shridi Sai M.S.Medicals and Ge,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,562107,0.63,22.4,16.89,11.99
+235,722107506413,nataraj r,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,banglore,560002,0.37,22.4,16.89,11.99
+236,722107506437,Mahalakshmi Provision stores,"SHANMUGA TRADERS,NO 1634 80FT ROAD SBM COLONY MAIN ROAD, SBM COLONY",Karnataka,Bangalore,562107,2.45,115.01,42.01,18.01
+237,722107479267,Gs traders,"Sree vinayaka medical stores,No.37/46 Gandhi bazaar main road",Karnataka,Bangalore,560068,4.98,50.8,43.4,29.3
+238,722107506635,HMJ MEDICAL,"MM MEDICALS AND GENERAL STORES,#185/4, 11th main, kalappa block, ground floor,, SRINAGAR",Karnataka,BANGALORE,560068,10.46,54,37.01,35
+239,722107506659,VISHWANATH BS,"harith pharma,no.302, 2nd cross, c.t.bed, thygarajanagar Bangalore",Karnataka,BANGALORE,560085,0.37,22.4,16.89,11.99
+240,722107479243,RAJESH TP,"Mahalasha general store,31 th cross 4tblock J nagar, Tilaknagar",Karnataka,Bangalore,560078,22.58,43.61,40.59,31.6
+241,722107479120,Sri vinayaka prv store,"SRI BALAJI TRADERS,102/44, BANGALORE,Bengaluru (Bangalore) Urban",Karnataka,Bangalore,560034,0.4,22.4,16.89,11.99
+242,722107479601,Gs traders,"Ravi stores,#444,4th main,, Shastrinagar",Karnataka,Bangalore,560068,5.03,48.9,46.89,36.2
+243,722107479489,MAHARAJA FOOD CITY,"sri Lakshmi venkateshwara rice traders,no.177, 1st main, lakshmipura, Bangalore, basavanagudi, b b m p south",Karnataka,banalore,560076,15.48,43.61,40.59,31.6
+244,722107479885,S A stores,"Ravi stores,#444,4th main,, Shastrinagar",Karnataka,Bangalore,560039,5.83,43.61,40.59,31.6
+245,722107507311,GAJENDER SINGH,"SRI ANNAPOORNESHWARI TRADERS,NO.56,2ND CROSS, RANADIRA KANTIRAVA ROAD,, LAKSHMIPURAM",Karnataka,BANGALORE,560053,4.42,43.61,40.59,31.6
+246,722107507359,My medical and general store,"G K ENTERPRISES,NO.23 50 FEET ROAD 1ST FLOOR, HANUMANTHANAGAR",Karnataka,Bangalore,560029,0.65,22.4,16.89,11.99
+247,722107507397,eshwar k,"TEJA MEDICALS,#211, 4th main, 5th cross, srinivasanagar, Bsk 1st stage",Karnataka,Bangalore,560028,3.71,43.61,40.59,31.6
+248,722107479960,Patanjali Arogya Kendra,"manoj medicals,NO. 44-45,new no. 36, ground floor,2nd main road, Nagendra block , bangalore 560050",Karnataka,BENGALURU,560102,11.08,43.61,40.59,31.6
+249,722107479984,sri chowdeswari prv store,"sri Lakshmi venkateshwara rice traders,no.177, 1st main, lakshmipura, Bangalore, basavanagudi, b b m p south",Karnataka,Bangalore,560029,2.41,38.99,32,7.75
+250,712100872202,Medihelp pharma,"Meena pharma,No.16/B,1st cross,lalbagh fort road,Dodda mavalli",Karnataka,BANNERGATTA ROAD BANGALORE,560076,2.05,35.61,22.91,15.29
+251,722107480003,HEALTHCARE PHARMACY,"TEJA MEDICALS,#211, 4th main, 5th cross, srinivasanagar, Bsk 1st stage",Karnataka,BANGALORE,560085,4.31,35.61,22.91,15.29
+252,722107507533,Naveen Gowda,"Sri sai Balaji Medicals,No 24 H B SAMAJA ROAD, Basavanagudi",Karnataka,Bangalore,562107,12.77,43.61,40.59,31.6
+253,722107480164,KRISHNA MEDICALS,"Healthway Pharma,#184/15, 5th main, 4th block, jayanagar",Karnataka,BENGALURU,560102,4.79,43.61,40.59,31.6
+254,722107507656,model medical store,"Mahalasha general store,31 th cross 4tblock J nagar, Tilaknagar",Karnataka,banglore,560025,11.56,43.61,40.59,31.6
+255,722107507717,ANNAPOORNA TRADERS,"manoj medicals,NO. 44-45,new no. 36, ground floor,2nd main road, Nagendra block , bangalore 560050",Karnataka,BENGALURU,560078,12.65,43.61,40.59,31.6
+256,722107507670,NAVEEN KUMAR,"NAGASRI MEDICALS,No.53/1 sajjan rao circle v.v puram",Karnataka,Bangalore,560105,4.46,43.61,40.59,31.6
+257,722107507755,Patanjali Arogya Kendra,"national medicals,no 23 shop no 5, maszid-e-noor-ul-huda complex, old pension mohalla,",Karnataka,BENGALURU,560102,21.14,43.61,40.59,31.6
+258,722107480225,shahul hameed a,"TEJA MEDICALS,#211, 4th main, 5th cross, srinivasanagar, Bsk 1st stage",Karnataka,Bangalore,560062,8.53,43.61,40.59,31.6
+259,722107507779,Deepak j jain,"TEJA MEDICALS,#211, 4th main, 5th cross, srinivasanagar, Bsk 1st stage",Karnataka,BENGALURU,560053,7.76,43.61,40.59,31.6
+260,722107480324,Sri Guru Raghavendra rice traders,"vyshaki medicals,no.240/2, 2nd main, 2nd block, thayagrajnagar",Karnataka,Opposite shanthi Sagar hotel,560061,3.52,35.61,22.91,15.29
+261,722107507793,SRINIVASA MEDICALS AND GENERALS,"SRI KARTHIK PROVISION STORES,#15/64, 6th cross, 5th main road,, Chamarajpet",Karnataka,BANGALORE,560076,4.54,43.61,40.59,31.6
+262,722107480287,Sri vinayaka prv store,"PADMA SREE GENRAL STORE,NO.627,9TH MAIN,, BSK 1ST STAGE,",Karnataka,Bangalore,560034,2.39,35.61,22.91,15.29
+263,722107480386,GAJENDER SINGH,"SRI KARTHIK PROVISION STORES,#15/64, 6th cross, 5th main road,, Chamarajpet",Karnataka,BANGALORE,560053,2.82,43.61,40.59,31.6
+264,722107507830,NAVEEN PROVISION STORE,"santosh medicals,shop no.1, no.254, 2nd block, 2nd main, thyagarajanagar",Karnataka,BANGALORE,560068,7.8,43.61,40.59,31.6
+265,722107507892,Patanjali Arogya Kendra,"sarashwathi departmental stores,no.26, 2nd main road, 2nd block, thygaraja nagar, Bangalore",Karnataka,BENGALURU,560102,21.14,43.61,40.59,31.6
+266,722107507991,Tilak &amp;amp; Sons Supermarket,"santosh medicals,shop no.1, no.254, 2nd block, 2nd main, thyagarajanagar",Karnataka,Bangalore,560068,15.89,54,37.01,35
+267,722107507939,SRI LAKSHMI ADINARAYANA MEDICALS,"GRACE PROVISION STORE,NO 148 5TH CROSS 3RD BLOCK, THAYARAJANAGAR",Karnataka,Bangalore,560076,1.23,35.61,22.91,15.29
+268,722107508011,Salim stores,"vyshaki medicals,no.240/2, 2nd main, 2nd block, thayagrajnagar",Karnataka,Bangalore,560029,21.68,54,37.01,35
+269,722107480584,COFFEE NAADA SIRI ENTERPRISES,"Sree vinayaka medical stores,No.37/46 Gandhi bazaar main road",Karnataka,Bangalore,560098,11.19,43.61,40.59,31.6
+270,722107508110,SRI CHOWDESHWARI PROVISION STORE,"lakshmi pharma,no.1/1, 8th main road, tata silk farm, Bangalore",Karnataka,BANGALORE,562106,17.57,43.61,40.59,31.6
+271,722107480645,SKANDA TRADERS,"SRI KARTHIK PROVISION STORES,#15/64, 6th cross, 5th main road,, Chamarajpet",Karnataka,Bangalore,560053,4.69,35.61,22.91,15.29
+272,722107480720,SRI CHOWDESHWARI PROVISION STORE,"SRI SAI MEDICALS AND GENERAL STORES,#884 c/f sri ram nursing home, 7Th Main Raghavendra Block, Srinagar",Karnataka,BANGALORE,562106,20.98,26.39,19.1,8.01
+273,722107508172,Dhanvanthri Medical and general st,"SRI SAI MEDICALS AND GENERAL STORES,#884 c/f sri ram nursing home, 7Th Main Raghavendra Block, Srinagar",Karnataka,Bangalore,560085,4.37,43.61,40.59,31.6
+274,722107508295,MAX MEDICALS,"TEJA MEDICALS,#211, 4th main, 5th cross, srinivasanagar, Bsk 1st stage",Karnataka,Bangalore,560002,6.31,28.1,23.7,7
+275,722107508332,Sri Ganesh Medicals and General St,"DEVANDRA PROVISION STORE,No 1 west main, west block t r nagar",Karnataka,Bangalore,560068,6.37,43.61,40.59,31.6
+276,722107508493,Balaji Provision Stores,"Vignesh Provision Store,#88, 4th main, 4th cross, Gururaja layout, T.R. Nagar",Karnataka,Bangalore,560078,9.09,43.61,40.59,31.6
+277,722107508455,SNEHA MEDICALS,"Vignesh Provision Store,#88, 4th main, 4th cross, Gururaja layout, T.R. Nagar",Karnataka,banglore,560062,3.2,43.61,40.59,31.6
+278,712100872325,METARAIN DISTRIBUTORS PRIVATE LIMI,"T M STORE,ROSE GARDEN BANGALORE, Bangalore",Karnataka,Bangalore,560027,7.26,43.61,40.59,31.6
+279,722107508615,Sri Ganesha Oil Store,"Malick Super Bazaar,MALICK SUPER BAZAAR, 219,K.B.A.R Road, Austin town",Karnataka,Bangalore,560099,6.74,43.61,40.59,31.6
+280,712100872387,METARAIN DISTRIBUTORS PRIVATE LIMI,"SRI MURUGAN STORES,EGIPURA MAIN ROAD, VIVEKNAGAR, BENGALURU, Bangalore",Karnataka,Bangalore,560027,9.85,54,37.01,35
+281,722107508776,Sri sathyanarayana stores,"SHINE BAKERY,EJIPURA MAIN ROAD VIVEKNAGAR BENGALURU, Bangalore",Karnataka,Bangalore,560047,11.99,43.61,40.59,31.6
+282,722107481024,Sri Lakshmi Narasimha rice traders,"SRI VENKATESWARA STORES,55/56,2ND CROSS,2ND MAIN, VINAYAKA NAGAR,AUDOGODI POST",Karnataka,Bangalore,560085,6.12,43.61,40.59,31.6
+283,722107481062,ANNAPOORNA TRADERS,"SRI VENKATESWARA STORES,55/56,2ND CROSS,2ND MAIN, VINAYAKA NAGAR,AUDOGODI POST",Karnataka,BENGALURU,560078,3.7,43.61,40.59,31.6
+284,712100872424,SHANKAR D,"SRI VENKATESWARA STORES,55/56,2ND CROSS,2ND MAIN, VINAYAKA NAGAR,AUDOGODI POST",Karnataka,BANGALORE,560062,4.3,48.3,37.5,11.4
+285,722107508899,Deepak j jain,"SANVI TRADERS,NO 5/2 5TH CROSS ANEPALAYA MAIN ROAD GAJENDRA NAGAR, BANGALORE SHANTHINAGARA B B M P EAST",Karnataka,BENGALURU,560053,24.41,54,37.01,35
+286,712100870956,METARAIN DISTRIBUTORS PRIVATE LIMI,"K.G.N. MEDICALS,Shop No: 2, Ground Floor, K No. 1769,, C Type B.D.A , Austin Town,",Karnataka,Bangalore,560027,9.74,54,37.01,35
+287,722107481109,Mohanlal,"SRI VENKATESWARA STORES,55/56,2ND CROSS,2ND MAIN, VINAYAKA NAGAR,AUDOGODI POST",Karnataka,Bangalore 98,560098,4.3,48.3,37.5,11.4
+288,712100872448,METARAIN DISTRIBUTORS PRIVATE LIMI,"SHINE BAKERY,EJIPURA MAIN ROAD VIVEKNAGAR BENGALURU, Bangalore",Karnataka,Bangalore,560027,8.31,54,37.01,35
+289,712100872462,Bangalore Medical Centre,"Malick Super Bazaar,MALICK SUPER BAZAAR, 219,K.B.A.R Road, Austin town",Karnataka,Bangalore,560076,0.63,22.4,16.89,11.99
+290,722107481345,NAGARAJA NARAHARI,"SRI MURUGAN STORES,EGIPURA MAIN ROAD, VIVEKNAGAR, BENGALURU, Bangalore",Karnataka,Bangalore,560019,5.78,43.61,40.59,31.6
+291,722107481468,Sri Padma Medicals,"SRI MURUGAN STORES,EGIPURA MAIN ROAD, VIVEKNAGAR, BENGALURU, Bangalore",Karnataka,Bangalore,560047,1.78,35.61,22.91,15.29
+292,722107509193,Sai Vignesh Pharma,"Vamsi Medicals,K.No 71-45 No 11 Shop No-3, 3rd main 1st cross Ayyappa Temple Block, Vivek Nagar Post",Karnataka,Bangalore,562107,0.96,35.61,22.91,15.29
+293,712100872486,Bright Medicals,"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Karnataka,Bangalore,560047,5.96,43.61,40.59,31.6
+294,722107481482,SUMATHI,"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Karnataka,bangalore,560068,4.3,48.3,37.5,11.4
+295,712100870994,SHANKAR D,"Sri sathyanarayana stores,#15/1,bazaar street, Vannarpet ,near vellarmman temple,vivek nagar",Karnataka,BANGALORE,560062,11.05,54,37.01,35
+296,712100872509,SHANKAR D,"Sri Padma Medicals,No-12/13,Shop No-104/1,B Srinivayalu, VivekNagar Post",Karnataka,BANGALORE,560062,15.26,48.59,42.7,15.01
+297,712100872523,Hansikaa medicals,"Bright Medicals,No-436/2,Shop No-2, 5th Cross Vivek Nagar,, Bangalore",Karnataka,Bangalore,560076,4.24,43.61,40.59,31.6
+298,722107481529,SRI CHOWDESHWARI PROVISION STORE,"SHREE SUSWANI MEDICALS,K NO 44/8,BAZZAR STREET, ADUGODI",Karnataka,BANGALORE,562106,21.4,43.61,40.59,31.6
+299,722107509513,Susanta Biswal,"VIJAYALAKSHMI MEDICALS,NO 162 4TH MAIN 1ST CROSS OPP VIVEKNAGAR POST OFFICE, VIVEKNAGAR",Karnataka,Bangalore,560099,24.99,43.61,40.59,31.6
+300,722107481543,ANNAPOORNESHWARI TRADERS,"Mahalakshmi stores,#12,austin town, Corporation market,Near iyengars bakery",Karnataka,BENGALURU,560078,15.26,48.59,42.7,15.01
+301,722107509438,Patanjali Arogya Kendra,"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Karnataka,BENGALURU,560102,8.55,43.61,40.59,31.6
+302,712100872547,METARAIN DISTRIBUTORS PRIVATE LIMI,"Mahalakshmi stores,#12,austin town, Corporation market,Near iyengars bakery",Karnataka,Bangalore,560068,10.11,54,37.01,35
+303,722107509490,goalla pharma,"Shafina Stores,Srinivagilu, VivekNagar Post",Karnataka,sompura village sarjapur main road,562125,3.67,43.61,40.59,31.6
+304,722107509476,S.RAJANEESH,"Shafina Stores,Srinivagilu, VivekNagar Post",Karnataka,Bangalore,560068,5.59,35.61,22.91,15.29
+305,722107509551,Tilak &amp;amp; Sons Supermarket,"Shafina Stores,Srinivagilu, VivekNagar Post",Karnataka,Bangalore,560068,17.52,54,37.01,35
+306,722107509636,Nisar kt,"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,2.63,35.61,22.91,15.29
+307,722107509650,Mahadev super bazaar,"S.V.P STORE,#101/44,6TH main 13TH CROSS TEACHERS COLONY",Karnataka,Bangalore,560026,6.35,43.61,40.59,31.6
+308,722107509810,prakash medicals,"Bright Medicals,No-436/2,Shop No-2, 5th Cross Vivek Nagar,, Bangalore",Karnataka,Bangalore,560070,4.56,43.61,40.59,31.6
+309,722107509797,Susanta Biswal,"VIJAYALAKSHMI MEDICALS,NO 162 4TH MAIN 1ST CROSS OPP VIVEKNAGAR POST OFFICE, VIVEKNAGAR",Karnataka,Bangalore,560099,19.82,43.61,40.59,31.6
+310,722107481642,Susanta Biswal,"S.V.P STORE,#101/44,6TH main 13TH CROSS TEACHERS COLONY",Karnataka,Bangalore,560099,20.9,27.51,16.4,8.31
+311,722107481727,shahul hameed a,"GANJ BAKSHI G N MEDICALS,NO.32,MUNISWAMY GOWDA GARDEN NEELASANDRA, Bangalore",Karnataka,Bangalore,560062,22.82,23.9,17.4,7.4
+312,722107481741,SUMATHI,"Sri sathyanarayana stores,#15/1,bazaar street, Vannarpet ,near vellarmman temple,vivek nagar",Karnataka,bangalore,560068,13.98,32.59,20.29,14.71
+313,722107509933,Ganesh medical and general store,"Sri Padma Medicals,No-12/13,Shop No-104/1,B Srinivayalu, VivekNagar Post",Karnataka,bangalore,560068,3.57,43.61,40.59,31.6
+314,722107509995,Harish,"PKM STORE,16-1 CENTRAL CROSS STREET NEELASANDRA, Bangalore",Karnataka,Electronic city,560100,0.93,46.3,26.2,3.6
+315,722107481949,SRI GANESHA PROVISION STORE,"Vamsi Medicals,K.No 71-45 No 11 Shop No-3, 3rd main 1st cross Ayyappa Temple Block, Vivek Nagar Post",Karnataka,Bangalore,560085,15.26,48.59,42.7,15.01
+316,722107482069,AMANATH PROVISION STORE,"S.V.P STORE,#101/44,6TH main 13TH CROSS TEACHERS COLONY",Karnataka,bangalore,560068,7.25,43.61,40.59,31.6
+317,722107482045,Tilak &amp;amp; Sons Supermarket,"T M STORE,ROSE GARDEN BANGALORE, Bangalore",Karnataka,Bangalore,560068,14.91,54,37.01,35
+318,722107482144,VINAYAKA PRIOVASION STORE,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,Bangalore,560068,0.37,22.4,16.89,11.99
+319,722107510335,S.RAJANEESH,"Bright Medicals,No-436/2,Shop No-2, 5th Cross Vivek Nagar,, Bangalore",Karnataka,Bangalore,560068,11.42,43.61,40.59,31.6
+320,722107510359,VASANTHA KUMAR,"CITY MD PHARMA,K.no.69/37/41 ground floor, bazaar street road, Austin town neelasandra",Karnataka,Bangalore,560085,0.3,22.4,16.89,11.99
+321,722107482205,goalla pharma,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,sompura village sarjapur main road,562125,0.4,22.4,16.89,11.99
+322,722107510397,SRI CHOWDESHWARI PROVISION STORE,"T M STORE,ROSE GARDEN BANGALORE, Bangalore",Karnataka,BANGALORE,562106,11.91,54,37.01,35
+323,722107482243,SRI LAKSHMI ADINARAYANA MEDICALS,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,Bangalore,560076,0.58,22.4,16.89,11.99
+324,722107510434,MAX MEDICALS,"Dhanlakshmi Provision Store,#49/14,6th Cross,3rd main,Jakkasandra, Koramangala 1st block",Karnataka,Bangalore,560002,0.3,22.4,16.89,11.99
+325,712100872561,METARAIN DISTRIBUTORS PRIVATE LIMI,"SRI BALAJI PROVISION STORE,#171,JK PURA,, ADUGODI (P), BTS QUARTERS",Karnataka,Bangalore,560027,4.37,46.2,32.5,29.4
+326,722107482700,Deepak j jain,"NEW RAJESH STORE,21,2ND MAIN,7TH CROSS, VINAYAKA NAGARA",Karnataka,BENGALURU,560053,2.45,115.01,42.01,18.01
+327,722107510694,AMANATH PROVISION STORE,"Dhanlakshmi Provision Store,#49/14,6th Cross,3rd main,Jakkasandra, Koramangala 1st block",Karnataka,bangalore,560068,7.71,53.9,29.31,24.11
+328,722107482847,pullareddy,"Shafina Stores,Srinivagilu, VivekNagar Post",Karnataka,Bangalore,560100,3.93,43.61,40.59,31.6
+329,722107510854,Susanta Biswal,"T M STORE,ROSE GARDEN BANGALORE, Bangalore",Karnataka,Bangalore,560099,1.41,43.61,40.59,31.6
+330,722107510830,Susanta Biswal,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,Bangalore,560099,1.41,43.61,40.59,31.6
+331,722107482946,Susanta Biswal,"S.V.P STORE,#101/44,6TH main 13TH CROSS TEACHERS COLONY",Karnataka,Bangalore,560099,1.41,43.61,40.59,31.6
+332,722107482861,Susanta Biswal,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,Bangalore,560099,1.41,43.61,40.59,31.6
+333,722107483080,Sri Ganesha Oil Store,"T M STORE,ROSE GARDEN BANGALORE, Bangalore",Karnataka,Bangalore,560099,10.67,54,37.01,35
+334,722107483141,NAVEEN PROVISION STORE,"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Karnataka,BANGALORE,560068,6.13,43.61,40.59,31.6
+335,722107483042,sri Lakshmi venkateshwara rice tra,"Sri sathyanarayana stores,#15/1,bazaar street, Vannarpet ,near vellarmman temple,vivek nagar",Karnataka,Bangalore,560019,7.62,43.61,40.59,31.6
+336,722107511059,Ayoka Essentials,"MINI STOP RICE TRADERS,181, R H COLONY, ADUGODI, BENGALURU, Bangalore",Karnataka,Bangalore,560068,2.25,38.99,32,7.75
+337,722107510939,SUMATHI,"CITY MD PHARMA,K.no.69/37/41 ground floor, bazaar street road, Austin town neelasandra",Karnataka,bangalore,560068,10.78,28.5,20.2,13.9
+338,722107511073,PRAKRUTHI HERBAL STORE,"GANJ BAKSHI G N MEDICALS,NO.32,MUNISWAMY GOWDA GARDEN NEELASANDRA, Bangalore",Karnataka,Bangalore,560099,6.21,35.61,22.91,15.29
+339,722107510991,Nisar kt,"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,4.76,43.61,40.59,31.6
+340,722107483301,Nagaraju b k,"EXCELLENT STATIONERY & XEROX,9th Main, #13, 2nd cross, GG Road,, Ejipura, Near green view Hospital, Viveknagar,",Karnataka,Bangalore,560029,7.52,43.61,40.59,31.6
+341,722107483325,Peoplenet Access Solutions Pvt Ltd,"SUPRIYA STORE,5TH MAIN S T BED, 4TH BLOCK,, KORMANGALA BANGALORE",Karnataka,Bangalore,560102,2.75,43.61,40.59,31.6
+342,722107511110,burhani super bazaar,"SUPRIYA STORE,5TH MAIN S T BED, 4TH BLOCK,, KORMANGALA BANGALORE",Karnataka,gottigere,560083,3.91,43.61,40.59,31.6
+343,712100871137,SHANKAR D,"no 636 6th block, 17th main koramangla",Karnataka,BANGALORE,560062,5.96,43.61,40.59,31.6
+344,722107483448,SHREE SUSWANI MEDICALS,"Bhavani Medical and General stores,No-356/12, Shop no-1,Ground floor,, Raghavendraswamy layout, Opp:Guest line",Karnataka,BANGALORE,560030,3.46,43.61,40.59,31.6
+345,722107483608,S.RAJANEESH,"Bhavani Medical and General stores,No-356/12, Shop no-1,Ground floor,, Raghavendraswamy layout, Opp:Guest line",Karnataka,Bangalore,560068,12.06,43.61,40.59,31.6
+346,722107483707,Nisar kt,"Bhavani Medical and General stores,No-356/12, Shop no-1,Ground floor,, Raghavendraswamy layout, Opp:Guest line",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,3.67,35.61,22.91,15.29
+347,722107483585,M/S BALAJI ENTERPRISES,"Srinivas setty store,General merchant, Bazar street,, Attibele, Anekal TQ",Karnataka,Bangalore,560053,6.8,54.51,48.41,6.6
+348,712100871175,METARAIN DISTRIBUTORS PRIVATE LIMI,"Manjunatha medicals and general stores,No-10,G floor,Pilla reddy building,, Hosur main road,Chandapura, Anekal taluk",Karnataka,Bangalore,560027,6.8,43.61,40.59,31.6
+349,722107511233,VINAYAKA PRIOVASION STORE,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560068,0.5,22.4,16.89,11.99
+350,722107483622,SUMATHI,"Sri mahadeshwara swamy provision store,Near gov't school,bidaraguppe",Karnataka,bangalore,560068,8.06,52.5,43.31,6.4
+351,722107484087,LAKSHMI STORE,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560085,11.48,54,37.01,35
+352,722107511356,SRI VENKATESHWARA DEPARTMENTAL STO,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,bangalore,560076,3.42,35.61,22.91,15.29
+353,722107511516,chaitanya provision store,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560070,13.45,43.61,40.59,31.6
+354,722107511615,D.MAHALAKSHMI PROVISION STORES,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,BANGALORE,560027,8.06,43.61,40.59,31.6
+355,722107483868,Calcutta Enterprises,"S R Food Mart,Bazaar street, Attibele, anekal tq",Karnataka,Bangalore,560099,4.34,43.61,40.59,31.6
+356,722107483967,Shanthi Medicals & General Supplie,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,BANGALORE,560002,4.49,43.61,40.59,31.6
+357,712100871298,METARAIN DISTRIBUTORS PRIVATE LIMI,"Sri Shridi Sai M.S.Medicals and General stores,No-366,G floor, Sadar street, Attibele, Anekal taluk",Karnataka,Bangalore,560027,3.97,43.61,40.59,31.6
+358,722107511639,santhosh jain,"AAI MATHA SUPERMARKET,Balaji complex,opp milk dairy; mirza road., Anekal",Karnataka,bengalore,560053,0.43,22.4,16.89,11.99
+359,722107511790,rakesh,"Lakshmi Venkateshwara Medicals and General stores,Sy no-291/2, No-04, G floor, Bidaraguppe",Karnataka,BENGALURU,562125,10.09,43.61,40.59,31.6
+360,722107484162,Sri Ganesha Oil Store,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560099,19.9,43.61,40.59,31.6
+361,722107511813,VIJAYALAKSHMI MEDICALS,"PNK general store,Upkar solitaire Layout, Attibele, Anekal taluk",Karnataka,Bangalore,560047,1.99,22.4,16.89,11.99
+362,722107484100,Deepak j jain,"Sri Jayalakshmi Store,Near Venkateshwara Temple, Sadar street, Attibele",Karnataka,BENGALURU,560053,2.03,110.5,7,5
+363,722107484308,S r k stores,"Lakshmi Venkateshwara Medicals and General stores,Sy no-291/2, No-04, G floor, Bidaraguppe",Karnataka,Bangalore,560068,7.26,43.61,40.59,31.6
+364,722107484582,SRI ANNAPOORNESHWARI TRADERS,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,BANGALORE,560019,5.49,43.61,40.59,31.6
+365,722107512254,Susanta Biswal,"Srinivas setty store,General merchant, Bazar street,, Attibele, Anekal TQ",Karnataka,Bangalore,560099,0.86,56.59,15.19,7.7
+366,722107512070,Balaji medicals,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560070,13.46,43.61,40.59,31.6
+367,722107512117,Susanta Biswal,"Sri Jayalakshmi Store,Near Venkateshwara Temple, Sadar street, Attibele",Karnataka,Bangalore,560099,2.02,110.39,19.89,1.19
+368,722107484766,VINAYAKA PRIOVASION STORE,"Vinayaka Provision Store,Bazeer street,, Attibele, Anekal taluk",Karnataka,Bangalore,560068,5.98,43.61,40.59,31.6
+369,722107484803,SRINIVASA MEDICALS AND GENERALS,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,BANGALORE,560076,0.64,22.4,16.89,11.99
+370,722107512414,SRMP traders,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560068,10.28,43.61,40.59,31.6
+371,722107512339,P narayanlal,"Vinayaka Provision Store,Bazeer street,, Attibele, Anekal taluk",Karnataka,Bangalore,560047,0.47,22.4,16.89,11.99
+372,722107484841,Chamundi medicals and general stor,"Vinayaka Provision Store,Bazeer street,, Attibele, Anekal taluk",Karnataka,Bangalore,560068,4.13,43.61,40.59,31.6
+373,722107512278,SRI LAXMI VENKATESWAR STORES,"SV.R Medicals and general stores,K.no.1212/955, S.no.151/6,Shashank commercial complex, Ground floor, Old Chandapura, Hosur main road",Karnataka,BANGALORE,560078,6.86,43.61,40.59,31.6
+374,722107484827,Nisar kt,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,0.81,22.4,16.89,11.99
+375,722107512551,SHRI SAI MEDICALS STORE,"Sri Shridi Sai M.S.Medicals and General stores,No-366,G floor, Sadar street, Attibele, Anekal taluk",Karnataka,Bangalore,560083,3.92,35.61,22.91,15.29
+376,722107512575,Tilak &amp;amp; Sons Supermarket,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560068,24.17,54,37.01,35
+377,722107484926,Kitchen Garden,"Sree Laxmi Venkateshwara Provision Stores,Indlabele road, Attibele",Karnataka,Bangalore,560078,4.29,35.61,22.91,15.29
+378,722107485060,SRI VENKATESHWARA STORES,"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Karnataka,BANGALORE,560027,15.86,43.61,40.59,31.6
+379,712100872721,METARAIN DISTRIBUTORS PRIVATE LIMI,"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Karnataka,Bangalore,560027,13.33,54,37.01,35
+380,722107485022,SRI LAKSHMI ADINARAYANA MEDICALS,"Sai Vignesh Pharma,Survey no 289, Shop No 03, Ground Floor, Near Bidaragippe, Busstop, Bidaraguppe Village, Attibele Hobli, Anekal Taluk",Karnataka,Bangalore,560076,2.01,35.61,22.91,15.29
+381,722107512537,Nisar kt,"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Karnataka,ELECTRONIC CITY POST BANGALORE 100,560100,13.83,43.61,40.59,31.6
+382,712100872769,METARAIN DISTRIBUTORS PRIVATE LIMI,"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Karnataka,Bangalore,560027,6.09,49.7,43.7,37.6
+383,722107512612,Umesh,"Y D P Provision store,Yadavanahalli village,, Attibele hobli, Anekal Tq",Karnataka,BENGALURU,562106,6.75,43.61,40.59,31.6
+384,722107512711,prasad medicals stores,"Sai Vignesh Pharma,Survey no 289, Shop No 03, Ground Floor, Near Bidaragippe, Busstop, Bidaraguppe Village, Attibele Hobli, Anekal Taluk",Karnataka,Bangalore,560098,1.24,27.9,20.3,6.3
+385,722107512735,Calcutta Enterprises,"Sai Vignesh Pharma,Survey no 289, Shop No 03, Ground Floor, Near Bidaragippe, Busstop, Bidaraguppe Village, Attibele Hobli, Anekal Taluk",Karnataka,Bangalore,560099,13.31,54,37.01,35
+386,722107485107,DHAN- LAXMI DEPARTMENT STORE,"SA Provision Store,Hosur Bagilu road, Near SBM, Anekal",Karnataka,BENGALURU,560068,18.58,54,37.01,35
+387,722107512674,M/S BALAJI ENTERPRISES,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560053,0.28,34.11,10.49,6.2
+388,722107485183,mitthu lal sharma,"ASHOK store,Tvs company road,dasanpura gate, Anekal tq",Karnataka,BANGALORE,560068,6.08,43.61,40.59,31.6
+389,722107485442,SRI VENKATESHWARA STORES,"SV.R Medicals and general stores,K.no.1212/955, S.no.151/6,Shashank commercial complex, Ground floor, Old Chandapura, Hosur main road",Karnataka,BANGALORE,560027,4.83,35.61,22.91,15.29
+390,722107512896,chaitanya medicals,"Sri Shridi Sai M.S.Medicals and General stores,No-366,G floor, Sadar street, Attibele, Anekal taluk",Karnataka,BENGALURU,560068,7.21,43.61,40.59,31.6
+391,722107485268,GAJENDER SINGH,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,BANGALORE,560053,3.02,43.61,40.59,31.6
+392,712100871496,METARAIN DISTRIBUTORS PRIVATE LIMI,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560068,7.72,54,37.01,35
+393,712100872868,SHANKAR D,"Amma store,Anekal main road, Attibele",Karnataka,BANGALORE,560062,6.29,43.61,40.59,31.6
+394,722107485381,mangaluru provision store,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560026,11.59,54,37.01,35
+395,722107512933,SRI SAI CHANDRA MEDICALS,"SA Provision Store,Hosur Bagilu road, Near SBM, Anekal",Karnataka,Bangalore,560099,3.12,43.61,40.59,31.6
+396,722107512957,Sri vinayaka prv store,"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Karnataka,Bangalore,560034,0.6,22.4,16.89,11.99
+397,722107485602,S G R PROVISION STORE,"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Karnataka,BANGALORE,560035,13.61,43.61,40.59,31.6
+398,722107512971,P narayanlal,"MANJUNATHA GENERAL STORE,CHANDRA KANTH,MANJUNATHA GENERAL STORE, OPP BIOCON NAIDU FORM 4 GON APARTMENT",Karnataka,Bangalore,560047,8.99,43.61,40.59,31.6
+399,722107485565,NAVEEN KUMAR,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560105,3.21,35.61,22.91,15.29
+400,712100872882,METARAIN DISTRIBUTORS PRIVATE LIMI,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560068,6.27,43.61,40.59,31.6
+401,722107485626,POOJA MEDICALS & GENERAL STORES.,"Amma store,Anekal main road, Attibele",Karnataka,Bangalore,560068,0.57,35.61,22.91,15.29
+402,722107485787,G K ENTERPRISES,"Amma store,Anekal main road, Attibele",Karnataka,BENGALURU,560019,2.6,35.61,22.91,15.29
+403,722107513138,raghavendra departmentl store,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,b t m,560076,24.12,43.61,40.59,31.6
+404,722107513213,Fresh & More Super Market,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560076,1.38,38.99,32,7.75
+405,722107485848,Nagaraju b k,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560029,14.18,43.61,40.59,31.6
+406,722107485824,Infant medicals,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560029,10.01,43.61,40.59,31.6
+407,722107485763,prasad medicals stores,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560098,10.2,62.79,35.41,11.61
+408,722107485886,Akshay provision store,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560029,10.04,43.61,40.59,31.6
+409,722107485947,Fresh & More Super Market,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560076,3.06,43.61,40.59,31.6
+410,722107485961,D.MAHALAKSHMI PROVISION STORES,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,BANGALORE,560027,23.58,54,37.01,35
+411,722107513497,City rice traders,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,BENGALURU,560029,15.46,43.61,40.59,31.6
+412,722107485909,SRI GANESHA PROVISION STORE,"Nanjundeshwara Provision Store,Bank Road, Huskur",Karnataka,Bangalore,560085,5.38,43.61,40.59,31.6
+413,722107513596,Kitchen Garden,"Kabbali Basaveshwara Traders,Nagaraju Building, Yadavanahalli gate,, Hosur main road, Attibele TK",Karnataka,Bangalore,560078,5.57,43.61,40.59,31.6
+414,722107486081,Sri Lakshmi Narasimha rice traders,"Kabbali Basaveshwara Traders,Nagaraju Building, Yadavanahalli gate,, Hosur main road, Attibele TK",Karnataka,Bangalore,560085,0.33,22.4,16.89,11.99
+415,722107486241,TEJA MEDICALS,"Shri Bhagya Provision Store,Huskur, Huskur",Karnataka,BANGALORE,560050,1.46,38.99,32,7.75
+416,722107513756,S L V RICE TRADERS,"Kum Kum Fancy, General stores & Plastic items,No.01, Ground Floor, Basavarajappa & Neelamma complex, Opp.KEB, Sarjapura road, Attibele, Anekal Taluk",Karnataka,bangalore,560076,12.73,43.61,40.59,31.6
+417,712100872943,Syed I.R.,"mysore rice traders,No 18 37 with cr bask 2nd, St bendrenagar subhash Chandra Bose rd",Karnataka,BENGALURU,560025,6.61,43.61,40.59,31.6
+418,722107486203,raghavendra departmentl store,"chaitanya provision store,bsk 2nd stage, KADIRENAHALLI MAIN ROAD",Karnataka,b t m,560076,6.38,43.61,40.59,31.6
+419,712100873025,N.R.N MEDICALS,"chaitanya provision store,bsk 2nd stage, KADIRENAHALLI MAIN ROAD",Karnataka,BANGALORE,560030,6.44,43.61,40.59,31.6
+420,722107486388,Mohanlal,"BHAVANI GENERAL STORES,#145/1, 3rd main, 4th cross, hbcs layout, RAMANJANEYA NAGARA, CHIKKALASANDRA",Karnataka,Bangalore 98,560098,24.93,43.61,40.59,31.6
+421,722107486425,SHEKHAR V,"BHAVANI GENERAL STORES,#145/1, 3rd main, 4th cross, hbcs layout, RAMANJANEYA NAGARA, CHIKKALASANDRA",Karnataka,BANGALORE,560078,1.31,38.99,32,7.75
+422,722107486449,Deepak j jain,"BHAVANI GENERAL STORES,#145/1, 3rd main, 4th cross, hbcs layout, RAMANJANEYA NAGARA, CHIKKALASANDRA",Karnataka,BENGALURU,560053,2,105,19,10.01
+423,722107486524,pullareddy,"BHUVANESHWARI MEDICAL AND GENERAL STORES,#25, GROUND FLOOR,, AREHALLI, NAIDU LAYOUT,SUBRAMANYAPURA",Karnataka,Bangalore,560100,17.04,30.3,30,12.7
+424,722107486487,SUMATHI,"S L V PROVISION STORE,#56 4TH CROSS TEACHER CALONY, B S K 2ND STAGE",Karnataka,bangalore,560068,14.9,43.61,40.59,31.6
+425,722107514036,Kote gowda s,"S L V PROVISION STORE,#56 4TH CROSS TEACHER CALONY, B S K 2ND STAGE",Karnataka,Bangalore,560068,8.26,43.61,40.59,31.6
+426,722107486586,Shafina Stores,"shree Ramakrishna stores,no.1498, 30th cross, 25th main, near K E B, opp dhobi ghatt, bsk 2nd stage",Karnataka,Bangalore,560047,6.93,43.61,40.59,31.6
+427,722107486708,Susanta Biswal,"SSN PRO STORE,HOSAKERE HALL Y, NEAR 43 BUS STOP",Karnataka,Bangalore,560099,10.37,43.61,40.59,31.6
+428,722107514012,manoj medicals,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Banglore,560050,0.85,22.4,16.89,11.99
+429,722107486647,HEERA MEDICAL AND GENERAL STORES,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,bangalore,560068,2.93,35.61,22.91,15.29
+430,722107486685,Shafina Stores,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Bangalore,560047,4.18,35.61,22.91,15.29
+431,722107486821,Ayoka Essentials,"SREE BHAVANI TRADERS,NO.113/B, 12TH CROSS 12TH MAIN GIRINAGAR 3RD STAGE, BSK 3RD STAGE BANGALORE",Karnataka,Bangalore,560068,17.52,43.61,40.59,31.6
+432,722107486944,SLA STORES,"Devageri Provision Shop,No. 617, 22 ed cross, 15 th main,BSK 2 ed stage",Karnataka,Bangalore,560061,5.46,43.61,40.59,31.6
+433,722107486807,sri Lakshmi venkateshwara rice tra,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Bangalore,560019,4.95,43.61,40.59,31.6
+434,722107514135,GAJENDER SINGH,"shree Ramakrishna stores,no.1498, 30th cross, 25th main, near K E B, opp dhobi ghatt, bsk 2nd stage",Karnataka,BANGALORE,560053,4.05,43.61,40.59,31.6
+435,722107514234,Meena pharma,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Bangalore,560004,3.71,43.61,40.59,31.6
+436,722107514319,Shafina Stores,"Gurukrupa Condiments & News Point,#15/A ,18th main padmanabhanagar, Chikkalsandra,opp komarla feeds",Karnataka,Bangalore,560047,24.19,54,37.01,35
+437,722107514173,Peoplenet Access Solutions Pvt Ltd,"SURYA TRADERS,#26, Adi Sai Sadguru Complex, Near Bharath Petrol Bunk,, Uttarahalli main road",Karnataka,Bangalore,560102,0.75,38.99,32,7.75
+438,722107487125,Sri Ganesha Oil Store,"Gurukrupa Condiments & News Point,#15/A ,18th main padmanabhanagar, Chikkalsandra,opp komarla feeds",Karnataka,Bangalore,560099,4.1,43.61,40.59,31.6
+439,722107514258,ANNAPOORNESHWARI TRADERS,"Karan medical stores,No.14, ground floor, rupeshwar complex,doddagowdanapalya, subramanyapura post",Karnataka,BENGALURU,560078,4.71,35.61,22.91,15.29
+440,722107487064,GAJENDER SINGH,"S L V PROVISION STORE,#56 4TH CROSS TEACHER CALONY, B S K 2ND STAGE",Karnataka,BANGALORE,560053,2.22,43.61,40.59,31.6
+441,722107487361,Susanta Biswal,"Gurukrupa Condiments & News Point,#15/A ,18th main padmanabhanagar, Chikkalsandra,opp komarla feeds",Karnataka,Bangalore,560099,23.51,24.5,17,6.91
+442,722107514357,Mohanlal,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Bangalore 98,560098,17.92,43.61,40.59,31.6
+443,722107514432,Sri vinayaka prv store,"Udupi Stores,Udupistores,#312,5th Cross,5th Block,, BSK 3rd Stage,3rd Phase,Bhuvaneshwari Nagar,Bangalore-560085",Karnataka,Bangalore,560034,1.84,38.99,32,7.75
+444,722107487262,burhani super bazaar,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,gottigere,560083,0.55,22.4,16.89,11.99
+445,722107514630,VASANTHA KUMAR,"S L V PROVISION STORE,#56 4TH CROSS TEACHER CALONY, B S K 2ND STAGE",Karnataka,Bangalore,560085,9.56,54,37.01,35
+446,722107487484,Harish,"SURYA TRADERS,#26, Adi Sai Sadguru Complex, Near Bharath Petrol Bunk,, Uttarahalli main road",Karnataka,Electronic city,560100,2.84,35.61,22.91,15.29
+447,722107514715,TEJA MEDICALS,"SSN PRO STORE,HOSAKERE HALL Y, NEAR 43 BUS STOP",Karnataka,BANGALORE,560050,2.23,38.99,32,7.75
+448,722107514753,Sri sai Balaji Medicals,"HEALTHCARE PHARMACY,#36/1, 11th main road, Ittamadu, BSK 3RD STAGE",Karnataka,Bangalore,560004,3.1,38.99,32,7.75
+449,722107514814,S.V.P STORE,"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Karnataka,Bangalore,560034,16.09,54,37.01,35
+450,722107487644,Shanthi Medicals,"Dhanvanthri Medical and general stores,no:1, Bsk 3rd stage, 3rd cross, 100 feet ring road, dwaraknagar",Karnataka,Bangalore,560100,6.07,43.61,40.59,31.6
+451,722107487705,POOJA MEDICALS & GENERAL STORES.,"Sri Lakshmi Narasimha rice traders,#20,14 main 3rd phase, GIRINAGAR",Karnataka,Bangalore,560068,6.14,43.61,40.59,31.6
+452,722107487804,SRI SADANANDA RICE CORNER,"prakash medicals,no-661/c, 19th main, 11th cross, shop no.1, padmanabha nagar",Karnataka,BANGALORE,560085,3.42,43.61,40.59,31.6
+453,722107514913,shahul hameed a,"SRI GANESHA PROVISION STORE,BSK 3rd STAGE,BANGALORE, Bangalore",Karnataka,Bangalore,560062,15.31,43.61,40.59,31.6
+454,712100871779,Bright Medicals,"SRI MANJUNATH A STORE,NO 11 13TH MAIN BANK COLONY BANGALORE, Bangalore",Karnataka,Bangalore,560047,5.62,43.61,40.59,31.6
+455,722107514876,Healthway Pharma,"LAKSHMI STORE,NO47/1 1ST MAIN RD HOSAKEREHALLI, DATTATHRAYANAGAR BNG",Karnataka,Bangalore,560011,9.03,43.61,40.59,31.6
+456,722107514890,VIJAYALAKSHMI MEDICALS,"chaitanya provision store,bsk 2nd stage, KADIRENAHALLI MAIN ROAD",Karnataka,Bangalore,560047,4.09,43.61,40.59,31.6
+457,712100873223,SHANKAR D,"Balaji medicals, No :3765c,9th Main Road, kaveri nagar,, banashankari 2nd stage,",Karnataka,BANGALORE,560062,12.7,15.8,8.2,4.7
+458,722107488047,"MAJOR PHARMACEUTICALS PVT.LTD.,","SRI GANESHA PROVISION STORE,BSK 3rd STAGE,BANGALORE, Bangalore",Karnataka,Bangalore,560085,8.9,43.61,40.59,31.6
+459,722107515255,SHEKHAR V,"Sri Lakshmi Narasimha rice traders,#20,14 main 3rd phase, GIRINAGAR",Karnataka,BANGALORE,560078,9.08,43.61,40.59,31.6
+460,722107488146,Mahadev super bazaar,"SLA STORES,#38, 2nd cross, Gowdanapalya,, Srinivasa theatre road, Subramanyapura",Karnataka,Bangalore,560026,7.11,43.61,40.59,31.6
+461,712100873261,Syed I.R.,"SRI MANJUNATH A STORE,NO 11 13TH MAIN BANK COLONY BANGALORE, Bangalore",Karnataka,BENGALURU,560025,15.88,54,37.01,35
+462,722107498589,manoj medicals,"SRI SADANANDA RICE CORNER,#6 3RD MAIN ROAD SRI RAMA NAGAR, B S K 3RD STAGE ITTUMADU MAIN ROAD",Karnataka,Banglore,560050,8.82,20.5,15.5,8.1
+463,722107488283,My medical and general store,"MAJOR PHARMACEUTICALS PVT.LTD.,,No24/5, 4th main ,7th Block,BSK 3rd Stage, Bangalore, Bangalore",Karnataka,Bangalore,560029,13.13,54,37.01,35
+464,712100873247,SHIVALAYA MEDICAL,"MAHALAKSHMI PROVISION STORE,no.26, 12th cross, hanumagiri main road, CHIKKALASANDRA",Karnataka,Bangalore,560078,4.46,43.61,40.59,31.6
+465,722107515477,S r k stores,"MAJOR PHARMACEUTICALS PVT.LTD.,,No24/5, 4th main ,7th Block,BSK 3rd Stage, Bangalore, Bangalore",Karnataka,Bangalore,560068,23.1,54,37.01,35
+466,722107515491,SRI HANUMAN MEDICALS,"J k pharma and general stores,No 6/A, (6/40) uma clinic, kadirenahalli, Banashankari 2nd stage",Karnataka,BANGALORE,560018,8.09,43.61,40.59,31.6
+467,712100873308,METARAIN DISTRIBUTORS PRIVATE LIMI,"LAKSHMI MEDICALS,no.86/71/69,Arehalli, Ittamadu main road,",Karnataka,Bangalore,560068,6.1,20.8,11.81,7.3
+468,722107515552,ARAFA STORES,"sri manjunatha medicals & general stores,No.11/7, kaverinagar (Vivekananda Nagar) near 43-a bus stop, kathriguppe, Bsk 3rd stage",Karnataka,Bangalore,560062,5.83,43.61,40.59,31.6
+469,722107488481,santhosh jain,"J k pharma and general stores,No 6/A, (6/40) uma clinic, kadirenahalli, Banashankari 2nd stage",Karnataka,bengalore,560053,24.45,54,37.01,35
+470,722107488665,Manjanna,"JAI GURU MISHRI TRADERS,24 22nd main raghvendra layout",Karnataka,Bangalore,560082,5.31,43.61,40.59,31.6
+471,722107488726,S.V.P STORE,"seven agels medicals & general stores,no.128, 7th cross, yarab nagar, bsk 2nd stage, Bangalore",Karnataka,Bangalore,560034,13.65,54,37.01,35
+472,722107488702,Nagaraju b k,"CURE WELL PHARMA,#25/1, 7th main, sb colony, BANASHANKARI 3RD STAGE",Karnataka,Bangalore,560029,17.48,43.61,40.59,31.6
+473,722107515675,mitthu lal sharma,"BHAGYA MEDICAL AND GENERAL STORES,#15, 4th cross, 6th main road, Bsk 3rd stage., KIMS COLLEGE NEAR DEVE GOWDA PETROL BUNK",Karnataka,BANGALORE,560068,5.14,43.61,40.59,31.6
+474,722107515750,GANJ BAKSHI G N  MEDICALS,"SRI VENKATESHWARA DEPARTMENTAL STORES,#280, 2nd Block, BSK 3rd stage",Karnataka,Bangalore,560047,1.73,38.99,32,7.75
+475,712100873322,Hansikaa medicals,"Sri ganapathi general stores,19,1st A cross, krishna temple Road,, Dwaraka nagar, hoskere halli, BSK 3rd stage",Karnataka,Bangalore,560076,1.28,22.4,16.89,11.99
+476,722107516153,S L V RICE TRADERS,"Matheshwari Traders,1176, 24TH MAIN ROAD HSR LAYOUT SECTOR 2 NEXT TO MARIYAMMA TEMPLE",Karnataka,bangalore,560076,0.39,22.4,16.89,11.99
+477,722107516191,HEALTH PLUS PHARMA,"Matheshwari Traders,1176, 24TH MAIN ROAD HSR LAYOUT SECTOR 2 NEXT TO MARIYAMMA TEMPLE",Karnataka,BENGALURU,560083,4.08,43.61,40.59,31.6
+478,722107516139,goalla pharma,"Matheshwari Traders,1176, 24TH MAIN ROAD HSR LAYOUT SECTOR 2 NEXT TO MARIYAMMA TEMPLE",Karnataka,sompura village sarjapur main road,562125,6.53,43.61,40.59,31.6
+479,722107489006,BARAKATH STORE,"PRINCE MEDICALS,sy no-34,no-4, G floor, BTM 1st stage, madiwala",Karnataka,Bangalore,560078,6.22,43.61,40.59,31.6
+480,722107516092,Lakshminarasimha store,"GreenBubbles Startup Services Pvt. Ltd.,#L165, Sri Gayathri Complex,, HSR Layout Sector 6, Outer Ring Road Service Lane",Karnataka,Bangalore,560029,4.53,43.61,40.59,31.6
+481,712100871915,METARAIN DISTRIBUTORS PRIVATE LIMI,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560027,9.45,54,37.01,35
+482,722107489167,PAWAN PROVISION STORE,"Lakshmi store,Billapura Attibele to Sarjapura road, Billapura",Karnataka,BANGALORE,560068,8.05,43.61,40.59,31.6
+483,712100873421,METARAIN DISTRIBUTORS PRIVATE LIMI,"POOJA MEDICALS & GENERAL STORES.,Shop No-2, No-06, K No-254, 5th Cross, V.P.Road Madiwala",Karnataka,Bangalore,560027,5.84,43.61,40.59,31.6
+484,722107516399,Sri sathyanarayana stores,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560047,0.65,22.4,16.89,11.99
+485,722107489365,PAWAN PROVISION STORE,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,BANGALORE,560068,24.93,43.61,40.59,31.6
+486,722107516498,Nagamani,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,562107,8.04,43.61,40.59,31.6
+487,722107489488,Nagaraju b k,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560029,5.2,35.61,22.91,15.29
+488,722107489464,Sri Padma Medicals,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560047,7.54,43.61,40.59,31.6
+489,722107489402,S G R PROVISION STORE,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,BANGALORE,560035,3.46,35.61,22.91,15.29
+490,722107490002,Tilak &amp;amp; Sons Supermarket,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560068,21.77,54,37.01,35
+491,712100872196,NAGASRI MEDICALS,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560004,11.35,43.61,40.59,31.6
+492,722107489723,sri chowdeswari prv store,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560029,5.64,43.61,40.59,31.6
+493,722107516955,model medical store,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,banglore,560025,3.55,43.61,40.59,31.6
+494,722107516719,Umesh,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,BENGALURU,562106,8.1,43.61,40.59,31.6
+495,722107489785,PKM STORE,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560047,3.14,22.4,16.89,11.99
+496,722107517051,Sai Vignesh Pharma,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,562107,8.76,54,37.01,35
+497,722107516979,pullareddy,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560100,24.01,23.6,16.4,4.9
+498,722107517198,national medicals,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,banglore,560018,4.43,43.61,40.59,31.6
+499,722107517259,Pawan provision store,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560029,4.15,43.61,40.59,31.6
+500,722107517273,MAHALAKSHMI PROVISION STORE,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,BANGALORE,560061,12.71,43.61,40.59,31.6
+501,722107517372,"MAJOR PHARMACEUTICALS PVT.LTD.,","Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,Bangalore,560085,0.63,22.4,16.89,11.99
+502,722107490545,srinivas n v,"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Karnataka,banglore,560053,7.36,43.61,40.59,31.6
+503,722107517433,TEJA MEDICALS,"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Karnataka,BANGALORE,560050,3,38.99,32,7.75
+504,722107490569,Karthikmedicals&amp;General stores,"KRISHNA MEDICALS,K NO 1931, GD FOR, 22ND MAIN, 22ND CROSS, 2ND SECTOR, CUB ROAD, HSR LAYOUT",Karnataka,"Anekal taluk,bangalore dist ,56010",560105,1.72,35.61,22.91,15.29
+505,712100873629,SHIVALAYA MEDICAL,"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Karnataka,Bangalore,560078,8.91,43.61,40.59,31.6
+506,712100872318,Bangalore Medical Centre,"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Karnataka,Bangalore,560076,13.57,54,37.01,35
+507,722107517532,DHAN- LAXMI DEPARTMENT STORE,"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Karnataka,BENGALURU,560068,11.02,43.61,40.59,31.6
+508,722107490682,prasad medicals stores,"METARAIN DISTRIBUTORS PRIVATE LIMITED,unit-1, no 230/222/205/52/2/183/30-31. grd slr, rajiv gandhi nagar bommanahalli",Karnataka,Bangalore,560098,5.97,43.61,40.59,31.6
+509,722107490729,SRINIVASA ENTERPRISES,"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Karnataka,BANAGLORE,560029,17.74,43.61,40.59,31.6
+510,722107517679,TEJA MEDICALS,"S S R TRADERS,41/4 RAMANA GOPALA COMPLEX, 1ST FLOOR, SOMASUNDARA PALYA MAIN ROAD KUDLU VILLAGE",Karnataka,BANGALORE,560050,4.41,43.61,40.59,31.6
+511,712100873766,METARAIN DISTRIBUTORS PRIVATE LIMI,"S S R TRADERS,41/4 RAMANA GOPALA COMPLEX, 1ST FLOOR, SOMASUNDARA PALYA MAIN ROAD KUDLU VILLAGE",Karnataka,Bangalore,560068,7.55,43.61,40.59,31.6
+512,722107490781,RAVI MEDICALS AND GENERAL STORE,"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Karnataka,BANGALORE,560026,5.2,43.61,40.59,31.6
+513,722107517839,Sai Vignesh Pharma,"Peoplenet Access Solutions Pvt Ltd,B403, Springfields Apartment, Sarjapur Road",Karnataka,Bangalore,562107,12.88,54,37.01,35
+514,722107517877,Generic Medkart,"S S R TRADERS,41/4 RAMANA GOPALA COMPLEX, 1ST FLOOR, SOMASUNDARA PALYA MAIN ROAD KUDLU VILLAGE",Karnataka,Bengaluru,562125,7.49,43.61,40.59,31.6
+515,722107490941,Sayed Ahmed,"Shree Ganesh Prv Store,sarjapura bazaar, anekal taluk",Karnataka,Bangalore,562106,6.32,43.61,40.59,31.6
+516,722107490866,M/s Anand Provisional Store,"S r k stores,58/1,kumara murugan nilayam, Hosur road, 1st cross madiwala,near kaveri convent",Karnataka,Bangalore,560102,8.7,43.61,40.59,31.6
+517,722107490903,Vamsi Medicals,"sree lakshmi medical,K.NO 1765/350 SHOP NO~02 GRD FLR,8TH MAIN,4TH CROSS, YELLUKUNTE VILLAGE,NEAR WATER TANK,I.T.I LAYOUT",Karnataka,Bangalore,560047,5.37,35.61,22.91,15.29
+518,722107491122,Tamil selvam,"METARAIN DISTRIBUTORS PRIVATE LIMITED,unit-1, no 230/222/205/52/2/183/30-31. grd slr, rajiv gandhi nagar bommanahalli",Karnataka,BANGALORE,562107,1.02,22.4,16.89,11.99
+519,722107491085,MATHAJI SUPER MARKET,"S G R PROVISION STORE,MULUR COLONEY, KODITHI GATE",Karnataka,BANGALORE,560018,1.16,38.99,32,7.75
+520,722107518195,HIRA PROVISION AND GENERAL STORES,"METARAIN DISTRIBUTORS PRIVATE LIMITED,unit-1, no 230/222/205/52/2/183/30-31. grd slr, rajiv gandhi nagar bommanahalli",Karnataka,BANGALORE,560100,8.62,43.61,40.59,31.6
+521,722107518096,S.V.P STORE,"POOJA MEDICALS & GENERAL STORES.,Shop No-2, No-06, K No-254, 5th Cross, V.P.Road Madiwala",Karnataka,Bangalore,560034,21.94,54,37.01,35
+522,722107518157,Shanthi Medijoint & General Suppli,"Chandru medicals & general stores,No.13 new no.434, OLD MADIWALA main road ,VP road ,near sandya theatre",Karnataka,BANGALORE,560002,11.17,43.61,40.59,31.6
+523,722107491160,MANOJ MEDICALS & GENERAL STORES,"Peoplenet Access Solutions Pvt Ltd,B403, Springfields Apartment, Sarjapur Road",Karnataka,Bangalore,560083,4.22,43.61,40.59,31.6
+524,722107518218,BHARATH a,"POOJA MEDICALS & GENERAL STORES.,Shop No-2, No-06, K No-254, 5th Cross, V.P.Road Madiwala",Karnataka,Bangalore,562107,1.55,35.61,22.91,15.29
+525,722107518638,SUMATHI,"S r k stores,58/1,kumara murugan nilayam, Hosur road, 1st cross madiwala,near kaveri convent",Karnataka,bangalore,560068,19.75,43.61,40.59,31.6
+526,722107491344,Rajendra s m,"METARAIN DISTRIBUTORS PRIVATE LIMITED,unit-1, no 230/222/205/52/2/183/30-31. grd slr, rajiv gandhi nagar bommanahalli",Karnataka,Bangalore,560029,3.45,43.61,40.59,31.6
+527,722107491443,Care chemist,"sree lakshmi medical,K.NO 1765/350 SHOP NO~02 GRD FLR,8TH MAIN,4TH CROSS, YELLUKUNTE VILLAGE,NEAR WATER TANK,I.T.I LAYOUT",Karnataka,Bangalore,560029,5.99,43.61,40.59,31.6
+528,722107518393,ANNAPOORNA TRADERS,"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Karnataka,BENGALURU,560078,6.52,43.61,40.59,31.6
+529,722107518454,J k pharma and general stores,"S G R PROVISION STORE,MULUR COLONEY, KODITHI GATE",Karnataka,Bangalore,560070,4.58,43.61,40.59,31.6
+530,722107491481,Ydp provision store,"METARAIN DISTRIBUTORS PRIVATE LIMITED,unit-1, no 230/222/205/52/2/183/30-31. grd slr, rajiv gandhi nagar bommanahalli",Karnataka,Bangalore,562125,2.36,35.61,22.91,15.29
+531,722107518751,MATHAJI SUPER MARKET,"Generic Medkart,No.231 shop no. 3 &4 GROUND FLOOR, SARJAPURA MAIN ROAD",Karnataka,BANGALORE,560018,2.82,43.61,40.59,31.6
+532,722107491764,vyshaki medicals,"M/s Anand Provisional Store,No. 151/1, 24th main road HSR Layout, Agara, (Sarjapur road),",Karnataka,Bangalore,560028,9.8,43.61,40.59,31.6
+533,722107518973,T M STORE,"CHARAN PROVISION STORE,Near dairy milk, bus stand backside, Sarjapura",Karnataka,Bangalore,560047,25,43.61,40.59,31.6
+534,722107518997,SRI KARTHIK PROVISION STORES,"Mathaji Provision Store,#761, munishwara circle, old manamanapalya road,",Karnataka,BANGALORE,560018,17.34,43.61,40.59,31.6
+535,722107519239,sai medicals,"manasa medicals and general stores,k no - 48/2/3, SRI sai nilaya, hosapalya main road, 4th cross thirumalappa layout",Karnataka,Bangalore,560069,0.99,22.4,16.89,11.99
+536,722107491924,9341971710,"MM Traders,R.F Complex, Nazeer Sab Layout, Bagalur Road, Sarjapura",Karnataka,banglore,560061,2.3,43.61,40.59,31.6
+537,722107492020,MALNAD PROVISION STORE,"AS Medical store,A.s.medical store, No. 1.k.No. 5/6/43/3ward no 6 CLD MANGAMMAPALYA BOMMANAHALLI",Karnataka,BANGALORE,560068,20,43.61,40.59,31.6
+538,722107491887,PANDURANGAIAH.H.S,"Surya Medicals & General Stores,Shop no-01, K No-488/573/582/ Sri Kanyakumari, Temple main road, Sarjapura",Karnataka,BANGALORE,560050,14.58,43.61,40.59,31.6
+539,722107491948,sri manjunatha medicals & general ,"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Karnataka,Bangalore,560085,13.74,43.61,40.59,31.6
+540,722107519390,Shanthi Medicals,"Subrahmanyeswara medicals,No:71/F Sarjapur main road,, Kaikondrahalli",Karnataka,Bangalore,560100,16.73,54,37.01,35
+541,722107492082,KOMAL TRADERS,"Rajput Provision Stores,10/30, Rajput Novas, Serenity Layout, Kaikondrahalli",Karnataka,BANGALORE,560027,12.88,43.61,40.59,31.6
+542,712100874022,SV.R Medicals and general stores,"MM Traders,R.F Complex, Nazeer Sab Layout, Bagalur Road, Sarjapura",Karnataka,Bangalore,560099,14.3,22.7,10.4,7.7
+543,722107492525,Sri Shridi Sai M.S.Medicals and Ge,"Sri venkateshwara traders,#109, 27 th main, 6 the cross, Btm 1 st stage jai bheema nagar",Karnataka,Bangalore,562107,12.05,33.5,19.9,10.31
+544,722107492488,Sri bagyalakshmi rice traders,"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Karnataka,Banagalore,560029,6.47,43.61,40.59,31.6
+545,722107519659,SRI KARTHIK PROVISION STORES,"Rajput Provision Stores,10/30, Rajput Novas, Serenity Layout, Kaikondrahalli",Karnataka,BANGALORE,560018,20.87,21.8,17.5,6.2
+546,722107492549,SREENIVASA REDDY C,"Sri Balaji medicals and general stores,K no 202/50 shop no 3 ambedkar nagar, Carmelram post sarjapura road",Karnataka,BANGALORE,560068,15.34,43.61,40.59,31.6
+547,722107492426,sahad,"Rajput Provision Stores,10/30, Rajput Novas, Serenity Layout, Kaikondrahalli",Karnataka,Bangalore,560030,5.02,43.61,40.59,31.6
+548,722107492761,Mathaji Provision Store,"Provision Store,Sarjapura, Sarjapura",Karnataka,BANGALORE,560068,9.06,43.61,40.59,31.6
+549,722107492723,Mohideen,"Sri venkateshwara traders,#109, 27 th main, 6 the cross, Btm 1 st stage jai bheema nagar",Karnataka,"Begur , banglore -560068",560068,5.02,43.61,40.59,31.6
+550,722107519833,manasa medicals and general stores,"MANOJ MEDICALS & GENERAL STORES,Shop no-3 k no-107/18 basavapura gottigere post, Bannerghatta road",Karnataka,bangalore,560068,5.02,43.61,40.59,31.6
+551,722107519918,APOORVA RICE TRADERS,"R A S Store, 169 r a s store d c halli main road",Karnataka,BANGALORE,560068,17.02,43.61,40.59,31.6
+552,722107492921,SREENIVASA REDDY C,"R A S Store, 169 r a s store d c halli main road",Karnataka,BANGALORE,560068,24.73,43.61,40.59,31.6
+553,722107519994,Mahalakshmi Provision stores,"Mathaji Provision store,Jigani main Road, MalleNeelasandra",Karnataka,Bangalore,562107,20.91,54,37.01,35
+554,722107493003,Mohanlal,"M/S RAGAM PRO STORES,ragam provision store, 154/ 9th cross w v colony gottigere bng",Karnataka,Bangalore 98,560098,18.54,54,37.01,35
+555,712100872615,Bright Medicals,"ASHIRWAD GENERAL STORE BILAWARADAHALLI BG ROAD BANGALORE, ASHIRWAD GENERAL STORE BILAWARADAHALLI BG ROAD BANGALORE",Karnataka,Bangalore,560047,8.63,43.61,40.59,31.6
+556,722107520372,CITY MD PHARMA,"K L S PROVISION STORE,kalkere bannerghatta main road, near water tank banaglore 83",Karnataka,Bangalore,560047,4.77,43.61,40.59,31.6
+557,722107520297,Manjanna,"MAHARAJA FOOD CITY,no,1 ground floor 16th main,20th cross, mahadeshwara nagara,btm 2nd stage bangalore-76",Karnataka,Bangalore,560082,11.63,43.61,40.59,31.6
+558,722107520457,aswatha narayana m p,"CHANDAN STORE,chandan store, ganesh temple road d c halli road bng bilekahalli",Karnataka,Bangalore,560028,7.51,43.61,40.59,31.6
+559,722107493423,m r ramesh,"ASHIRWAD GENERAL STORE BILAWARADAHALLI BG ROAD BANGALORE, ASHIRWAD GENERAL STORE BILAWARADAHALLI BG ROAD BANGALORE",Karnataka,Bangalore,560082,8.86,43.61,40.59,31.6
+560,722107520471,motilal,"SAMAR HOME NEEDS,#3/3, 2nd main,maruthi layout,btm layout 1st stage",Karnataka,Bangalore-53,560053,7.42,54,37.01,35
+561,722107493409,SIDDESHWARA STORE,"Ashraya Medicals,No,G-3,958,5th cross,Vijaya bank layout, sunder ram shetty nagar,bannergatta road,bilekahalli",Karnataka,Bangalore,560078,6.32,43.61,40.59,31.6
+562,722107520556,sarashwathi departmental stores,"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Karnataka,Bangalore,560028,11.02,43.61,40.59,31.6
+563,722107493225,JAI HANUMAN MEDICAL &amp; GENERAL ,"R A S Store, 169 r a s store d c halli main road",Karnataka,BENGALURU,560082,12.24,43.61,40.59,31.6
+564,722107520716,aswatha narayana m p,"R A S Store, 169 r a s store d c halli main road",Karnataka,Bangalore,560028,1.11,22.4,16.89,11.99
+565,722107493560,Tamil selvam,"M/S RAGAM PRO STORES,ragam provision store, 154/ 9th cross w v colony gottigere bng",Karnataka,BANGALORE,562107,10.92,43.61,40.59,31.6
+566,712100874121,Manjunatha a,"MAHARAJA FOOD CITY,no,1 ground floor 16th main,20th cross, mahadeshwara nagara,btm 2nd stage bangalore-76",Karnataka,Bangalore,560099,4.96,43.61,40.59,31.6
+567,722107520754,GRACE PROVISION STORE,"My medical and general store,64-78-46/2, Shop no. 3, 10th main, 1st stage, Near water tank, BTM layout",Karnataka,BANGALORE,560028,9.77,43.61,40.59,31.6
+568,722107493607,9738519162,"Medihelp pharma,204 GROUND FLOOR SHOP NO.1 AREKERE MICO LAYOUT, NEAR L &amp; T SOUTHCITY",Karnataka,Sarjapura,562125,3.13,35.61,22.91,15.29
+569,722107493683,sahad,"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Karnataka,Bangalore,560030,4.56,35.61,22.91,15.29
+570,722107520891,APOORVA RICE TRADERS,"Salim stores,Old gurappana palya main road, BG road,near babu lal cloth centre opp",Karnataka,BANGALORE,560068,24,17.6,13,1.7
+571,722107520853,Aai Matha provision store,"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Karnataka,BENGALURU,560100,4.53,43.61,40.59,31.6
+572,722107520877,AS Medical store,"burhani super bazaar,shop,no,2ground floor no,60 new 441 next ggottigere villege, uttarahallI hobli bengalore next shell petrol bunk-83",Karnataka,Bangalore,560068,17.72,43.61,40.59,31.6
+573,722107520976,T M STORE,"SRI VENKATESHWARA DEPT BOOK HOUSE,690,shanthi nikethan kayout, arekere b g road bng",Karnataka,Bangalore,560047,23,43.61,40.59,31.6
+574,722107494086,Tamil selvam,"SHRI SAI MEDICALS STORE,NO -17/17, OPP:-GOTTIGERE BUS STOP, BANNERGHATTA MAIN ROAD",Karnataka,BANGALORE,562107,21.8,54,37.01,35
+575,722107520938,Mohideen,"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Karnataka,"Begur , banglore -560068",560068,0.59,22.4,16.89,11.99
+576,722107493768,RAMESH BABU K,"raghavendra departmental stores,37 3rd a crass 25th, main roda b t m 2nd stage bng",Karnataka,BANGLORE,560026,18.08,43.61,40.59,31.6
+577,722107494024,SRINIVASA ENTERPRISES,"Fresh & More Super Market,Shop No.G-01,#57,58,Vinayaka Arcade,1st Main,3rd cross, Venkatadri Layout,Behind Apollo Hospital,BG Road",Karnataka,BANAGLORE,560029,10.35,54,37.01,35
+578,722107494048,Tamil selvam,"Fresh & More Super Market,Shop No.G-01,#57,58,Vinayaka Arcade,1st Main,3rd cross, Venkatadri Layout,Behind Apollo Hospital,BG Road",Karnataka,BANGALORE,562107,1.48,38.99,32,7.75
+579,722107521195,sai medicals,"City rice traders,#50/6,1st cross,3rd main road, New gurapanapalya,behind I b m BG road",Karnataka,Bangalore,560069,4.26,43.61,40.59,31.6
+580,722107494000,Karthikmedicals&amp;General stores,"S L V RICE TRADERS #98, DODDAKAMMANAHALLI, DENTAL COLLEGE ROAD SOS POINT",Karnataka,"Anekal taluk,bangalore dist ,56010",560105,3.11,35.61,22.91,15.29
+581,722107521133,ANNAPOORNA TRADERS,"raghavendra departmental stores,37 3rd a crass 25th, main roda b t m 2nd stage bng",Karnataka,BENGALURU,560078,21.02,43.61,40.59,31.6
+582,722107494222,motilal,"burhani super bazaar,shop,no,2ground floor no,60 new 441 next ggottigere villege, uttarahallI hobli bengalore next shell petrol bunk-83",Karnataka,Bangalore-53,560053,1.4,38.99,32,7.75
+583,722107521270,MALNAD PROVISION STORE,"My medical and general store,64-78-46/2, Shop no. 3, 10th main, 1st stage, Near water tank, BTM layout",Karnataka,BANGALORE,560068,7.71,53.9,29.31,24.11
+584,722107494307,sahad,"S L V RICE TRADERS #98, DODDAKAMMANAHALLI, DENTAL COLLEGE ROAD SOS POINT",Karnataka,Bangalore,560030,16.32,54,37.01,35
+585,722107494420,motilal,"HEALTH PLUS PHARMA,No.2454, BESIDE MAGNUS DIAGNOSTIC CENTER, OPP. SHELL PETROL BUNK, BANNERGHATTA ROAD, GOTTIGERE",Karnataka,Bangalore-53,560053,10.18,26,22.2,16.7
+586,722107521614,motilal,"MANOJ MEDICALS & GENERAL STORES,Shop no-3 k no-107/18 basavapura gottigere post, Bannerghatta road",Karnataka,Bangalore-53,560053,0.61,35.61,22.91,15.29
+587,712100874220,Jude Rezoria,"Sri bagyalakshmi rice traders,No35, 1st main, 8th cross, New gurapanapalya",Karnataka,Bangalore,560076,18.35,54,37.01,35
+588,722107521676,Sayed Ahmed,"HomeVista Decor & Furnishings Pvt Ltd,Fortune / M.A Interiors, 116/17 Amruthappa Layout Doresanipalya J.P Nagar",Karnataka,Bangalore,562106,0.81,22.4,16.89,11.99
+589,722107494703,Dhanlakshmi Provision Store,"Sri bagyalakshmi rice traders,No35, 1st main, 8th cross, New gurapanapalya",Karnataka,Bangalore,560034,9.34,28.1,18.8,9
+590,722107521935,vyshaki medicals,"HomeVista Decor & Furnishings Pvt Ltd,Fortune / M.A Interiors, 116/17 Amruthappa Layout Doresanipalya J.P Nagar",Karnataka,Bangalore,560028,0.82,22.4,16.89,11.99
+591,722107521836,Sri bagyalakshmi rice traders,"HomeVista Decor & Furnishings Pvt Ltd,Fortune / M.A Interiors, 116/17 Amruthappa Layout Doresanipalya J.P Nagar",Karnataka,Banagalore,560029,1.14,22.4,16.89,11.99
+592,722107494840,Surya Medicals & General Stores,"SAMAR HOME NEEDS,#3/3, 2nd main,maruthi layout,btm layout 1st stage",Karnataka,Bangalore,562125,5.22,43.61,40.59,31.6
+593,722107494888,SRI SAI CHANDRA MEDICALS,"SRI RUDRESHWARA PROVISION STORE,#4, 4th main rd, Ns palya",Karnataka,Bangalore,560099,2.99,35.61,22.91,15.29
+594,722107494963,goalla pharma,"SAMAR HOME NEEDS,#3/3, 2nd main,maruthi layout,btm layout 1st stage",Karnataka,sompura village sarjapur main road,562125,0.24,22.4,16.89,11.99
+595,722107495069,Beauty stores,"HARITHA STORE,shanbhoganahalli kenchanayakana doddi, kaggali pura road b g road",Karnataka,Bangalore,560026,9.78,43.61,40.59,31.6
+596,722107522093,SAMPANGI RAMASWAMY,"green land vegetables fruits,near muneswara temple, 4th cross 29th main 2nd stage b t m bng",Karnataka,bangalore,560068,4.92,35.61,22.91,15.29
+597,722107495045,K.S RAVI KUMAR,"green land vegetables fruits,near muneswara temple, 4th cross 29th main 2nd stage b t m bng",Karnataka,BANGALORE,560030,4.32,43.61,40.59,31.6
+598,722107522239,ANNAPOORNESHWARI TRADERS,"BARAKATH STORE,FAYAZBAD ES NAGAR JLIYAS NAGAR BNG, Bangalore",Karnataka,BENGALURU,560078,3.22,35.61,22.91,15.29
+599,722107494987,NARAYANA,"SRI GANESH MEDICALS,shop no.3, no-46, katha no.68/5, JP NAGAR 8TH PHASE, KOTHANUR VILLAGE, UTTARAHALLI HOBLI, BANGALORE SOUTH",Karnataka,BANGALORE,560068,1.77,38.99,32,7.75
+600,722107522154,NEW RAJESH STORE,"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Karnataka,BANGALORE,560030,6.54,43.61,40.59,31.6
+601,722107495144,C JAGADISH REDDY,"SRI GANESH MEDICALS,shop no.3, no-46, katha no.68/5, JP NAGAR 8TH PHASE, KOTHANUR VILLAGE, UTTARAHALLI HOBLI, BANGALORE SOUTH",Karnataka,Bangalore,560105,19.32,43.61,40.59,31.6
+602,712100872776,Jude Rezoria,"SRI SUBRAMANYESHWARA TRADERS,#4398, Near Srinivasa Theatre, Kumaraswamy Layout",Karnataka,Bangalore,560076,5.55,35.61,22.91,15.29
+603,722107522352,Mahalakshmi Provision stores,"SNEHA MEDICALS,shop no3,site 20,gr. fl. om shiva shakthinagar, 4th cross chunchaghatta main road",Karnataka,Bangalore,562107,11.17,47.4,37.9,27.71
+604,722107495304,SREENIVASA REDDY C,"SNEHA MEDICALS,shop no3,site 20,gr. fl. om shiva shakthinagar, 4th cross chunchaghatta main road",Karnataka,BANGALORE,560068,15.57,27.71,21.89,20.9
+605,722107522475,Dhanlakshmi Provision Store,"K-P-STORE,LAXMIPURA KK PURA MAIN RD, Bangalore",Karnataka,Bangalore,560034,0.73,38.99,32,7.75
+606,712100874244,Jude Rezoria,"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Karnataka,Bangalore,560076,24.44,54,37.01,35
+607,722107522512,Shafina Stores,"Mahalaxmi provision stores,vasanthpura mn rd",Karnataka,Bangalore,560047,12.71,54,37.01,35
+608,722107495328,SREENIVASA REDDY C,"SRI SUBRAMANYESHWARA TRADERS,#4398, Near Srinivasa Theatre, Kumaraswamy Layout",Karnataka,BANGALORE,560068,15.49,33.71,23.9,17.4
+609,722107495380,D.MAHALAKSHMI PROVISION STORES,"ANNAPOORNA TRADERS,SHOP NO 17, GROUND FLR. (WESTERN PORTION) 4TH MAIN, PUTTENAHALLY, J.P NAGAR 7TH PHASE",Karnataka,BANGALORE,560027,0.59,22.4,16.89,11.99
+610,722107495403,C JAGADISH REDDY,"ARM departmental store,store no.1/43(old 191/1), 1st floor, shop no.3&4, kumbalgodu road, chikka thataguni",Karnataka,Bangalore,560105,20.74,43.61,40.59,31.6
+611,722107495427,Subrahmanyeswara medicals,"SRINIVASA MEDICALS AND GENERALS,Shop no.1, 10th cross, Kothanur main road,, JP nagar 8th phase",Karnataka,Benguluru,560035,8.21,43.61,40.59,31.6
+612,722107522598,Auntyxerox,"Balaji Provision Stores,Balaji Provisional Store, Shamanna Garden, 17th Cross, 22nd Main, JP Nagar, 5th Phase",Karnataka,Raghuvanahalli,560062,22.11,43.61,40.59,31.6
+613,722107522635,Auntyxerox,"SNEHA MEDICALS,shop no3,site 20,gr. fl. om shiva shakthinagar, 4th cross chunchaghatta main road",Karnataka,Raghuvanahalli,560062,24.2,43.61,40.59,31.6
+614,722107495588,S L A TREADARS,"ANNAPOORNA TRADERS,SHOP NO 17, GROUND FLR. (WESTERN PORTION) 4TH MAIN, PUTTENAHALLY, J.P NAGAR 7TH PHASE",Karnataka,bangalore,560068,20.63,43.61,40.59,31.6
+615,722107522734,aboobakar,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,Bangalore,560026,15.3,43.61,40.59,31.6
+616,722107495564,T M STORE,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,Bangalore,560047,5.12,30.61,19.71,18.29
+617,712100872899,S V R Medical and General Stores,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,Bangalore,560099,7.57,43.61,40.59,31.6
+618,722107495649,J k pharma and general stores,"ANNAPOORNESHWARI TRADERS,#20/21,kothanur dinne,bk circle bus stop, jp nagar 8th phase",Karnataka,Bangalore,560070,0.31,22.4,16.89,11.99
+619,722107522932,Sree vinayaka medical stores,"ARM departmental store,store no.1/43(old 191/1), 1st floor, shop no.3&4, kumbalgodu road, chikka thataguni",Karnataka,Bangalore,560004,2.62,35.61,22.91,15.29
+620,722107495625,Rose general store,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,BANGALORE,560068,22.92,43.61,40.59,31.6
+621,712100874282,S V R Medical and General Stores,"SRINIVASA MEDICALS AND GENERALS,Shop no.1, 10th cross, Kothanur main road,, JP nagar 8th phase",Karnataka,Bangalore,560099,0.23,22.4,16.89,11.99
+622,722107522970,motilal,"SRI LAKSHMI VENKATSHWARA STORES,#2, Sri colony, Shreyas colony,, jp nagar 7th Phase",Karnataka,Bangalore-53,560053,3.84,54,37.01,35
+623,722107495786,sahad,"Way2live solutions LLP,172/2, 12th cross, 21st Main road, 2nd Phase, JP Nagar",Karnataka,Bangalore,560030,2.09,101.3,9.5,9.5
+624,722107495700,SREENIVASA REDDY C,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,BANGALORE,560068,24.42,48.01,46.71,11.99
+625,712100874404,METARAIN DISTRIBUTORS PRIVATE LIMI,"Way2live solutions LLP,172/2, 12th cross, 21st Main road, 2nd Phase, JP Nagar",Karnataka,Bangalore,560027,7.89,43.61,40.59,31.6
+626,722107495762,MALNAD PROVISION STORE,"AVENUE AGENCIES,NO 201 AVENUE ROAD, KUMAR SWAMY LAYOUT",Karnataka,BANGALORE,560068,23.61,43.61,40.59,31.6
+627,722107495809,SRI CHOWDESHWARI PROVISION STORE,"ANNAPOORNESHWARI TRADERS,#20/21,kothanur dinne,bk circle bus stop, jp nagar 8th phase",Karnataka,BANGALORE,562106,6.54,54,37.01,35
+628,722107523076,NAGESH BABU,"ARM departmental store,store no.1/43(old 191/1), 1st floor, shop no.3&4, kumbalgodu road, chikka thataguni",Karnataka,Bangalore,560027,12.56,43.61,40.59,31.6
+629,722107523014,JAI GURU MISHRI TRADERS,"SHREE PATTALADAMMA ENTERPRISES,#05 ,6th main jss school main road konankunte post, GANAPATHI PURA",Karnataka,Bangalore,560070,11.18,43.61,40.59,31.6
+630,722107495823,MANJUNATHA GENERAL STORE,"AVENUE AGENCIES,NO 201 AVENUE ROAD, KUMAR SWAMY LAYOUT",Karnataka,Bangalore,560100,8.48,43.61,40.59,31.6
+631,722107523175,Samar home needs,"SHIVALAYA MEDICAL,#417/177, Kothanur Dinne, JP Nagar 8th Phase",Karnataka,Banagalore,560029,2.77,38.99,32,7.75
+632,722107495847,S.V.P STORE,"ARAFA STORES,shop#1,SITE#2, NEAR TIPPU CIRCLE, AVALAHALLI VILLAGE, ANJANAPURA POST",Karnataka,Bangalore,560034,7.71,53.9,29.31,24.11
+633,722107523236,Mithun K Singh,"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Karnataka,Bangalore,560035,24.02,23.8,18.1,4.8
+634,722107496042,SIDDESHWARA STORE,"BARAKATH STORE,FAYAZBAD ES NAGAR JLIYAS NAGAR BNG, Bangalore",Karnataka,Bangalore,560078,4.56,43.61,40.59,31.6
+635,722107495922,sahad,"SHIVALAYA MEDICAL,#417/177, Kothanur Dinne, JP Nagar 8th Phase",Karnataka,Bangalore,560030,0.54,94.01,18.01,5
+636,712100872912,Manjunatha a,"ANNAPOORNA TRADERS,SHOP NO 17, GROUND FLR. (WESTERN PORTION) 4TH MAIN, PUTTENAHALLY, J.P NAGAR 7TH PHASE",Karnataka,Bangalore,560099,8.7,43.61,40.59,31.6
+637,722107496141,C.M.KHADER AND SONS,"sai medicals,#935, 28th main, 9th block, jayanagar",Karnataka,Bangalore,560002,13.26,43.61,40.59,31.6
+638,722107496202,BARAKATH STORE,"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Karnataka,Bangalore,560078,1.95,109.19,16.51,15.19
+639,722107523458,T M STORE,"ramesh stores,no:278/B, 2nd main road, 8th block, jayanagar",Karnataka,Bangalore,560047,15.26,48.59,42.7,15.01
+640,722107496189,SRI RUDRESHWARA PROVISION STORE,"SIDDESHWARA STORE,#32 Rajiv Gandi Road Jaraganahalli",Karnataka,Bangalore,560076,3.82,30.3,16,12.7
+641,722107523496,sahad,"JAI HANUMAN MEDICAL & GENERAL STORES,44/4,TATHAGUNI, Hemakala Nilaya, KANAKAPURA ROAD",Karnataka,Bangalore,560030,1.95,109.19,16.51,15.19
+642,722107496226,9738519162,"sai medicals,#935, 28th main, 9th block, jayanagar",Karnataka,Sarjapura,562125,15.26,48.59,42.7,15.01
+643,722107523533,C JAGADISH REDDY,"ANNAPOORNA TRADERS,SHOP NO 17, GROUND FLR. (WESTERN PORTION) 4TH MAIN, PUTTENAHALLY, J.P NAGAR 7TH PHASE",Karnataka,Bangalore,560105,24.9,50,49.5,21
+644,722107496301,Samar home needs,"ANNAPOORNESHWARI TRADERS,#20/21,kothanur dinne,bk circle bus stop, jp nagar 8th phase",Karnataka,Banagalore,560029,4.2,43.61,40.59,31.6
+645,722107523595,Tamil selvam,"Bhats Enterprises,SAHANA,Proprietor, Bhats enterprises, No.27,5th cross,Manjunath Nagar Kanakapura road",Karnataka,BANGALORE,562107,2.45,115.01,42.01,18.01
+646,722107523571,V ramesh,"Bhats Enterprises,SAHANA,Proprietor, Bhats enterprises, No.27,5th cross,Manjunath Nagar Kanakapura road",Karnataka,Bangalore,560068,16.11,43.61,40.59,31.6
+647,722107523557,C JAGADISH REDDY,"SIDDESHWARA STORE,#32 Rajiv Gandi Road Jaraganahalli",Karnataka,Bangalore,560105,15.26,48.59,42.7,15.01
+648,722107496462,Tamil selvam,"BARAKATH STORE,FAYAZBAD ES NAGAR JLIYAS NAGAR BNG, Bangalore",Karnataka,BANGALORE,562107,2.45,115.01,42.01,18.01
+649,722107496448,M R SHANTH KUMAR,"MATHAJI PROVISION STORE,Jp nagar 8th phase, Kothanoor, Bangalore",Karnataka,BENGALURU,560030,14.98,43.61,40.59,31.6
+650,722107523618,MATHAJI SUPER MARKET,"Lakshmimedicals,#105/1 lakshmimedicals, Kagglipura kanakapura main road",Karnataka,BANGALORE,560018,4.3,48.3,37.5,11.4
+651,722107496349,Tamil selvam,"N S medical and general stores,Somanahalli gate, kanakapura main road",Karnataka,BANGALORE,562107,2.45,115.01,42.01,18.01
+652,722107496387,Tamil selvam,"N S medical and general stores,Somanahalli gate, kanakapura main road",Karnataka,BANGALORE,562107,2.45,115.01,42.01,18.01
+653,722107496424,SREENIVASA REDDY C,"Kriti Medicals,SHOP#11,LOWER G.F,SY NO-21,GOLLAHALLY,UTTHARAHALLI HOBALI, Anjanapura post, Bangalore south taluk",Karnataka,BANGALORE,560068,4.3,48.3,37.5,11.4
+654,722107496646,Nanjundeshwara Provision Store,"N S medical and general stores,Somanahalli gate, kanakapura main road",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+655,722107496523,CHATRA PROVISION STORE,"Erevu Ventures Private Limited,58-3, Aaditya Hridayam, 39th a cross, Jayanagar 4t block,",Karnataka,bangalore,560068,19.41,43.61,40.59,31.6
+656,722107496684,lakshmi pharma,"Bhats Enterprises,SAHANA,Proprietor, Bhats enterprises, No.27,5th cross,Manjunath Nagar Kanakapura road",Karnataka,Bangalore,560028,0.36,22.4,16.89,11.99
+657,722107523915,MATHAJI PROVISION STORE,"Fathima Medicals & General Stores,No.21/8,8th Main Road, Pipeline,Shamanna Nagar, New Guddadahalli",Karnataka,BANGALORE,560076,1.55,35.61,22.91,15.29
+658,722107496660,SRI KARTHIK PROVISION STORES,"Bangalore medicals,No.8,(pid no. 40-85-51),16 th cross gangondanahalli, Main road,Nayandanahalli",Karnataka,BANGALORE,560018,14.84,43.61,40.59,31.6
+659,722107523816,GOOD MORNING MEDICARE,"Bangalore medicals,No.8,(pid no. 40-85-51),16 th cross gangondanahalli, Main road,Nayandanahalli",Karnataka,Bangalore,560053,2.96,43.61,40.59,31.6
+660,722107524073,Nanjundeshwara Provision Store,"RAVI MEDICALS AND GENERAL STORE,#19/8, west pipeline road, Kasturiba nagar, rudrappa garden",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+661,722107496707,CURE WELL PHARMA,"Bangalore medicals,No.8,(pid no. 40-85-51),16 th cross gangondanahalli, Main road,Nayandanahalli",Karnataka,BANGALORE,560085,8.75,43.61,40.59,31.6
+662,722107496783,Nanjundeshwara Provision Store,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560099,10.75,40.9,34.7,22.7
+663,722107524134,B B STORE,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,BANGALORE,560068,5.44,54,37.01,35
+664,722107524110,Shivareddy,"pooja provision store,Pooja provision store, Near Anjaneya temple pattanagere RR nagar",Karnataka,Bangalore,562106,6.99,54,37.01,35
+665,722107524035,Nanjundeshwara Provision Store,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+666,712100874480,Raj marketing,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560002,22.21,54,37.01,35
+667,722107524257,Nanjundeshwara Provision Store,"akshaya super bazaar,no 96/D, 12th CR's ideal homes township, Rajarajeshwari nagar",Karnataka,Bangalore,560099,10.75,40.9,34.7,22.7
+668,722107524233,Sri sathyanarayana stores,"new bharath medicals &general stores,no:31,shop no.3 gangodanahalli main road, nayandanahalli post",Karnataka,Bangalore,560047,3.2,38.99,32,7.75
+669,722107524332,Sri sai medicals,"SNEHA PROVISION STORES,#54/1,Maruthinagar,Bapujinagar, Bapujinagar",Karnataka,Bengaluru,560050,1.77,38.99,32,7.75
+670,722107524356,MINI STOP RICE TRADERS,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560030,6.89,43.61,40.59,31.6
+671,722107524196,Nanjundeshwara Provision Store,"NEW HAPPY HOME SUPER MARKET,No 9 Ground floor Krishna Garden road, Balaram layout Rajarajsshwari nagar",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+672,722107496868,Shivareddy,"SHAHID MEDICAL and General Stores,#19, Krishna Bhavan,10th Cross, Hoshalli Main Road, Padarayanapura bangalore 560026",Karnataka,Bangalore,562106,10.85,54,37.01,35
+673,722107524318,Nanjundeshwara Provision Store,"sri kamadhenu enterprises,976,behind BBMP office, 18th B cross,, RR nagar,",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+674,722107496943,Nanjundeshwara Provision Store,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+675,722107496905,Nanjundeshwara Provision Store,"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+676,722107497001,CITY MD PHARMA,"Global Medicals,No.17/1,4th Cross, Padarayanapura",Karnataka,Bangalore,560047,15.29,54,37.01,35
+677,722107524516,Lakshmimedicals,"Manoj super bazaar,No148 1st main byatarayanapura mysore road",Karnataka,Bangalore,560082,1.49,22.4,16.89,11.99
+678,712100873018,MANGALCHAND AND CO,"SRI BALAJI MEDICAL AND GENERAL STORES,M 9,167,STS PETER AND PUISE CHURCH,, JJR NAGAR MAIN ROAD ROYAPURAM",Karnataka,BENGALURU,560002,6.56,43.61,40.59,31.6
+679,722107524691,Shivareddy,"Sri Durga Medicals,10/3,3rd Main Road, Kasturaba Nagar,Pipeline West, Mysore Road",Karnataka,Bangalore,562106,3.59,43.61,40.59,31.6
+680,722107524615,Sri sai medicals,"SNEHA PROVISION STORES,#54/1,Maruthinagar,Bapujinagar, Bapujinagar",Karnataka,Bengaluru,560050,5.27,43.61,40.59,31.6
+681,722107524677,Shivareddy,"NEW HAPPY HOME SUPER MARKET,No 9 Ground floor Krishna Garden road, Balaram layout Rajarajsshwari nagar",Karnataka,Bangalore,562106,8.25,54,37.01,35
+682,722107524455,MOHAMMED ASHARAF,"Global Medicals,No.17/1,4th Cross, Padarayanapura",Karnataka,BANGALORE,560068,3.35,43.61,40.59,31.6
+683,722107524493,Nanjundeshwara Provision Store,"SHAHID MEDICAL and General Stores,#19, Krishna Bhavan,10th Cross, Hoshalli Main Road, Padarayanapura bangalore 560026",Karnataka,Bangalore,560099,11.77,43.61,40.59,31.6
+684,722107497148,CHATRA PROVISION STORE,"S A stores,#14, manja Madrid road, Gangondanahalli,",Karnataka,bangalore,560068,15.83,54,37.01,35
+685,722107497162,Sri raghavendra stores,"COFFEE NAADA SIRI ENTERPRISES,no 448 shop no 2 1st cross IDEAL HOMES TOWNSHIP, RR NAGAR",Karnataka,Bangalore,560030,5.3,43.61,40.59,31.6
+686,712100874527,MANGALCHAND AND CO,"pooja provision store,Pooja provision store, Near Anjaneya temple pattanagere RR nagar",Karnataka,BENGALURU,560002,12.37,43.61,40.59,31.6
+687,722107524738,NEW HAPPY HOME SUPER MARKET,"Mahadev super bazaar,56 1st main avalahalli mysore road",Karnataka,Bengaluru,560098,9.08,54,37.01,35
+688,722107525032,AKSHAYA super bazaar,"prasad medicals stores,#93,shop no1, II main giridhama layout BEML 3rd stage, Rajarajeshwari nagar",Karnataka,BENGALURU,560098,7.86,43.61,40.59,31.6
+689,722107524998,SREE MARUTHI MEDICALS,"mangaluru provision store,12/a 2nd cross 1st main road narasimhaiah colony, new timber yard layout mysore road",Karnataka,BANGALORE,560026,3.02,43.61,40.59,31.6
+690,722107497605,NEW HAPPY HOME SUPER MARKET,"prasad medicals stores,#93,shop no1, II main giridhama layout BEML 3rd stage, Rajarajeshwari nagar",Karnataka,Bengaluru,560098,8.34,43.61,40.59,31.6
+691,722107497322,shree mailareshwara medical & gene,"pooja provision store,Pooja provision store, Near Anjaneya temple pattanagere RR nagar",Karnataka,Bangalore,560098,2.65,43.61,40.59,31.6
+692,722107525117,MAHALAKSHMI GENERAL STORE,"pooja provision store,Pooja provision store, Near Anjaneya temple pattanagere RR nagar",Karnataka,BANGALORE,560027,15.59,43.61,40.59,31.6
+693,722107497506,Patanjali Arogya Kendra,"Mahadev super bazaar,56 1st main avalahalli mysore road",Karnataka,BENGALURU,560102,13.84,43.61,40.59,31.6
+694,722107497582,Padmavathi,"SRI HANUMAN MEDICALS,NO.179/1,2ND MAIN, 3RD CROSS,, CHAMARAJPET",Karnataka,Bangalore,560026,21.22,43.61,40.59,31.6
+695,722107497643,BHAGYA MEDICAL AND GENERAL STORES,"prasad medicals stores,#93,shop no1, II main giridhama layout BEML 3rd stage, Rajarajeshwari nagar",Karnataka,BANGALORE,560085,3.58,43.61,40.59,31.6
+696,722107525278,Sri lakshmi store,"RAVI MEDICALS AND GENERAL STORE,#19/8, west pipeline road, Kasturiba nagar, rudrappa garden",Karnataka,Bangalore,560026,15.25,43.61,40.59,31.6
+697,722107497667,SRI VENKATESHWARA DEPARTMENTAL STO,"MATHAJI SUPER MARKET,NO.6/1 9TH CROSS 4TH MAIN ROAD, NEAR SR FEUL STATION CHAMARAJPET",Karnataka,BANGALORE,560085,6.5,43.61,40.59,31.6
+698,712100873056,Raj marketing,"MATHAJI SUPER MARKET,NO.6/1 9TH CROSS 4TH MAIN ROAD, NEAR SR FEUL STATION CHAMARAJPET",Karnataka,Bangalore,560002,18.87,54,37.01,35
+699,722107525339,Basavaraju,"pooja provision store,Pooja provision store, Near Anjaneya temple pattanagere RR nagar",Karnataka,Bangalore,562107,10.21,35.61,22.91,15.29
+700,722107497827,Shivareddy,"LAKSHMI VENKATESHWARA PROVISION STORE,NO 9 A CROSS OPP AMCO FACTORY MYSORE ROAD, BYATARAYANAPURA",Karnataka,Bangalore,562106,11.8,54,37.01,35
+701,722107525391,TEJA MEDICALS,"Beauty stores,1/2 Nehru road new guddad halli",Karnataka,BANGALORE,560050,2.91,43.61,40.59,31.6
+702,722107525476,GANJ BAKSHI G N  MEDICALS,"Arafa food stuff trading,no 27, h main, oppo, shafi masjid, padarayanapura",Karnataka,Bangalore,560047,7.16,43.61,40.59,31.6
+703,722107525414,Mithun K Singh,"MATHAJI SUPER MARKET,NO.6/1 9TH CROSS 4TH MAIN ROAD, NEAR SR FEUL STATION CHAMARAJPET",Karnataka,Bangalore,560035,17.03,43.61,40.59,31.6
+704,722107525513,Shivareddy,"NEW HAPPY HOME SUPER MARKET,No 9 Ground floor Krishna Garden road, Balaram layout Rajarajsshwari nagar",Karnataka,Bangalore,562106,15.22,54,37.01,35
+705,722107525575,ns medical,"akshaya super bazaar,no 96/D, 12th CR's ideal homes township, Rajarajeshwari nagar",Karnataka,bangalore south,560082,6.13,43.61,40.59,31.6
+706,722107497926,Shivareddy,"SREE MARUTHI MEDICALS,#14 A.K COLONY AVALAHALLI MAIN ROAD GAALI ANJANEYA, BYATARAYANAPURA",Karnataka,Bangalore,562106,7.97,43.61,40.59,31.6
+707,722107498008,K.R.nagaraj,"NEW HAPPY HOME SUPER MARKET,No 9 Ground floor Krishna Garden road, Balaram layout Rajarajsshwari nagar",Karnataka,Bangalore,560028,10.09,43.61,40.59,31.6
+708,722107525551,Vignesh Provision Store,"shree mailareshwara medical & general stores,no.7&8, shop no.20,naveen arcade H.V.halli, Rajarajeshwari nagar",Karnataka,Bengaluru,560028,9.29,43.61,40.59,31.6
+709,722107525650,om sai baba provision stores,"Rudrappa stores,Avalahalli mysore road maramma temple road",Karnataka,banglore,560002,17.62,43.61,40.59,31.6
+710,722107498107,Sri vinayaka prv store,"Sri lakshmi stores,Avalahalli mysore road",Karnataka,Bangalore,560034,2.7,43.61,40.59,31.6
+711,722107498060,Basavaraju,"SRI RAGHAVENDRA MEDICAL AND GENERAL STORE,No 1669 GROUND FLOOR 3RD CROSS 1ST PHASE, SRINIVASAIAH ROAD 5TH STAGE BEML LAYOUT RAJARAJESWARINAGAR",Karnataka,Bangalore,562107,22.5,43.61,40.59,31.6
+712,712100873230,Shailesh Ravriya,"Arafa food stuff trading,no 27, h main, oppo, shafi masjid, padarayanapura",Karnataka,BENGALURU,560047,19.32,43.61,40.59,31.6
+713,722107498046,S VITTAL GUPTA,"SRINIVASA TRADERS,NO.28/1,GROUND FLOOR, 1ST MAIN ROAD,, SUDHAMANAGAR",Karnataka,BANGALORE,560002,19.09,43.61,40.59,31.6
+714,722107498367,Shivareddy,"subrahmanyeshwara mini bazaar,no 39 0ld chamarajpet, sunkalpet cross",Karnataka,Bangalore,562106,1.61,38.99,32,7.75
+715,712100873391,Raj marketing,"SKANDA TRADERS,Shop no 6 g s market, Ot pet cross",Karnataka,Bangalore,560002,23.4,43.61,40.59,31.6
+716,722107498541,ns medical,"KIRANA TRADING CO,NO.13,1ST MAIN ROAD, N T PET",Karnataka,bangalore south,560082,7.28,43.61,40.59,31.6
+717,722107498602,Kriti Medicals,"P.R SUBBARAMAIAH SETTY AND SONS,NO.336,, AVENUE ROAD",Karnataka,Bangalore,560062,1.43,35.61,22.91,15.29
+718,722107526015,HARITHA PROVISION STORE,"SRI VINAYAKA TRADERS,#37, MYSORE ROAD, BANGALORE",Karnataka,bangalore,560083,2.54,38.99,32,7.75
+719,722107526039,Vignesh Provision Store,"SRI VINAYAKA TRADERS,#37, MYSORE ROAD, BANGALORE",Karnataka,Bengaluru,560028,17.24,54,37.01,35
+720,722107498763,ns medical,"SRI VINAYAKA TRADERS,#37, MYSORE ROAD, BANGALORE",Karnataka,bangalore south,560082,14.37,54,37.01,35
+721,712100875081,Erevu Ventures Private Limited,"sirish food bazaar,no 54, 28th cross, corner cubbonpet main road",Karnataka,BENGALURU,560041,13.16,43.61,40.59,31.6
+722,722107526251,CHATRA PROVISION STORE,"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Karnataka,bangalore,560068,9.51,43.61,40.59,31.6
+723,722107526237,SRI RAGHAVENDRA MEDICAL AND GENERA,"Mangal Jyothi department,No 13, shop no1, shanthi nivas, 10 th cross RT street",Karnataka,Banglore,560098,0.96,22.4,16.89,11.99
+724,722107526336,Shri Bhagya Provision Store,"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Karnataka,Bangalore,560099,8.6,43.61,40.59,31.6
+725,722107498886,Shivareddy,"SKANDA TRADERS,Shop no 6 g s market, Ot pet cross",Karnataka,Bangalore,562106,9.86,25.6,16.8,8.61
+726,722107526411,CHATRA PROVISION STORE,"MAX MEDICALS,No 3/2 classic centre, H.Siddaiah Road",Karnataka,bangalore,560068,1.77,38.99,32,7.75
+727,722107526558,Sri Jagadamba traders,"Mangal Jyothi department,No 13, shop no1, shanthi nivas, 10 th cross RT street",Karnataka,BENGALURU,560068,24.36,43.61,40.59,31.6
+728,722107526596,Shivareddy,"MAX MEDICALS,No 3/2 classic centre, H.Siddaiah Road",Karnataka,Bangalore,562106,5.06,43.61,40.59,31.6
+729,722107526794,Sri Balaji medicals and general st,"Mangal Jyothi department,No 13, shop no1, shanthi nivas, 10 th cross RT street",Karnataka,Bangalore,560035,6.54,43.61,40.59,31.6
+730,722107526718,Mithun K Singh,"M/S BALAJI ENTERPRISES,No 4, G S Market ,, O T Pet cross",Karnataka,Bangalore,560035,1.53,38.99,32,7.75
+731,722107499081,DINESH PHARMA,"Shanthi Medicals & General Supplies,No; 621, Avenue road",Karnataka,BANGALORE,560027,1.37,35.61,22.91,15.29
+732,722107499043,abdulkhader,"soap centre,# 51,R.T.street bengalore 560053, R,T,street,chickpet bengalore,560053",Karnataka,Bangalore,560034,24.14,43.61,40.59,31.6
+733,722107499104,Shivareddy,"Mangal Jyothi department,No 13, shop no1, shanthi nivas, 10 th cross RT street",Karnataka,Bangalore,562106,9.35,43.61,40.59,31.6
+734,722107499142,HARSHITHA SUPER MARKET,"SRI VENKATESHWARA STORES,31,C.K.C GARDEN, 2ND MAIN, LALBAGH ROAD,1ST CROSS",Karnataka,btm,560076,14.43,54,37.01,35
+735,722107526855,madan,"M/S BALAJI ENTERPRISES,No 4, G S Market ,, O T Pet cross",Karnataka,Bangalore,562125,5.86,43.61,40.59,31.6
+736,722107526930,Sri ganapathi general stores,"SRI VENKATESHWARA STORES,31,C.K.C GARDEN, 2ND MAIN, LALBAGH ROAD,1ST CROSS",Karnataka,Bangalore,560085,5.2,43.61,40.59,31.6
+737,722107526879,Auntyxerox,"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Karnataka,Raghuvanahalli,560062,24.8,43.61,40.59,31.6
+738,722107499326,SEETHA BARAVASHAVARA PROVISION STO,"Mangal Jyothi department,No 13, shop no1, shanthi nivas, 10 th cross RT street",Karnataka,banaglore,560068,12.67,43.61,40.59,31.6
+739,722107526992,V ramesh,"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Karnataka,Bangalore,560068,21.26,43.61,40.59,31.6
+740,710150057532,ANITHA FANCY STORE,"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Karnataka,Jigani,560105,0.998,0.25,0.25,0.25
+741,722107527135,aboobakar,"soap centre,# 51,R.T.street bengalore 560053, R,T,street,chickpet bengalore,560053",Karnataka,Bangalore,560026,20.52,43.61,40.59,31.6
+742,722107527098,HARSHITHA SUPER MARKET,"sree sreenivas general stores,no 135 killari road banglore, chikkapete",Karnataka,btm,560076,4.15,43.61,40.59,31.6
+743,722107499401,abdulkhader,"Shanthi Medijoint & General Supplies,No. 33, Avenue road",Karnataka,Bangalore,560034,24.9,43.61,40.59,31.6
+744,722107527210,Pemaram,"KOMAL TRADERS,3,8TH MAIN,13 TH CROSS,, WILSON GARDEN",Karnataka,Bangalore,562107,10.95,54,37.01,35
+745,722107527418,MANJUNATHA  B,"mukesh provision stores,no 109,Mukesh provision store, Laxman Rao road balepet cross",Karnataka,BANGALORE,560099,18.54,43.61,40.59,31.6
+746,710150042842,Win Stationary,"mukesh provision stores,no 109,Mukesh provision store, Laxman Rao road balepet cross",Karnataka,Bangalore,560095,7.62,25.81,12.29,63.55
+747,712100869813,balaji medical centre new,"mukesh provision stores,no 109,Mukesh provision store, Laxman Rao road balepet cross",Karnataka,BENGALURU,560011,18.98,43.61,40.59,31.6
+748,712100869851,balaji medical centre new,"mukesh provision stores,no 109,Mukesh provision store, Laxman Rao road balepet cross",Karnataka,BENGALURU,560011,17.12,43.61,40.59,31.6
+749,722107498152,C N RAGHAVENDRA,"mukesh provision stores,no 109,Mukesh provision store, Laxman Rao road balepet cross",Karnataka,BANGALORE,560070,23.79,43.61,40.59,31.6
+750,722107470448,C N RAGHAVENDRA,"AKSHAYA TRADERS,#20 8TH CROSS WILSON GARDEN BENGALURU, Bangalore",Karnataka,BANGALORE,560070,6.79,43.61,40.59,31.6
+751,722107498572,shree Ramakrishna stores,"C.M.KHADER AND SONS,Property No.6, Shop no. 5, S.L.N. Charity Building, K. R. Layout",Karnataka,Bangalore,560070,3.45,35.61,22.91,15.29
+752,722107473623,CHANDAN G,"GOOD MORNING MEDICARE,Door no.18,police road,ranasinghpet, Cottonpet",Karnataka,Bangalore,560070,2.84,43.61,40.59,31.6
+753,722107501272,shree Ramakrishna stores,"Raj marketing,#15/1 new thargpet Mysore Road cross",Karnataka,Bangalore,560070,1.13,38.99,32,7.75
+754,722107476969,C N RAGHAVENDRA,"MANGAL CHAND &CO,477,BASEMENT,K.B.PLAZA, AVENUE ROAD",Karnataka,BANGALORE,560070,7.71,53.9,29.31,24.11
+755,722107478789,C N RAGHAVENDRA,"MANGAL CHAND &CO,477,BASEMENT,K.B.PLAZA, AVENUE ROAD",Karnataka,BANGALORE,560070,0.59,22.4,16.89,11.99
+756,722107480348,Mahalasha general store,"MAHALAKSHMI GENERAL STORE,4TH MAIN,8TH CROSS, WILSON GARDEN",Karnataka,BENGALURU,560041,13.62,43.61,40.59,31.6
+757,722107509537,"Ravishankar stores, Ramesh C M","Raj marketing,#15/1 new thargpet Mysore Road cross",Karnataka,BENGALURU,560028,11.77,43.61,40.59,31.6
+758,722107483240,"Ravishankar stores, Ramesh C M","om sai baba provision stores,no 936 ground floor shop no 04 k a s lane, dharmarayaswamy temple street",Karnataka,BENGALURU,560028,6.31,29.9,23.2,20.4
+759,722107488023,Mahalasha general store,"VITTALA PROVISION STORES,177,12TH CROSS,, CUBBONPET, BANGALORE",Karnataka,BENGALURU,560041,24.81,43.61,40.59,31.6
+760,722107523670,Ravindar L G,"Raj marketing,#15/1 new thargpet Mysore Road cross",Karnataka,Bangalore,560070,4.7,43.61,40.59,31.6

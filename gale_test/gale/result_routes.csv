@@ -1,0 +1,235 @@
+Address,Truck,cum_distance,cum_vol,cum_weight,distance,time_range,volume,weight
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck1,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck1,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck2,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck2,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck3,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck3,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck4,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck4,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck5,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck5,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck6,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck6,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck7,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck7,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck8,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck8,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck9,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck9,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck10,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck10,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck11,0.0,0,0,0.0,0 - 0,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck11,0.0,0,0,0.0,1200 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck12,0.0,0,0,0.0,0 - 0,0.0,0.0
+"5,2nd floor,,krishnappa garden,3rd cross,behind kids global school",Truck12,2.7082536225892815,0,0,2.7082536225892815,1440 - 6000,1.0,5.0
+"Flat no. 11, 2nd floor, laxmaiya reddy building,near govt school Sbi Atm.",Truck12,9.603405439015752,1,5,6.89515181642647,3360 - 7920,1.0,5.0
+"103/5, flat - F3, first floor, above Ecom express,,3rd main road,",Truck12,9.603405439015752,2,10,0.0,4560 - 9120,1.0,5.0
+"2nd floor, Smt. Chennamma residence,2nd cross road,",Truck12,9.603405439015752,3,15,0.0,5760 - 10320,1.0,5.0
+"13 ,shree Ragam,1st Floor,First cross,Ayappa layout, Behind KMF",Truck12,9.603405439015752,4,20,0.0,6960 - 11520,1.0,5.0
+"36 krishna paradise flat 202,lallilane munnekolala",Truck12,9.603405439015752,5,25,0.0,8160 - 12720,1.0,5.0
+"Sai Kurappa Apartment, No-99,5th Cross, Near Grand Bakery",Truck12,11.464281162573151,6,30,1.8608757235573998,9480 - 14040,1.0,5.0
+"85/5,near ganesh juice centre,vasundhara Ladies pg",Truck12,13.167390500784485,7,35,1.7031093382113338,10800 - 15360,1.0,5.0
+"Lotus PG, B3,Saibaba temppe road, 2nd cross",Truck12,16.378095237414975,8,40,3.21070473663049,12360 - 16920,1.0,5.0
+"016,new heaven apartments",Truck12,19.166058451686578,9,45,2.7879632142716018,13800 - 18360,1.0,5.0
+"Flat 501, lassaya and chekrika residency, #20,2nd Main, 2 phase, 10th cross, Manjunath Layout -560037",Truck12,24.963798138720563,10,50,5.797739687033985,15600 - 20160,1.0,5.0
+"#90/2, 2nd floor , outer ring road ,,Marathahalli, bangalore -560037",Truck12,28.72676213525417,11,55,3.7629639965336072,17160 - 21720,1.0,5.0
+"18, room no. 503,sri venkateshwara pg for gents, 1st cross,behind thalesery restaurant",Truck12,31.739131844696253,12,60,3.012369709442085,18720 - 23280,1.0,5.0
+"house no 26/1,ground floor  wasa layout.5th main.2nd cross.dodnakundi.bengalor 37,was a layout",Truck12,37.50767937846214,13,65,5.768547533765889,20520 - 25080,1.0,5.0
+"B 308,Hi Life Pearl Shell",Truck12,43.46969045550807,14,70,5.962011077045932,22320 - 26880,1.0,5.0
+"A-308,Shraddha Splendor, Ramagondanahalli, Borewell Rd, Palm Meadows, 560066",Truck12,46.403895452196835,15,75,2.9342049966887616,23760 - 28320,1.0,5.0
+"302 lily block, Vijayasri Elixir apt,borewell road, nallurahalli",Truck12,47.120934465919085,16,80,0.7170390137222477,24960 - 29520,1.0,5.0
+"102 H block, amrutha value apartments,nallurhalli junction, borewell road, opposite lane to andhra bank at nallurhalli",Truck12,47.391256646571215,17,85,0.27032218065213287,26160 - 30720,1.0,5.0
+"# 1, 2nd floor,Nallurahalli circle, Amrutha Heights Apartment street",Truck12,48.14057798030864,18,90,0.7493213337374294,27360 - 31920,1.0,5.0
+"#320,D Block,Amrutha Value Apartment, Borewell Road",Truck12,48.88989931404607,19,95,0.7493213337374294,28560 - 33120,1.0,5.0
+"410,Malibu Paloma borewell road",Truck12,49.39346723772528,20,100,0.5035679236792138,29760 - 34320,1.0,5.0
+"Sapphire 203,Pattandur Agrahara",Truck12,50.19511920991843,21,105,0.8016519721931452,30960 - 35520,1.0,5.0
+"E 301,Dna ariston",Truck12,50.19511920991843,22,110,0.0,32160 - 36720,1.0,5.0
+"B2-717 7th floor,Amrutha Heights, Nallurahalli Circle, Whitefield.",Truck12,50.19511920991843,23,115,0.0,33360 - 37920,1.0,5.0
+"Flat 211,Soma Enclave, Borewell road",Truck12,51.02812105814304,24,120,0.8330018482246114,34560 - 39120,1.0,5.0
+"39,vinayaka layout,near alpine echo appartment",Truck12,51.95097983756464,25,125,0.9228587794215983,35760 - 40320,1.0,5.0
+"D 101,VSV WHITE ORCHIDS,1ST FLOOR FLR,  SIDDAPURA MAIN ROAD,NALURAHALLI,,Next to Glentree academy school",Truck12,53.87026415262261,26,130,1.9192843150579744,37080 - 41640,1.0,5.0
+"R2 706,Alpine Eco Apartment , Near Rainbow children hospital,.  Marathahalli",Truck12,57.597898102705166,27,135,3.727633950082555,38640 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck12,62.20637211783048,28,140,4.608474015125314,40320 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck13,0.0,0,0,0.0,0 - 0,0.0,0.0
+"flat no 301 nagaraj residency pragrathi,layout opp 12th cross doddanekundi Bangalore",Truck13,3.9842060605134395,0,0,3.9842060605134395,1560 - 3360,1.0,5.0
+"B 302,SLS Sunny Gardens, 5th Main Cross, Nisagra Layout",Truck13,4.602306370448306,1,5,0.6181003099348671,2760 - 4560,1.0,5.0
+"flat no 11,opp AK VEGETABLES,near to Rama Temple,Doddanekundi",Truck13,5.141845015236114,2,10,0.5395386447878076,3960 - 5760,1.0,5.0
+"203, Sriven Pride, 4th Cross, Gururaja Layout,Doddanekundi",Truck13,5.6484666969541735,3,15,0.5066216817180593,5160 - 6960,1.0,5.0
+"#114 ,SLS SUNNY GARDENS,,WASALAYOUT, 5TH MAIN",Truck13,6.394244005438025,4,20,0.7457773084838516,6360 - 8160,1.0,5.0
+"Hoo2,Akme ballet",Truck13,6.792687036378181,5,25,0.39844303094015665,7560 - 9360,1.0,5.0
+"H.No:36, 1st Floor, 2nd Main,,Shanbhog Layout, Doddenekkundi, Bangalore (Land Mark: Opp to Devi Ashirwad Apartments)",Truck13,7.104706624654486,6,30,0.3120195882763044,8760 - 10560,1.0,5.0
+"A-704,Alpine eco",Truck13,7.875905904326153,7,35,0.7711992796716672,9960 - 11760,1.0,5.0
+"Flat 107, Sravya Flute apartments, 11th cross, chinapannahalli road, doddanekundi extension, Bangalore-560037,Sravya flute",Truck13,8.547978053275372,8,40,0.6720721489492197,11160 - 12960,1.0,5.0
+"PB 002,Alpine Eco Apartments, Near Rainbow Hospital",Truck13,9.255382106983443,9,45,0.7074040537080716,12360 - 14160,1.0,5.0
+"S002,Bren Unity",Truck13,9.999295493547388,10,50,0.7439133865639448,13560 - 15360,1.0,5.0
+"405, pleasantville apartment,near krishna temple",Truck13,10.350992351007402,11,55,0.35169685746001494,14760 - 16560,1.0,5.0
+"A303, SVS Palm2,Chinnapanahalli main road",Truck13,11.205432112899972,12,60,0.854439761892569,15960 - 17760,1.0,5.0
+"QA1-608,Alpine Eco Apartments",Truck13,11.47697740342392,13,65,0.27154529052394794,17160 - 18960,1.0,5.0
+"H-202,ALPINE ECO APARTMENT",Truck13,11.54245923655656,14,70,0.06548183313264076,18360 - 20160,1.0,5.0
+"807 Block C,alpine eco",Truck13,11.54245923655656,15,75,0.0,19560 - 21360,1.0,5.0
+"J 003 Bren unity,CHINNAPANNAHALLI MAIN ROAD",Truck13,12.238937737524491,16,80,0.6964785009679306,20760 - 22560,1.0,5.0
+"B-115,The Greens",Truck13,12.590634594984506,17,85,0.35169685746001494,21960 - 23760,1.0,5.0
+"005, GSA wave woods,Nr. Hanuman temple, kundanahalli colony",Truck13,12.590634594984506,18,90,0.0,23160 - 24960,1.0,5.0
+"Flat-303, 3rd Floor, Vanshee Solitaire, 4th Main, 1st Cross,,Chinapannahalli",Truck13,13.503554538572468,19,95,0.9129199435879612,24360 - 26160,1.0,5.0
+"Flat No 113,Mahaveer Bower Residency",Truck13,13.604215233824885,20,100,0.10066069525241747,25560 - 27360,1.0,5.0
+"#27, 4th cross, 4th main, kondana rama layout,chinnapanhalli, marathahalli",Truck13,13.945413279535071,21,105,0.3411980457101854,26760 - 28560,1.0,5.0
+"d,j",Truck13,14.942333736565129,22,110,0.9969204570300573,27960 - 29760,1.0,5.0
+"2nd Floor Muniaj Building Itpl Gate 3,Land Mark Becky",Truck13,17.78609683989503,23,115,2.843763103329901,29400 - 31200,1.0,5.0
+"BM lavender flat no.304 borewell road Whitefield,Nellurhalli",Truck13,18.716254254757033,24,120,0.9301574148620038,30600 - 32400,1.0,5.0
+"ph 3 503,asian laasya",Truck13,19.062521834206038,25,125,0.3462675794490056,31800 - 33600,1.0,5.0
+"S 102 DNA Opulence,Borewell road Nallurhalli",Truck13,19.408789413655043,26,130,0.3462675794490056,33000 - 34800,1.0,5.0
+"A205, 3rd Floor, Balaji Casablanca,Swamy Vivekananda Road, Prashanth Layout",Truck13,19.75505699310405,27,135,0.3462675794490056,34200 - 36000,1.0,5.0
+"Flat 311 SV milan apartment,Prashant layout",Truck13,20.75126621230322,28,140,0.9962092191991725,35400 - 37200,1.0,5.0
+"201,Sai Samruddhi Apartment,ECC road",Truck13,21.58263729314338,29,145,0.831371080840159,36600 - 38400,1.0,5.0
+"G-303, Balaji Elegance,Swami Vivekanand Road, Near GR Tech Park",Truck13,22.32886098406393,30,150,0.7462236909205471,37800 - 39600,1.0,5.0
+"33,BTP",Truck13,22.97621074861766,31,155,0.6473497645537305,39000 - 40800,1.0,5.0
+"C-11, ZONASHA PARADISO, ORR to ITPB BYPASS ROAD,DODDA NEKKUNDI INDUSTRIAL AREA, NEAR BIG BASKET",Truck13,23.48524105429779,32,160,0.5090303056801317,40200 - 42000,1.0,5.0
+"1st main rood phone. 9964288047,8th croos",Truck13,24.172434143261253,33,165,0.687193088963461,41400 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck13,30.993729059014147,34,170,6.821294915752894,43320 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck14,0.0,0,0,0.0,0 - 0,0.0,0.0
+"##198, 3rd Floor, NANDANAM, Club Avenue Road,,Karthiknagar",Truck14,4.730527110323959,0,0,4.730527110323959,1680 - 2160,1.0,5.0
+"402, sri manjunatha nilaya,opp to sports complex,chinnapanahalli",Truck14,5.378133504348619,1,5,0.64760639402466,2880 - 3360,1.0,5.0
+"P 1106,purva fountain square",Truck14,6.333475273136103,2,10,0.9553417687874839,4080 - 4560,1.0,5.0
+"246, 3rd cross,Manjunath layout",Truck14,7.266734215999156,3,15,0.9332589428630528,5280 - 5760,1.0,5.0
+"savithramma,,infront of pradhan agency,",Truck14,7.3853947824430275,4,20,0.11866056644387171,6480 - 6960,1.0,5.0
+"j 1103,purva fountain square",Truck14,8.379512986531918,5,25,0.9941182040888897,7680 - 8160,1.0,5.0
+"no 68 6th cross,rajashree layout",Truck14,8.847249997290755,6,30,0.46773701075883656,8880 - 9360,1.0,5.0
+"Room no 35, building 16, second floor,Bhubaneshwari layout, 7th cross, munekollala, marathahalli- 560037",Truck14,9.572573143413772,7,35,0.7253231461230164,10080 - 10560,1.0,5.0
+"006 , G.R Samruddhi Apartments , Satyam Street,near Government school",Truck14,9.921677078887882,8,40,0.34910393547410945,11280 - 11760,1.0,5.0
+"2nd floor, SLV Nilay,venkateshwara layout, 5th cross, Marathalli ext.",Truck14,10.166346225735886,9,45,0.24466914684800334,12480 - 12960,1.0,5.0
+"RE 912 Purva Riviera,Marathahalli",Truck14,10.994129316275044,10,50,0.8277830905391582,13680 - 14160,1.0,5.0
+"Rfb 011 purva Riviera Apartments,spice garden bus stop",Truck14,10.994129316275044,11,55,0.0,14880 - 15360,1.0,5.0
+"Rfb 011 Purva Riviera Apartment,spice garden bus stop",Truck14,10.994129316275044,12,60,0.0,16080 - 16560,1.0,5.0
+"K406,Purva Fountain Square",Truck14,11.232837605388479,13,65,0.23870828911343525,17280 - 17760,1.0,5.0
+"New Harinath Pg, Vivekananada layout, monekolala,,opposite to home tome, beside biriyani zone.",Truck14,12.12496384769469,14,70,0.8921262423062123,18480 - 18960,1.0,5.0
+"c4 , no.7 &8,lakshminarrayana temple road, behind papaiah reddy building",Truck14,12.520378093408956,15,75,0.395414245714265,19680 - 20160,1.0,5.0
+"Flat number 1, Miracle Towers,Near Miami Super Market",Truck14,13.192558882762214,16,80,0.6721807893532576,20880 - 21360,1.0,5.0
+"C-419 Ittina abha Apartments Munnekollal Main Rd,Marathahalli",Truck14,13.80594796043896,17,85,0.6133890776767459,22080 - 22560,2.0,10.0
+"202 RR Nest Manjunatha layout 3rd cross,munnekolala marathalli 560037",Truck14,14.184742630206053,19,95,0.37879466976709286,23280 - 23760,1.0,5.0
+"E1 ABN residency manjunatha layout main road,Munnekollal bangalore",Truck14,14.925330447661716,20,100,0.7405878174556645,24480 - 24960,1.0,5.0
+"405 Sree Sai Lake Ville,Varthur",Truck14,16.920520572055064,21,105,1.995190124393347,25800 - 26280,1.0,5.0
+"Flat 204 B block ,Abhilasha Apartment,Near Lakefield Apartment, Balgere Road",Truck14,17.66844911363758,22,110,0.7479285415825128,27000 - 27480,1.0,5.0
+"flat 306 block b Sankalp Cherry Blossom Apartment,Edgah Road Varthur",Truck14,18.138488673515905,23,115,0.4700395598783279,28200 - 28680,1.0,5.0
+"Goppallareddy Layout,Halubavi road, near varthur police station",Truck14,18.937272695143317,24,120,0.7987840216274125,29400 - 29880,1.0,5.0
+"A-306, DS MAX STERLING,Rajabhavi Cross, Opp. Sub- Registrar Office",Truck14,19.507204569201566,25,125,0.5699318740582497,30600 - 31080,1.0,5.0
+"303 P Square Relais, Near El bethel church,Muthasandra main road",Truck14,19.758089548070508,26,130,0.25088497886894284,31800 - 32280,1.0,5.0
+"E004,Renaissance Jagriti, Ramagondanhalli",Truck14,21.75317835950425,27,135,1.9950888114337415,33120 - 33600,1.0,5.0
+"A-1006, DNR Atmosphere, Municipal No.231/66 of R. Narayanapura,,Ramagondanahalli Post, Whitefield, Bangalore -560066",Truck14,21.89666392230716,28,140,0.14348556280290992,34320 - 34800,1.0,5.0
+"303,3rd Floor, Sri Sai Residency II, 4th Cross (Next to SLV PG)",Truck14,22.07846553580324,29,145,0.18180161349607943,35520 - 36000,1.0,5.0
+"flat 120, Gcn white palms,Ramagondanahalli, borewell road",Truck14,22.8337334104867,30,150,0.7552678746834631,36720 - 37200,1.0,5.0
+"412,Gcn white palm apartment, ramagundanahalli borewell road",Truck14,22.8337334104867,31,155,0.0,37920 - 38400,1.0,5.0
+"C-903,Sumadhura silver ripples",Truck14,23.755228122908427,32,160,0.9214947124217252,39120 - 39600,1.0,5.0
+"Flat no-004,Block - 2,Adithya Serene Apartment, Narulhalli",Truck14,24.562130528048886,33,165,0.80690240514046,40320 - 40800,1.0,5.0
+"A707,Gopalan Atlantis",Truck14,24.94469764932807,34,170,0.3825671212791831,41520 - 42000,1.0,5.0
+"G2, Mana Placido, Pattanduru Agrahara,ECC Road, Whitefield",Truck14,25.583495916808637,35,175,0.638798267480566,42720 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck14,33.56212099193071,36,180,7.978625075122071,44760 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck15,0.0,0,0,0.0,0 - 0,0.0,0.0
+"202, Samhita serenity,
+Opposite EMC square building lane,,Doddanakundi,Outer ring road",Truck15,3.226511425056019,0,0,3.226511425056019,1560 - 2160,1.0,5.0
+"2A-304,Soulspace Arista, Opposite Bagmane tech Park",Truck15,3.3938174755871446,1,5,0.16730605053112557,2760 - 3360,1.0,5.0
+"Flat-2B,  House  No:142,Karthik Nagar.,LRDE Layout,Near Axis Bank,",Truck15,5.105158661892658,2,10,1.7113411863055135,4080 - 4680,1.0,5.0
+"Flat 03/Shabari apartment/,Hemant Nagar Behind HEA College",Truck15,5.988915761402997,3,15,0.8837570995103389,5280 - 5880,1.0,5.0
+"#734/44, 1st Floor, Sathagiri Nilaya,,1st Cross, Tulasi Theatre Road, Near Old KEB Office,",Truck15,6.833427037016663,4,20,0.8445112756136662,6480 - 7080,1.0,5.0
+"room 302, venkatadri nilayam, opp suyash pg,10th main, tulasi theatre road, behind innovative multiplex",Truck15,7.280478812870455,5,25,0.447051775853792,7680 - 8280,1.0,5.0
+"saras hotel,5th cross, thulasi theatre road",Truck15,7.398716490276649,6,30,0.11823767740619362,8880 - 9480,1.0,5.0
+"SMQ- 59/6, AKASH VIHAR CAMP,AIR FORCE CAMP",Truck15,7.897204562409776,7,35,0.4984880721331272,10080 - 10680,1.0,5.0
+"1St Floor, Akshya Pg for Gents,5th cross Tulsi Theatre road",Truck15,8.289713920755668,8,40,0.3925093583458925,11280 - 11880,1.0,5.0
+"No 21,(old no 44), Door No -F1, First floor,5th cross, Behind Deepa nurshing home, landmark -behind Indian oil petrol pump",Truck15,8.862715990495722,9,45,0.5730020697400537,12480 - 13080,1.0,5.0
+"161/1, 1st Floor Green Building,Manjunatha Nagar,Auto Stand Road,GBJ SCHOOL ROAD",Truck15,8.862715990495722,10,50,0.0,13680 - 14280,1.0,5.0
+"smq: 8/8,Akash Vihar,Airforce camp",Truck15,9.089288701874349,11,55,0.22657271137862575,14880 - 15480,1.0,5.0
+"3rd floor, no.20, krishna shine building, marathahalli bridge, marathahalli,IMS Learning Resources Pvt Ltd",Truck15,9.483887374357598,12,60,0.3945986724832501,16080 - 16680,1.0,5.0
+"Aishwarya opulence,A402. next to home town marathahalli",Truck15,9.987080108004301,13,65,0.5031927336467034,17280 - 17880,1.0,5.0
+"S3/T3,Ittina Akya Apartments",Truck15,10.125017393300212,14,70,0.13793728529591096,18480 - 19080,1.0,5.0
+"403, 4th floor, panchratan flats,Chodeshwari temple road, 2nd cross, opp. New age school",Truck15,10.956461898201965,15,75,0.8314445049017531,19680 - 20280,1.0,5.0
+"101 B3 Viceroy boulevard Apt. Tulasi Theater Road Marathahalli,Tulasi Theater Road Marathahalli",Truck15,11.452493214879624,16,80,0.4960313166776595,20880 - 21480,1.0,5.0
+"Flat no 38:3rd floor,2nd cross,2nd main,vasantha layout,                         cell:9513365358.,Near vagdevi villas school,munnekolal",Truck15,13.384489775377794,17,85,1.9319965604981697,22200 - 22800,1.0,5.0
+"Building No. 1, Flat number 201,Near lakshmi vabhava resturant",Truck15,13.787484975680293,18,90,0.402995200302499,23400 - 24000,1.0,5.0
+"730/1, 1st MAIN , 1st CROSS,NEAR VAGDEVI VILLAS SCHOOL ROAD",Truck15,14.144272311936778,19,95,0.35678733625648373,24600 - 25200,1.0,5.0
+"house no 12,1st main, 2nd cross,near vagdevi vilas school",Truck15,14.595391745446607,20,100,0.4511194335098292,25800 - 26400,1.0,5.0
+"Dinesh reddy apartment,laxmi Narayan temple",Truck15,15.071170367217869,21,105,0.4757786217712619,27000 - 27600,1.0,5.0
+"#303,Desari Apartment,7th cross",Truck15,15.804668663191483,22,110,0.7334982959736147,28200 - 28800,1.0,5.0
+"House no.5,3rd floor,6th main,SLN LAYOUT",Truck15,16.786991509203833,23,115,0.9823228460123496,29400 - 30000,1.0,5.0
+"B-205,B - 205, Sumadhura Sandoval Apartments, Thubrahalli, Bangalore, 560066",Truck15,17.622311057470878,24,120,0.8353195482670455,30600 - 31200,1.0,5.0
+"gcn nest,silver spring layout",Truck15,17.98536628920706,25,125,0.3630552317361822,31800 - 32400,1.0,5.0
+"201 balaji garden vigyor high school road,kundalhall signal",Truck15,18.432992136179116,26,130,0.4476258469720558,33000 - 33600,1.0,5.0
+"Nina salon 2nd cross road,Ss luxury pg",Truck15,18.950073807729595,27,135,0.5170816715504798,34200 - 34800,1.0,5.0
+"House Num 13,2nd cross, near sai bakery",Truck15,19.757233575988707,28,140,0.807159768259113,35400 - 36000,1.0,5.0
+"451,4th cross",Truck15,20.712133853085685,29,145,0.954900277096977,36600 - 37200,1.0,5.0
+"Sri sai abba, 304, Aswath Nagar, Marathahalli,Marathahalli",Truck15,21.213967129710724,30,150,0.5018332766250377,37800 - 38400,1.0,5.0
+"Flat no. W1, Rekha Park, 2nd Cross,,Thulasi theatre road Marathalli",Truck15,21.41153304517305,31,155,0.19756591546232655,39000 - 39600,1.0,5.0
+"chowdeshwari layout 779,mayuri recidency",Truck15,21.74218445483501,32,160,0.3306514096619583,40200 - 40800,2.0,10.0
+"FB-336, B2 block, 5th floor, Lal bahadur shastri building,HAL central township",Truck15,22.6461495110759,34,170,0.903965056240892,41400 - 42000,1.0,5.0
+"fb-325,HAL Central township (HAL apartments)",Truck15,23.311995216414864,35,175,0.6658457053389647,42600 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck15,28.13507109820734,36,180,4.8230758817924775,44280 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck16,0.0,0,0,0.0,0 - 0,0.0,0.0
+"No 360,1st cros 1st main doddanekundi , marathahalli bengaluru-560037",Truck16,3.7844829053646563,0,0,3.7844829053646563,1560 - 2280,1.0,5.0
+"FB (M)-91, HAL CENTRAL TOWNSHIP ,,NEAR BORE WELL BUS STOP, MARATHAHALLI POST-560037,",Truck16,5.43373508906366,1,5,1.6492521836990037,2880 - 3600,1.0,5.0
+"No3,Chowdeswari street",Truck16,5.984364903587477,2,10,0.5506298145238171,4080 - 4800,1.0,5.0
+"smq no 12/08,akash vihar air force camp opposite to brand factory",Truck16,6.609959689353463,3,15,0.6255947857659864,5280 - 6000,1.0,5.0
+"P-44 Akash vihar Airforce canpus,opp Brand factory",Truck16,6.8365324007320885,4,20,0.22657271137862575,6480 - 7200,1.0,5.0
+"97/2 ,1st cross road,opposite to HP gas godowm",Truck16,7.213798837283303,5,25,0.37726643655121467,7680 - 8400,1.0,5.0
+"97/2 ,1st cross road,ramanjaneya layout, marathalli",Truck16,7.328357389972729,6,30,0.11455855268942611,8880 - 9600,1.0,5.0
+"#366, 5th floor,9th cross, sanjay nagar, marathahalli",Truck16,7.660240089539437,7,35,0.33188269956670835,10080 - 10800,1.0,5.0
+"Flat No:A-07,Bharath Regency Apartments,,Anand Nagar,Marathahalli Bridge,Bangalore",Truck16,8.165285628029809,8,40,0.5050455384903713,11280 - 12000,1.0,5.0
+"55,3rd cross Aswath Nagar Marthahalli,Vyshnavi pg",Truck16,8.876563821413612,9,45,0.7112781933838029,12480 - 13200,1.0,5.0
+"#43/37,2nd floor,2nd cross,tulasi theatore road,marthahall.,",Truck16,9.016902063208125,10,50,0.14033824179451337,13680 - 14400,1.0,5.0
+"9th main Chowdeshwari Layout,opposite to RJS college ..near Maa gren fresh Thulsi Theater Road Marathalli",Truck16,9.46343288207192,11,55,0.44653081886379486,14880 - 15600,1.0,5.0
+"Flat no. 23,4th Cross Ramajaneya layout , opposite kalamandir",Truck16,10.313997474156807,12,60,0.8505645920848857,16080 - 16800,1.0,5.0
+"T5, KKR Enclave 10th cross Manjunath Layouy,kundalahalli Gate",Truck16,11.27984534046641,13,65,0.9658478663096042,17280 - 18000,1.0,5.0
+"flat no 102, Ds Max symphony,near thirumalaya swamy temple, lane goes next to thubrahalli busstop ( near health and glow)",Truck16,12.066030967853235,14,70,0.7861856273868248,18480 - 19200,1.0,5.0
+"B609 Keerthi Gardenia Apt,Near VIBGYOR School Thubrahalli",Truck16,12.708641744747682,15,75,0.6426107768944462,19680 - 20400,1.0,5.0
+"D 303,Vibgyor High School Road",Truck16,13.47975555206717,16,80,0.7711138073194873,20880 - 21600,1.0,5.0
+"thurubrahalli,karanatka",Truck16,13.937291519427562,17,85,0.4575359673603923,22080 - 22800,1.0,5.0
+"c 403, Shriram Samruddhi apartments,opposite Apollo medical centre",Truck16,14.194376741877178,18,90,0.2570852224496153,23280 - 24000,1.0,5.0
+"E605 KEERTHI GARDENIA APARTMENT SY NO 61/1,NR. VIBGYOR SCHOOL THUBARAHALLI",Truck16,14.942966418963968,19,95,0.7485896770867898,24480 - 25200,1.0,5.0
+"A-105, Rajani Ashish Apartment,Behind Sriram Samruddhi Apartment, Near VIBGYOR School",Truck16,15.691556096050757,20,100,0.7485896770867898,25680 - 26400,1.0,5.0
+"F902,SRIRAM SAMRIDHI Apartments Varthur Main Road",Truck16,15.691556096050757,21,105,0.0,26880 - 27600,1.0,5.0
+"204 ,D Block Vaswani Brentwood,Vibgyor School Road near Kundanhalli Gate",Truck16,16.013955052826162,22,110,0.322398956775405,28080 - 28800,1.0,5.0
+"303, Geetanjali Apartment,5th Cross, Green Garden Layout",Truck16,16.38678226310111,23,115,0.3728272102749472,29280 - 30000,1.0,5.0
+"43, VMR ARCADE, Shape Up Fitness,Kundalahalli Signal, Varthur Main Road,",Truck16,17.14734122241085,24,120,0.7605589593097395,30480 - 31200,1.0,5.0
+"Q 209,Shriram Samrudhhi Apartment, Varthur Road",Truck16,17.480558213214547,25,125,0.33321699080369416,31680 - 32400,1.0,5.0
+"303, Grexter Elysian,Sai Baba temple Road",Truck16,18.04717293569046,26,130,0.5666147224759157,32880 - 33600,1.0,5.0
+"Rh-16,kundanhalli",Truck16,18.436028958294795,27,135,0.3888560226043325,34080 - 34800,1.0,5.0
+"D305 Keerthi gardenia apartments,near Vibgyor school. Kundalahalli gate",Truck16,19.03545934452879,28,140,0.5994303862339951,35280 - 36000,1.0,5.0
+"L-107 Hinduja Park,Silver Springs. Layout",Truck16,19.913920737178294,29,145,0.8784613926495073,36480 - 37200,1.0,5.0
+"flat-109,Saranya Springs Apartments,shirdi sai temple road,Green garden layout",Truck16,20.561215081778577,30,150,0.6472943446002822,37680 - 38400,1.0,5.0
+"Apartment Number - 175 (Pink color small Apartment),,11th Cross Manjunatha Layout, Opposite Sri Sai Store, Near Keerthi Bakery, Pin - 560037",Truck16,20.991993956090493,31,155,0.4307788743119137,38880 - 39600,1.0,5.0
+"Plot No. 19,Silver Spring Layout",Truck16,21.371899460938014,32,160,0.37990550484751934,40080 - 40800,1.0,5.0
+"G1, 208,SRI SAI NILAYA,9th Main, 1st Cross,Besides Yashomati Hospital",Truck16,22.027744625792405,33,165,0.6558451648543913,41280 - 42000,1.0,5.0
+"flat number-303, Pavani Fortune Apartments,silver spring layout, behind Golconda chimney",Truck16,22.186000813920035,34,170,0.1582561881276313,42480 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck16,29.005914352810777,35,175,6.81991353889074,44400 - 86400,0.0,0.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck17,0.0,0,0,0.0,0 - 0,0.0,0.0
+"RE-401 Rajashree Nilaya 2nd A cross 3rd Main road,Kallapa layout opp Basavangar bus stop",Truck17,2.5868805711459286,0,0,2.5868805711459286,1440 - 2280,1.0,5.0
+"79,3rd Floor,2nd House,Dasarath Bldg,,8th main road dead end bldg, Chowdeswari layout",Truck17,3.5278177237044437,1,5,0.940937152558515,2640 - 3480,1.0,5.0
+"1 floor,flat 101,poornajyothi hevans,,2 cross,maruthi nagar,,Munnekollal",Truck17,14.948481331594657,2,10,11.420663607890212,5160 - 6000,1.0,5.0
+"sai meghana homes,E6,5th floor,oil mill road,kavery layout,2nd cross",Truck17,25.756065918322413,3,15,10.807584586727758,7560 - 8400,1.0,5.0
+"#31,1st cross,2nd main,Behind kalamandir",Truck17,29.30862628933913,4,20,3.5525603710167166,9120 - 9960,1.0,5.0
+"26/86 , 3rd main,1st cross, 2nd floor, near yamaha showroom",Truck17,30.08454671573606,5,25,0.7759204263969292,10320 - 11160,1.0,5.0
+"A204, AISSHWARYA OPULENCE APTS 92/2 OUTER RING ROAD,MARATHAHALLI, BESIDES HOME TOWN",Truck17,30.547072773464215,6,30,0.4625260577281542,11520 - 12360,1.0,5.0
+"Room no:8,shivanilaya building,1st cross,tulshi theater road,",Truck17,31.028057434838054,7,35,0.48098466137383944,12720 - 13560,1.0,5.0
+"house no :25 ,room no 1,1st floor,2nd cross ,balaji enclave",Truck17,35.078761702997,8,40,4.050704268158943,14400 - 15240,1.0,5.0
+"Flat No. 102, first floor, EDEN Homes, House no 9,,14th cross",Truck17,36.960211496053866,9,45,1.8814497930568668,15720 - 16560,1.0,5.0
+"#71,3rd floor,Vinayaka layout,,marthahalli market",Truck17,37.92612601453502,10,50,0.9659145184811578,16920 - 17760,1.0,5.0
+"# 69, first floor,First cross, Vinayaka layout, Behind Someswara temple",Truck17,38.90531180618382,11,55,0.9791857916487963,18120 - 18960,1.0,5.0
+"414,,Mahaveer Bower",Truck17,39.10335561216399,12,60,0.19804380598017232,19320 - 20160,1.0,5.0
+"Flat No. 006,,Sree Charitha Gardens, Sy. No. 135,",Truck17,39.86783954134883,13,65,0.7644839291848404,20520 - 21360,1.0,5.0
+"House no-113, SS PG,Veerapa ready layout,4th cross,Munnekolala",Truck17,40.351978597102026,14,70,0.4841390557531932,21720 - 22560,1.0,5.0
+"63B Ground Floor,Pappaiah Gardens (opposite Sgr dental college)",Truck17,40.546807381538244,15,75,0.1948287844362159,22920 - 23760,1.0,5.0
+"Room no : 302,Vasundhara ladies PG, No.85/5, Srinivasa Nivas,Manjunatha Layout, Munnekolala, Near  SGR  Dental College Road,  Marathahalli, Bangalore - 560037,",Truck17,41.5253711162678,16,80,0.9785637347295557,24120 - 24960,1.0,5.0
+"Room no.303, Flat no. 101, CKB Layout Munnekolala Marathahalli,CKB layout behind dental college road",Truck17,42.36144638845303,17,85,0.8360752721852321,25320 - 26160,1.0,5.0
+"#1, 2nd floor, 2nd cross, VR layout , SGR dental college road, near Axis bank ATM, Marathahalli,Munnekolala",Truck17,43.09395399433526,18,90,0.7325076058822243,26520 - 27360,1.0,5.0
+"plot no 171, Tirumula PG, CKB Layout, marathahalli,near NEST backery pin 560037",Truck17,43.74297423139205,19,95,0.6490202370567907,27720 - 28560,1.0,5.0
+"flat no. 5, merry niwas,ckb layout, munnekolala",Truck17,43.88768964408332,20,100,0.1447154126912756,28920 - 29760,1.0,5.0
+"Flat :54,HARI2 PG,PR layout,opp to home town,marthahalli",Truck17,44.18337088356201,21,105,0.2956812394786887,30120 - 30960,1.0,5.0
+"room no.504/#16,Sri Guru Ladies pg,munekollala,near biriyani zone, Vivekananda Layout",Truck17,44.42070783750986,22,110,0.2373369539478477,31320 - 32160,1.0,5.0
+"57, 2nd A cross Road, Chandra Layout, Ayappa layout,PR Layout 4th cross Road, Opposite road of hotel 7 Hilks.",Truck17,44.7086680177047,23,115,0.28796018019484215,32520 - 33360,1.0,5.0
+"FF - 405, BBlock, Keerthana kings place,Munekolala, Marathahalli, Bangalore-based 560037",Truck17,45.58608306302429,24,120,0.8774150453195892,33720 - 34560,1.0,5.0
+"302,Vishnu Enclave",Truck17,46.47412841284063,25,125,0.8880453498163374,34920 - 35760,1.0,5.0
+"307 DS MAX SYMPHONY,NEAR TENNIS ACADEMY THUBRAHALLI",Truck17,46.93793887853395,26,130,0.4638104656933218,36120 - 36960,1.0,5.0
+"C-404 Ashish JK Apartment,Extended Road Thubarahalli",Truck17,47.58870798649766,27,135,0.6507691079637088,37320 - 38160,1.0,5.0
+"door no 16.4th flooor.mm residency,1st main 1st cross.siddhapura",Truck17,48.513267939002006,28,140,0.9245599525043428,38520 - 39360,1.0,5.0
+"Flat A302, Spectra Palmwoods, No 572 Nallurhalli main road,Siddapura, Varthur Hobli, Behind Shell Petrol Bunk",Truck17,49.45596344036349,29,145,0.9426955013614843,39720 - 40560,1.0,5.0
+"325 phase 2 Adarsh palm meadows,Varthur road Ramagundanahalli",Truck17,50.23487347122065,30,150,0.7789100308571643,40920 - 41760,1.0,5.0
+"203, Sai Platinum Apartment,Green Avenue , Opp Kundalhalli Colony",Truck17,53.14344554356557,31,155,2.9085720723449167,42360 - 43200,1.0,5.0
+"FCI Godown Rd Dooravani Nagar Bengaluru, Karnataka 560016",Truck17,58.94515612201834,32,160,5.801710578452772,44160 - 86400,0.0,0.0

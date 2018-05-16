@@ -1,0 +1,312 @@
+Address,Truck,distance,cum_distance,volume,cum_vol,weight,cum_weight,time_range
+"SUMMAIYA PROVISION STORES,10,KALASIPLAYA, POLICE STATION RD",Truck8,6.792195461,6.792195461,118022.2534,0,36.53,0,1920 - 2400
+"Hansikaa medicals,HANSIKAA MEDICALS#9 SY No 5/11 Ground floor 1st main, RS Road Devarachikkanahalli BTM 4th stage",Truck8,6.313678758,13.10587422,8325.051801,118022,1.13,36,3840 - 4320
+"sri vinayaka medical & general stores,k.no.201/39/2/59,shop no.1,I main,BHEL layout,kenchenahalli, Rajarajeshwari nagar",Truck8,0,13.10587422,43547.2016,126347,16.14,37,5040 - 5520
+"Meena pharma,No.16/B,1st cross,lalbagh fort road,Dodda mavalli",Truck8,0,13.10587422,51872.2534,169894,10.11,53,6240 - 6720
+"SRI CHELUVARAJU,PROVISION STORE,SOMANNAHALLI VILLAGE, Bangalore",Truck8,1.566143966,14.67201818,70263.872,221766,6.09,63,7560 - 8040
+"NISHANTH PROVISION STORE,nishanth provision store, homma devanahalli b g road bng",Truck8,0,14.67201818,136413.872,292029,20.53,69,8760 - 9240
+"Anu Provisions,#34, Nayak Layout, near BK Circle, JP Nagar 8th Phase",Truck8,0,14.67201818,168621.4128,428442,57.93,89,9960 - 10440
+"ARAFA STORES,shop#1,SITE#2, NEAR TIPPU CIRCLE, AVALAHALLI VILLAGE, ANJANAPURA POST",Truck8,0,14.67201818,43547.2016,597063,9.46,146,11160 - 11640
+"Amma mukambika jmj provision store,10/48,4th crs, Maruthi nagar, madilwala",Truck8,0,14.67201818,66150,640610,18.57,155,12360 - 12840
+"Rose general store,#4/3,kgn complex, 2nd block, 4th cross, koramangala near kaveri hospital",Truck8,0,14.67201818,66150,706760,15.51,173,13560 - 14040
+"SOWMYA STORES,51/3 VGP LAYOUT, KUDLU VILLAGE",Truck8,0,14.67201818,51872.2534,772910,10.69,188,14760 - 15240
+"Bangalore traders buy and save,no.764/1, 19th main, 22nd cross, 2nd sector, near hsr club, HSR Layout",Truck8,0,14.67201818,2341.836875,824782,1.77,198,15960 - 16440
+"Ashraya Medicals,No,G-3,958,5th cross,Vijaya bank layout, sunder ram shetty nagar,bannergatta road,bilekahalli",Truck8,0,14.67201818,43547.2016,827123,21.33,199,17160 - 17640
+"Vishnu provision store,#2 3, koppa village, near normal layout, Koppa",Truck8,0,14.67201818,87094.4032,870670,7.09,220,18360 - 18840
+"Sri annapoorneshwari smart store,#488,JAI HANUMAN NAGAR,AREKRE,, NEAR DIVYA JYOTHI SCHOOL, BANNERGHATTA ROAD",Truck8,0,14.67201818,46666.2416,957764,13.2,227,19560 - 20040
+"Basavanagudi pharmacy,No.84/1 Ground floor R V Road, Basavanagudi",Truck8,3.427445093,18.09946328,3220.22624,1004430,0.5,240,21120 - 21600
+"SRI BALAJI MEDICAL AND GENERAL STORES,M 9,167,STS PETER AND PUISE CHURCH,, JJR NAGAR MAIN ROAD ROYAPURAM",Truck8,0,18.09946328,43547.2016,1007650,11.75,240,22320 - 22800
+"METRO MARKETING,SF NO-6 2ND FLOOR, NO 40/1, OLD THARAGUPET CROSS",Truck8,0,18.09946328,136918.6728,1051197,53.71,251,23520 - 24000
+"Venkateswara traders,Gangundahalli",Truck8,0.509709277,18.60917255,8325.051801,1188115,3.7,304,24720 - 25200
+"COFFEE NAADA SIRI ENTERPRISES,no 448 shop no 2 1st cross IDEAL HOMES TOWNSHIP, RR NAGAR",Truck8,0.91862876,19.52780131,87094.4032,1196440,16.33,307,25920 - 26400
+"national medicals,no 23 shop no 5, maszid-e-noor-ul-huda complex, old pension mohalla,",Truck8,0,19.52780131,87094.4032,1283534,26.07,323,27120 - 27600
+"SHANMUGA TRADERS,NO 1634 80FT ROAD SBM COLONY MAIN ROAD, SBM COLONY",Truck8,0,19.52780131,43547.2016,1370628,12.08,349,28320 - 28800
+"Sri Sanjeevi provision stores tours&travels,Sanjeevi provision store, #1358, 5th cross,near ashoknagar post office",Truck8,0,19.52780131,87094.4032,1414175,24.96,361,29520 - 30000
+"PURUSHOTHAM PROVISION STORE,#90/24 2ND MAIN ROAD VITTAL NAGAR, CHAMARAJPET",Truck8,0,19.52780131,66150,1501269,23.86,385,30720 - 31200
+"harith pharma,no.302, 2nd cross, c.t.bed, thygarajanagar Bangalore",Truck8,0,19.52780131,43547.2016,1567419,13.12,408,31920 - 32400
+"S S R TRADERS,41/4 RAMANA GOPALA COMPLEX, 1ST FLOOR, SOMASUNDARA PALYA MAIN ROAD KUDLU VILLAGE",Truck8,1.704231598,21.23203291,140035.3995,1610966,38.2,421,33240 - 33720
+"Satish stores,Banahalli road, Chandapura",Truck8,1.549994652,22.78202756,51451.10159,1751001,10.9,459,34560 - 35040
+"AyurShop,#9, Guptha Market, 12th Cross,, JP Nagar 2nd Phase",Truck8,3.805966593,26.58799416,28313.11476,1802452,9.64,469,36120 - 36600
+"SRMP traders,Behind ayappa temple, Madiwala hosur main road",Truck8,1.861643755,28.44963791,31331.64419,1830765,7.71,478,37440 - 37920
+"popular pharma,no h 35, store street opp popular nursing home, kalasipalyam",Truck8,4.546736896,32.99637481,2341.836875,1862096,2.75,485,39120 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck8,6.792195461,39.78857027,0,1864437,0,487,41040 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck9,0,0,0,0,0,0,0 - 0
+"NR STORES,SHOP.3 MUTHANALLUR CROSS, DOMMASANDRA ANEKAL TALUR",Truck9,12.97170179,12.97170179,89436.24008,0,31.87,0,2640 - 8400
+"Sri Chowdeshwari Stores,Sarjapura road, Mayura Bakery backside, Doctor layout, Attibele",Truck9,4.239514063,17.21121585,650.947,89436,12.21,31,4320 - 10080
+"AAI MATHA SUPERMARKET,Balaji complex,opp milk dairy; mirza road., Anekal",Truck9,0,17.21121585,49763.9183,90086,19.85,43,5520 - 11280
+"Shri Chowdeshwari stores,Manchenahalli road,, Attibele",Truck9,2.931909377,20.14312523,43547.2016,139849,9.78,62,6960 - 12720
+"PNK general store,Upkar solitaire Layout, Attibele, Anekal taluk",Truck9,0,20.14312523,53661.1174,183396,19.16,71,8160 - 13920
+"S L N PROVISION STORE,19th CROSS VISHWARA PRIYA LAY OUT, BEGUR BNG",Truck9,0,20.14312523,95419.455,237057,18.46,90,9360 - 15120
+"Kishore super market buy n save, Shop No.4, Building No.36/33/39, 10th & 9th cross road",Truck9,0,20.14312523,87094.4032,332476,23.11,108,10560 - 16320
+"SUVARNA MEDICALS,no.47/3, raghavendra mutt road,, kalidasa layout, Srinagar",Truck9,0,20.14312523,43547.2016,419570,4.34,131,11760 - 17520
+"SURESH STORES,NO 168/478/ 4TH CROSS 1ST BLOCK J NAGAR BNG, Bangalore",Truck9,0,20.14312523,110292.6496,463117,50.16,135,12960 - 18720
+"M k home needs,483 3rd stage Beml layout opp. Beml complex, Raja rajeshwari nagar",Truck9,0.932999957,21.07612519,43547.2016,573409,5.67,185,14160 - 19920
+"akshaya super bazaar,no 96/D, 12th CR's ideal homes township, Rajarajeshwari nagar",Truck9,0.649417358,21.72554255,43547.2016,616956,11.35,190,15360 - 21120
+"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Truck9,2.320782201,24.04632475,24913.2842,660503,11.62,201,16800 - 22560
+"Raghavendra provision store,Arundhati Nagar 13th Cross Chandra Layout",Truck9,0.675376289,24.72170103,66150,685416,9.82,212,18000 - 23760
+"AZEEM PROVISION STORE,No 296/1st block J Nagar, Byrasandra",Truck9,0.675376289,25.39707732,2528.1,751566,13.97,221,19200 - 24960
+"BRUNDAVAN STORE,no 21/1 police station road basavanavgudi Gandhi bajaar",Truck9,0,25.39707732,10782.2,754094,24,234,20400 - 26160
+"Sri lakshmi stores,Avalahalli mysore road",Truck9,1.873043349,27.27012067,89436.24008,764876,23.84,258,21720 - 27480
+"Veerabhadreshwara provision stores,#25 near kalidevastana bsk hasakerehalli, Bangalore",Truck9,1.372336333,28.64245701,6901.922401,854312,24.42,281,23040 - 28800
+"JAI BHARATHA ELECTRICALS,kathriguppe mainroad, bsk 3rd stage",Truck9,0,28.64245701,6901.922401,861213,24.42,305,24240 - 30000
+"No.335/52/4, Lakshmamma building, Hennagara Bus stop, Hennagara Village, Anekal Taluk",Truck9,0,28.64245701,6901.922401,868114,24.42,329,25440 - 31200
+"Jai Veeranjaneya Enterprises,Shop No.3, Prasanna building, Jigala main road, Attibele",Truck9,0,28.64245701,43547.2016,875015,23.55,353,26640 - 32400
+"Gowtham traders,No,68/3,40th main,1st cross, Behind central silk board building",Truck9,0,28.64245701,43547.2016,918562,5.42,376,27840 - 33600
+"PAWAN PROVISION STORE,no,53/5 krishna lay-out,begur main, road hulimavu bannergatta road",Truck9,0,28.64245701,87094.4032,962109,13.51,381,29040 - 34800
+"GANESHWAR GENERAL STORES,NO.54,22ND CROSS, 21ST MAIN ROAD,, BANASH ANKARI 2ND STAGE",Truck9,0,28.64245701,65597.2016,1049203,36.72,394,30240 - 36000
+"lakshmi provision store,no10/1-tg layout 60ft rd ittamadu",Truck9,0,28.64245701,109697.2016,1114800,32.09,430,31440 - 37200
+"SRI SATHYANARAYANA TRADERS,22nd main, 13th cross,, raghavendra layout, padmanabhanagar",Truck9,0,28.64245701,65597.2016,1224497,31.65,462,32640 - 38400
+"Mahadev super bazaar,56 1st main avalahalli mysore road",Truck9,0.202070515,28.84452752,8325.051801,1290094,3.77,493,33840 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck9,18.95503684,47.79956436,0,1298419,0,496,37200 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck10,0,0,0,0,0,0,0 - 0
+"SRI MURUGAN STORES,EGIPURA MAIN ROAD, VIVEKNAGAR, BENGALURU, Bangalore",Truck10,13.49744882,13.49744882,92903.87843,0,15.27,0,2760 - 3120
+"HAIWA HOME DEPARTMENT STORE,SRI RAMA TEMPLE ROAD, NEAR CHAVARA CHURCH EGIPURA, Bangalore",Truck10,0.04453248,13.5419813,43547.2016,92903,6.91,15,3960 - 4320
+"NAKODA MEDICALS & GENERAL STORES,K NO-389/4, NO 488/1,BEGUR MAIN ROAD, bommanalli",Truck10,0.615262165,14.15724346,132983.4417,136450,26.68,21,5160 - 5520
+"Malick Super Bazaar,MALICK SUPER BAZAAR, 219,K.B.A.R Road, Austin town",Truck10,0.709919484,14.86716295,71874.2696,269433,36.21,47,6360 - 6720
+"Land mark,47 South end road nagasandra circle, Basavanagudi",Truck10,0.709919484,15.57708243,1688.192,341307,12.79,83,7560 - 7920
+"RKS Sajid Khan General Stores,Adigarakallahalli, Sarjapura hobli, Anekal TQ",Truck10,2.775052905,18.35213534,43547.2016,342995,23.26,95,9000 - 9360
+"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Truck10,0,18.35213534,43547.2016,386542,23.91,118,10200 - 10560
+"CHAYAPUTRA PROVISION STORE,chayaputra provision store, near doddamma temple hulimavu banaglore 76",Truck10,0,18.35213534,88200,430089,47.95,141,11400 - 11760
+"P STORES,HOSAKEREHALLI, HOSAKEREHALLI",Truck10,0,18.35213534,43547.2016,518289,7.26,188,12600 - 12960
+"CITY MD PHARMA,K.no.69/37/41 ground floor, bazaar street road, Austin town neelasandra",Truck10,0,18.35213534,43547.2016,561836,17.47,195,13800 - 14160
+"S L V PROVISION STORE,3, 8th main 4 th cross muneswara layuot, hongasandra beguru road bng",Truck10,0,18.35213534,43547.2016,605383,12.72,212,15000 - 15360
+"kusum general stores,no.324-1335,avenue road",Truck10,1.918561323,20.27069666,2341.836875,648930,1.13,224,16320 - 16680
+"sirish food bazaar,no 54, 28th cross, corner cubbonpet main road",Truck10,0.618943328,20.88963999,87094.4032,651271,21.5,225,17520 - 17880
+"JAIN MARKETING,NO.472,, AVENUE ROAD",Truck10,0.870814426,21.76045441,87094.4032,738365,15.58,246,18720 - 19080
+"SRI VENKATESHWARA STORES,31,C.K.C GARDEN, 2ND MAIN, LALBAGH ROAD,1ST CROSS",Truck10,0.953374727,22.71382914,17467.3768,825459,5.28,261,19920 - 20280
+"SANGAM MEDICAL AND GENERAL STORES,#75/52, 264, Shop No.3, Ground floor,, KOTTANUR DINNE MAIN ROAD, 5th main, JP NAGAR 8th Phase",Truck10,0,22.71382914,68491.83688,842926,13.42,266,21120 - 21480
+"chaitanya medicals,NO20/62,1st main road,marutinagar,madivala,bangalore-68",Truck10,0,22.71382914,87094.4032,911417,19.28,279,22320 - 22680
+"LUCKY STORE,1ST MAIN ROAD SMV LAYOUT, DEVARACHIKKANAHALLI",Truck10,0.503680541,23.21750968,96490.5112,998511,21.51,298,23520 - 23880
+"FAZAL STORE,4th main tank band rd, 5th block J Nagar",Truck10,0.823202878,24.04071256,43547.2016,1095001,6.04,319,24720 - 25080
+"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Truck10,0,24.04071256,46767.42784,1138548,25,325,25920 - 26280
+"Nanjundeshwara rice corner,#14/1,10th cross,venkateshwara layout, SG palya,d r c post",Truck10,0,24.04071256,31483.48973,1185315,20.82,350,27120 - 27480
+"Sri Ramya Store,NO.59,3rd main,7th cross, Bharathi layout,S G palya",Truck10,0,24.04071256,5562.063115,1216798,4.35,370,28320 - 28680
+"shareef traders,padarayana pura",Truck10,0.543029745,24.5837423,379762.7006,1222360,155.98,374,29520 - 29880
+"Sri RAGHAVENDRA PROVISION STORE,Haldenahalli ,ATTIBELE MAIN ROAD, Anekal taluk",Truck10,0.631974558,25.21571686,43547.2016,1602122,15.64,529,30720 - 31080
+"Lucky traders,13/2,ground floor,7th cross,, Muninarasimaiah garden,tavarekere main road,btm 1st stage",Truck10,0,25.21571686,492720.1032,1645669,124.43,544,31920 - 32280
+"Raju provision store,#47 main ejipura, Muneshwara layout near bethel baptist church",Truck10,0,25.21571686,49356.67683,2138389,11.08,668,33120 - 33480
+"Varalaxmi Provision Store,B block Subhash Nagar Main Road Near Singasandra, manipal county road",Truck10,0,25.21571686,3220.22624,2187745,0.96,679,34320 - 34680
+"AMANATH PROVISION STORE,amanath provision store, 58 d c halli main road kaveri nagar bng",Truck10,0,25.21571686,43547.2016,2190965,20.54,679,35520 - 35880
+"ZAM ZAM TRADERS,NO.345/4,7TH CROSS CORPN.DIVISION OLD NO.21, NEW NO.33 MYSORE ROAD,KUVEMPU NAGAR",Truck10,0,25.21571686,118022.2534,2234512,26.08,699,36720 - 37080
+"SHREE TRADERS,no 456/D AMOGHA NILAYA 1ST CROSS IDEAL HOMES LAYOUT, 1st phase RAJARAJESHWARI Nagar",Truck10,0,25.21571686,43547.2016,2352534,9.02,725,37920 - 38280
+"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Truck10,1.36620642,26.58192328,10206.0396,2396081,15.49,734,39240 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck10,15.81810618,42.40002946,0,2406287,0,749,42240 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck11,0,0,0,0,0,0,0 - 0
+"SRI MANJUNATHA PRAVASION STORE,JANATHA COLONY, YARANDA HALLI",Truck11,12.97170179,12.97170179,25194.07476,0,1.95,0,2640 - 6240
+"K.NO-62-13/10/1, 3RD MAIN, 14TH CROSS, WILSON GARDEN",Truck11,0,12.97170179,25194.07476,25194,1.95,1,3840 - 7440
+"SRI SRINIVASA RICE TRADERS,NO 80/1 12TH MAIN NEAR GALAXY THEATERS, HONGASANDRA BEGUR ROAD",Truck11,0,12.97170179,95419.455,50388,26.77,2,5040 - 8640
+"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Truck11,0,12.97170179,100981.5181,145807,28.55,28,6240 - 9840
+"healthcare medical,1106/60/3 shop no 05 kaveri nagar, devarachikkanahalli main road bommnahalli",Truck11,2.278523262,15.25022505,43547.2016,246788,11.52,56,7680 - 11280
+"PRAKASH TRADERS,#136, 80feet road, kathraguppa, BSK 3RD STAGE",Truck11,1.938314291,17.18853934,109697.2016,290335,27.53,67,9000 - 12600
+"M/S FRIENDS PRO STORE,#104/10, Thanamma L/O dc halli rd,, Bilekahally, Bg Road,",Truck11,0.95660032,18.14513966,116036.4678,400032,34.71,94,10200 - 13800
+"Maruthi Medical And General Store,K.No.399 , GROUND FLOOR SHOP NO-04,1ST MAIN,3RD CROSS, LAKSHMI LAYOUT,GARVEBHAVI PALYA",Truck11,0,18.14513966,90314.62944,516068,18.52,128,11400 - 15000
+"Deekshitha medicals,no-1, Door no-4/4, sy no-231/2 beguru",Truck11,0,18.14513966,5646.204,606382,8.85,146,12600 - 16200
+"Rafeeq stores,6th cross G G halli",Truck11,0,18.14513966,118022.2534,612028,43.62,154,13800 - 17400
+"Rudrappa stores,Avalahalli mysore road maramma temple road",Truck11,0,18.14513966,196791.6048,730050,33.57,197,15000 - 18600
+"Mathaji Provision Store,#761, munishwara circle, old manamanapalya road,",Truck11,2.932888491,21.07802815,109697.2016,926841,32.42,230,16440 - 20040
+"Life care pharma,No 43/1/10Grd floor shop no 1SLN NILAYA, Opp salapuri apts mangammanapalya bommanahalli",Truck11,0,21.07802815,45382.98988,1036538,10.01,262,17640 - 21240
+"burhani super bazaar,shop,no,2ground floor no,60 new 441 next ggottigere villege, uttarahallI hobli bengalore next shell petrol bunk-83",Truck11,0,21.07802815,87094.4032,1081920,39.46,272,18840 - 22440
+"M/S RAGAM PRO STORES,ragam provision store, 154/ 9th cross w v colony gottigere bng",Truck11,0,21.07802815,7776.3,1169014,15.37,311,20040 - 23640
+"gouse flour mill,no 15 library road, New jhonson market",Truck11,0,21.07802815,182807.7113,1176790,57.42,326,21240 - 24840
+"SRI RAMDEV PROVISION STORES,NO.134,9TH CROSS,, CHAMARAJPET",Truck11,1.203396903,22.28142506,11545.27804,1359597,4.98,383,22560 - 26160
+"ABHINAV MEDICALS,No.3, kathtriguppe main road, Vivekananda nagara,, behind a bus stop banashankari 3rd stage",Truck11,0.477460193,22.75888525,8325.051801,1371142,2.66,387,23760 - 27360
+"STEPHEN TRADERS,No 4 N A T ROAD, Basavanagudi",Truck11,1.485354582,24.24423983,43547.2016,1379467,14.16,389,25080 - 28680
+"SRI RANGANATHS STORES,#79, 7TH CRS, BHARATHI L OUT,, SG PALYA, DRC POST",Truck11,0.421218794,24.66545863,105405.7431,1423014,55.31,403,26280 - 29880
+"DAY TO DAY SUPER MARKET,no.12/14 2nd cross shan bahg nagappa, layout bilekahalli bannerghatta road bangalore-76",Truck11,0,24.66545863,362590.144,1528419,57.41,458,27480 - 31080
+"Lakshmi store,Billapura Attibele to Sarjapura road, Billapura",Truck11,1.899371108,26.56482973,87094.4032,1891009,26.59,515,28800 - 32400
+"GUPTA MEDICALS,no.16, 80 feet road, Mysore bank colony, Bsk 1st stage",Truck11,0.593005393,27.15783513,43547.2016,1978103,10.8,541,30000 - 33600
+"sri swaraj medicals,no.415/a, 12th main road, 80 feet road, bank colony, srinivasanagar",Truck11,0.102839638,27.26067477,43547.2016,2021650,12.07,551,31200 - 34800
+"MARUTHI MEDICALS AND STATIONARIES,shop no.1, no.36, katriguppe main road,, vidhyapeet circle, Bsk 1st stage",Truck11,0.906927749,28.16760251,43547.2016,2065197,8.1,563,32400 - 36000
+"SKANDA TRADERS,Shop no 6 g s market, Ot pet cross",Truck11,0.2510537,28.41865621,46767.42784,2108744,7.78,571,33600 - 37200
+"Sri sai medical,#18/1,muniyappa reddy buliding, vittasandra road,, begur",Truck11,0,28.41865621,87094.4032,2155511,35.72,578,34800 - 38400
+"Brahmi enterprises,NGR residency , opp Reddy school, 15th cross , NGR Layout, Roopena Aghara",Truck11,0,28.41865621,51872.2534,2242605,12.63,613,36000 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck11,16.80312517,45.22178139,0,2294477,0,625,39120 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck12,0,0,0,0,0,0,0 - 0
+"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Truck12,8.561563381,8.561563381,196791.6048,0,40.84,0,2160 - 2400
+"City rice traders,#50/6,1st cross,3rd main road, New gurapanapalya,behind I b m BG road",Truck12,2.909116321,11.4706797,51872.2534,196791,9.48,40,3600 - 3840
+"Shri Krishna Enterprises,#125,1st Floor,Raheja Arcade,, Kormangala,Bangalore-560095",Truck12,1.325712811,12.79639251,3220.22624,248663,1.23,49,4920 - 5160
+"Sri Balaji medicals and general stores,K no 202/50 shop no 3 ambedkar nagar, Carmelram post sarjapura road",Truck12,0.986661637,13.78305415,43547.2016,251883,10.01,50,6120 - 6360
+"MAHALAKSHMI PROVISION STORE,GROUND FLOOR, 258/1,SANJEEVINI REDDY BUILDING, HARAPPANAHALLI VILLAGE JIGANI,ANEKAL TALUQ",Truck12,0,13.78305415,62378.4056,295430,22.02,60,7320 - 7560
+"Mathaji Provision store,Jigani main Road, MalleNeelasandra",Truck12,0,13.78305415,18831.204,357808,12.9,82,8520 - 8760
+"Vaibhav Gen Store,#62 Chowdeshwari Temple Street",Truck12,0,13.78305415,43547.2016,376639,10.02,94,9720 - 9960
+"3S International,53/2i, 22nd Cross, Someshwara Layout,, Off: Bannerghatta Road, HULIMAVU,",Truck12,0,13.78305415,3119.04,420186,7.69,104,10920 - 11160
+"HKS Traders,Handenahalli, Attibele",Truck12,0,13.78305415,43547.2016,423305,7.68,111,12120 - 12360
+"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Truck12,0,13.78305415,71643.191,466852,14.99,118,13320 - 13560
+"Irfan stores,Mother sab layout, New gurapanapalya",Truck12,0,13.78305415,43547.2016,538495,16.45,132,14520 - 14760
+"Nagendra store,#6,2nd main,, 2nd cross,nanjappa layout,adugodi",Truck12,0.884384452,14.6674386,66150,582042,15.33,148,15720 - 15960
+"FAMILY SUPER MARKET,#18/1,3RD MAIN,15TH CROSS, LAKKASANDRA",Truck12,0.901089412,15.56852801,43547.2016,648192,12,163,16920 - 17160
+"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Truck12,0.928037835,16.49656585,43547.2016,691739,4.44,175,18120 - 18360
+"PREMA MEDICALS,SHOP NO -0.1.1ST MAIN, SUDDAGUNTE PALYA BANGALORE",Truck12,0,16.49656585,43547.2016,735286,10.11,179,19320 - 19560
+"Sri venkateshwara provision store,No 63 GROUND FLOOR S R Y LAYOUT, MYLASANDRADINNE VADDARAPALAYA BEGUR KOPPA ROAD NEAR",Truck12,0,16.49656585,43547.2016,778833,10.52,189,20520 - 20760
+"Kum Kum Fancy, General stores & Plastic items,No.01, Ground Floor, Basavarajappa & Neelamma complex, Opp.KEB, Sarjapura road, Attibele, Anekal Taluk",Truck12,1.51621707,18.01278292,36129.13591,822380,13.89,199,21840 - 22080
+"Sri Shridi Sai M.S.Medicals and General stores,No-366,G floor, Sadar street, Attibele, Anekal taluk",Truck12,0,18.01278292,43547.2016,858509,4.16,212,23040 - 23280
+"Shafina Stores,Srinivagilu, VivekNagar Post",Truck12,0.377457512,18.39024043,2341.836875,902056,2.71,216,24240 - 24480
+"Shanthi medicos,49 bazaar street down, Neelasandra",Truck12,0.634153886,19.02439432,43547.2016,904397,9.35,218,25440 - 25680
+"Mahalakshmi stores,#12,austin town, Corporation market,Near iyengars bakery",Truck12,0.771683549,19.79607787,43547.2016,947944,10.3,227,26640 - 26880
+"Swadeshi Arogya Kendra, #74, R T STREET , Near Jodhpur Sweets,",Truck12,0.951080529,20.74715839,43547.2016,991491,10.3,237,27840 - 28080
+"model medical store,no 103, 104 brigade road, ashok nagar",Truck12,0.290030621,21.03718902,4600.2275,1035038,0.34,247,29040 - 29280
+"ABHINANDA STORES,Anjanapura, Tulasipura main road",Truck12,0.290030621,21.32721964,3220.22624,1039638,0.59,247,30240 - 30480
+"Karthikmedicals&General stores,Sy no307,Shop no 1,venkatarajappabelding,jigani Main road, Jigani",Truck12,0,21.32721964,66150,1042858,14.11,247,31440 - 31680
+"NAVEEN PROVISION STORE,NEAR ANJANEYA TEMPLE,DODDABEGUR, BEGUR",Truck12,0,21.32721964,44184.1595,1109008,36.24,261,32640 - 32880
+"SRI SAI MEDICALS AND GENERAL STORES,#884 c/f sri ram nursing home, 7Th Main Raghavendra Block, Srinagar",Truck12,0,21.32721964,66150,1153192,18.74,297,33840 - 34080
+"D.MAHALAKSHMI PROVISION STORES,NO-146 MAIN ROAD, SAMPANGERAM NAGAR",Truck12,1.548299656,22.87551929,43547.2016,1219342,8.98,315,35160 - 35400
+"AVENUE Medicals and general supplies,576/577 AVENUE ROAD",Truck12,1.426663793,24.30218309,43547.2016,1262889,3.09,323,36480 - 36720
+"K G STORE,#12 16TH CROSS 3RD MAIN S R NAGAR, Bangalore",Truck12,0.837099134,25.13928222,43547.2016,1306436,9.51,326,37680 - 37920
+"ANNAPURNESHWARI PROVISION STORE,#19,1st cross c m layout, near sunshine school bangalore 68",Truck12,4.67590771,29.81518993,44420.51435,1349983,7.552,335,39360 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck12,13.74683487,43.5620248,0,1394403,0,342,42120 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck13,0,0,0,0,0,0,0 - 0
+"Sri manjunatha-p- store,No 335 venkat reddy nagar siddapura, J nagar",Truck13,10.39738493,10.39738493,249908.1566,0,93.56,0,2400 - 4320
+"KIRANA TRADING CO,NO.13,1ST MAIN ROAD, N T PET",Truck13,4.701982377,15.0993673,66150,249908,21.57,93,4080 - 6000
+"BHAGYA MEDICAL AND GENERAL STORES,#15, 4th cross, 6th main road, Bsk 3rd stage., KIMS COLLEGE NEAR DEVE GOWDA PETROL BUNK",Truck13,0,15.0993673,43547.2016,316058,3.82,114,5280 - 7200
+"Krishna Department Store,#1/s50,Doddathogur main road, Velankani road, E city",Truck13,0,15.0993673,45889.03848,359605,8.27,117,6480 - 8400
+"M M PROVISION STORES,#13 NEAR OM SHAKTHI TEMPLE SHANTHINAGAR, HONGASANDRA",Truck13,0,15.0993673,8325.051801,405494,3.27,125,7680 - 9600
+"Apple Pharma,K no 36 shop no 3 &amp; 4, Vinayaka layout shanthipura electronics city phase 2",Truck13,0,15.0993673,10666.88868,413819,8.76,128,8880 - 10800
+"Sapna Departmental Store,5th cross, hosapalya, near ujala factory, Bommanahalli",Truck13,6.570412982,21.66978028,164789.6812,424485,51.03,136,10800 - 12720
+"MAJOR PHARMACEUTICALS PVT.LTD.,,No24/5, 4th main ,7th Block,BSK 3rd Stage, Bangalore, Bangalore",Truck13,0,21.66978028,43547.2016,589274,9.48,187,12000 - 13920
+"Karan medical stores,No.14, ground floor, rupeshwar complex,doddagowdanapalya, subramanyapura post",Truck13,0,21.66978028,43547.2016,632821,6.46,196,13200 - 15120
+"SRI MANJUNATH A STORE,NO 11 13TH MAIN BANK COLONY BANGALORE, Bangalore",Truck13,0,21.66978028,65597.2016,676368,34.26,202,14400 - 16320
+"GOKUL STORE,MICO LAY OUT, HONGASANDRA,BEGUR ROAD",Truck13,0,21.66978028,3471.648,741965,9.16,236,15600 - 17520
+"SRI HANUMAN STORE,816, 16th main main 12th, cross btm 2nd stage near mico police station bng",Truck13,11.10250134,32.77228162,43547.2016,745436,9,245,18120 - 20040
+"Sri Manjunatha Medicals and General stores,Shop no-04, Site no-86,87,88,&89, Sy no-114, G floor, Kachanayakanahalli, Jigani hobli",Truck13,0,32.77228162,43547.2016,788983,5.15,254,19320 - 21240
+"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Truck13,2.829431258,35.60171288,43547.2016,832530,17.34,259,20760 - 22680
+"SRI VIGNESHWARA RICE TRADERS,38-1 ITTUMADU MAIN ROAD, B S K 3RD STAGE",Truck13,1.575080931,37.17679381,43547.2016,876077,11.94,276,22080 - 24000
+"SRINIVASA TRADERS,NO.28/1,GROUND FLOOR, 1ST MAIN ROAD,, SUDHAMANAGAR",Truck13,0.943865084,38.1206589,407647.7176,919624,115.31,287,23280 - 25200
+"MANGAL CHAND &CO,477,BASEMENT,K.B.PLAZA, AVENUE ROAD",Truck13,0,38.1206589,205116.6566,1327271,40.56,402,24480 - 26400
+"Sree vijaya lakshmi trader's,197,police road, Ranasingpet",Truck13,0,38.1206589,223401.3066,1532387,50.42,442,25680 - 27600
+"MARUTHI PROVISION STORE,KASHI NAGAR J P NAGAR POST, YALCHENAHALLI",Truck13,0,38.1206589,2350.25,1755788,0.54,492,26880 - 28800
+"S S TRADERS,GANDI NAGAR KANAKAPURA MAIN ROAD, BANGALORE",Truck13,0,38.1206589,2762.5,1758138,2.03,492,28080 - 30000
+"Subramanya rice traders 7 5th cross, Ksit college opposed (rd) Raghuvanahalli kkp main road",Truck13,0,38.1206589,66150,1760900,16.14,494,29280 - 31200
+"Goutham Home need,no,545-5th cross w v colony, bg rd bng pin 560083 mob 9342927215 lcr4562",Truck13,0,38.1206589,45295.0736,1827050,38.59,510,30480 - 32400
+"Ayoka Essentials,#306,Salarpuria Greenage Juniper Block, Bommanahalli,Hosur Road",Truck13,0,38.1206589,298331.85,1872345,111.01,548,31680 - 33600
+"raghavendra departmental stores,37 3rd a crass 25th, main roda b t m 2nd stage bng",Truck13,0,38.1206589,43547.2016,2170676,16.7,659,32880 - 34800
+"Fresh & More Super Market,Shop No.G-01,#57,58,Vinayaka Arcade,1st Main,3rd cross, Venkatadri Layout,Behind Apollo Hospital,BG Road",Truck13,0,38.1206589,51566.2171,2214223,20.68,675,34080 - 36000
+"Welcome Stores,#402,7th Cross,16th Main, BTM 2nd stage",Truck13,0,38.1206589,61614.5125,2265789,40.13,695,35280 - 37200
+"parshvanath medicals,no,100,ground floor opposite to, primary govt school devarachikkanahalli bangalore 560076, NEAR FIVE STAR BAKERY",Truck13,0,38.1206589,11545.27804,2327403,3.86,735,36480 - 38400
+"Meena provision store,34/48 8th b cross, ittamadu main rd, bsk3rd stage",Truck13,0,38.1206589,45889.03848,2338948,8.43,738,37680 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck13,17.85352533,55.97418422,0,2384837,0,746,40920 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck14,0,0,0,0,0,0,0 - 0
+"MAHENDRA COSMETICS,no.13/1,m.m.lane,, nagarthpet cross,",Truck14,9.628428731,9.628428731,3220.22624,0,0.75,0,2280 - 3360
+"prakash provision stores,no 9 mm lane, ganigarapet",Truck14,0,9.628428731,43547.2016,3220,9.64,0,3480 - 4560
+"CHANDAN STORE,chandan store, ganesh temple road d c halli road bng bilekahalli",Truck14,0,9.628428731,43547.2016,46767,4.56,9,4680 - 5760
+"S L V MEDICALS AND GENERAL STORES,No-2993/30 BAHRA COLONY GOTTIGERE, Bannerghatta road",Truck14,0,9.628428731,43547.2016,90314,3.98,13,5880 - 6960
+"Gowthami R,21, 24th Main Road, JP Nagar 6th Phase",Truck14,0,9.628428731,175847.2016,133861,32.09,16,7080 - 8160
+"NAKODA MEDICALS,no,31,ground floor near 80 feet road gubbalala, off kanakapura main road",Truck14,0,9.628428731,43547.2016,309708,11.77,48,8280 - 9360
+"R A S Store, 169 r a s store d c halli main road",Truck14,0,9.628428731,10666.88868,353255,2.97,59,9480 - 10560
+"JAIN MEDICALS,shop no,4 gr,fl,no,1 7th main road, n s palya btm 2nd stage bangalore-76",Truck14,0,9.628428731,66150,363921,14.29,61,10680 - 11760
+"KHAN P STORE,hulimavu, b g road banaglore 76",Truck14,0.943350477,10.57177921,90314.62944,430071,19.43,75,11880 - 12960
+"sri manjunatha medicals & general stores,No.11/7, kaverinagar (Vivekananda Nagar) near 43-a bus stop, kathriguppe, Bsk 3rd stage",Truck14,0.943350477,11.51512969,43547.2016,520385,6.22,94,13080 - 14160
+"Sri Chowdeshwari Prv Store,No 18, Kammasandra, E-City",Truck14,0,11.51512969,45889.03848,563932,10.97,100,14280 - 15360
+"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Truck14,0,11.51512969,43547.2016,609821,8.81,110,15480 - 16560
+"Srinivas setty store,General merchant, Bazar street,, Attibele, Anekal TQ",Truck14,0,11.51512969,19574.39538,653368,19.87,118,16680 - 17760
+"NEW KAVERI MEDICALS AND GENERAL STORES,K NO 63/105/14, 4TH MAIN ROAD, 2ND CROSS BHOVI COLONY DRC POST",Truck14,0,11.51512969,53381.64419,672942,32.61,137,17880 - 18960
+"J.K. STORES,5/1, Ayyappa Block Main Road, Vannarpet Extension, Bangalore",Truck14,0,11.51512969,43547.2016,726323,7.67,169,19080 - 20160
+"R K PROVISION STORE,Saptagiri layout BETTADASANAPURA MAIN ROAD, E CITTY HOSA ROAD",Truck14,0,11.51512969,130641.6048,769870,38.47,176,20280 - 21360
+"mathaji department stores,833 BBM LYT, RR NAGAR",Truck14,0,11.51512969,43547.2016,900511,22.15,214,21480 - 22560
+"SIRI STORES,s.l.n.market,no.65/1, patnulpet, o.t pet cross",Truck14,0,11.51512969,87094.4032,944058,28.79,236,22680 - 23760
+"Sanjeevini Medicals,#188 Ground floor, 2nd cross 5th Phase BEML layout, Rajarajeshwari Nagar",Truck14,0,11.51512969,6277.068,1031152,4.3,264,23880 - 24960
+"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Truck14,0,11.51512969,49824.2696,1037429,18.36,268,25080 - 26160
+"Master merchants,O T PET",Truck14,0,11.51512969,370980.4112,1087253,79.89,286,26280 - 27360
+"prasad medicals stores,#93,shop no1, II main giridhama layout BEML 3rd stage, Rajarajeshwari nagar",Truck14,0,11.51512969,87094.4032,1458233,10.14,365,27480 - 28560
+"MAHADESWARA STORES,CHANDRALAYOUT,NAYANDAHALLI,#1030,19TH CROSS,1stage, NAYANDAHALLI TO NAGARABHAVI SERVICE ROAD",Truck14,0,11.51512969,43547.2016,1545327,3.79,375,28680 - 29760
+"Sree vinayaka medical stores,No.37/46 Gandhi bazaar main road",Truck14,0,11.51512969,43547.2016,1588874,5.45,378,29880 - 30960
+"Sri venkateshwara medicals,SHOP NO 2 No 5 EAST CIRCLE ROAD V V PURAM",Truck14,0,11.51512969,66150,1632421,11.81,383,31080 - 32160
+"VINAYAKA STORE,NO-133/1,1st CROS 12th MAIN, NAGENDRA BLOCK, BSK3rdSTAGE, BANGALORE",Truck14,0,11.51512969,43547.2016,1698571,12.15,394,32280 - 33360
+"Karnataka stores,#383 6th cross k m colony gutteplaya, Siddapura",Truck14,0,11.51512969,112039.0385,1742118,27.46,406,33480 - 34560
+"SRI LAKSHMI VENKATESHWARA RICE TRADRES,#161,6TH MAIN CROSS 3RD BLOCK, T R NAGAR",Truck14,0,11.51512969,87094.4032,1854157,26.75,433,34680 - 35760
+"Magasin Distributors Pvt Ltd,#1058/1045/939/1/77/1A, Eshwari Industrial Estate, Near More Hypermarket, Hulimavu",Truck14,0.624361659,12.13949134,2341.836875,1941251,2.51,459,35880 - 36960
+"DIVYASHREE MEDICALS,shop no 1, building, no 44,gottigere b g road bangalore 560083",Truck14,2.860387529,14.99987887,4563.365,1943592,9.32,461,37320 - 38400
+"Sri Jayalakshmi Store,Near Venkateshwara Temple, Sadar street, Attibele",Truck14,0.362169175,15.36204805,48845.70384,1948155,14.01,470,38520 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck14,10.39738493,25.75943297,0,1997000,0,484,40920 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck15,0,0,0,0,0,0,0 - 0
+"mataji provision stores,,kirana and general merchanta no 10, r t street",Truck15,11.49980021,11.49980021,12443.184,0,19.77,0,2520 - 6000
+"SRI VENKATESWARA TRADERS,#9,4TH MAIN ROAD, S.R NAGAR",Truck15,0,11.49980021,9142.325,12443,2.09,19,3720 - 7200
+"santhosh medicals and general stores,no 47-a lakshmi building markhand road, ashok nagar",Truck15,0,11.49980021,105765.2202,21585,54.58,21,4920 - 8400
+"Kaveri Gift and Fancy Center,Sarjapura Main road, Attibela",Truck15,0,11.49980021,43547.2016,127350,5.71,75,6120 - 9600
+"Kumar traders,O T PET",Truck15,0,11.49980021,261283.2096,170897,86.87,80,7320 - 10800
+"shreya provision store,muthanalur croass, chandapura road",Truck15,5.977585204,17.47738542,45017.73118,432180,4.46,166,9120 - 12600
+"Shubham Department Store,Near Suncity Apartment, Sarjapur road, Ibbalur",Truck15,3.810069162,21.28745458,112227.575,477197,20.48,170,10680 - 14160
+"SRI AYYAPPA STORES,NO 3 9TH MAIN, HOSAPALYA",Truck15,2.703573729,23.99102831,66150,589424,13.64,190,12120 - 15600
+"Care chemist,117/A , Btm 1 stage 16th main road,tavarekere, Bangalore - 29",Truck15,4.142402588,28.1334309,90314.62944,655574,15.71,203,13800 - 17280
+"N S medical and general stores,Somanahalli gate, kanakapura main road",Truck15,3.774355905,31.9077868,43547.2016,745888,6.39,218,15360 - 18840
+"SAMAR HOME NEEDS,#3/3, 2nd main,maruthi layout,btm layout 1st stage",Truck15,0.730242111,32.63802891,8325.051801,789435,1.71,224,16560 - 20040
+"Mahalaxmi provision stores,vasanthpura mn rd",Truck15,0.802032751,33.44006166,43547.2016,797760,6.32,225,17760 - 21240
+"SRI RUDRESHWARA PROVISION STORE,#4, 4th main rd, Ns palya",Truck15,0.904436645,34.34449831,2341.836875,841307,3.11,231,18960 - 22440
+"Apex Clinic & Pharma,A-2, Villa Ranka Colony,, Bilekahalli",Truck15,0.508949672,34.85344798,66150,843648,24.09,234,20160 - 23640
+"h.s. gangappa stores,no 14, cubbonpet market square",Truck15,0.876530765,35.72997875,66150,909798,17.07,258,21360 - 24840
+"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Truck15,1.179252878,36.90923162,89626.9032,975948,18.59,275,22680 - 26160
+"MALNAD PROVISION STORE,2ND MAIN BEGUR ROAD, HONGASANDRA",Truck15,1.056563538,37.96579516,4683.67375,1065574,5.63,293,24000 - 27480
+"UMA PROVISION STORE,#9 3RD CROSS RAMA TEMPLE OPP ROAD, ASHOK NAGAR B S M 1ST STAGE",Truck15,1.667469549,39.63326471,43547.2016,1070257,3.75,298,25320 - 28800
+"Mahaveer provision stores,No.107/6 ground floor shankar mutt road, Gandhi bazaar basavanagudi",Truck15,4.45E-05,39.6333092,43547.2016,1113804,6.86,301,26520 - 30000
+"Nakoda Medicals and General Stores,Sy No-15/4,Shop No-03,Avani Sri Nagar, BTM 6th Stage,Nayanappanahalli,Begur Post",Truck15,4.45E-05,39.63335369,66150,1157351,18.57,307,27720 - 31200
+"SRI GURUDATTA ENTERPRISES,NO 14/1 SHOP NO.B-3, AKSHAYAVANA COMPLEX, AKSHYANAGAR WEST NEAR CORPORATION BANK",Truck15,0,39.63335369,43547.2016,1223501,10.85,325,28920 - 32400
+"MEDICARE PHARMA,NO.436,K.NO 149/11/922,NO.01,G.FLOOR, 5TH CROSS, SUBASHNAGAR, LAND MARK AYYAPPA TEMPLE",Truck15,0,39.63335369,91837.14635,1267048,27.62,335,30120 - 33600
+"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Truck15,0,39.63335369,182952.8993,1358885,53.9,362,31320 - 34800
+"AMRUTH PHARMA MEDICALS AND GENERAL STORES,K.NO-62-13/10/1, 3RD MAIN, 14TH CROSS, WILSON GARDEN",Truck15,0,39.63335369,43547.2016,1541837,12.81,415,32520 - 36000
+"Infant medicals,#149,1 st mai,10th main, S.G.Palya",Truck15,0,39.63335369,5090.402259,1585384,10.3,427,33720 - 37200
+"Akshay provision store,#19/2,1st main,, 5th cross,balaji nagar",Truck15,0,39.63335369,5090.402259,1590474,10.3,437,34920 - 38400
+"VAI KING TRADERS,8 VANNARPET ROAD VIVEKNAGAR, Bangalore",Truck15,0,39.63335369,43547.2016,1595564,4.97,447,36120 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck15,6.792195461,46.42554916,0,1639111,0,451,38040 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck16,0,0,0,0,0,0,0 - 0
+"SRI SRINIVASA PROVISION STORE,#6/A, 2nd main, Mookambika temple ,, hosakerehalli, bsk 3rd stage",Truck16,3.75670695,3.75670695,67724.52786,0,39.29,0,1560 - 1800
+"Lakshmi store,Adigondanahalli, Attibele, Anekal",Truck16,0,3.75670695,125455.6991,67724,56.28,39,2760 - 3000
+"Garuda Pharma,K No.63/130/2, Grd Floor, Shop No1,2&3 (Opp Aiyappa Temple), #2 Tavarekere Main Road, SG Palya, DRC Post",Truck16,0,3.75670695,87094.4032,193179,26.53,95,3960 - 4200
+"Maruthi medicals and general stores,P.r no.143,shop no.3,ground floor, 6th main,teachers colony,venkatapura",Truck16,0,3.75670695,43547.2016,280273,9.77,121,5160 - 5400
+"BALAJI DEPARTMENTAL STORES,SHOP NO 1&2 NO 118/2 DOODATHORUR BEGUR HOBLE, ELECTRONIC CITY POST",Truck16,0,3.75670695,43547.2016,323820,5.01,130,6360 - 6600
+"Tedae industries,No.12/4,4th cross, nearby marry immaculate school, Lakkasndra",Truck16,7.320613849,11.0773208,48637.60386,367367,21.99,135,8400 - 8640
+"venugopal medicals,no25, shop no2, Satyam complex bendrenagar circle, 80 feet road padmanabhanagar",Truck16,0,11.0773208,43547.2016,416004,4.69,156,9600 - 9840
+"LEKHAN STORE,Hosakerehalli,mukambika tempal road, Near eshwari school",Truck16,0,11.0773208,10206.0396,459551,15.49,160,10800 - 11040
+"Pallavi Medical And General store,38.4th main ns palya btm layout 2nd stage",Truck16,0,11.0773208,22050,469757,24.9,175,12000 - 12240
+"MARUTHI MEDICALS,no,1865/1115,grd.flr.7th cross shop no 1, weavars colony gottigere bannerugatta main road",Truck16,0,11.0773208,10206.0396,491807,15.49,199,13200 - 13440
+"SUJATHA PHARMACY,1, #401/1C, ground floor, dream paradise,, gubbalala main road, subramanyapura post",Truck16,0,11.0773208,10206.0396,502013,15.49,214,14400 - 14640
+"SRI MANJUNATHA PRO STORE,ANAJANPURA CIRCLE AMRUTHANAGAR MAIN ROAD, ANJANAPURA",Truck16,0,11.0773208,43547.2016,512219,19.41,229,15600 - 15840
+"sai balaji medicals,no 101/1 cubbonpet main road, opp ramanjaneya temple",Truck16,0,11.0773208,1802.544,555766,24,248,16800 - 17040
+"ceeyem medicals,no 119, n r road opp Jamia masjid, city market",Truck16,0,11.0773208,43547.2016,557568,6.85,272,18000 - 18240
+"SATHVIK MEDICALS,K NO 65/7 SHOP NO. 1 GD FLR J.R RESIDENCY, ROYAL COUNTY ROAD PARAPPANA AGRAHARA E CITY POST",Truck16,7.421790197,18.499111,8325.051801,601115,6.37,278,20040 - 20280
+"Lion Super Market,plot#ca4/3, jigani industrial area, Apc Circle Bus stop,, Anekal taluk",Truck16,0,18.499111,238673.6629,609440,76.61,284,21240 - 21480
+"R.K. Medical and General Store,No.62/104,80 feet road, Arekare village,, near JP kendra bannerghatta road",Truck16,0,18.499111,43547.2016,848113,5.32,360,22440 - 22680
+"Bangalore medicals,No.8,(pid no. 40-85-51),16 th cross gangondanahalli, Main road,Nayandanahalli",Truck16,7.144345532,25.64345653,109697.2016,891660,30.2,365,24480 - 24720
+"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Truck16,0,25.64345653,43547.2016,1001357,24.41,395,25680 - 25920
+"SRI LAKSHMINARASIMHA PROVISION STORE,SHOP NO 1,SRIRAMANAGAR, HONGASANDRA ROAD,G B PALYA",Truck16,0,25.64345653,112039.0385,1044904,28.36,419,26880 - 27120
+"Alpha medicals,#96/1, S.G.playa mai road DRC post, Venkateshwara layout",Truck16,0,25.64345653,43547.2016,1156943,24.38,447,28080 - 28320
+"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Truck16,0,25.64345653,43547.2016,1200490,11.74,471,29280 - 29520
+"1st cross krishna layout HULIMAVU, BANNERGHATTA ROAD",Truck16,0,25.64345653,3220.22624,1244037,0.59,482,30480 - 30720
+"DISAR MEDICAL AND GENERAL STORE,Shop no.43/1, Ground floor, 17th cross, Shamanna Garden, 5th Phase JP Nagar",Truck16,0,25.64345653,45889.03848,1247257,7.72,482,31680 - 31920
+"Healthway Pharma,#184/15, 5th main, 4th block, jayanagar",Truck16,0,25.64345653,66150,1293146,23.93,489,32880 - 33120
+"standard medicals & general stores,shop no;2, site no 317/45/62-a fayazabad, 40 feet road",Truck16,0,25.64345653,43547.2016,1359296,21.02,512,34080 - 34320
+"mahadev drug house,no 16/3 shop no 1, gubbalala",Truck16,0,25.64345653,66150,1402843,18.93,533,35280 - 35520
+"Venus medico,#08,8th main road, Sampangirama nagar",Truck16,0,25.64345653,19687.8071,1468993,4.45,551,36480 - 36720
+"shree anjanadri traders,no 71/82, 2nd main, nt pet",Truck16,0,25.64345653,51872.2534,1488680,14.87,555,37680 - 37920
+"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Truck16,4.782290994,30.42574752,3832.649799,1540552,2.91,569,39360 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck16,3.932212989,34.35796051,0,1544384,0,571,40920 - 86400
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck17,0,0,0,0,0,0,0 - 0
+"MAX MEDICALS,No 3/2 classic centre, H.Siddaiah Road",Truck17,2.125822839,2.125822839,3220.22624,0,0.25,0,1440 - 4200
+"G M G PROVISION STORE,Balaji layout Gollahalli village, Near Ganesha Temple",Truck17,0,2.125822839,3445.313875,3220,5.46,0,2640 - 5400
+"Bangalore Medical Centre,shop No.2,Khata No.2/2,Begur Road, Devarachikkanahalli,I.I.M Post",Truck17,0,2.125822839,130641.6048,6665,30.81,5,3840 - 6600
+"Sri Lakshmi venkateshwara provision store,No 45 , 5th cross , k.r.layout ,J.P.Nagar 6th phase, near siddalingeshwara theatre",Truck17,1.438182485,3.564005325,46079.7016,137306,10.6,35,5160 - 7920
+"RAGHAVENDRA MEDICALS AND GENERAL STORE,#25/6,NEAR bus stop YALCHENAHALLI, KanAkapura main road",Truck17,0,3.564005325,3220.22624,183385,0.39,45,6360 - 9120
+"Kanchana store,#321,old madiwala,H M building, Near someshwara temple ,VP road",Truck17,0,3.564005325,31331.64419,186605,7.71,45,7560 - 10320
+"Sree Subramanya Provision Store,Muneshwara circle, Mangammanapalya, Bommanahalli",Truck17,0,3.564005325,11545.27804,217936,2.4,52,8760 - 11520
+"sree lakshmi medical,K.NO 1765/350 SHOP NO~02 GRD FLR,8TH MAIN,4TH CROSS, YELLUKUNTE VILLAGE,NEAR WATER TANK,I.T.I LAYOUT",Truck17,0,3.564005325,69260.796,229481,34.48,54,9960 - 12720
+"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Truck17,0,3.564005325,43547.2016,298741,21.42,88,11160 - 13920
+"Swasthik Medicals and General Stores,#103/82 venkateshwara Temple Road",Truck17,0,3.564005325,43547.2016,342288,3.46,109,12360 - 15120
+"Hari om stores,No.155,4th cross, opp l&t south apartment, 2nd stage, Arekere, mico layout, b g road, bommananahalli",Truck17,0,3.564005325,43547.2016,385835,9.14,112,13560 - 16320
+"GOOD MORNING MEDICARE,Door no.18,police road,ranasinghpet, Cottonpet",Truck17,4.660873361,8.224878685,43547.2016,429382,24.9,121,15240 - 18000
+"moti departmental store,no .949,nagarthpet, main road",Truck17,0,8.224878685,66150,472929,10.85,145,16440 - 19200
+"Kushal Provision Store,No. 89, Smurthi Layout, Hommadevanahalli,, Electronicity Main Road, Gottigere Post,",Truck17,0,8.224878685,109697.2016,539079,27.27,155,17640 - 20400
+"SNEHA MEDICALS,shop no3,site 20,gr. fl. om shiva shakthinagar, 4th cross chunchaghatta main road",Truck17,0,8.224878685,3220.22624,648776,0.86,182,18840 - 21600
+"PRAJWAL RICE TRADERS,prajwal rice traders, no 150/3/113,24th main near hotel sherkhan agara",Truck17,0,8.224878685,22130.6191,651996,13.84,182,20040 - 22800
+"Chamundi medicals and general stores,9\1 1st cross shop no3 madiwala bangalore Karnataka 560068",Truck17,0,8.224878685,87094.4032,674126,11.98,195,21240 - 24000
+"Surya Medicals & General Stores,Shop no-01, K No-488/573/582/ Sri Kanyakumari, Temple main road, Sarjapura",Truck17,0,8.224878685,49021.0576,761220,24.9,206,22440 - 25200
+"BINDU PROVISION STORE,bindu provision store, 23,thayappa garden d c halli main road bng",Truck17,0,8.224878685,52166.10648,810241,9.09,230,23640 - 26400
+"SREE LAKSHMI MEDICALS AND GENERAL STORES,no,648/343 ground floor,shop no ,2 devarachikjanahalli, main road bilekahalli banagalore-76",Truck17,0,8.224878685,43547.2016,862407,12.32,239,24840 - 27600
+"Sri Annapoorneshwari stores,No 573 12th cross girinagar 2phase",Truck17,0,8.224878685,43547.2016,905954,5.4,251,26040 - 28800
+"Karan stores,No 194/16 2nd main 4th phase VHBCS Layout girinagar",Truck17,0,8.224878685,182840.8202,949501,61.67,256,27240 - 30000
+"NANDINI PROVISION STORES,#36, 5TH MAIN, BSK 3RD STAGE, KATHRIGUPPE EAST",Truck17,0,8.224878685,176368.8064,1132341,29.23,317,28440 - 31200
+"SRI GANESHA PROVISION STORE,BSK 3rd STAGE,BANGALORE, Bangalore",Truck17,0,8.224878685,153244.4032,1308709,29.09,346,29640 - 32400
+"sri dutta pharma & general stores,no85, katana old no34/1, ittamadu main road, ground floor banashankari 3rd stage",Truck17,0,8.224878685,66150,1461953,9.72,375,30840 - 33600
+"VEDA MEDICALS,SHOP NO 150/2 GROUND FLOOR CHAITHANYA TECHNO SCHOOL ROAD, AREHALLI SUBRAMANYAPURA POST HANUMAHILLS LAY",Truck17,0,8.224878685,43547.2016,1528103,6.89,384,32040 - 34800
+"A.S Store,Bazaar street, Attibele, Anekal TQ",Truck17,0,8.224878685,96664.81343,1571650,35.01,390,33240 - 36000
+"SHREE KUMARESHWAR MEDICAL AND GENERAL STORE,Sy no 86/81/66 shop no1 Ground Floor Gollahalli, Village Electronic city post Anekal TQ",Truck17,0,8.224878685,43547.2016,1668314,2.74,425,34440 - 37200
+"S S STORE,No 177/1 THIRUPALYA ANEKAL, Taluk Bangalore",Truck17,0,8.224878685,43547.2016,1711861,22.92,427,35640 - 38400
+"OM SRI SAI RAM PROVISION STORE,No 234/1 SLN ROAD KUNTLU REDDY LAYOUT, JIGANI ANEKAL (T) BANGALORE -105",Truck17,0,8.224878685,1432.649799,1755408,0.25,449,36840 - 39600
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck17,6.792195461,15.01707415,0,1756840,0,449,38760 - 86400

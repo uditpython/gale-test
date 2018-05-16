@@ -1,0 +1,327 @@
+Address,Truck1,cum_distance,cum_vol,cum_weight,distance,time_range,volume,weight
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck1,0.0,Capacity0(0),Capacity0(0),0.0,Time0(0),0.0,0.0
+"SRI AYYAPPA STORES,NO 3 9TH MAIN, HOSAPALYA",Truck1,6.749337607648494,Capacity220(0..750),Capacity220(0..750),6.749337607648494,Time220(0..37800),66150.0,13.64
+"Shubham Department Store,Near Suncity Apartment, Sarjapur road, Ibbalur",Truck1,9.452911337023332,Capacity215(0..750),Capacity215(0..750),2.703573729374838,Time215(0..37800),112227.57495000001,20.48
+"shreya provision store,muthanalur croass, chandapura road",Truck1,13.262980498575594,Capacity119(0..750),Capacity119(0..750),3.810069161552261,Time119(0..37800),45017.731179,4.46
+"mataji provision stores,,kirana and general merchanta no 10, r t street",Truck1,19.240565703052575,Capacity290(0..750),Capacity290(0..750),5.977585204476982,Time290(0..37800),12443.183999999997,19.77
+"SRI VENKATESWARA TRADERS,#9,4TH MAIN ROAD, S.R NAGAR",Truck1,19.240565703052575,Capacity267(0..750),Capacity267(0..750),0.0,Time267(0..37800),9142.325,2.09
+"santhosh medicals and general stores,no 47-a lakshmi building markhand road, ashok nagar",Truck1,19.240565703052575,Capacity265(0..750),Capacity265(0..750),0.0,Time265(0..37800),105765.22020000001,54.580000000000005
+"Kaveri Gift and Fancy Center,Sarjapura Main road, Attibela",Truck1,19.240565703052575,Capacity138(0..750),Capacity138(0..750),0.0,Time138(0..37800),43547.2016,5.71
+"Kumar traders,O T PET",Truck1,19.240565703052575,Capacity36(0..750),Capacity36(0..750),0.0,Time36(0..37800),261283.2096,86.86999999999999
+"Tedae industries,No.12/4,4th cross, nearby marry immaculate school, Lakkasndra",Truck1,31.968467165829267,Capacity88(0..750),Capacity88(0..750),12.727901462776694,Time88(0..37800),48637.603859,21.990000000000002
+"ceeyem medicals,no 119, n r road opp Jamia masjid, city market",Truck1,31.968467165829267,Capacity288(0..750),Capacity288(0..750),0.0,Time288(0..37800),43547.2016,6.85
+"sai balaji medicals,no 101/1 cubbonpet main road, opp ramanjaneya temple",Truck1,31.968467165829267,Capacity272(0..750),Capacity272(0..750),0.0,Time272(0..37800),1802.5439999999999,24.0
+"SRI MANJUNATHA PRO STORE,ANAJANPURA CIRCLE AMRUTHANAGAR MAIN ROAD, ANJANAPURA",Truck1,31.968467165829267,Capacity256(0..750),Capacity256(0..750),0.0,Time256(0..37800),43547.2016,19.41
+"SUJATHA PHARMACY,1, #401/1C, ground floor, dream paradise,, gubbalala main road, subramanyapura post",Truck1,31.968467165829267,Capacity243(0..750),Capacity243(0..750),0.0,Time243(0..37800),10206.039599999998,15.49
+"MARUTHI MEDICALS,no,1865/1115,grd.flr.7th cross shop no 1, weavars colony gottigere bannerugatta main road",Truck1,31.968467165829267,Capacity239(0..750),Capacity239(0..750),0.0,Time239(0..37800),10206.039599999998,15.49
+"Pallavi Medical And General store,38.4th main ns palya btm layout 2nd stage",Truck1,31.968467165829267,Capacity181(0..750),Capacity181(0..750),0.0,Time181(0..37800),22050.0,24.9
+"LEKHAN STORE,Hosakerehalli,mukambika tempal road, Near eshwari school",Truck1,31.968467165829267,Capacity162(0..750),Capacity162(0..750),0.0,Time162(0..37800),10206.039599999998,15.49
+"venugopal medicals,no25, shop no2, Satyam complex bendrenagar circle, 80 feet road padmanabhanagar",Truck1,31.968467165829267,Capacity157(0..750),Capacity157(0..750),0.0,Time157(0..37800),43547.2016,4.69
+"R.K. Medical and General Store,No.62/104,80 feet road, Arekare village,, near JP kendra bannerghatta road",Truck1,39.39025736310339,Capacity185(0..750),Capacity185(0..750),7.421790197274117,Time185(0..37800),43547.2016,5.32
+"Lion Super Market,plot#ca4/3, jigani industrial area, Apc Circle Bus stop,, Anekal taluk",Truck1,39.39025736310339,Capacity118(0..750),Capacity118(0..750),0.0,Time118(0..37800),238673.662941,76.61
+"SATHVIK MEDICALS,K NO 65/7 SHOP NO. 1 GD FLR J.R RESIDENCY, ROYAL COUNTY ROAD PARAPPANA AGRAHARA E CITY POST",Truck1,39.39025736310339,Capacity79(0..750),Capacity79(0..750),0.0,Time79(0..37800),8325.051801,6.37
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck1,52.91123442942363,Capacity309(0..750),Capacity309(0..750),13.520977066320246,Time309(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck2,0.0,Capacity293(0),Capacity293(0),0.0,Time293(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck2,0.0,Capacity310(0..750),Capacity310(0..750),0.0,Time310(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck3,0.0,Capacity294(0),Capacity294(0),0.0,Time294(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck3,0.0,Capacity311(0..750),Capacity311(0..750),0.0,Time311(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck4,0.0,Capacity295(0),Capacity295(0),0.0,Time295(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck4,0.0,Capacity312(0..750),Capacity312(0..750),0.0,Time312(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck5,0.0,Capacity296(0),Capacity296(0),0.0,Time296(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck5,0.0,Capacity313(0..750),Capacity313(0..750),0.0,Time313(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck6,0.0,Capacity297(0),Capacity297(0),0.0,Time297(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck6,0.0,Capacity314(0..750),Capacity314(0..750),0.0,Time314(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck7,0.0,Capacity298(0),Capacity298(0),0.0,Time298(0),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck7,0.0,Capacity315(0..750),Capacity315(0..750),0.0,Time315(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck8,0.0,Capacity299(0),Capacity299(0),0.0,Time299(0),0.0,0.0
+"Sri Chowdeshwari Stores,Sarjapura road, Mayura Bakery backside, Doctor layout, Attibele",Truck8,17.008406769372407,Capacity141(0..750),Capacity141(0..750),17.008406769372407,Time141(0..37800),650.947,12.21
+"AAI MATHA SUPERMARKET,Balaji complex,opp milk dairy; mirza road., Anekal",Truck8,17.008406769372407,Capacity136(0..750),Capacity136(0..750),0.0,Time136(0..37800),49763.91830000001,19.85
+"Shri Chowdeshwari stores,Manchenahalli road,, Attibele",Truck8,19.940316146693142,Capacity129(0..750),Capacity129(0..750),2.931909377320737,Time129(0..37800),43547.2016,9.78
+"PNK general store,Upkar solitaire Layout, Attibele, Anekal taluk",Truck8,19.940316146693142,Capacity122(0..750),Capacity122(0..750),0.0,Time122(0..37800),53661.117400999996,19.16
+"S L N PROVISION STORE,19th CROSS VISHWARA PRIYA LAY OUT, BEGUR BNG",Truck8,19.940316146693142,Capacity58(0..750),Capacity58(0..750),0.0,Time58(0..37800),95419.455001,18.46
+"Kishore super market buy n save, Shop No.4, Building No.36/33/39, 10th & 9th cross road",Truck8,19.940316146693142,Capacity54(0..750),Capacity54(0..750),0.0,Time54(0..37800),87094.4032,23.11
+"SUVARNA MEDICALS,no.47/3, raghavendra mutt road,, kalidasa layout, Srinagar",Truck8,19.940316146693142,Capacity28(0..750),Capacity28(0..750),0.0,Time28(0..37800),43547.2016,4.34
+"SURESH STORES,NO 168/478/ 4TH CROSS 1ST BLOCK J NAGAR BNG, Bangalore",Truck8,19.940316146693142,Capacity20(0..750),Capacity20(0..750),0.0,Time20(0..37800),110292.6496,50.160000000000004
+"M k home needs,483 3rd stage Beml layout opp. Beml complex, Raja rajeshwari nagar",Truck8,20.873316104118775,Capacity41(0..750),Capacity41(0..750),0.9329999574256319,Time41(0..37800),43547.2016,5.67
+"akshaya super bazaar,no 96/D, 12th CR's ideal homes township, Rajarajeshwari nagar",Truck8,21.522733462183336,Capacity51(0..750),Capacity51(0..750),0.6494173580645594,Time51(0..37800),43547.2016,11.35
+"Sri Ganesha Oil Store,Banhalli road, Chnadapura, Anekal Taluk",Truck8,23.84351566280042,Capacity125(0..750),Capacity125(0..750),2.320782200617084,Time125(0..37800),24913.284201000002,11.620000000000001
+"Raghavendra provision store,Arundhati Nagar 13th Cross Chandra Layout",Truck8,24.518891951778933,Capacity30(0..750),Capacity30(0..750),0.6753762889785123,Time30(0..37800),66150.0,9.82
+"AZEEM PROVISION STORE,No 296/1st block J Nagar, Byrasandra",Truck8,25.194268240757445,Capacity25(0..750),Capacity25(0..750),0.6753762889785123,Time25(0..37800),2528.1,13.97
+"BRUNDAVAN STORE,no 21/1 police station road basavanavgudi Gandhi bajaar",Truck8,25.194268240757445,Capacity13(0..750),Capacity13(0..750),0.0,Time13(0..37800),10782.199999999999,24.0
+"Sri lakshmi stores,Avalahalli mysore road",Truck8,27.06731158949872,Capacity22(0..750),Capacity22(0..750),1.873043348741272,Time22(0..37800),89436.24007500001,23.84
+"M/S RAGAM PRO STORES,ragam provision store, 154/ 9th cross w v colony gottigere bng",Truck8,28.43964792293462,Capacity263(0..750),Capacity263(0..750),1.3723363334359004,Time263(0..37800),7776.300000000002,15.37
+"burhani super bazaar,shop,no,2ground floor no,60 new 441 next ggottigere villege, uttarahallI hobli bengalore next shell petrol bunk-83",Truck8,28.43964792293462,Capacity231(0..750),Capacity231(0..750),0.0,Time231(0..37800),87094.4032,39.459999999999994
+"Life care pharma,No 43/1/10Grd floor shop no 1SLN NILAYA, Opp salapuri apts mangammanapalya bommanahalli",Truck8,28.43964792293462,Capacity222(0..750),Capacity222(0..750),0.0,Time222(0..37800),45382.989879,10.01
+"Mathaji Provision Store,#761, munishwara circle, old manamanapalya road,",Truck8,28.43964792293462,Capacity216(0..750),Capacity216(0..750),0.0,Time216(0..37800),109697.2016,32.42
+"Gowtham traders,No,68/3,40th main,1st cross, Behind central silk board building",Truck8,28.43964792293462,Capacity199(0..750),Capacity199(0..750),0.0,Time199(0..37800),43547.2016,5.42
+"PAWAN PROVISION STORE,no,53/5 krishna lay-out,begur main, road hulimavu bannergatta road",Truck8,28.43964792293462,Capacity188(0..750),Capacity188(0..750),0.0,Time188(0..37800),87094.4032,13.51
+"GANESHWAR GENERAL STORES,NO.54,22ND CROSS, 21ST MAIN ROAD,, BANASH ANKARI 2ND STAGE",Truck8,28.43964792293462,Capacity155(0..750),Capacity155(0..750),0.0,Time155(0..37800),65597.2016,36.72
+"lakshmi provision store,no10/1-tg layout 60ft rd ittamadu",Truck8,28.43964792293462,Capacity153(0..750),Capacity153(0..750),0.0,Time153(0..37800),109697.2016,32.089999999999996
+"SRI SATHYANARAYANA TRADERS,22nd main, 13th cross,, raghavendra layout, padmanabhanagar",Truck8,28.43964792293462,Capacity152(0..750),Capacity152(0..750),0.0,Time152(0..37800),65597.2016,31.65
+"Veerabhadreshwara provision stores,#25 near kalidevastana bsk hasakerehalli, Bangalore",Truck8,28.43964792293462,Capacity150(0..750),Capacity150(0..750),0.0,Time150(0..37800),6901.922401,24.42
+"JAI BHARATHA ELECTRICALS,kathriguppe mainroad, bsk 3rd stage",Truck8,28.43964792293462,Capacity147(0..750),Capacity147(0..750),0.0,Time147(0..37800),6901.922401,24.42
+"No.335/52/4, Lakshmamma building, Hennagara Bus stop, Hennagara Village, Anekal Taluk",Truck8,28.43964792293462,Capacity146(0..750),Capacity146(0..750),0.0,Time146(0..37800),6901.922401,24.42
+"Jai Veeranjaneya Enterprises,Shop No.3, Prasanna building, Jigala main road, Attibele",Truck8,28.43964792293462,Capacity145(0..750),Capacity145(0..750),0.0,Time145(0..37800),43547.2016,23.55
+"Mahadev super bazaar,56 1st main avalahalli mysore road",Truck8,28.641718438069525,Capacity23(0..750),Capacity23(0..750),0.20207051513490482,Time23(0..37800),8325.051801,3.77
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck8,47.596755279321684,Capacity316(0..750),Capacity316(0..750),18.95503684125216,Time316(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck9,0.0,Capacity300(0),Capacity300(0),0.0,Time300(0),0.0,0.0
+"Gs traders,Ground floor no. 101/1,g-1,slv nilaya, 19th main, 13th cross, venkateshwara layout, Btm stage",Truck9,15.818106181574679,Capacity225(0..750),Capacity225(0..750),15.818106181574679,Time225(0..37800),10206.039599999998,15.49
+"Basavanagudi pharmacy,No.84/1 Ground floor R V Road, Basavanagudi",Truck9,17.184312601348363,Capacity18(0..750),Capacity18(0..750),1.3662064197736836,Time18(0..37800),3220.2262399999995,0.5
+"kusum general stores,no.324-1335,avenue road",Truck9,17.738105583040525,Capacity273(0..750),Capacity273(0..750),0.5537929816921631,Time273(0..37800),2341.836875,1.13
+"Sri Sanjeevi provision stores tours&travels,Sanjeevi provision store, #1358, 5th cross,near ashoknagar post office",Truck9,18.357048910705856,Capacity4(0..750),Capacity4(0..750),0.6189433276653314,Time4(0..37800),87094.4032,24.96
+"PURUSHOTHAM PROVISION STORE,#90/24 2ND MAIN ROAD VITTAL NAGAR, CHAMARAJPET",Truck9,18.357048910705856,Capacity3(0..750),Capacity3(0..750),0.0,Time3(0..37800),66150.0,23.86
+"harith pharma,no.302, 2nd cross, c.t.bed, thygarajanagar Bangalore",Truck9,18.357048910705856,Capacity2(0..750),Capacity2(0..750),0.0,Time2(0..37800),43547.2016,13.12
+"Sri Ramya Store,NO.59,3rd main,7th cross, Bharathi layout,S G palya",Truck9,18.357048910705856,Capacity85(0..750),Capacity85(0..750),0.0,Time85(0..37800),5562.063114999999,4.35
+"Nanjundeshwara rice corner,#14/1,10th cross,venkateshwara layout, SG palya,d r c post",Truck9,18.357048910705856,Capacity101(0..750),Capacity101(0..750),0.0,Time101(0..37800),31483.489729999998,20.82
+"Sri Guru Raghavendra rice traders,Guru Raghavendra rice traders, #9 Canara Bank colony Uttarahalli main road",Truck9,18.357048910705856,Capacity164(0..750),Capacity164(0..750),0.0,Time164(0..37800),46767.42784,25.0
+"FAZAL STORE,4th main tank band rd, 5th block J Nagar",Truck9,18.357048910705856,Capacity261(0..750),Capacity261(0..750),0.0,Time261(0..37800),43547.2016,6.04
+"LUCKY STORE,1ST MAIN ROAD SMV LAYOUT, DEVARACHIKKANAHALLI",Truck9,19.180251788282387,Capacity176(0..750),Capacity176(0..750),0.8232028775765295,Time176(0..37800),96490.51120000001,21.51
+"chaitanya medicals,NO20/62,1st main road,marutinagar,madivala,bangalore-68",Truck9,19.683932329313652,Capacity212(0..750),Capacity212(0..750),0.5036805410312643,Time212(0..37800),87094.4032,19.28
+"SANGAM MEDICAL AND GENERAL STORES,#75/52, 264, Shop No.3, Ground floor,, KOTTANUR DINNE MAIN ROAD, 5th main, JP NAGAR 8th Phase",Truck9,19.683932329313652,Capacity238(0..750),Capacity238(0..750),0.0,Time238(0..37800),68491.836875,13.42
+"shareef traders,padarayana pura",Truck9,20.315906887376887,Capacity48(0..750),Capacity48(0..750),0.6319745580632333,Time48(0..37800),379762.70055500005,155.97999999999996
+"Sri RAGHAVENDRA PROVISION STORE,Haldenahalli ,ATTIBELE MAIN ROAD, Anekal taluk",Truck9,20.94788144544012,Capacity120(0..750),Capacity120(0..750),0.6319745580632333,Time120(0..37800),43547.2016,15.64
+"Lucky traders,13/2,ground floor,7th cross,, Muninarasimaiah garden,tavarekere main road,btm 1st stage",Truck9,20.94788144544012,Capacity105(0..750),Capacity105(0..750),0.0,Time105(0..37800),492720.10317400016,124.42999999999999
+"Raju provision store,#47 main ejipura, Muneshwara layout near bethel baptist church",Truck9,20.94788144544012,Capacity104(0..750),Capacity104(0..750),0.0,Time104(0..37800),49356.67683099999,11.08
+"Varalaxmi Provision Store,B block Subhash Nagar Main Road Near Singasandra, manipal county road",Truck9,20.94788144544012,Capacity80(0..750),Capacity80(0..750),0.0,Time80(0..37800),3220.2262399999995,0.96
+"AMANATH PROVISION STORE,amanath provision store, 58 d c halli main road kaveri nagar bng",Truck9,20.94788144544012,Capacity69(0..750),Capacity69(0..750),0.0,Time69(0..37800),43547.2016,20.54
+"ZAM ZAM TRADERS,NO.345/4,7TH CROSS CORPN.DIVISION OLD NO.21, NEW NO.33 MYSORE ROAD,KUVEMPU NAGAR",Truck9,20.94788144544012,Capacity50(0..750),Capacity50(0..750),0.0,Time50(0..37800),118022.253401,26.080000000000002
+"SHREE TRADERS,no 456/D AMOGHA NILAYA 1ST CROSS IDEAL HOMES LAYOUT, 1st phase RAJARAJESHWARI Nagar",Truck9,20.94788144544012,Capacity46(0..750),Capacity46(0..750),0.0,Time46(0..37800),43547.2016,9.02
+"SRI BALAJI MEDICAL AND GENERAL STORES,M 9,167,STS PETER AND PUISE CHURCH,, JJR NAGAR MAIN ROAD ROYAPURAM",Truck9,20.94788144544012,Capacity45(0..750),Capacity45(0..750),0.0,Time45(0..37800),43547.2016,11.75
+"METRO MARKETING,SF NO-6 2ND FLOOR, NO 40/1, OLD THARAGUPET CROSS",Truck9,20.94788144544012,Capacity37(0..750),Capacity37(0..750),0.0,Time37(0..37800),136918.6728,53.71
+"Venkateswara traders,Gangundahalli",Truck9,21.457590721942434,Capacity31(0..750),Capacity31(0..750),0.5097092765023146,Time31(0..37800),8325.051801,3.7
+"COFFEE NAADA SIRI ENTERPRISES,no 448 shop no 2 1st cross IDEAL HOMES TOWNSHIP, RR NAGAR",Truck9,22.376219481509782,Capacity40(0..750),Capacity40(0..750),0.9186287595673484,Time40(0..37800),87094.4032,16.33
+"national medicals,no 23 shop no 5, maszid-e-noor-ul-huda complex, old pension mohalla,",Truck9,22.376219481509782,Capacity10(0..750),Capacity10(0..750),0.0,Time10(0..37800),87094.4032,26.07
+"SHANMUGA TRADERS,NO 1634 80FT ROAD SBM COLONY MAIN ROAD, SBM COLONY",Truck9,22.376219481509782,Capacity5(0..750),Capacity5(0..750),0.0,Time5(0..37800),43547.2016,12.08
+"Apex Clinic & Pharma,A-2, Villa Ranka Colony,, Bilekahalli",Truck9,30.36364442982788,Capacity173(0..750),Capacity173(0..750),7.987424948318099,Time173(0..37800),66150.0,24.09
+"h.s. gangappa stores,no 14, cubbonpet market square",Truck9,31.24017519497564,Capacity278(0..750),Capacity278(0..750),0.8765307651477634,Time278(0..37800),66150.0,17.07
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck9,41.271669707458,Capacity317(0..750),Capacity317(0..750),10.03149451248236,Time317(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck10,0.0,Capacity301(0),Capacity301(0),0.0,Time301(0),0.0,0.0
+"NR STORES,SHOP.3 MUTHANALLUR CROSS, DOMMASANDRA ANEKAL TALUR",Truck10,12.971701789368502,Capacity227(0..750),Capacity227(0..750),12.971701789368502,Time227(0..37800),89436.24007500001,31.87
+"SRI MANJUNATHA PRAVASION STORE,JANATHA COLONY, YARANDA HALLI",Truck10,12.971701789368502,Capacity117(0..750),Capacity117(0..750),0.0,Time117(0..37800),25194.074759,1.95
+"K.NO-62-13/10/1, 3RD MAIN, 14TH CROSS, WILSON GARDEN",Truck10,12.971701789368502,Capacity115(0..750),Capacity115(0..750),0.0,Time115(0..37800),25194.074759,1.95
+"SRI SRINIVASA RICE TRADERS,NO 80/1 12TH MAIN NEAR GALAXY THEATERS, HONGASANDRA BEGUR ROAD",Truck10,12.971701789368502,Capacity74(0..750),Capacity74(0..750),0.0,Time74(0..37800),95419.455001,26.77
+"Janapriya food mart,NISAR K T JANAPRIYA FOOD MART, NO 1 SY NO 20/1 DODDANAGAMANGALA",Truck10,12.971701789368502,Capacity60(0..750),Capacity60(0..750),0.0,Time60(0..37800),100981.51811599999,28.55
+"healthcare medical,1106/60/3 shop no 05 kaveri nagar, devarachikkanahalli main road bommnahalli",Truck10,15.250225051854823,Capacity55(0..750),Capacity55(0..750),2.27852326248632,Time55(0..37800),43547.2016,11.52
+"PRAKASH TRADERS,#136, 80feet road, kathraguppa, BSK 3RD STAGE",Truck10,17.188539342753735,Capacity165(0..750),Capacity165(0..750),1.9383142908989135,Time165(0..37800),109697.2016,27.53
+"M/S FRIENDS PRO STORE,#104/10, Thanamma L/O dc halli rd,, Bilekahally, Bg Road,",Truck10,18.145139662548278,Capacity177(0..750),Capacity177(0..750),0.9566003197945425,Time177(0..37800),116036.46784,34.71
+"parshvanath medicals,no,100,ground floor opposite to, primary govt school devarachikkanahalli bangalore 560076, NEAR FIVE STAR BAKERY",Truck10,18.145139662548278,Capacity175(0..750),Capacity175(0..750),0.0,Time175(0..37800),11545.278041,3.86
+"Meena provision store,34/48 8th b cross, ittamadu main rd, bsk3rd stage",Truck10,18.145139662548278,Capacity151(0..750),Capacity151(0..750),0.0,Time151(0..37800),45889.038475,8.43
+"Maruthi Medical And General Store,K.No.399 , GROUND FLOOR SHOP NO-04,1ST MAIN,3RD CROSS, LAKSHMI LAYOUT,GARVEBHAVI PALYA",Truck10,18.145139662548278,Capacity63(0..750),Capacity63(0..750),0.0,Time63(0..37800),90314.62943999999,18.520000000000003
+"Deekshitha medicals,no-1, Door no-4/4, sy no-231/2 beguru",Truck10,18.145139662548278,Capacity59(0..750),Capacity59(0..750),0.0,Time59(0..37800),5646.204,8.85
+"Rafeeq stores,6th cross G G halli",Truck10,18.145139662548278,Capacity35(0..750),Capacity35(0..750),0.0,Time35(0..37800),118022.253401,43.620000000000005
+"Rudrappa stores,Avalahalli mysore road maramma temple road",Truck10,18.145139662548278,Capacity21(0..750),Capacity21(0..750),0.0,Time21(0..37800),196791.6048,33.57
+"gouse flour mill,no 15 library road, New jhonson market",Truck10,21.078028153635145,Capacity284(0..750),Capacity284(0..750),2.9328884910868673,Time284(0..37800),182807.711275,57.42
+"SRI RAMDEV PROVISION STORES,NO.134,9TH CROSS,, CHAMARAJPET",Truck10,22.28142505707024,Capacity17(0..750),Capacity17(0..750),1.2033969034350953,Time17(0..37800),11545.278041,4.98
+"ABHINAV MEDICALS,No.3, kathtriguppe main road, Vivekananda nagara,, behind a bus stop banashankari 3rd stage",Truck10,22.7588852502761,Capacity168(0..750),Capacity168(0..750),0.477460193205862,Time168(0..37800),8325.051801,2.66
+"S S R TRADERS,41/4 RAMANA GOPALA COMPLEX, 1ST FLOOR, SOMASUNDARA PALYA MAIN ROAD KUDLU VILLAGE",Truck10,22.7588852502761,Capacity209(0..750),Capacity209(0..750),0.0,Time209(0..37800),140035.399494,38.2
+"STEPHEN TRADERS,No 4 N A T ROAD, Basavanagudi",Truck10,24.244239832590758,Capacity15(0..750),Capacity15(0..750),1.4853545823146577,Time15(0..37800),43547.2016,14.16
+"SRI RANGANATHS STORES,#79, 7TH CRS, BHARATHI L OUT,, SG PALYA, DRC POST",Truck10,24.665458626776033,Capacity92(0..750),Capacity92(0..750),0.42121879418527486,Time92(0..37800),105405.743131,55.31
+"DAY TO DAY SUPER MARKET,no.12/14 2nd cross shan bahg nagappa, layout bilekahalli bannerghatta road bangalore-76",Truck10,24.665458626776033,Capacity189(0..750),Capacity189(0..750),0.0,Time189(0..37800),362590.144,57.41000000000001
+"Satish stores,Banahalli road, Chandapura",Truck10,24.989336209698305,Capacity130(0..750),Capacity130(0..750),0.3238775829222723,Time130(0..37800),51451.10159,10.900000000000002
+"GUPTA MEDICALS,no.16, 80 feet road, Mysore bank colony, Bsk 1st stage",Truck10,26.972311804909996,Capacity8(0..750),Capacity8(0..750),1.9829755952116912,Time8(0..37800),43547.2016,10.8
+"sri swaraj medicals,no.415/a, 12th main road, 80 feet road, bank colony, srinivasanagar",Truck10,27.07515144303763,Capacity9(0..750),Capacity9(0..750),0.10283963812763385,Time9(0..37800),43547.2016,12.07
+"MARUTHI MEDICALS AND STATIONARIES,shop no.1, no.36, katriguppe main road,, vidhyapeet circle, Bsk 1st stage",Truck10,27.98207919176645,Capacity29(0..750),Capacity29(0..750),0.9069277487288196,Time29(0..37800),43547.2016,8.1
+"SKANDA TRADERS,Shop no 6 g s market, Ot pet cross",Truck10,28.233132891339146,Capacity52(0..750),Capacity52(0..750),0.25105369957269785,Time52(0..37800),46767.42784,7.779999999999999
+"Sri sai medical,#18/1,muniyappa reddy buliding, vittasandra road,, begur",Truck10,28.233132891339146,Capacity71(0..750),Capacity71(0..750),0.0,Time71(0..37800),87094.4032,35.72
+"Brahmi enterprises,NGR residency , opp Reddy school, 15th cross , NGR Layout, Roopena Aghara",Truck10,28.233132891339146,Capacity78(0..750),Capacity78(0..750),0.0,Time78(0..37800),51872.253401,12.629999999999999
+"Lakshmi store,Billapura Attibele to Sarjapura road, Billapura",Truck10,28.233132891339146,Capacity229(0..750),Capacity229(0..750),0.0,Time229(0..37800),87094.4032,26.59
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck10,45.03625806336143,Capacity318(0..750),Capacity318(0..750),16.80312517202228,Time318(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck11,0.0,Capacity302(0),Capacity302(0),0.0,Time302(0),0.0,0.0
+"MAX MEDICALS,No 3/2 classic centre, H.Siddaiah Road",Truck11,2.125822839251402,Capacity266(0..750),Capacity266(0..750),2.125822839251402,Time266(0..37800),3220.2262399999995,0.25
+"G M G PROVISION STORE,Balaji layout Gollahalli village, Near Ganesha Temple",Truck11,2.125822839251402,Capacity137(0..750),Capacity137(0..750),0.0,Time137(0..37800),3445.313875,5.46
+"Bangalore Medical Centre,shop No.2,Khata No.2/2,Begur Road, Devarachikkanahalli,I.I.M Post",Truck11,2.125822839251402,Capacity56(0..750),Capacity56(0..750),0.0,Time56(0..37800),130641.6048,30.810000000000002
+"Sri Lakshmi venkateshwara provision store,No 45 , 5th cross , k.r.layout ,J.P.Nagar 6th phase, near siddalingeshwara theatre",Truck11,3.5640053246930075,Capacity247(0..750),Capacity247(0..750),1.4381824854416057,Time247(0..37800),46079.7016,10.6
+"RAGHAVENDRA MEDICALS AND GENERAL STORE,#25/6,NEAR bus stop YALCHENAHALLI, KanAkapura main road",Truck11,3.5640053246930075,Capacity236(0..750),Capacity236(0..750),0.0,Time236(0..37800),3220.2262399999995,0.39
+"Kanchana store,#321,old madiwala,H M building, Near someshwara temple ,VP road",Truck11,3.5640053246930075,Capacity230(0..750),Capacity230(0..750),0.0,Time230(0..37800),31331.64419,7.71
+"Sree Subramanya Provision Store,Muneshwara circle, Mangammanapalya, Bommanahalli",Truck11,3.5640053246930075,Capacity226(0..750),Capacity226(0..750),0.0,Time226(0..37800),11545.278041,2.4
+"sree lakshmi medical,K.NO 1765/350 SHOP NO~02 GRD FLR,8TH MAIN,4TH CROSS, YELLUKUNTE VILLAGE,NEAR WATER TANK,I.T.I LAYOUT",Truck11,3.5640053246930075,Capacity224(0..750),Capacity224(0..750),0.0,Time224(0..37800),69260.796,34.480000000000004
+"goalla pharma,sy no 39/1,katha no.49shop no.1&2, ground floor,s.j.r complex opp to ncc urban villas",Truck11,3.5640053246930075,Capacity218(0..750),Capacity218(0..750),0.0,Time218(0..37800),43547.2016,21.42
+"Swasthik Medicals and General Stores,#103/82 venkateshwara Temple Road",Truck11,3.5640053246930075,Capacity203(0..750),Capacity203(0..750),0.0,Time203(0..37800),43547.2016,3.46
+"Hari om stores,No.155,4th cross, opp l&t south apartment, 2nd stage, Arekere, mico layout, b g road, bommananahalli",Truck11,3.5640053246930075,Capacity184(0..750),Capacity184(0..750),0.0,Time184(0..37800),43547.2016,9.14
+"popular pharma,no h 35, store street opp popular nursing home, kalasipalyam",Truck11,8.224878685489038,Capacity287(0..750),Capacity287(0..750),4.660873360796031,Time287(0..37800),2341.836875,2.75
+"SUMMAIYA PROVISION STORES,10,KALASIPLAYA, POLICE STATION RD",Truck11,8.224878685489038,Capacity285(0..750),Capacity285(0..750),0.0,Time285(0..37800),118022.253401,36.53
+"GOOD MORNING MEDICARE,Door no.18,police road,ranasinghpet, Cottonpet",Truck11,8.224878685489038,Capacity283(0..750),Capacity283(0..750),0.0,Time283(0..37800),43547.2016,24.9
+"moti departmental store,no .949,nagarthpet, main road",Truck11,8.224878685489038,Capacity280(0..750),Capacity280(0..750),0.0,Time280(0..37800),66150.0,10.85
+"Kushal Provision Store,No. 89, Smurthi Layout, Hommadevanahalli,, Electronicity Main Road, Gottigere Post,",Truck11,8.224878685489038,Capacity244(0..750),Capacity244(0..750),0.0,Time244(0..37800),109697.2016,27.27
+"SNEHA MEDICALS,shop no3,site 20,gr. fl. om shiva shakthinagar, 4th cross chunchaghatta main road",Truck11,8.224878685489038,Capacity234(0..750),Capacity234(0..750),0.0,Time234(0..37800),3220.2262399999995,0.86
+"PRAJWAL RICE TRADERS,prajwal rice traders, no 150/3/113,24th main near hotel sherkhan agara",Truck11,8.224878685489038,Capacity228(0..750),Capacity228(0..750),0.0,Time228(0..37800),22130.619101,13.84
+"Chamundi medicals and general stores,9\1 1st cross shop no3 madiwala bangalore Karnataka 560068",Truck11,8.224878685489038,Capacity219(0..750),Capacity219(0..750),0.0,Time219(0..37800),87094.4032,11.98
+"Surya Medicals & General Stores,Shop no-01, K No-488/573/582/ Sri Kanyakumari, Temple main road, Sarjapura",Truck11,8.224878685489038,Capacity214(0..750),Capacity214(0..750),0.0,Time214(0..37800),49021.0576,24.9
+"BINDU PROVISION STORE,bindu provision store, 23,thayappa garden d c halli main road bng",Truck11,8.224878685489038,Capacity193(0..750),Capacity193(0..750),0.0,Time193(0..37800),52166.106475,9.09
+"SREE LAKSHMI MEDICALS AND GENERAL STORES,no,648/343 ground floor,shop no ,2 devarachikjanahalli, main road bilekahalli banagalore-76",Truck11,8.224878685489038,Capacity182(0..750),Capacity182(0..750),0.0,Time182(0..37800),43547.2016,12.32
+"Sri Annapoorneshwari stores,No 573 12th cross girinagar 2phase",Truck11,8.224878685489038,Capacity170(0..750),Capacity170(0..750),0.0,Time170(0..37800),43547.2016,5.4
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck11,15.017074146564898,Capacity319(0..750),Capacity319(0..750),6.792195461075861,Time319(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck12,0.0,Capacity303(0),Capacity303(0),0.0,Time303(0),0.0,0.0
+"Sri Jayalakshmi Store,Near Venkateshwara Temple, Sadar street, Attibele",Truck12,10.397384925587819,Capacity123(0..750),Capacity123(0..750),10.397384925587819,Time123(0..37800),48845.703839999995,14.010000000000002
+"Sri manjunatha-p- store,No 335 venkat reddy nagar siddapura, J nagar",Truck12,10.397384925587819,Capacity16(0..750),Capacity16(0..750),0.0,Time16(0..37800),249908.156641,93.56
+"KIRANA TRADING CO,NO.13,1ST MAIN ROAD, N T PET",Truck12,15.099367302497308,Capacity291(0..750),Capacity291(0..750),4.7019823769094895,Time291(0..37800),66150.0,21.57
+"BHAGYA MEDICAL AND GENERAL STORES,#15, 4th cross, 6th main road, Bsk 3rd stage., KIMS COLLEGE NEAR DEVE GOWDA PETROL BUNK",Truck12,15.099367302497308,Capacity167(0..750),Capacity167(0..750),0.0,Time167(0..37800),43547.2016,3.82
+"Krishna Department Store,#1/s50,Doddathogur main road, Velankani road, E city",Truck12,15.099367302497308,Capacity77(0..750),Capacity77(0..750),0.0,Time77(0..37800),45889.038475,8.27
+"M M PROVISION STORES,#13 NEAR OM SHAKTHI TEMPLE SHANTHINAGAR, HONGASANDRA",Truck12,15.099367302497308,Capacity62(0..750),Capacity62(0..750),0.0,Time62(0..37800),8325.051801,3.27
+"Apple Pharma,K no 36 shop no 3 &amp; 4, Vinayaka layout shanthipura electronics city phase 2",Truck12,15.099367302497308,Capacity61(0..750),Capacity61(0..750),0.0,Time61(0..37800),10666.888675999999,8.76
+"Sapna Departmental Store,5th cross, hosapalya, near ujala factory, Bommanahalli",Truck12,21.66978028449442,Capacity211(0..750),Capacity211(0..750),6.57041298199711,Time211(0..37800),164789.681241,51.03
+"MAJOR PHARMACEUTICALS PVT.LTD.,,No24/5, 4th main ,7th Block,BSK 3rd Stage, Bangalore, Bangalore",Truck12,21.66978028449442,Capacity160(0..750),Capacity160(0..750),0.0,Time160(0..37800),43547.2016,9.48
+"Karan medical stores,No.14, ground floor, rupeshwar complex,doddagowdanapalya, subramanyapura post",Truck12,21.66978028449442,Capacity158(0..750),Capacity158(0..750),0.0,Time158(0..37800),43547.2016,6.46
+"SRI MANJUNATH A STORE,NO 11 13TH MAIN BANK COLONY BANGALORE, Bangalore",Truck12,21.66978028449442,Capacity149(0..750),Capacity149(0..750),0.0,Time149(0..37800),65597.2016,34.26
+"GOKUL STORE,MICO LAY OUT, HONGASANDRA,BEGUR ROAD",Truck12,21.66978028449442,Capacity66(0..750),Capacity66(0..750),0.0,Time66(0..37800),3471.6479999999997,9.16
+"SRI HANUMAN STORE,816, 16th main main 12th, cross btm 2nd stage near mico police station bng",Truck12,32.77228162380892,Capacity201(0..750),Capacity201(0..750),11.102501339314507,Time201(0..37800),43547.2016,9.0
+"Sri Manjunatha Medicals and General stores,Shop no-04, Site no-86,87,88,&89, Sy no-114, G floor, Kachanayakanahalli, Jigani hobli",Truck12,32.77228162380892,Capacity116(0..750),Capacity116(0..750),0.0,Time116(0..37800),43547.2016,5.15
+"SamRddhi Technologies,#23, Ground floor, shop#2, Reliable residency, Harlur Road, Off Sarjapur Road, Near Vibgyor School",Truck12,35.601712882205184,Capacity205(0..750),Capacity205(0..750),2.8294312583962618,Time205(0..37800),43547.2016,17.34
+"SRI VIGNESHWARA RICE TRADERS,38-1 ITTUMADU MAIN ROAD, B S K 3RD STAGE",Truck12,37.17679381271901,Capacity163(0..750),Capacity163(0..750),1.5750809305138258,Time163(0..37800),43547.2016,11.94
+"SRINIVASA TRADERS,NO.28/1,GROUND FLOOR, 1ST MAIN ROAD,, SUDHAMANAGAR",Truck12,38.120658896831415,Capacity277(0..750),Capacity277(0..750),0.9438650841124047,Time277(0..37800),407647.71759500005,115.30999999999999
+"MANGAL CHAND &CO,477,BASEMENT,K.B.PLAZA, AVENUE ROAD",Truck12,38.120658896831415,Capacity274(0..750),Capacity274(0..750),0.0,Time274(0..37800),205116.656601,40.56
+"Sree vijaya lakshmi trader's,197,police road, Ranasingpet",Truck12,38.120658896831415,Capacity264(0..750),Capacity264(0..750),0.0,Time264(0..37800),223401.306601,50.42
+"MARUTHI PROVISION STORE,KASHI NAGAR J P NAGAR POST, YALCHENAHALLI",Truck12,38.120658896831415,Capacity259(0..750),Capacity259(0..750),0.0,Time259(0..37800),2350.25,0.54
+"S S TRADERS,GANDI NAGAR KANAKAPURA MAIN ROAD, BANGALORE",Truck12,38.120658896831415,Capacity253(0..750),Capacity253(0..750),0.0,Time253(0..37800),2762.5,2.03
+"Subramanya rice traders 7 5th cross, Ksit college opposed (rd) Raghuvanahalli kkp main road",Truck12,38.120658896831415,Capacity249(0..750),Capacity249(0..750),0.0,Time249(0..37800),66150.0,16.14
+"Goutham Home need,no,545-5th cross w v colony, bg rd bng pin 560083 mob 9342927215 lcr4562",Truck12,38.120658896831415,Capacity232(0..750),Capacity232(0..750),0.0,Time232(0..37800),45295.0736,38.59
+"Ayoka Essentials,#306,Salarpuria Greenage Juniper Block, Bommanahalli,Hosur Road",Truck12,38.120658896831415,Capacity207(0..750),Capacity207(0..750),0.0,Time207(0..37800),298331.849975,111.00999999999999
+"raghavendra departmental stores,37 3rd a crass 25th, main roda b t m 2nd stage bng",Truck12,38.120658896831415,Capacity194(0..750),Capacity194(0..750),0.0,Time194(0..37800),43547.2016,16.7
+"Fresh & More Super Market,Shop No.G-01,#57,58,Vinayaka Arcade,1st Main,3rd cross, Venkatadri Layout,Behind Apollo Hospital,BG Road",Truck12,38.120658896831415,Capacity186(0..750),Capacity186(0..750),0.0,Time186(0..37800),51566.2171,20.68
+"Welcome Stores,#402,7th Cross,16th Main, BTM 2nd stage",Truck12,38.120658896831415,Capacity178(0..750),Capacity178(0..750),0.0,Time178(0..37800),61614.5125,40.129999999999995
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck12,55.97418422342486,Capacity320(0..750),Capacity320(0..750),17.85352532659344,Time320(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck13,0.0,Capacity304(0),Capacity304(0),0.0,Time304(0),0.0,0.0
+"MAHENDRA COSMETICS,no.13/1,m.m.lane,, nagarthpet cross,",Truck13,9.628428731167318,Capacity282(0..750),Capacity282(0..750),9.628428731167318,Time282(0..37800),3220.2262399999995,0.75
+"prakash provision stores,no 9 mm lane, ganigarapet",Truck13,9.628428731167318,Capacity279(0..750),Capacity279(0..750),0.0,Time279(0..37800),43547.2016,9.64
+"CHANDAN STORE,chandan store, ganesh temple road d c halli road bng bilekahalli",Truck13,9.628428731167318,Capacity260(0..750),Capacity260(0..750),0.0,Time260(0..37800),43547.2016,4.56
+"S L V MEDICALS AND GENERAL STORES,No-2993/30 BAHRA COLONY GOTTIGERE, Bannerghatta road",Truck13,9.628428731167318,Capacity240(0..750),Capacity240(0..750),0.0,Time240(0..37800),43547.2016,3.98
+"Gowthami R,21, 24th Main Road, JP Nagar 6th Phase",Truck13,9.628428731167318,Capacity237(0..750),Capacity237(0..750),0.0,Time237(0..37800),175847.2016,32.089999999999996
+"NAKODA MEDICALS,no,31,ground floor near 80 feet road gubbalala, off kanakapura main road",Truck13,9.628428731167318,Capacity233(0..750),Capacity233(0..750),0.0,Time233(0..37800),43547.2016,11.77
+"R A S Store, 169 r a s store d c halli main road",Truck13,9.628428731167318,Capacity197(0..750),Capacity197(0..750),0.0,Time197(0..37800),10666.888675999999,2.9699999999999998
+"JAIN MEDICALS,shop no,4 gr,fl,no,1 7th main road, n s palya btm 2nd stage bangalore-76",Truck13,9.628428731167318,Capacity196(0..750),Capacity196(0..750),0.0,Time196(0..37800),66150.0,14.29
+"KHAN P STORE,hulimavu, b g road banaglore 76",Truck13,10.571779208102734,Capacity180(0..750),Capacity180(0..750),0.9433504769354164,Time180(0..37800),90314.62944,19.43
+"sri manjunatha medicals & general stores,No.11/7, kaverinagar (Vivekananda Nagar) near 43-a bus stop, kathriguppe, Bsk 3rd stage",Truck13,11.51512968503815,Capacity169(0..750),Capacity169(0..750),0.9433504769354164,Time169(0..37800),43547.2016,6.22
+"Sri Chowdeshwari Prv Store,No 18, Kammasandra, E-City",Truck13,11.51512968503815,Capacity134(0..750),Capacity134(0..750),0.0,Time134(0..37800),45889.038475,10.97
+"SRI SAI CHANDRA MEDICALS,K no;455/433/44,Shop no;2,gd flr,Lokesh building, Sparsh hospital road,hennagara gate,Anekal tq",Truck13,11.51512968503815,Capacity127(0..750),Capacity127(0..750),0.0,Time127(0..37800),43547.2016,8.81
+"Srinivas setty store,General merchant, Bazar street,, Attibele, Anekal TQ",Truck13,11.51512968503815,Capacity121(0..750),Capacity121(0..750),0.0,Time121(0..37800),19574.39538,19.87
+"NEW KAVERI MEDICALS AND GENERAL STORES,K NO 63/105/14, 4TH MAIN ROAD, 2ND CROSS BHOVI COLONY DRC POST",Truck13,11.51512968503815,Capacity99(0..750),Capacity99(0..750),0.0,Time99(0..37800),53381.64419,32.61
+"J.K. STORES,5/1, Ayyappa Block Main Road, Vannarpet Extension, Bangalore",Truck13,11.51512968503815,Capacity87(0..750),Capacity87(0..750),0.0,Time87(0..37800),43547.2016,7.67
+"R K PROVISION STORE,Saptagiri layout BETTADASANAPURA MAIN ROAD, E CITTY HOSA ROAD",Truck13,11.51512968503815,Capacity75(0..750),Capacity75(0..750),0.0,Time75(0..37800),130641.6048,38.47
+"mathaji department stores,833 BBM LYT, RR NAGAR",Truck13,11.51512968503815,Capacity44(0..750),Capacity44(0..750),0.0,Time44(0..37800),43547.2016,22.15
+"SIRI STORES,s.l.n.market,no.65/1, patnulpet, o.t pet cross",Truck13,11.51512968503815,Capacity43(0..750),Capacity43(0..750),0.0,Time43(0..37800),87094.4032,28.79
+"Sanjeevini Medicals,#188 Ground floor, 2nd cross 5th Phase BEML layout, Rajarajeshwari Nagar",Truck13,11.51512968503815,Capacity42(0..750),Capacity42(0..750),0.0,Time42(0..37800),6277.068,4.3
+"Emami Frank Ross Ltd,pvs warehousing, gowdon no-3, pattanagere, rajarajeshwari nagar",Truck13,11.51512968503815,Capacity39(0..750),Capacity39(0..750),0.0,Time39(0..37800),49824.2696,18.36
+"Master merchants,O T PET",Truck13,11.51512968503815,Capacity38(0..750),Capacity38(0..750),0.0,Time38(0..37800),370980.4112,79.89
+"prasad medicals stores,#93,shop no1, II main giridhama layout BEML 3rd stage, Rajarajeshwari nagar",Truck13,11.51512968503815,Capacity34(0..750),Capacity34(0..750),0.0,Time34(0..37800),87094.4032,10.14
+"MAHADESWARA STORES,CHANDRALAYOUT,NAYANDAHALLI,#1030,19TH CROSS,1stage, NAYANDAHALLI TO NAGARABHAVI SERVICE ROAD",Truck13,11.51512968503815,Capacity33(0..750),Capacity33(0..750),0.0,Time33(0..37800),43547.2016,3.79
+"Sree vinayaka medical stores,No.37/46 Gandhi bazaar main road",Truck13,11.51512968503815,Capacity27(0..750),Capacity27(0..750),0.0,Time27(0..37800),43547.2016,5.45
+"Sri venkateshwara medicals,SHOP NO 2 No 5 EAST CIRCLE ROAD V V PURAM",Truck13,11.51512968503815,Capacity26(0..750),Capacity26(0..750),0.0,Time26(0..37800),66150.0,11.81
+"VINAYAKA STORE,NO-133/1,1st CROS 12th MAIN, NAGENDRA BLOCK, BSK3rdSTAGE, BANGALORE",Truck13,11.51512968503815,Capacity24(0..750),Capacity24(0..750),0.0,Time24(0..37800),43547.2016,12.15
+"Karnataka stores,#383 6th cross k m colony gutteplaya, Siddapura",Truck13,11.51512968503815,Capacity12(0..750),Capacity12(0..750),0.0,Time12(0..37800),112039.038475,27.46
+"SRI LAKSHMI VENKATESHWARA RICE TRADRES,#161,6TH MAIN CROSS 3RD BLOCK, T R NAGAR",Truck13,11.51512968503815,Capacity6(0..750),Capacity6(0..750),0.0,Time6(0..37800),87094.4032,26.75
+"Magasin Distributors Pvt Ltd,#1058/1045/939/1/77/1A, Eshwari Industrial Estate, Near More Hypermarket, Hulimavu",Truck13,12.13949134421299,Capacity200(0..750),Capacity200(0..750),0.6243616591748399,Time200(0..37800),2341.836875,2.51
+"DIVYASHREE MEDICALS,shop no 1, building, no 44,gottigere b g road bangalore 560083",Truck13,14.999878872791628,Capacity254(0..750),Capacity254(0..750),2.8603875285786384,Time254(0..37800),4563.365,9.32
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck13,25.19775739205189,Capacity321(0..750),Capacity321(0..750),10.197878519260263,Time321(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck14,0.0,Capacity305(0),Capacity305(0),0.0,Time305(0),0.0,0.0
+"OM SRI SAI RAM PROVISION STORE,No 234/1 SLN ROAD KUNTLU REDDY LAYOUT, JIGANI ANEKAL (T) BANGALORE -105",Truck14,6.792195461075861,Capacity128(0..750),Capacity128(0..750),6.792195461075861,Time128(0..37800),1432.649799,0.25
+"VAI KING TRADERS,8 VANNARPET ROAD VIVEKNAGAR, Bangalore",Truck14,6.792195461075861,Capacity111(0..750),Capacity111(0..750),0.0,Time111(0..37800),43547.2016,4.97
+"Akshay provision store,#19/2,1st main,, 5th cross,balaji nagar",Truck14,6.792195461075861,Capacity106(0..750),Capacity106(0..750),0.0,Time106(0..37800),5090.4022589999995,10.3
+"Infant medicals,#149,1 st mai,10th main, S.G.Palya",Truck14,6.792195461075861,Capacity102(0..750),Capacity102(0..750),0.0,Time102(0..37800),5090.4022589999995,10.3
+"AMRUTH PHARMA MEDICALS AND GENERAL STORES,K.NO-62-13/10/1, 3RD MAIN, 14TH CROSS, WILSON GARDEN",Truck14,6.792195461075861,Capacity96(0..750),Capacity96(0..750),0.0,Time96(0..37800),43547.2016,12.81
+"Sri vinayaka prv store,1 st main,Janata colony, Jakkasandra,near govt school",Truck14,6.792195461075861,Capacity89(0..750),Capacity89(0..750),0.0,Time89(0..37800),182952.89926,53.900000000000006
+"MEDICARE PHARMA,NO.436,K.NO 149/11/922,NO.01,G.FLOOR, 5TH CROSS, SUBASHNAGAR, LAND MARK AYYAPPA TEMPLE",Truck14,6.792195461075861,Capacity73(0..750),Capacity73(0..750),0.0,Time73(0..37800),91837.146349,27.62
+"SRI GURUDATTA ENTERPRISES,NO 14/1 SHOP NO.B-3, AKSHAYAVANA COMPLEX, AKSHYANAGAR WEST NEAR CORPORATION BANK",Truck14,6.792195461075861,Capacity68(0..750),Capacity68(0..750),0.0,Time68(0..37800),43547.2016,10.85
+"Nakoda Medicals and General Stores,Sy No-15/4,Shop No-03,Avani Sri Nagar, BTM 6th Stage,Nayanappanahalli,Begur Post",Truck14,6.792195461075861,Capacity53(0..750),Capacity53(0..750),0.0,Time53(0..37800),66150.0,18.57
+"Mahaveer provision stores,No.107/6 ground floor shankar mutt road, Gandhi bazaar basavanagudi",Truck14,6.792239953009258,Capacity14(0..750),Capacity14(0..750),4.449193339700619e-05,Time14(0..37800),43547.2016,6.86
+"Mahalakshmi Provision stores,Bazaar street,, Attibele, Anekal taluk",Truck14,9.35612976634639,Capacity139(0..750),Capacity139(0..750),2.5638898133371324,Time139(0..37800),196791.6048,40.839999999999996
+"SRI MURUGAN STORES,EGIPURA MAIN ROAD, VIVEKNAGAR, BENGALURU, Bangalore",Truck14,14.29201709387652,Capacity103(0..750),Capacity103(0..750),4.935887327530131,Time103(0..37800),92903.87843099999,15.27
+"HAIWA HOME DEPARTMENT STORE,SRI RAMA TEMPLE ROAD, NEAR CHAVARA CHURCH EGIPURA, Bangalore",Truck14,14.336549574267513,Capacity91(0..750),Capacity91(0..750),0.044532480390992675,Time91(0..37800),43547.2016,6.91
+"NAKODA MEDICALS & GENERAL STORES,K NO-389/4, NO 488/1,BEGUR MAIN ROAD, bommanalli",Truck14,14.951811739015534,Capacity57(0..750),Capacity57(0..750),0.6152621647480218,Time57(0..37800),132983.441675,26.68
+"Malick Super Bazaar,MALICK SUPER BAZAAR, 219,K.B.A.R Road, Austin town",Truck14,15.661731222787772,Capacity94(0..750),Capacity94(0..750),0.7099194837722368,Time94(0..37800),71874.2696,36.209999999999994
+"Land mark,47 South end road nagasandra circle, Basavanagudi",Truck14,16.371650706560008,Capacity11(0..750),Capacity11(0..750),0.7099194837722368,Time11(0..37800),1688.1920000000005,12.79
+"Shanthi medicos,49 bazaar street down, Neelasandra",Truck14,16.66844116176547,Capacity108(0..750),Capacity108(0..750),0.2967904552054648,Time108(0..37800),43547.2016,9.35
+"Mahalakshmi stores,#12,austin town, Corporation market,Near iyengars bakery",Truck14,17.44012471105516,Capacity112(0..750),Capacity112(0..750),0.7716835492896869,Time112(0..37800),43547.2016,10.3
+"Swadeshi Arogya Kendra, #74, R T STREET , Near Jodhpur Sweets,",Truck14,18.391205239579918,Capacity289(0..750),Capacity289(0..750),0.9510805285247588,Time289(0..37800),43547.2016,10.3
+"model medical store,no 103, 104 brigade road, ashok nagar",Truck14,18.6812358610392,Capacity292(0..750),Capacity292(0..750),0.29003062145928316,Time292(0..37800),4600.2275,0.34
+"ABHINANDA STORES,Anjanapura, Tulasipura main road",Truck14,18.971266482498486,Capacity262(0..750),Capacity262(0..750),0.29003062145928316,Time262(0..37800),3220.2262399999995,0.59
+"Karthikmedicals&General stores,Sy no307,Shop no 1,venkatarajappabelding,jigani Main road, Jigani",Truck14,18.971266482498486,Capacity142(0..750),Capacity142(0..750),0.0,Time142(0..37800),66150.0,14.11
+"NAVEEN PROVISION STORE,NEAR ANJANEYA TEMPLE,DODDABEGUR, BEGUR",Truck14,18.971266482498486,Capacity70(0..750),Capacity70(0..750),0.0,Time70(0..37800),44184.1595,36.24
+"SRI SAI MEDICALS AND GENERAL STORES,#884 c/f sri ram nursing home, 7Th Main Raghavendra Block, Srinagar",Truck14,18.971266482498486,Capacity19(0..750),Capacity19(0..750),0.0,Time19(0..37800),66150.0,18.74
+"D.MAHALAKSHMI PROVISION STORES,NO-146 MAIN ROAD, SAMPANGERAM NAGAR",Truck14,20.51956613834074,Capacity275(0..750),Capacity275(0..750),1.5482996558422546,Time275(0..37800),43547.2016,8.98
+"RKS Sajid Khan General Stores,Adigarakallahalli, Sarjapura hobli, Anekal TQ",Truck14,21.679147175479105,Capacity204(0..750),Capacity204(0..750),1.159581037138367,Time204(0..37800),43547.2016,23.26
+"Kum Kum Fancy, General stores & Plastic items,No.01, Ground Floor, Basavarajappa & Neelamma complex, Opp.KEB, Sarjapura road, Attibele, Anekal Taluk",Truck14,24.454200080925,Capacity144(0..750),Capacity144(0..750),2.7750529054458926,Time144(0..37800),36129.13591,13.89
+"Sri Shridi Sai M.S.Medicals and General stores,No-366,G floor, Sadar street, Attibele, Anekal taluk",Truck14,24.454200080925,Capacity143(0..750),Capacity143(0..750),0.0,Time143(0..37800),43547.2016,4.16
+"Shafina Stores,Srinivagilu, VivekNagar Post",Truck14,24.831657593050608,Capacity114(0..750),Capacity114(0..750),0.377457512125608,Time114(0..37800),2341.836875,2.71
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck14,38.796461786712285,Capacity322(0..750),Capacity322(0..750),13.96480419366168,Time322(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck15,0.0,Capacity306(0),Capacity306(0),0.0,Time306(0),0.0,0.0
+"S S STORE,No 177/1 THIRUPALYA ANEKAL, Taluk Bangalore",Truck15,6.792195461075861,Capacity131(0..750),Capacity131(0..750),6.792195461075861,Time131(0..37800),43547.2016,22.92
+"MALNAD PROVISION STORE,2ND MAIN BEGUR ROAD, HONGASANDRA",Truck15,8.45966501002448,Capacity72(0..750),Capacity72(0..750),1.6674695489486204,Time72(0..37800),4683.67375,5.63
+"N S medical and general stores,Somanahalli gate, kanakapura main road",Truck15,11.240069601592136,Capacity241(0..750),Capacity241(0..750),2.780404591567656,Time241(0..37800),43547.2016,6.39
+"SAMAR HOME NEEDS,#3/3, 2nd main,maruthi layout,btm layout 1st stage",Truck15,11.970311712655898,Capacity107(0..750),Capacity107(0..750),0.7302421110637609,Time107(0..37800),8325.051801,1.71
+"sri vinayaka medical & general stores,k.no.201/39/2/59,shop no.1,I main,BHEL layout,kenchenahalli, Rajarajeshwari nagar",Truck15,13.368003436551954,Capacity32(0..750),Capacity32(0..750),1.3976917238960564,Time32(0..37800),43547.2016,16.14
+"Meena pharma,No.16/B,1st cross,lalbagh fort road,Dodda mavalli",Truck15,13.368003436551954,Capacity7(0..750),Capacity7(0..750),0.0,Time7(0..37800),51872.253401,10.11
+"JAIN MARKETING,NO.472,, AVENUE ROAD",Truck15,18.29108997565033,Capacity271(0..750),Capacity271(0..750),4.9230865390983745,Time271(0..37800),87094.4032,15.58
+"sirish food bazaar,no 54, 28th cross, corner cubbonpet main road",Truck15,19.161904401260117,Capacity276(0..750),Capacity276(0..750),0.8708144256097868,Time276(0..37800),87094.4032,21.5
+"K G STORE,#12 16TH CROSS 3RD MAIN S R NAGAR, Bangalore",Truck15,19.161904401260117,Capacity286(0..750),Capacity286(0..750),0.0,Time286(0..37800),43547.2016,9.51
+"AVENUE Medicals and general supplies,576/577 AVENUE ROAD",Truck15,19.999003535188606,Capacity281(0..750),Capacity281(0..750),0.8370991339284911,Time281(0..37800),43547.2016,3.09
+"SRI VENKATESHWARA STORES,31,C.K.C GARDEN, 2ND MAIN, LALBAGH ROAD,1ST CROSS",Truck15,20.91460323013388,Capacity269(0..750),Capacity269(0..750),0.9155996949452739,Time269(0..37800),17467.376801,5.279999999999999
+"S L V PROVISION STORE,3, 8th main 4 th cross muneswara layuot, hongasandra beguru road bng",Truck15,22.280809649907564,Capacity64(0..750),Capacity64(0..750),1.3662064197736836,Time64(0..37800),43547.2016,12.72
+"CITY MD PHARMA,K.no.69/37/41 ground floor, bazaar street road, Austin town neelasandra",Truck15,22.280809649907564,Capacity83(0..750),Capacity83(0..750),0.0,Time83(0..37800),43547.2016,17.47
+"P STORES,HOSAKEREHALLI, HOSAKEREHALLI",Truck15,22.280809649907564,Capacity171(0..750),Capacity171(0..750),0.0,Time171(0..37800),43547.2016,7.26
+"CHAYAPUTRA PROVISION STORE,chayaputra provision store, near doddamma temple hulimavu banaglore 76",Truck15,22.280809649907564,Capacity174(0..750),Capacity174(0..750),0.0,Time174(0..37800),88200.0,47.95
+"SRI LAKSHMI ADINARAYANA MEDICALS,SITE NO,780,13CROSS 16TH MAIN, BTM LAYOUT,2ND STAGE MAHADESHWARA LAYOUT BANGALORE",Truck15,22.280809649907564,Capacity190(0..750),Capacity190(0..750),0.0,Time190(0..37800),43547.2016,23.91
+"Sri annapoorneshwari smart store,#488,JAI HANUMAN NAGAR,AREKRE,, NEAR DIVYA JYOTHI SCHOOL, BANNERGHATTA ROAD",Truck15,24.785717363570242,Capacity179(0..750),Capacity179(0..750),2.5049077136626767,Time179(0..37800),46666.2416,13.2
+"Vishnu provision store,#2 3, koppa village, near normal layout, Koppa",Truck15,24.785717363570242,Capacity191(0..750),Capacity191(0..750),0.0,Time191(0..37800),87094.4032,7.09
+"Ashraya Medicals,No,G-3,958,5th cross,Vijaya bank layout, sunder ram shetty nagar,bannergatta road,bilekahalli",Truck15,24.785717363570242,Capacity198(0..750),Capacity198(0..750),0.0,Time198(0..37800),43547.2016,21.33
+"Bangalore traders buy and save,no.764/1, 19th main, 22nd cross, 2nd sector, near hsr club, HSR Layout",Truck15,24.785717363570242,Capacity208(0..750),Capacity208(0..750),0.0,Time208(0..37800),2341.836875,1.77
+"SOWMYA STORES,51/3 VGP LAYOUT, KUDLU VILLAGE",Truck15,24.785717363570242,Capacity210(0..750),Capacity210(0..750),0.0,Time210(0..37800),51872.253401,10.690000000000001
+"Rose general store,#4/3,kgn complex, 2nd block, 4th cross, koramangala near kaveri hospital",Truck15,24.785717363570242,Capacity213(0..750),Capacity213(0..750),0.0,Time213(0..37800),66150.0,15.51
+"Amma mukambika jmj provision store,10/48,4th crs, Maruthi nagar, madilwala",Truck15,24.785717363570242,Capacity217(0..750),Capacity217(0..750),0.0,Time217(0..37800),66150.0,18.57
+"ARAFA STORES,shop#1,SITE#2, NEAR TIPPU CIRCLE, AVALAHALLI VILLAGE, ANJANAPURA POST",Truck15,24.785717363570242,Capacity235(0..750),Capacity235(0..750),0.0,Time235(0..37800),43547.2016,9.46
+"Anu Provisions,#34, Nayak Layout, near BK Circle, JP Nagar 8th Phase",Truck15,24.785717363570242,Capacity246(0..750),Capacity246(0..750),0.0,Time246(0..37800),168621.41282,57.92999999999999
+"NISHANTH PROVISION STORE,nishanth provision store, homma devanahalli b g road bng",Truck15,24.785717363570242,Capacity255(0..750),Capacity255(0..750),0.0,Time255(0..37800),136413.87200000003,20.53
+"SRI CHELUVARAJU,PROVISION STORE,SOMANNAHALLI VILLAGE, Bangalore",Truck15,24.785717363570242,Capacity257(0..750),Capacity257(0..750),0.0,Time257(0..37800),70263.87200000002,6.09
+"Mahalaxmi provision stores,vasanthpura mn rd",Truck15,27.50654249116943,Capacity252(0..750),Capacity252(0..750),2.720825127599187,Time252(0..37800),43547.2016,6.32
+"SRI RUDRESHWARA PROVISION STORE,#4, 4th main rd, Ns palya",Truck15,28.41097913576532,Capacity172(0..750),Capacity172(0..750),0.9044366445958896,Time172(0..37800),2341.836875,3.11
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck15,39.17328111498984,Capacity323(0..750),Capacity323(0..750),10.76230197922452,Time323(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck16,0.0,Capacity307(0),Capacity307(0),0.0,Time307(0),0.0,0.0
+"SRI SRINIVASA PROVISION STORE,#6/A, 2nd main, Mookambika temple ,, hosakerehalli, bsk 3rd stage",Truck16,3.7567069502622448,Capacity159(0..750),Capacity159(0..750),3.7567069502622448,Time159(0..37800),67724.527861,39.28999999999999
+"Lakshmi store,Adigondanahalli, Attibele, Anekal",Truck16,3.7567069502622448,Capacity133(0..750),Capacity133(0..750),0.0,Time133(0..37800),125455.699071,56.28
+"Garuda Pharma,K No.63/130/2, Grd Floor, Shop No1,2&3 (Opp Aiyappa Temple), #2 Tavarekere Main Road, SG Palya, DRC Post",Truck16,3.7567069502622448,Capacity100(0..750),Capacity100(0..750),0.0,Time100(0..37800),87094.4032,26.53
+"Maruthi medicals and general stores,P.r no.143,shop no.3,ground floor, 6th main,teachers colony,venkatapura",Truck16,3.7567069502622448,Capacity97(0..750),Capacity97(0..750),0.0,Time97(0..37800),43547.2016,9.77
+"BALAJI DEPARTMENTAL STORES,SHOP NO 1&2 NO 118/2 DOODATHORUR BEGUR HOBLE, ELECTRONIC CITY POST",Truck16,3.7567069502622448,Capacity76(0..750),Capacity76(0..750),0.0,Time76(0..37800),43547.2016,5.01
+"Bangalore medicals,No.8,(pid no. 40-85-51),16 th cross gangondanahalli, Main road,Nayandanahalli",Truck16,10.595064335868893,Capacity47(0..750),Capacity47(0..750),6.838357385606648,Time47(0..37800),109697.2016,30.200000000000003
+"MAHENDRA COSMETICS,NO. 275, SHOP NO, 5 M H COMPLEX, 1ST FLOOR, O,T, PET",Truck16,10.595064335868893,Capacity49(0..750),Capacity49(0..750),0.0,Time49(0..37800),43547.2016,24.41
+"SRI LAKSHMINARASIMHA PROVISION STORE,SHOP NO 1,SRIRAMANAGAR, HONGASANDRA ROAD,G B PALYA",Truck16,10.595064335868893,Capacity81(0..750),Capacity81(0..750),0.0,Time81(0..37800),112039.03847500001,28.36
+"Alpha medicals,#96/1, S.G.playa mai road DRC post, Venkateshwara layout",Truck16,10.595064335868893,Capacity110(0..750),Capacity110(0..750),0.0,Time110(0..37800),43547.2016,24.38
+"Ilahi store,#29, 2nd main, 2nd cross, vinayaka nagar, wilson garden, Near ganesha temple",Truck16,10.595064335868893,Capacity113(0..750),Capacity113(0..750),0.0,Time113(0..37800),43547.2016,11.74
+"1st cross krishna layout HULIMAVU, BANNERGHATTA ROAD",Truck16,10.595064335868893,Capacity202(0..750),Capacity202(0..750),0.0,Time202(0..37800),3220.2262399999995,0.59
+"DISAR MEDICAL AND GENERAL STORE,Shop no.43/1, Ground floor, 17th cross, Shamanna Garden, 5th Phase JP Nagar",Truck16,10.595064335868893,Capacity242(0..750),Capacity242(0..750),0.0,Time242(0..37800),45889.038475,7.720000000000001
+"Healthway Pharma,#184/15, 5th main, 4th block, jayanagar",Truck16,10.595064335868893,Capacity245(0..750),Capacity245(0..750),0.0,Time245(0..37800),66150.0,23.93
+"standard medicals & general stores,shop no;2, site no 317/45/62-a fayazabad, 40 feet road",Truck16,10.595064335868893,Capacity248(0..750),Capacity248(0..750),0.0,Time248(0..37800),43547.2016,21.02
+"mahadev drug house,no 16/3 shop no 1, gubbalala",Truck16,10.595064335868893,Capacity250(0..750),Capacity250(0..750),0.0,Time250(0..37800),66150.0,18.93
+"Venus medico,#08,8th main road, Sampangirama nagar",Truck16,10.595064335868893,Capacity268(0..750),Capacity268(0..750),0.0,Time268(0..37800),19687.807100000005,4.45
+"shree anjanadri traders,no 71/82, 2nd main, nt pet",Truck16,10.595064335868893,Capacity270(0..750),Capacity270(0..750),0.0,Time270(0..37800),51872.253401,14.870000000000001
+"SRI LAKSHMI NARASIMHA PROVISION STORE,Janatha colony,yarandahalli",Truck16,15.377355329473453,Capacity124(0..750),Capacity124(0..750),4.78229099360456,Time124(0..37800),3832.649799,2.91
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck16,19.309568318589992,Capacity324(0..750),Capacity324(0..750),3.932212989116539,Time324(0..86400),0.0,0.0
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck17,0.0,Capacity308(0),Capacity308(0),0.0,Time308(0),0.0,0.0
+"UMA PROVISION STORE,#9 3RD CROSS RAMA TEMPLE OPP ROAD, ASHOK NAGAR B S M 1ST STAGE",Truck17,6.792195461075861,Capacity1(0..750),Capacity1(0..750),6.792195461075861,Time1(0..37800),43547.2016,3.75
+"Care chemist,117/A , Btm 1 stage 16th main road,tavarekere, Bangalore - 29",Truck17,9.356041663318976,Capacity90(0..750),Capacity90(0..750),2.563846202243116,Time90(0..37800),90314.62943999999,15.709999999999999
+"City rice traders,#50/6,1st cross,3rd main road, New gurapanapalya,behind I b m BG road",Truck17,12.265157984250749,Capacity86(0..750),Capacity86(0..750),2.9091163209317723,Time86(0..37800),51872.253401,9.48
+"Sri venkateshwara provision store,No 63 GROUND FLOOR S R Y LAYOUT, MYLASANDRADINNE VADDARAPALAYA BEGUR KOPPA ROAD NEAR",Truck17,14.810752377299877,Capacity67(0..750),Capacity67(0..750),2.5455943930491296,Time67(0..37800),43547.2016,10.52
+"PREMA MEDICALS,SHOP NO -0.1.1ST MAIN, SUDDAGUNTE PALYA BANGALORE",Truck17,14.810752377299877,Capacity82(0..750),Capacity82(0..750),0.0,Time82(0..37800),43547.2016,10.11
+"VENKATESHWARA PRV STORE,NO.131-16, 10th cross,SG palya",Truck17,14.810752377299877,Capacity84(0..750),Capacity84(0..750),0.0,Time84(0..37800),43547.2016,4.44
+"FAMILY SUPER MARKET,#18/1,3RD MAIN,15TH CROSS, LAKKASANDRA",Truck17,15.738790212538982,Capacity95(0..750),Capacity95(0..750),0.9280378352391041,Time95(0..37800),43547.2016,12.0
+"ANNAPURNESHWARI PROVISION STORE,#19,1st cross c m layout, near sunshine school bangalore 68",Truck17,16.666828047778086,Capacity221(0..750),Capacity221(0..750),0.9280378352391041,Time221(0..37800),44420.514349,7.552
+"Nagendra store,#6,2nd main,, 2nd cross,nanjappa layout,adugodi",Truck17,16.94389877141631,Capacity93(0..750),Capacity93(0..750),0.27707072363822355,Time93(0..37800),66150.0,15.33
+"Hansikaa medicals,HANSIKAA MEDICALS#9 SY No 5/11 Ground floor 1st main, RS Road Devarachikkanahalli BTM 4th stage",Truck17,17.82828322379094,Capacity65(0..750),Capacity65(0..750),0.8843844523746288,Time65(0..37800),8325.051801,1.13
+"Shri Krishna Enterprises,#125,1st Floor,Raheja Arcade,, Kormangala,Bangalore-560095",Truck17,18.814944860567184,Capacity98(0..750),Capacity98(0..750),0.9866616367762432,Time98(0..37800),3220.2262399999995,1.23
+"Irfan stores,Mother sab layout, New gurapanapalya",Truck17,19.80160649734343,Capacity109(0..750),Capacity109(0..750),0.9866616367762432,Time109(0..37800),43547.2016,16.45
+"SRI CHOWDESHWARI PROVISION STORE,SRI THIMMARAYA SWAMY TEMPLE ROAD, ANEKAL",Truck17,19.80160649734343,Capacity126(0..750),Capacity126(0..750),0.0,Time126(0..37800),71643.19099999999,14.99
+"HKS Traders,Handenahalli, Attibele",Truck17,19.80160649734343,Capacity132(0..750),Capacity132(0..750),0.0,Time132(0..37800),43547.2016,7.68
+"3S International,53/2i, 22nd Cross, Someshwara Layout,, Off: Bannerghatta Road, HULIMAVU,",Truck17,19.80160649734343,Capacity183(0..750),Capacity183(0..750),0.0,Time183(0..37800),3119.0399999999995,7.69
+"Vaibhav Gen Store,#62 Chowdeshwari Temple Street",Truck17,19.80160649734343,Capacity187(0..750),Capacity187(0..750),0.0,Time187(0..37800),43547.2016,10.02
+"Mathaji Provision store,Jigani main Road, MalleNeelasandra",Truck17,19.80160649734343,Capacity192(0..750),Capacity192(0..750),0.0,Time192(0..37800),18831.204,12.899999999999999
+"MAHALAKSHMI PROVISION STORE,GROUND FLOOR, 258/1,SANJEEVINI REDDY BUILDING, HARAPPANAHALLI VILLAGE JIGANI,ANEKAL TALUQ",Truck17,19.80160649734343,Capacity195(0..750),Capacity195(0..750),0.0,Time195(0..37800),62378.4056,22.019999999999996
+"Sri Balaji medicals and general stores,K no 202/50 shop no 3 ambedkar nagar, Carmelram post sarjapura road",Truck17,19.80160649734343,Capacity223(0..750),Capacity223(0..750),0.0,Time223(0..37800),43547.2016,10.01
+"AyurShop,#9, Guptha Market, 12th Cross,, JP Nagar 2nd Phase",Truck17,19.80160649734343,Capacity258(0..750),Capacity258(0..750),0.0,Time258(0..37800),28313.114759,9.64
+"SRMP traders,Behind ayappa temple, Madiwala hosur main road",Truck17,21.66325025270815,Capacity206(0..750),Capacity206(0..750),1.8616437553647196,Time206(0..37800),31331.64419,7.71
+"SLN family Mart,82/1Kaggalipura, Kaggalipura kanakapura main road",Truck17,24.537025616425904,Capacity251(0..750),Capacity251(0..750),2.873775363717754,Time251(0..37800),89626.9032,18.59
+"Karan stores,No 194/16 2nd main 4th phase VHBCS Layout girinagar",Truck17,27.124247131289867,Capacity166(0..750),Capacity166(0..750),2.587221514863962,Time166(0..37800),182840.82015,61.67
+"NANDINI PROVISION STORES,#36, 5TH MAIN, BSK 3RD STAGE, KATHRIGUPPE EAST",Truck17,27.124247131289867,Capacity161(0..750),Capacity161(0..750),0.0,Time161(0..37800),176368.8064,29.229999999999997
+"SRI GANESHA PROVISION STORE,BSK 3rd STAGE,BANGALORE, Bangalore",Truck17,27.124247131289867,Capacity156(0..750),Capacity156(0..750),0.0,Time156(0..37800),153244.4032,29.09
+"sri dutta pharma & general stores,no85, katana old no34/1, ittamadu main road, ground floor banashankari 3rd stage",Truck17,27.124247131289867,Capacity154(0..750),Capacity154(0..750),0.0,Time154(0..37800),66150.0,9.72
+"VEDA MEDICALS,SHOP NO 150/2 GROUND FLOOR CHAITHANYA TECHNO SCHOOL ROAD, AREHALLI SUBRAMANYAPURA POST HANUMAHILLS LAY",Truck17,27.124247131289867,Capacity148(0..750),Capacity148(0..750),0.0,Time148(0..37800),43547.2016,6.89
+"A.S Store,Bazaar street, Attibele, Anekal TQ",Truck17,27.124247131289867,Capacity140(0..750),Capacity140(0..750),0.0,Time140(0..37800),96664.813425,35.01
+"SHREE KUMARESHWAR MEDICAL AND GENERAL STORE,Sy no 86/81/66 shop no1 Ground Floor Gollahalli, Village Electronic city post Anekal TQ",Truck17,27.124247131289867,Capacity135(0..750),Capacity135(0..750),0.0,Time135(0..37800),43547.2016,2.74
+"Gopalan gardenia, Veerasandra Main Rd, BTM Phase 1, Veer Sandra, Electronic City, Bengaluru, Karnataka 560100",Truck17,33.916442592365726,Capacity325(0..750),Capacity325(0..750),6.792195461075861,Time325(0..86400),0.0,0.0

@@ -134,10 +134,11 @@ def create_data_array():
     volume = []
     import pdb
     pdb.set_trace()
-    with open('/Users/Deepak/git/gale-test/gale_test/gale/output_new.csv') as csvfile:
+    with open('/Users/Deepak/git/gale-test/gale_test/gale/test_new.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-               
+            import pdb
+            pdb.set_trace()
             try:
                 volume_ind = float(row['Length'])*float(row['Height'])*float(row['Height'])
                 ind = row['location'].index(",")
@@ -330,7 +331,7 @@ def work():
         url = queue.get()
         
         data_new = get_data(url)
-        if data_new != None:
+        if data_newqq!= None:
             crawler.images_list += data_new['images']
             crawler.link_list += data_new['links'] 
         queue.task_done()

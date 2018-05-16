@@ -1,30 +1,46 @@
 import math
 from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
+import Queue
+import pdb
+queue=Queue.Queue()
+matrix = {}
+import threading
+def distance(input):
+    lat1 = input[0]
+    lon1 = input[1]
+    lat2 = input[2]
+    lon2 = input[3]
+    import json
+    import urllib
+    import googlemaps
+    gmaps = googlemaps.Client(key='AIzaSyBOp8MtZAS5SHVzZFdWB-5kmG3OVwycT5o    ')
+    location1 = lat1,lon1
+    location2 = lat2,lon2
+    
+    result = gmaps.distance_matrix(location1, location2, mode='transit')
+    try:
+        driving_distance = result['rows'][0]['elements'][0]['distance']['value']
+        driving_distance = driving_distance/1000
+    except:
+        driving_distance = distance1(input)
+    
+    
+    return driving_distance
 
 
 
-# def distance1(lat1, lon1, lat2, lon2):
-#     import json
-#     import urllib
-#     import googlemaps
-#     gmaps = googlemaps.Client(key='AIzaSyBOtRLrxD2JLwjM5_7Z8iFRCYHbpdQrvjo')
-#     location1 = lat1,lon1
-#     location2 = lat2,lon2
-#     result = gmaps.distance_matrix(location1, location2, mode='transit')
-#     driving_distance = result['rows'][0]['elements'][0]['distance']['value']
-#     driving_distance = driving_distance/1000
-#     print driving_distance,distance1(lat1, lon1, lat2, lon2)
-#     return driving_distance
 
-
-
-
-def distance(lat1, lon1, lat2, lon2):
+def distance1(input):
+    lat1 = input[0]
+    lon1 = input[1]
+    lat2 = input[2]
+    lon2 = input[3]
+    
     
     from math import sin, cos, sqrt, atan2, radians
     lat11, lon11, lat21, lon21 = lat1, lon1, lat2, lon2
-
+ 
     R = 6373.0
     lat1 = radians(lat1)
     lon1 = radians(lon1)
@@ -32,32 +48,85 @@ def distance(lat1, lon1, lat2, lon2):
     lon2 = radians(lon2)
     dlon = lon2 - lon1
     dlat = lat2 - lat1
-
+ 
     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
-
+ 
     dist = R * c
     
     return dist
+
+def create_workers():
+    for _ in range(100):
+        t = threading.Thread(target=work)
+        t.daemon = True
+        t.start()
+
+
+
+def work():
+    while True:
+        cordinates = queue.get()
+        
+        try:
+            matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
+        except:
+            matrix[cordinates[1]][cordinates[2]] = distance(cordinates[3:])
+        print cordinates[0]
+        queue.task_done()
+# def parallel_dist(input):
+#     
+# #     import pdb
+# #     pdb.set_trace()
+# #     x1 = locations[from_node][0]
+# #     y1 = locations[from_node][1]
+# #     x2 = locations[to_node][0]
+# #     y2 = locations[to_node][1]
+# #     self.matrix[from_node][to_node] = distance(x1, y1, x2, y2)
+
 
 # Distance callback
 
 class CreateDistanceCallback(object):
   """Create callback to calculate distances and travel times between points."""
 
+  
+  
+  
+  
+  
   def __init__(self, locations):
     """Initialize distance array."""
+    import  datetime    
+    
+    from multiprocessing import Pool
+    cd = []
+    create_workers()
     num_locations = len(locations)
     self.matrix = {}
-
+    
+    
     for from_node in xrange(num_locations):
-      self.matrix[from_node] = {}
+      matrix[from_node] = {}
       for to_node in xrange(num_locations):
+          
+        
         x1 = locations[from_node][0]
         y1 = locations[from_node][1]
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
-        self.matrix[from_node][to_node] = distance(x1, y1, x2, y2)
+        cd.append([from_node,to_node,x1,y1,x2,y2])
+#         if distance1([x1,y1,x2,y2]) > 40:
+#             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
+#         
+        queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
+    queue.join()   
+#           
+     
+#         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
+        
+    print datetime.datetime.now()
+    
 
   def Distance(self, from_node, to_node):
 
@@ -150,15 +219,30 @@ def main():
     search_parameters = pywrapcp.RoutingModel.DefaultSearchParameters()
 
     # Callbacks to the distance function and travel time functions here.
+    
     dist_between_locations = CreateDistanceCallback(locations)
+    
+    dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
     
     routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
     demands_at_locations = CreateDemandCallback(demands)
     demands_callback = demands_at_locations.Demand
 
+   
+    
+    maximum_dist = 120
+    NullDistanceStack = 0
+    fix_start_cumul_to_zero = True
+    distance_check = "Distances"
+    routing.AddDimension(dist_callback, NullDistanceStack, maximum_dist,
+                         fix_start_cumul_to_zero, distance_check)
+    
+    
+    
+    
     # Adding capacity dimension constraints.
-    VehicleCapacity = 750
+    VehicleCapacity = 800
     NullCapacitySlack = 0
     fix_start_cumul_to_zero = True
     capacity = "Capacity"
@@ -183,7 +267,7 @@ def main():
     
     
     # Add time dimension.
-    time_per_demand_unit = 1200
+    time_per_demand_unit = 600
     horizon = 24 * 3600
     time = "Time"
     speed = 30
@@ -225,6 +309,7 @@ def main():
       capacity_dimension = routing.GetDimensionOrDie(capacity);
       time_dimension = routing.GetDimensionOrDie(time);
       volume_dimension = routing.GetDimensionOrDie(volumes);
+      distance_dimension = routing.GetDimensionOrDie(distance_check);
       plans = []
       
       distances = []
@@ -259,7 +344,7 @@ def main():
               dist1 = 0
           else:
               
-              dist1 =  distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+              dist1 =  dist_between_locations.matrix[node_index][node_prev]      
               dist += dist1
               node_prev = node_index
           distances.append(dist1)
@@ -269,6 +354,7 @@ def main():
           weight.append(demands[node_index])
           
           volume1.append(volume[node_index])
+          dist_var = distance_dimension.CumulVar(index)
           load_var = capacity_dimension.CumulVar(index)
           vol_var = volume_dimension.CumulVar(index)
           time_var = time_dimension.CumulVar(index)
@@ -277,17 +363,18 @@ def main():
           time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
           plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
           plan_output += \
-                    " {node_index} Load({load}) Vol({vol}) Time({tmin}, {tmax}) -> ".format(
+                    " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax}) -> ".format(
                         node_index=node_index,
                         load=assignment.Value(load_var),
                         vol = assignment.Value(vol_var),
+                        dist = dist,
                         tmin=str(assignment.Min(time_var)),
                         tmax=str(assignment.Max(time_var)))
           index = assignment.Value(routing.NextVar(index))
         
         node_index = routing.IndexToNode(index)
         
-        dist1 =  distance(locations[node_prev][0], locations[node_prev][1], locations[node_index][0], locations[node_index][1])    
+        dist1 =  dist_between_locations.matrix[node_index][node_prev]   
         dist += dist1
         node_prev = node_index
         distances.append(dist1)
@@ -296,6 +383,7 @@ def main():
         truck.append("Truck" + str(vehicle_nbr+1))
         weight.append(demands[node_index])
         volume1.append(volume[node_index])
+        dist_var = distance_dimension.CumulVar(index)
         load_var = capacity_dimension.CumulVar(index)
         vol_var = volume_dimension.CumulVar(index)
         time_var = time_dimension.CumulVar(index)
@@ -306,16 +394,17 @@ def main():
         plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
 
         plan_output += \
-                  " {node_index} Load({load}) Vol({vol}) Time({tmin}, {tmax})".format(
+                  " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax})".format(
                       node_index=node_index,
                       load=assignment.Value(load_var),
                       vol = assignment.Value(vol_var),
+                      dist = dist,
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
         print plan_output
         import pandas
         df = pandas.DataFrame(data={"Truck": truck, "Address": address1,"distance":distances,"cum_distance":cum_distance,"weight":weight,"cum_weight": cum_weight, "volume":volume1,"cum_vol":cum_volume,"time_range":time_range})
-        df.to_csv('gale/result_route_03_05.csv', index=False)
+        df.to_csv('gale/BLRY/result_route_20_04.csv', index=False)
         print "\n"
         print dist, number_del
         print "\n"
@@ -346,7 +435,7 @@ def create_data_array():
     volume = []
     volume.append(float(0))
     
-    with open('gale/output_new_18_04_2018.csv') as csvfile:
+    with open('gale/BLRY/result_20_04.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
                
@@ -389,8 +478,8 @@ def create_data_array():
     
     start_times =  [0] * len(locations)
     
-    # tw_duration is the width of the time windows.
-    tw_duration = 43200
+    # tw_duration 43200is the width of the time windows.
+    tw_duration = 38200
     
     # In this example, the width is the same at each location, so we define the end times to be
     # start times + tw_duration. For problems in which the time window widths vary by location,
@@ -402,6 +491,57 @@ def create_data_array():
     
     data = [locations, demands, start_times, end_times,volume,address]
     
+    return data
+def create_temp():
+    import analyze  
+    data = analyze.data()
+    info = data[1]
+    route = data[0]
+    keys = route.keys()
+    start_times = []
+    track_key = []
+    volume = []
+    routes = []
+    locations = []
+    demands = []
+    address = []
+    for i2 in range(len(keys)):
+        final_data = route[keys[i2]]
+        
+
+        for i in final_data:
+            
+            row = info[i[0]]
+            volume_ind = float(row['Length'])*float(row['Height'])*float(row['Height'])
+            ind = row['location'].index(",")
+            
+            check = row['ADDRESS']
+            if check in address:
+                ind = address.index(check)
+                if keys[i2] != routes[i2]:
+                    import pdb
+                    pdb.set_trace()
+                demands[ind] = demands[ind] + float(row['Weight'])
+                volume[ind] = volume[ind] + volume_ind
+                
+                
+            else:
+                routes.append(keys[i2])
+                track_key.append(i[0])
+                locations.append([float(row['location'][1:ind]),float(row['location'][ind+1:-1])])     
+                demands.append(float(row['Weight']))   
+                address.append(row['ADDRESS'])    
+                volume.append(volume_ind)
+        print keys[i2]
+        print len(locations), sum(demands),sum(volume),len(address)
+    data = []
+#     start_times =  [0] * len(locations)
+#     tw_duration = 37800
+#     end_times = [0] * len(start_times)
+#     for i in range(len(start_times)):
+#         end_times[i] = start_times[i] + tw_duration
+#     
+#     data = [locations, demands, start_times, end_times,volume,address]
     return data
 if __name__ == '__main__':
   main()
