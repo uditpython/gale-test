@@ -1,5 +1,5 @@
 import math
-from ortools.constraint_solver import pywrapcpu@1
+from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
 
 
