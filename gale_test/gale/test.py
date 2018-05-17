@@ -2,9 +2,10 @@ import threading
 import urllib2
 import time
 
+
 start = time.time()
 urls = ["http://www.google.com", "http://www.google.com", "http://www.google.com", "http://www.google.com", "http://www.google.com"]
-
+print(urls)
 def fetch_url(url):
     urlHandler = urllib2.urlopen(url)
     html = urlHandler.read()
