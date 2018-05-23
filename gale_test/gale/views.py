@@ -10,7 +10,8 @@ from urlparse import urlparse
 from bs4 import BeautifulSoup
 from gale_test.settings import NUMBER_OF_THREADS
 import Queue
-
+import pyodbc 
+import pandas as pd
 import math
 from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
@@ -358,24 +359,333 @@ def crawl(seed_urls_to_be_expolred):
     
 ## view for web crawler ##
 
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def route(request):
+    from copy import deepcopy
+    import route_optimizer
+    import datetime
+    import time
+    body = request.body.decode('utf-8')
+    data = json.loads(body)
+    depot_data  =  data['DepotPoint']
     
-    import rt1
-    data = rt1.main()
+    shipments = [0]
+    demands=  [0]
+    code = [depot_data['Code']]
+    data_init = [depot_data]
+    address = [depot_data['Address']]
+    volume = [0]
+    locations = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
    
-    label = 'Truck'
+    truck_options= data['UsersRoutePreferences']
+    
+    data_points = data['SelectedDropointsList']
+    cluster_points = data['cluster_info']
+    cluster_dict = {}
+    cluster_value = {}
+    
+    for pt in cluster_points:
+        cluster_value[pt['DropPointCode']] = pt['NewRouteID']
+        try:
+            cluster_dict[pt['NewRouteID']]['code'].append(pt['DropPointCode'])
+        except:
+            cluster_pt = {}
+            cluster_pt['code'] = [pt['DropPointCode']]
+            cluster_pt['cluster_value'] = [0]
+            cluster_pt['locations'] = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
+            cluster_pt['volume'] = [0]
+            cluster_pt['address'] = [depot_data['Address']]
+            cluster_pt['demands'] = [0]
+            cluster_dict[pt['NewRouteID']] = cluster_pt
+           
+    
+    
+     
+    cluster_index = 1
+    for i in data_points:
+        
+        if i['GoogleMapAddress'] != '':
+            check = i['Code']
+            if check in code:
+                
+                ind = code.index(check)
+                
+                demands[ind] = demands[ind] + float( i['weight'])
+                volume[ind] = volume[ind] + float( i['DropItemVMwt'])
+                
+                ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
+                cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float( i['DropItemVMwt'])
+                cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['weight'])
+                data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
+                shipments[ind] = shipments[ind] + 1
+            else:
+                
+                code.append(i['Code'])
+                address.append(i['GoogleMapAddress'])
+                try:
+                    loc = [float(i['lat']), float(i['lng'])]
+                    locations.append(loc)
+                except:
+                    import pdb
+                    pdb.set_trace()
+                
+                i['DropItems'] = i['AirwaybillNo']+str("<br>")
+                data_init.append(i)
+                demands.append( i['weight'])
+                shipments.append(1)
+                volume.append(i['DropItemVMwt'])
+                
+                cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
+                cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
+                cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
+                cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
+                cluster_dict[cluster_value[i['Code']]]['demands'].append(i['weight'])
+                cluster_index += 1
+                
+                
+    
+    start_times =  [0] * len(locations)
+    reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
+    reporting_time =  time.strptime(reporting_time.split(',')[0],'%H:%M')
+    
+    reporting_time =  int(datetime.timedelta(hours=reporting_time.tm_hour,minutes=reporting_time.tm_min,seconds=reporting_time.tm_sec).total_seconds())
+    loading_time = int( data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'])*60
+    
+    returning_time = data['UsersRoutePreferences']['ReturningTimeAtDepotPoint']
+    
+    returning_time =  time.strptime(returning_time.split(',')[0],'%H:%M')
+    
+    returning_time =  int(datetime.timedelta(hours=returning_time.tm_hour,minutes=returning_time.tm_min,seconds=returning_time.tm_sec).total_seconds())
+    
+    
+    start_times =  [reporting_time + loading_time] * len(locations)
+    end_times = [returning_time] * len(start_times)
+    optimized_data = []
+    for i in cluster_dict.keys():
+        
+        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+    
+        optimizer_result =  route_optimizer.main(input_data,truck_options)
+        
+        truck_result = optimizer_result[1]
+        optimized_data += optimizer_result[0]
+    
+    
+    
+    cnxn = pyodbc.connect(r'Driver={SQL Server Native Client 11.0};'
+                      r'Server=DESKTOP-DFS2OR8;'
+                      r'Database=dbShipprTech;'
+                      r'Trusted_Connection=yes;'
+                      r'uid=DESKTOP-DFS2OR8\\Udit Mital;pwd=Spidy@114')
+
+    df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
+        
+    final_df = df.loc[df['Code'] == truck_result['Code']]
+    final_df = final_df.to_dict(orient='records')[0]
+    final_df['UpdatedAt'] = None
+    final_df['CreatedAt'] = None
+    
+    total_routes = len(optimized_data)
+    result = {}
+    result['AllTotalNetAmount'] = "0"
+    result['AvgShipmentsCount'] = int(sum(shipments)/total_routes)
+    result['DeliveryVehicleModels'] = [{'DeliveryVehicleModel': "Ace", 'DeliveryVehicleCount': total_routes}]
+    result['DepotLatitude'] = depot_data['Latitude']
+    result['DepotLongitude'] = depot_data['Longitude']
+    result['TotalDistanceTravelled'] = 0
+    result['TotalHaltTime'] = 0
+    result['TotalMassWt'] = sum(demands)
+    result['TotalTravelDuration'] = 0
+    result['TotalTravelTime'] = 0
+    result['DropPointsCount'] = 0
+    result['TotalVolumetricWt'] = sum(volume)
+    result['TravelRouteCount'] = total_routes
+    result['TravelRoutes'] = []
+    optimized_data_dict = []
+    id = 1
+    
+    today_date =  datetime.datetime.now().date()
+    today_date = datetime.datetime.combine(today_date, datetime.time(00, 00,00))
+#     import os
+#     os.environ['TZ']='Asia/Kolkata'
+#     epoch_format ='%Y-%m-%d %H:%M:%S'
+    truck_arrival = (today_date+datetime.timedelta(seconds = reporting_time)).strftime('%Y-%m-%d  %H:%M:%S')
+    truck_departure = (today_date+datetime.timedelta(seconds = reporting_time+loading_time)).strftime('%Y-%m-%d  %H:%M:%S')
+#     truck_arrival = int(time.mktime(time.strptime(truck_arrival,epoch_format)))
+#     truck_departure = int(time.mktime(time.strptime(truck_departure,epoch_format)))
+    
+    for i in optimized_data:
+        dict = {}
+        
+        prev_time = start_times[0]
+        last_ind = len(i)
+        dict['AllowedVolumetricWeight'] = ''
+        dict['DepotName'] = ''
+        dict['DropPointsGeoCoordinate'] = []
+        dict['ID'] = id
+        
+        
+        dict['LimitingParameter'] = "MSWT"
+        dict['MajorAreasCovered'] = []
+        dict['SequencedDropPointsList'] = []
+        
+         
+        
+        
+        dict['SuggestedDeliveryVehicle'] = final_df
+       
+        
+        dict['TimeOfArrivalAtDepot'] = truck_arrival
+        dict['TimeOfOutForDeliveryFromDepot'] = truck_departure
+       
+        dict['TimeOfReleasedFromDepot'] = ''
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = ''
+        dict['TotalDistance'] = 0
+        dict['TotalDropItemsCount'] = 0
+        dict['TotalDroppointsCount'] = 0
+        dict['TotalDuration'] = 0
+        dict['TotalHaltTime'] = 0
+        dict['TotalMassWeight'] = 0
+        dict['TotalNetAmount'] = 0
+        dict['TotalQuantity'] = 0
+        dict['TotalTravelTime'] = 0
+        dict['TotalVolumetricWeight'] = 0
+        dict['TravelDate'] = None
+        
+        result['TotalTravelDuration'] += (int(i[last_ind -1][4]) - prev_time)/60
+        for j in range(len(i)):
+            node_index = i[j][0]
+            geo_dict = {}
+            geo_dict['DropPointCode'] = code[node_index]
+            geo_dict['lat'] = locations[node_index][0]
+            geo_dict['lng'] = locations[node_index][1]
+            dict['DropPointsGeoCoordinate'].append(geo_dict)
+            
+            depot_address = address[node_index]
+            localities = [x for x, v in enumerate(depot_address) if v == ',']
+            if  depot_address[localities[-1]+2:] != 'India':
+                locality =  depot_address[localities[-3]+2: localities[-2]]
+            else:
+                try:
+                    locality =  depot_address[localities[-4]+2: localities[-3]]
+                except:
+                    pass
+            dict['MajorAreasCovered'].append(locality)
+            seq_dp = deepcopy(data_init[node_index])
+            if node_index > 0:
+                
+                seconds = int(i[j][4])
+                m, s = divmod(seconds, 60)
+                h, m = divmod(m, 60)
+                seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
+                seq_dp['RouteSequentialDrivingDistance'] =  str(int(i[j][1]))
+                seq_dp['RouteSequentialPositionIndex'] = j+1
+            else:
+                
+                
+                
+                seq_dp['lat'] = seq_dp['Latitude']
+                seq_dp['lng'] = seq_dp['Longitude']
+                seq_dp['Name'] = 'Depot_1'
+                seq_dp['Index'] = -1
+                if j == 0:
+                    
+                    seconds = int(reporting_time)
+                    m, s = divmod(seconds, 60)
+                    h, m = divmod(m, 60)
+                    
+                    
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
+                    seq_dp['RouteSequentialDrivingDistance'] =  str(0)
+                    seq_dp['RouteSequentialPositionIndex'] = 1
+                else:
+                    seconds = int(i[j][4])
+                    m, s = divmod(seconds, 60)
+                    h, m = divmod(m, 60)
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
+                    seq_dp['RouteSequentialDrivingDistance'] =  str(int(i[j][1]))
+                    seq_dp['RouteSequentialPositionIndex'] = j+1
+                    
+                    
+            try:
+                if j > 0:
+                    node_index_prev = i[j-1][0]
+                    
+                    seq_dp['Address'] += "<br>[<a target='_blank' href='https://www.google.com/maps/dir/" + str(locations[node_index_prev][0]) + "," +  str(locations[node_index_prev][1]) + "/" + str(locations[node_index][0]) + "," +  str(locations[node_index][1]) + "'>How To Reach Here</a>]"
+            except:
+                pass
+            seq_dp['RouteIndex'] = id -1
+            seq_dp['Route'] = id  - 1
+            dict['SequencedDropPointsList'].append(seq_dp)
+            
+           
+#             seq_dp['Address'] = 
+#             seq_dp['Cluster'] =
+#             seq_dp['ClusterAngle'] =
+#             seq_dp['Code'] =
+#             seq_dp['DropItemETA'] =
+#             seq_dp['DropItemVMwt'] =
+#             seq_dp['DropItems'] =
+#             seq_dp['DropItemsCount'] =
+#             s
+#             seq_dp['GoogleMapAddress'] =
+#             seq_dp['HaltTime'] =
+#             seq_dp['Index'] =
+#             
+#             seq_dp['Name'] =
+#             seq_dp['RouteSequentialDrivingDistance'] =
+#             seq_dp['RouteSequentialPositionIndex'] =
+#             seq_dp['lat'] =
+#             seq_dp['lng'] =
+#             seq_dp['title'] =
+#             seq_dp['weight'] =
+#             
+#             
+            
+            if j > 0:
+                
+                dict['TotalDistance']  += int(i[j][1])
+                dict['TotalDropItemsCount'] += shipments[node_index]
+            if j > 1:
+                
+               
+                dict['TotalDroppointsCount'] += 1
+                dict['TotalDuration'] += (int(i[j][4]) - prev_time)/60
+                prev_time = int(i[j][4])
+                dict['TotalHaltTime'] += int(truck_options['MHaltTimeAtDropPoint'])
+                dict['TotalMassWeight'] += i[j][2]
+                dict['TotalNetAmount'] = 0
+                dict['TotalQuantity'] = 0
+                
+                   
+                dict['TotalVolumetricWeight'] = i[j][3]
+        
+        id += 1 
+        dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
+        
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = reporting_time+loading_time+dict['TotalDuration']*60)).strftime('%Y-%m-%d  %H:%M:%S')
+        result['TotalHaltTime'] += dict['TotalHaltTime']
+        result['TotalDistanceTravelled'] += dict['TotalDistance'] 
+        result['DropPointsCount'] += dict['TotalDroppointsCount']
+        dict['MajorAreasCovered'] = list(set(dict['MajorAreasCovered']))
+        result['TravelRoutes'].append(dict)
+    
+    
+    
+    result['TotalTravelTime'] =     result['TotalTravelDuration'] - result['TotalHaltTime']
+            
+     
     
     info = {}
-    for i in range(len(data)):
-        truck_data = []
-        for j in range(1,len(data[i])):
-            
-            truck_data.append(data[i][j][5])
-        info[label+str(i+1)] = truck_data
+    info['Code'] = 'SUCCESS'
+    info['IsPositive'] = 'false'
+    info['message'] = ''
+    info['Yield'] = result
+    
     
         
-    return HttpResponse(json.dumps(info) , content_type="application/json")
+    return HttpResponse(json.dumps(info,) , content_type="application/json")
 
 
 

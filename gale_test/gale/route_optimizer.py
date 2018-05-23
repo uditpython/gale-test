@@ -71,8 +71,8 @@ def work():
         try:
             matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         except:
-            matrix[cordinates[1]][cordinates[2]] = distance(cordinates[3:])
-        print cordinates[0]
+            matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+        
         queue.task_done()
 # def parallel_dist(input):
 #     
@@ -125,7 +125,7 @@ class CreateDistanceCallback(object):
      
 #         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
         
-    print datetime.datetime.now()
+    
     
 
   def Distance(self, from_node, to_node):
@@ -194,16 +194,18 @@ class CreateTotalTimeCallback(object):
 #     print(travel_time,service_time,from_node, to_node)
     
     return service_time + travel_time
-def main():
+def main(data,truck_options):
   # Create the data.
   
-  data = create_data_array()
+#   data = create_data_array()
+ 
   locations = data[0]
   demands = data[1]
   start_times = data[2]
   end_times = data[3]
   volume = data[4]
   address = data[5]
+  nodes = data[6]
   num_locations = len(locations)
   depot = 0
   num_vehicles = 17
@@ -231,7 +233,7 @@ def main():
 
    
     
-    maximum_dist = 120
+    maximum_dist = int(truck_options['MaxDistancePerVehicle'])
     NullDistanceStack = 0
     fix_start_cumul_to_zero = True
     distance_check = "Distances"
@@ -242,7 +244,34 @@ def main():
     
     
     # Adding capacity dimension constraints.
-    VehicleCapacity = 800
+    
+    VehicleCapacity = 0
+    VolumeCapacity = 0
+     
+    for i in  truck_options['SelectedDeliveryVehicles']:
+        if i['Code'] == 'V400':
+            VehicleCapacity = int(i['WeightAllowed'])
+             
+            VolumeCapacity = int(i['VmWtAllowed']) 
+            selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V500':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed']) 
+                selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V200':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed'])
+                selected_vehicle = i 
+
+    
+
+    
     NullCapacitySlack = 0
     fix_start_cumul_to_zero = True
     capacity = "Capacity"
@@ -255,7 +284,7 @@ def main():
     volume_at_locations = CreateVolumeCallback(volume)
     volume_callback = volume_at_locations.Volume
     
-    VolumeCapacity = 10607700000;
+     
     NullVolumeSlack = 0;
     fix_start_cumul_to_zero = True
     volumes = "Volume"
@@ -267,10 +296,11 @@ def main():
     
     
     # Add time dimension.
-    time_per_demand_unit = 600
+    
+    time_per_demand_unit =  int(truck_options['MHaltTimeAtDropPoint'])*60
     horizon = 24 * 3600
     time = "Time"
-    speed = 30
+    speed = int(truck_options['AverageSpeedOfVehicle'])
 
     service_times = CreateServiceTimeCallback(demands, time_per_demand_unit)
     service_time_callback = service_times.ServiceTime
@@ -304,7 +334,7 @@ def main():
       size = len(locations)
       # Solution cost.
       
-      print "Total distance of all routes: " + str(assignment.ObjectiveValue()) + "\n"
+#       print "Total distance of all routes: " + str(assignment.ObjectiveValue()) + "\n"
       # Inspect solution.
       capacity_dimension = routing.GetDimensionOrDie(capacity);
       time_dimension = routing.GetDimensionOrDie(time);
@@ -361,7 +391,7 @@ def main():
           cum_weight.append(assignment.Value(load_var))
           cum_volume.append(assignment.Value(vol_var))
           time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
-          plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
+          plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index],node_index))
           plan_output += \
                     " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax}) -> ".format(
                         node_index=node_index,
@@ -391,7 +421,7 @@ def main():
         cum_volume.append(assignment.Value(vol_var))
         time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
 
-        plan1.append((node_index,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index]))
+        plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index],node_index))
 
         plan_output += \
                   " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax})".format(
@@ -401,13 +431,11 @@ def main():
                       dist = dist,
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
-        print plan_output
-        import pandas
-        df = pandas.DataFrame(data={"Truck": truck, "Address": address1,"distance":distances,"cum_distance":cum_distance,"weight":weight,"cum_weight": cum_weight, "volume":volume1,"cum_vol":cum_volume,"time_range":time_range})
-        df.to_csv('gale/BLRY/result_route_20_04.csv', index=False)
-        print "\n"
-        print dist, number_del
-        print "\n"
+#         print plan_output
+#        
+#         print "\n"
+#         print dist, number_del
+#         print "\n"
         if len(plan1) == 2 and plan1[1][0] == 0:
             pass
         else:    
@@ -418,7 +446,7 @@ def main():
   else:
     print 'Specify an instance greater than 0.'
   
-  return plans 
+  return (plans,selected_vehicle) 
 
 def create_data_array():
 
