@@ -473,17 +473,18 @@ def route(request):
     
     
     
-    cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
-                      r'Server=MILFOIL.arvixe.com;'
-                      r'Database=dbShipprTech;'
-                    r'uid=usrShipprTech;pwd=usr@ShipprTech')
-
-    df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
-        
-    final_df = df.loc[df['Code'] == truck_result['Code']]
-    final_df = final_df.to_dict(orient='records')[0]
-    final_df['UpdatedAt'] = None
-    final_df['CreatedAt'] = None
+#     cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
+#                       r'Server=MILFOIL.arvixe.com;'
+#                       r'Database=dbShipprTech;'
+#                         r'uid=usrShipprTech;pwd=usr@ShipprTech')
+# 
+#     df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
+#         
+#     final_df = df.loc[df['Code'] == truck_result['Code']]
+#     final_df = final_df.to_dict(orient='records')[0]
+#     final_df['UpdatedAt'] = None
+#     final_df['CreatedAt'] = None
+   
     
     total_routes = len(optimized_data)
     result = {}
@@ -532,7 +533,7 @@ def route(request):
          
         
         
-        dict['SuggestedDeliveryVehicle'] = final_df
+        dict['SuggestedDeliveryVehicle'] = {u'Model': u'Ace', u'DeliveryVehicleTypeCode': u'S', u'Code': u'V400', u'Description': None, u'Brand': u'Tata', u'UpdatedAt': None, u'LockedBy': None, u'IsDropped': False, u'CreatedBy': u'SYS', u'UpdatedBy': u'SYS', u'ShortName': u'Ace', u'StatusCode': u'ACTV', u'FullName': u'Tata Ace', u'CreatedAt': None, u'Dimensions': u'-'}
        
         
         dict['TimeOfArrivalAtDepot'] = truck_arrival
