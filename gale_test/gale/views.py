@@ -473,11 +473,11 @@ def route(request):
     
     
     
-    cnxn = pyodbc.connect(r'Driver={SQL Server Native Client 11.0};'
-                      r'Server=DESKTOP-DFS2OR8;'
+    cnxn = pyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server};'
+                      r'Server=MILFOIL.arvixe.com;'
                       r'Database=dbShipprTech;'
                       r'Trusted_Connection=yes;'
-                      r'uid=DESKTOP-DFS2OR8\\Udit Mital;pwd=Spidy@114')
+                      r'uid=usrShipprTech;pwd=usr@ShipprTech')
 
     df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
         
