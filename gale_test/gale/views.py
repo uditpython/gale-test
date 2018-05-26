@@ -569,15 +569,19 @@ def route(request):
             
             depot_address = address[node_index]
             localities = [x for x, v in enumerate(depot_address) if v == ',']
-            if  depot_address[localities[-1]+2:] != 'India':
-                print depot_address
-                locality =  depot_address[localities[-3]+2: localities[-2]]
-            else:
-                try:
-                    locality =  depot_address[localities[-4]+2: localities[-3]]
-                except:
-                    pass
-            dict['MajorAreasCovered'].append(locality)
+            try:
+                if  depot_address[localities[-1]+2:] != 'India':
+                    
+                    locality =  depot_address[localities[-3]+2: localities[-2]]
+                else:
+                    try:
+                        locality =  depot_address[localities[-4]+2: localities[-3]]
+                    except:
+                        pass
+                dict['MajorAreasCovered'].append(locality)
+            except:
+                pass
+            
             seq_dp = deepcopy(data_init[node_index])
             if node_index > 0:
                 
