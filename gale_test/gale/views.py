@@ -406,10 +406,11 @@ def route(request):
     for i in data_points:
         
         if i['GoogleMapAddress'] != '':
-            temp_address = i['Address'][:i['Address'].index(",")]
-            temp_address = ''.join(e for e in temp_address if e.isalnum())
             
-            check = i['Code'][i['Code'].index(temp_address.lower()):]
+            temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
+            temp_address = ''.join(e for e in temp_address if e.isalnum())
+            temp_address =  temp_address[:400]
+            check = temp_address
             
             if check in code:
                 
