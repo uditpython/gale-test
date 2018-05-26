@@ -570,6 +570,7 @@ def route(request):
             depot_address = address[node_index]
             localities = [x for x, v in enumerate(depot_address) if v == ',']
             if  depot_address[localities[-1]+2:] != 'India':
+                print depot_address
                 locality =  depot_address[localities[-3]+2: localities[-2]]
             else:
                 try:
