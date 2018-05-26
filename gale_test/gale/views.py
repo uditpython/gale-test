@@ -406,7 +406,11 @@ def route(request):
     for i in data_points:
         
         if i['GoogleMapAddress'] != '':
-            check = i['Code']
+            temp_address = i['Address'][:i['Address'].index(",")]
+            temp_address = ''.join(e for e in temp_address if e.isalnum())
+            
+            check = i['Code'][i['Code'].index(temp_address.lower()):]
+            
             if check in code:
                 
                 ind = code.index(check)
@@ -421,7 +425,7 @@ def route(request):
                 shipments[ind] = shipments[ind] + 1
             else:
                 
-                code.append(i['Code'])
+                code.append(check)
                 address.append(i['GoogleMapAddress'])
                 try:
                     loc = [float(i['lat']), float(i['lng'])]
@@ -473,17 +477,17 @@ def route(request):
     
     
     
-#     cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
-#                       r'Server=MILFOIL.arvixe.com;'
-#                       r'Database=dbShipprTech;'
-#                         r'uid=usrShipprTech;pwd=usr@ShipprTech')
-# 
-#     df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
-#         
-#     final_df = df.loc[df['Code'] == truck_result['Code']]
-#     final_df = final_df.to_dict(orient='records')[0]
-#     final_df['UpdatedAt'] = None
-#     final_df['CreatedAt'] = None
+    #     cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
+    #                       r'Server=MILFOIL.arvixe.com;'
+    #                       r'Database=dbShipprTech;'
+    #                         r'uid=usrShipprTech;pwd=usr@ShipprTech')
+    # 
+    #     df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
+    #         
+    #     final_df = df.loc[df['Code'] == truck_result['Code']]
+    #     final_df = final_df.to_dict(orient='records')[0]
+    #     final_df['UpdatedAt'] = None
+    #     final_df['CreatedAt'] = None
    
     
     total_routes = len(optimized_data)
