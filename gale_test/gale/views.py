@@ -386,6 +386,7 @@ def route(request):
     cluster_value = {}
     
     for pt in cluster_points:
+        
         cluster_value[pt['DropPointCode']] = pt['NewRouteID']
         try:
             cluster_dict[pt['NewRouteID']]['code'].append(pt['DropPointCode'])
@@ -404,51 +405,56 @@ def route(request):
      
     cluster_index = 1
     for i in data_points:
-        
-        if i['GoogleMapAddress'] != '':
+        try:
+            cluster_value[i['Code']]
             
-            temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
-            temp_address = ''.join(e for e in temp_address if e.isalnum())
-            temp_address =  temp_address[:400]
-            check = temp_address
-            
-            if check in code:
+            if i['GoogleMapAddress'] != '':
                 
-                ind = code.index(check)
+                temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
+                temp_address = ''.join(e for e in temp_address if e.isalnum())
+                temp_address =  temp_address[:400]
+                check = temp_address
                 
-                demands[ind] = demands[ind] + float( i['weight'])
-                volume[ind] = volume[ind] + float( i['DropItemVMwt'])
+                if check in code:
+                    
+                    ind = code.index(check)
+                    
+                    demands[ind] = demands[ind] + float( i['weight'])
+                    volume[ind] = volume[ind] + float( i['DropItemVMwt'])
+                    
+                    ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
+                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float( i['DropItemVMwt'])
+                    cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['weight'])
+                    data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
+                    shipments[ind] = shipments[ind] + 1
+                else:
+                    
+                    code.append(check)
+                    address.append(i['GoogleMapAddress'])
+                    try:
+                        loc = [float(i['lat']), float(i['lng'])]
+                        locations.append(loc)
+                    except:
+                        import pdb
+                        pdb.set_trace()
+                    
+                    i['DropItems'] = i['AirwaybillNo']+str("<br>")
+                    data_init.append(i)
+                    demands.append( i['weight'])
+                    shipments.append(1)
+                    volume.append(i['DropItemVMwt'])
+                    
+                    
+                    cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
+                    
+                    cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
+                    cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
+                    cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
+                    cluster_dict[cluster_value[i['Code']]]['demands'].append(i['weight'])
+                    cluster_index += 1
                 
-                ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
-                cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float( i['DropItemVMwt'])
-                cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['weight'])
-                data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
-                shipments[ind] = shipments[ind] + 1
-            else:
-                
-                code.append(check)
-                address.append(i['GoogleMapAddress'])
-                try:
-                    loc = [float(i['lat']), float(i['lng'])]
-                    locations.append(loc)
-                except:
-                    import pdb
-                    pdb.set_trace()
-                
-                i['DropItems'] = i['AirwaybillNo']+str("<br>")
-                data_init.append(i)
-                demands.append( i['weight'])
-                shipments.append(1)
-                volume.append(i['DropItemVMwt'])
-                
-                cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
-                cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
-                cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
-                cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
-                cluster_dict[cluster_value[i['Code']]]['demands'].append(i['weight'])
-                cluster_index += 1
-                
-                
+        except:
+            pass        
     
     start_times =  [0] * len(locations)
     reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
