@@ -480,7 +480,7 @@ def route(request):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-        
+            
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
@@ -674,7 +674,7 @@ def route(request):
                 dict['TotalDuration'] += (int(i[j][4]) - prev_time)/60
                 prev_time = int(i[j][4])
                 dict['TotalHaltTime'] += int(truck_options['MHaltTimeAtDropPoint'])
-                dict['TotalMassWeight'] += i[j][2]
+                dict['TotalMassWeight'] = i[j][2]
                 dict['TotalNetAmount'] = 0
                 dict['TotalQuantity'] = 0
                 
