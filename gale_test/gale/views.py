@@ -421,10 +421,10 @@ def route(request):
                     ind = code.index(check)
                     
                     demands[ind] = demands[ind] + float( i['Wt_kgs'])
-                    volume[ind] = volume[ind] + float(i['volume'])
+                    volume[ind] = volume[ind] + float(i['DropItemVMwt'])
                     
                     ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
-                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['volume'])
+                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
                     data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
                     shipments[ind] = shipments[ind] + 1
@@ -445,13 +445,13 @@ def route(request):
                     data_init.append(i)
                     demands.append(i['Wt_kgs'])
                     shipments.append(1)
-                    volume.append(i['volume'])
+                    volume.append(i['DropItemVMwt'])
                     
                     
                     cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
                     
                     cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
-                    cluster_dict[cluster_value[i['Code']]]['volume'].append(i['volume'])
+                    cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
                     
                     cluster_dict[cluster_value[i['Code']]]['demands'].append(i['Wt_kgs'])
@@ -645,7 +645,7 @@ def route(request):
 #             seq_dp['ClusterAngle'] =
 #             seq_dp['Code'] =
 #             seq_dp['DropItemETA'] =
-#             seq_dp['volume'] =
+#             seq_dp['DropItemVMwt'] =
 #             seq_dp['DropItems'] =
 #             seq_dp['DropItemsCount'] =
 #             s
