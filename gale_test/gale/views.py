@@ -394,6 +394,7 @@ def route(request):
             cluster_pt = {}
             cluster_pt['code'] = [pt['DropPointCode']]
             cluster_pt['cluster_value'] = [0]
+            
             cluster_pt['locations'] = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
             cluster_pt['volume'] = [0]
             cluster_pt['address'] = [depot_data['Address']]
@@ -419,19 +420,21 @@ def route(request):
                     
                     ind = code.index(check)
                     
-                    demands[ind] = demands[ind] + float( i['weight'])
-                    volume[ind] = volume[ind] + float( i['DropItemVMwt'])
+                    demands[ind] = demands[ind] + float( i['Wt_kgs'])
+                    volume[ind] = volume[ind] + float(i['DropItemVMwt'])
                     
                     ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
-                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float( i['DropItemVMwt'])
-                    cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['weight'])
+                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
+                    cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
                     data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
                     shipments[ind] = shipments[ind] + 1
                 else:
                     
                     code.append(check)
                     address.append(i['GoogleMapAddress'])
+                    
                     try:
+#                         loc = [float(i['lat']), float(i['lng'])]
                         loc = [float(i['lat']), float(i['lng'])]
                         locations.append(loc)
                     except:
@@ -440,7 +443,7 @@ def route(request):
                     
                     i['DropItems'] = i['AirwaybillNo']+str("<br>")
                     data_init.append(i)
-                    demands.append( i['weight'])
+                    demands.append(i['Wt_kgs'])
                     shipments.append(1)
                     volume.append(i['DropItemVMwt'])
                     
@@ -450,7 +453,8 @@ def route(request):
                     cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
                     cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
-                    cluster_dict[cluster_value[i['Code']]]['demands'].append(i['weight'])
+                    
+                    cluster_dict[cluster_value[i['Code']]]['demands'].append(i['Wt_kgs'])
                     cluster_index += 1
                 
         except:
@@ -476,7 +480,7 @@ def route(request):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-    
+        
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
@@ -595,7 +599,7 @@ def route(request):
                 m, s = divmod(seconds, 60)
                 h, m = divmod(m, 60)
                 seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
-                seq_dp['RouteSequentialDrivingDistance'] =  str(int(i[j][1]))
+                seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
                 seq_dp['RouteSequentialPositionIndex'] = j+1
             else:
                 
@@ -620,7 +624,7 @@ def route(request):
                     m, s = divmod(seconds, 60)
                     h, m = divmod(m, 60)
                     seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
-                    seq_dp['RouteSequentialDrivingDistance'] =  str(int(i[j][1]))
+                    seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
                     seq_dp['RouteSequentialPositionIndex'] = j+1
                     
                     
@@ -661,7 +665,7 @@ def route(request):
             
             if j > 0:
                 
-                dict['TotalDistance']  += int(i[j][1])
+                dict['TotalDistance']  += i[j][1]
                 dict['TotalDropItemsCount'] += shipments[node_index]
             if j > 1:
                 

@@ -14,18 +14,37 @@ def distance(input):
     import json
     import urllib
     import googlemaps
-    gmaps = googlemaps.Client(key='AIzaSyBOp8MtZAS5SHVzZFdWB-5kmG3OVwycT5o    ')
+    gmaps = googlemaps.Client(key='AIzaSyBOp8MtZAS5SHVzZFdWB-5kmG3OVwycT5o')
     location1 = lat1,lon1
     location2 = lat2,lon2
     
-    result = gmaps.distance_matrix(location1, location2, mode='transit')
-    try:
-        driving_distance = result['rows'][0]['elements'][0]['distance']['value']
-        driving_distance = driving_distance/1000
-    except:
-        driving_distance = distance1(input)
+    result = gmaps.distance_matrix(location1, location2, mode='driving')
+   
+    driving_distance = result['rows'][0]['elements'][0]['distance']['value']
     
     
+    driving_distance =  float(driving_distance)/float(1000)
+    return driving_distance
+
+
+def distance_new_key(input):
+    lat1 = input[0]
+    lon1 = input[1]
+    lat2 = input[2]
+    lon2 = input[3]
+    import json
+    import urllib
+    import googlemaps
+    gmaps = googlemaps.Client(key='AIzaSyCYM_OqLaSDNkYjeqWsYyregpj9_eI_Tc8')
+    location1 = lat1,lon1
+    location2 = lat2,lon2
+    
+    result = gmaps.distance_matrix(location1, location2, mode='driving')
+   
+    driving_distance = result['rows'][0]['elements'][0]['distance']['value']
+    
+    
+    driving_distance =  float(driving_distance)/float(1000)
     return driving_distance
 
 
@@ -54,7 +73,7 @@ def distance1(input):
  
     dist = R * c
     
-    return dist
+    return float(dist)
 
 def create_workers():
     for _ in range(100):
@@ -71,7 +90,13 @@ def work():
         try:
             matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         except:
-            matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+            try:
+                matrix[cordinates[1]][cordinates[2]] = distance(cordinates[3:])
+            except:
+                try:
+                    matrix[cordinates[1]][cordinates[2]] = distance_new_key(cordinates[3:])
+                except:
+                    matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
         
         queue.task_done()
 # def parallel_dist(input):
@@ -208,8 +233,9 @@ def main(data,truck_options):
   nodes = data[6]
   num_locations = len(locations)
   depot = 0
-  num_vehicles = 17
+  num_vehicles = 100
   search_time_limit = 400000
+  
 
   # Create routing model.
   if num_locations > 0:
