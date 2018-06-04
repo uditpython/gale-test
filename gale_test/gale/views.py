@@ -674,12 +674,13 @@ def route(request):
                 dict['TotalDuration'] += (int(i[j][4]) - prev_time)/60
                 prev_time = int(i[j][4])
                 dict['TotalHaltTime'] += int(truck_options['MHaltTimeAtDropPoint'])
-                dict['TotalMassWeight'] = i[j][2]
+                
+                dict['TotalMassWeight'] += demands[i[j-1][0]]
                 dict['TotalNetAmount'] = 0
                 dict['TotalQuantity'] = 0
                 
                    
-                dict['TotalVolumetricWeight'] = i[j][3]
+                dict['TotalVolumetricWeight'] += volume[i[j-1][0]]
         
         id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
