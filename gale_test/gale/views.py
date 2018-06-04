@@ -525,8 +525,8 @@ def route(request):
 #     import os
 #     os.environ['TZ']='Asia/Kolkata'
 #     epoch_format ='%Y-%m-%d %H:%M:%S'
-    truck_arrival = (today_date+datetime.timedelta(seconds = reporting_time)).strftime('%Y-%m-%d  %H:%M:%S')
-    truck_departure = (today_date+datetime.timedelta(seconds = reporting_time+loading_time)).strftime('%Y-%m-%d  %H:%M:%S')
+    truck_arrival = (today_date+datetime.timedelta(seconds = reporting_time - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
+    truck_departure = (today_date+datetime.timedelta(seconds = reporting_time+loading_time - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
 #     truck_arrival = int(time.mktime(time.strptime(truck_arrival,epoch_format)))
 #     truck_departure = int(time.mktime(time.strptime(truck_departure,epoch_format)))
     
@@ -550,7 +550,7 @@ def route(request):
         
         dict['SuggestedDeliveryVehicle'] = {u'Model': u'Ace', u'DeliveryVehicleTypeCode': u'S', u'Code': u'V400', u'Description': None, u'Brand': u'Tata', u'UpdatedAt': None, u'LockedBy': None, u'IsDropped': False, u'CreatedBy': u'SYS', u'UpdatedBy': u'SYS', u'ShortName': u'Ace', u'StatusCode': u'ACTV', u'FullName': u'Tata Ace', u'CreatedAt': None, u'Dimensions': u'-'}
        
-        
+       
         dict['TimeOfArrivalAtDepot'] = truck_arrival
         dict['TimeOfOutForDeliveryFromDepot'] = truck_departure
        
@@ -689,7 +689,7 @@ def route(request):
         id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
         
-        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = reporting_time+loading_time+dict['TotalDuration']*60)).strftime('%Y-%m-%d  %H:%M:%S')
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = reporting_time+loading_time - 48600+dict['TotalDuration']*60)).strftime('%Y-%m-%d  %H:%M:%S')
         result['TotalHaltTime'] += dict['TotalHaltTime']
         result['TotalDistanceTravelled'] += dict['TotalDistance'] 
         result['DropPointsCount'] += dict['TotalDroppointsCount']
