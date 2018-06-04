@@ -594,8 +594,10 @@ def route(request):
             
             seq_dp = deepcopy(data_init[node_index])
             if node_index > 0:
+                seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                seconds = int(seconds)
+                    
                 
-                seconds = int(i[j][4])
                 m, s = divmod(seconds, 60)
                 h, m = divmod(m, 60)
                 seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
@@ -620,7 +622,9 @@ def route(request):
                     seq_dp['RouteSequentialDrivingDistance'] =  str(0)
                     seq_dp['RouteSequentialPositionIndex'] = 1
                 else:
-                    seconds = int(i[j][4])
+                    seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                    seconds = int(seconds)
+
                     m, s = divmod(seconds, 60)
                     h, m = divmod(m, 60)
                     seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
