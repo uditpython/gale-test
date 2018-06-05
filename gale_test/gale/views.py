@@ -653,8 +653,8 @@ def route(request):
                 else:
                     seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
                 seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
-                seq_dp['RouteSequentialPositionIndex'] = j
-                seq_dp['Index'] = j
+                seq_dp['RouteSequentialPositionIndex'] = j + 1
+                seq_dp['Index'] = j 
                 
             else:
                 
@@ -697,7 +697,7 @@ def route(request):
                         seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
                     
                     seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
-                    seq_dp['RouteSequentialPositionIndex'] = j
+                    seq_dp['RouteSequentialPositionIndex'] = j + 1
                     
                     
             try:
@@ -710,7 +710,38 @@ def route(request):
             seq_dp['RouteIndex'] = id -1
             seq_dp['Route'] = id  - 1
             dict['SequencedDropPointsList'].append(seq_dp)
-            
+            if j == 0:
+                seq = deepcopy(seq_dp)
+                seconds_temp = seconds + int(loading_time)
+                m, s = divmod(seconds_temp, 60)
+                h, m = divmod(m, 60)
+                
+                if h < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                seq['RouteSequentialPositionIndex'] += 1
+                dict['SequencedDropPointsList'].append(seq)
+            if j == len(i) -1 :
+                seq = deepcopy(seq_dp)
+                seconds_temp = seconds + int(loading_time)
+                m, s = divmod(seconds_temp, 60)
+                h, m = divmod(m, 60)
+                
+                if h < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str(m)
+               
+                dict['SequencedDropPointsList'].append(seq)
            
 #             seq_dp['Address'] = 
 #             seq_dp['Cluster'] =
