@@ -91,7 +91,7 @@ def work():
             matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         except:
             try:
-                matrix[cordinates[1]][cordinates[2]] = distance(cordinates[3:])
+                matrix[cordinates[1]][cordinates[2]] = distance_new_key(cordinates[3:])
             except:
                 try:
                     matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
