@@ -35,7 +35,7 @@ def distance_new_key(input):
     import json
     import urllib
     import googlemaps
-    gmaps = googlemaps.Client(key='AIzaSyCYM_OqLaSDNkYjeqWsYyregpj9_eI_Tc8')
+    gmaps = googlemaps.Client(key='AIzaSyA0tV1u4U11pOb82kXrqrVI0YtT5neutGg')
     location1 = lat1,lon1
     location2 = lat2,lon2
     
@@ -94,7 +94,7 @@ def work():
                 matrix[cordinates[1]][cordinates[2]] = distance(cordinates[3:])
             except:
                 try:
-                    matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+                    matrix[cordinates[1]][cordinates[2]] = distance_new_key(cordinates[3:])
                 except:
                     matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
         
