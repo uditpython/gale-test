@@ -13,6 +13,7 @@ import Queue
 import pyodbc 
 import pandas as pd
 import math
+from copy import deepcopy
 from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
 
@@ -358,11 +359,54 @@ def crawl(seed_urls_to_be_expolred):
 
     
 ## view for web crawler ##
+def substring_indexes(string,substring):
+    """ 
+    Generate indices of where substring begins in string
+
+    >>> list(find_substring('me', "The cat says meow, meow"))
+    [13, 19]
+    """
+    result = []
+    last_found = -1  # Begin at -1 so the next position to search from is 0
+    while True:
+        # Find next index of substring, by starting after its last known position
+        last_found = string.find(substring, last_found + 1)
+        if last_found == -1:  
+            break  # All occurrences have been found
+        else:
+            
+            result.append(last_found)
+    return result
+    
+def singluar_travel_routes(data):
+    
+    
+    for i in range(len(data)):
+        list = []
+        seq_drp_list = data[i]['SequencedDropPointsList']
+        for j in seq_drp_list:
+            try:
+                chk_str = j['DropItems']
+                result = substring_indexes(chk_str,'<br>')
+                for k in range(len(result)):
+                    if k == 0:
+                        j['DropItems'] = chk_str[:result[k]+len('<br>')]
+                    else:
+                        j['DropItems'] = chk_str[result[k-1]+len('<br>'):result[k]+len('<br>')]
+                        
+                    j1 = deepcopy(j)
+                    list.append(j1)  
+            except:
+                list.append(j)
+        data[i]['SequencedDropPointsList'] = list
+    return data
+
+
 
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def route(request):
-    from copy import deepcopy
+    
     import route_optimizer
     import datetime
     import time
@@ -600,9 +644,18 @@ def route(request):
                 
                 m, s = divmod(seconds, 60)
                 h, m = divmod(m, 60)
-                seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
+                if h < 10:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
                 seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
-                seq_dp['RouteSequentialPositionIndex'] = j+1
+                seq_dp['RouteSequentialPositionIndex'] = j
+                seq_dp['Index'] = j
+                
             else:
                 
                 
@@ -617,19 +670,34 @@ def route(request):
                     m, s = divmod(seconds, 60)
                     h, m = divmod(m, 60)
                     
+                    if h < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                    if m < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
                     
-                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
                     seq_dp['RouteSequentialDrivingDistance'] =  str(0)
-                    seq_dp['RouteSequentialPositionIndex'] = 1
+                    seq_dp['RouteSequentialPositionIndex'] = j
                 else:
                     seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
                     seconds = int(seconds)
 
                     m, s = divmod(seconds, 60)
                     h, m = divmod(m, 60)
-                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":") +str(m)
+                    if h < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                    if m < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                    
                     seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
-                    seq_dp['RouteSequentialPositionIndex'] = j+1
+                    seq_dp['RouteSequentialPositionIndex'] = j
                     
                     
             try:
@@ -694,13 +762,15 @@ def route(request):
         result['TotalDistanceTravelled'] += dict['TotalDistance'] 
         result['DropPointsCount'] += dict['TotalDroppointsCount']
         dict['MajorAreasCovered'] = list(set(dict['MajorAreasCovered']))
+        
         result['TravelRoutes'].append(dict)
     
     
     
-    result['TotalTravelTime'] =     result['TotalTravelDuration'] - result['TotalHaltTime']
+    result['TotalTravelTime'] = result['TotalTravelDuration'] - result['TotalHaltTime']
             
-     
+   
+#     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
     
     info = {}
     info['Code'] = 'SUCCESS'
