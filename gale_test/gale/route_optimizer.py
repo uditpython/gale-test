@@ -140,7 +140,7 @@ class CreateDistanceCallback(object):
     
     from multiprocessing import Pool
     cd = []
-    create_workers()
+#     create_workers()
     num_locations = len(locations)
     self.matrix = {}
     
