@@ -76,7 +76,7 @@ def distance1(input):
     return float(dist)
 
 def create_workers():
-    for _ in range(3):
+    for _ in range(2):
         t = threading.Thread(target=work)
         t.daemon = True
         t.start()
