@@ -366,8 +366,8 @@ def main(data,truck_options):
       time_dimension.CumulVar(location).SetRange(start, end)
     # Solve displays a solution if any.
     
-#     search_parameters.time_limit_ms = 30000
-#     search_parameters.solution_limit = 100
+    search_parameters.time_limit_ms = 30000
+    search_parameters.solution_limit = 100
 #     
     assignment = routing.SolveWithParameters(search_parameters)
     if assignment:
