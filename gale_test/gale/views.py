@@ -421,8 +421,31 @@ def route(request):
     address = [depot_data['Address']]
     volume = [0]
     locations = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
-   
+    
     truck_options= data['UsersRoutePreferences']
+    max_weight = 0
+    max_vol = 0
+    for i in  truck_options['SelectedDeliveryVehicles']:
+        if i['Code'] == 'V400':
+            VehicleCapacity = int(i['WeightAllowed'])
+             
+            VolumeCapacity = int(i['VmWtAllowed']) 
+            selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V500':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed']) 
+                selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V200':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed'])
+                selected_vehicle = i 
+    
     
     data_points = data['SelectedDropointsList']
     cluster_points = data['cluster_info']
@@ -465,8 +488,12 @@ def route(request):
                     ind = code.index(check)
                     
                     demands[ind] = demands[ind] + float( i['Wt_kgs'])
-                    volume[ind] = volume[ind] + float(i['DropItemVMwt'])
                     
+                    if demands[ind] > VehicleCapacity:
+                        return
+                    volume[ind] = volume[ind] + float(i['DropItemVMwt'])
+                    if volume[ind] > VolumeCapacity:
+                        return
                     ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
                     cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
@@ -487,6 +514,14 @@ def route(request):
                     
                     i['DropItems'] = i['AirwaybillNo']+str("<br>")
                     data_init.append(i)
+                    
+                    if i['Wt_kgs'] > VehicleCapacity:
+                        return
+                   
+                    if i['DropItemVMwt'] > VolumeCapacity:
+                        return
+                    
+                    
                     demands.append(i['Wt_kgs'])
                     shipments.append(1)
                     volume.append(i['DropItemVMwt'])
@@ -524,7 +559,7 @@ def route(request):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-            
+        
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
