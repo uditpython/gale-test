@@ -823,7 +823,10 @@ def route(request):
         id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
         
-        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = reporting_time+loading_time - 48600+dict['TotalDuration']*60)).strftime('%Y-%m-%d  %H:%M:%S')
+        sec_time = dict['SequencedDropPointsList'][dict['TotalDroppointsCount'] + 2]['EstimatedTimeOfArrivalForDisplay']
+        sec_time = sec_time.split(":")
+        ts = int(sec_time[0])*3600 +  int(sec_time[1])*60
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = ts - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
         result['TotalHaltTime'] += dict['TotalHaltTime']
         result['TotalDistanceTravelled'] += dict['TotalDistance'] 
         result['DropPointsCount'] += dict['TotalDroppointsCount']
