@@ -1,6 +1,6 @@
 # gale-test
   
-This is a web crawler app without any authentication model just for testing web crawler module . which list the link .
+This is a route optimizer  app without any authentication model based on google ortools .
 To run it do python manage.py develop
 python manage.py runserver
 
