@@ -152,7 +152,7 @@ class CreateDistanceCallback(object):
     
     
     for from_node in xrange(num_locations):
-      matrix[from_node] = {}
+      self.matrix[from_node] = {}
       for to_node in xrange(num_locations):
           
         
@@ -160,9 +160,14 @@ class CreateDistanceCallback(object):
         y1 = locations[from_node][1]
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
-        cd.append([from_node,to_node,x1,y1,x2,y2])
         
-        work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
+        try:
+            self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
+        
+        except:
+        
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm([x1,y1,x2,y2])
+#         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
 #         
@@ -272,7 +277,7 @@ def main(data,truck_options):
     
     dist_between_locations = CreateDistanceCallback(locations)
     
-    dist_between_locations.matrix = matrix
+#     dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
     
     routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
