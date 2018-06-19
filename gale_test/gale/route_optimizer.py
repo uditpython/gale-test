@@ -142,17 +142,31 @@ class CreateDistanceCallback(object):
   
   def __init__(self, locations):
     """Initialize distance array."""
+    self.matrix = {}
+    
+    def matrix(cordinates):
+    
+        try:
+            self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
+        
+        except:
+        
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+
     import  datetime    
     
-    from multiprocessing import Pool
+    from multiprocessing.dummy import Pool as ThreadPool 
+    
+    
+    pool = ThreadPool(8)
     cd = []
 #     create_workers()
     num_locations = len(locations)
-    self.matrix = {}
     
     
     for from_node in xrange(num_locations):
-      self.matrix[from_node] = {}
+      
+[from_node] = {}
       for to_node in xrange(num_locations):
           
         
@@ -161,12 +175,18 @@ class CreateDistanceCallback(object):
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
         cordinates = [1,from_node,to_node,x1,y1,x2,y2]
-        try:
-            self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
-        
-        except:
-        
-            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+        cd.append(cordinates)
+    pool = ThreadPool(4) 
+    results = pool.map(matrix, cd)
+    pool.close() 
+    pool.join()
+    
+#         try:
+#             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
+#         
+#         except:
+#         
+#             self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 #         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
