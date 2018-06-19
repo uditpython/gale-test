@@ -143,7 +143,7 @@ class CreateDistanceCallback(object):
   def __init__(self, locations):
     """Initialize distance array."""
     import  datetime    
-    matrix = {}
+    
     from multiprocessing import Pool
     cd = []
 #     create_workers()
