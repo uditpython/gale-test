@@ -160,13 +160,13 @@ class CreateDistanceCallback(object):
         y1 = locations[from_node][1]
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
-        
+        cordinates = [1,from_node,to_node,x1,y1,x2,y2]
         try:
             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
         
         except:
         
-            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm([x1,y1,x2,y2])
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 #         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
