@@ -273,6 +273,7 @@ def main(data,truck_options):
     dist_between_locations = CreateDistanceCallback(locations)
     
     dist_between_locations.matrix = matrix
+    matrix = {}
     dist_callback = dist_between_locations.Distance
     
     routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
