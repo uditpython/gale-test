@@ -6,6 +6,8 @@ import pdb
 queue=Queue.Queue()
 matrix = {}
 import threading
+import requests
+osrm_url = "http://localhost:5000/route/v1/driving/"
 def distance(input):
     lat1 = input[0]
     lon1 = input[1]
@@ -48,7 +50,18 @@ def distance_new_key(input):
     return driving_distance
 
 
-
+def distance_osrm(input):
+    lat1 = input[0]
+    lon1 = input[1]
+    lat2 = input[2]
+    lon2 = input[3]
+    
+    url = osrm_url + str(lon1) + str(",") + str(lat1) + str(";") + str(lon2) + str(",") + str(lat2)
+    params = {'alternatives': 'true', 'geometries':'geojson'}
+    results = requests.get(url, params=params).json()['routes']
+    distance = round((float(results[0]['distance'])/1000),2)
+    
+    return distance  
 
 def distance1(input):
     lat1 = input[0]
@@ -76,7 +89,7 @@ def distance1(input):
     return float(dist)
 
 def create_workers():
-    for _ in range(2):
+    for _ in range(100):
         t = threading.Thread(target=work)
         t.daemon = True
         t.start()
@@ -105,14 +118,16 @@ def work():
             matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         except:
             try:
-                matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+                matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
             except:
                 try:
                     matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
                 except:
                     matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
         
+       
         queue.task_done()
+        
 # def parallel_dist(input):
 #     
 # #     import pdb
@@ -140,7 +155,7 @@ class CreateDistanceCallback(object):
     
     from multiprocessing import Pool
     cd = []
-#     create_workers()
+    create_workers()
     num_locations = len(locations)
     self.matrix = {}
     
@@ -155,12 +170,13 @@ class CreateDistanceCallback(object):
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
         cd.append([from_node,to_node,x1,y1,x2,y2])
-        work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
+        
+#         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
 #         
-#         queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
-#     queue.join()   
+        queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
+    queue.join()   
 #           
      
 #         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
