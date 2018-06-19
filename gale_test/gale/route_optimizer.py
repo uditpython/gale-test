@@ -97,7 +97,7 @@ def create_workers():
 
 
 def work_temp(cordinates):
-    print cordinates[0]
+    
     try:
         matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         
