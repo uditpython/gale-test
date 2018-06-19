@@ -89,7 +89,7 @@ def distance1(input):
     return float(dist)
 
 def create_workers():
-    for _ in range(100):
+    for _ in range(16):
         t = threading.Thread(target=work)
         t.daemon = True
         t.start()
@@ -97,13 +97,12 @@ def create_workers():
 
 
 def work_temp(cordinates):
-    
     try:
         matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
         
     except:
         try:
-            matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+            matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
         except:
             try:
                 matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
@@ -157,7 +156,7 @@ class CreateDistanceCallback(object):
     
     from multiprocessing import Pool
     cd = []
-#     create_workers()
+    create_workers()
     num_locations = len(locations)
     self.matrix = {}
     
@@ -173,12 +172,12 @@ class CreateDistanceCallback(object):
         y2 = locations[to_node][1]
         cd.append([from_node,to_node,x1,y1,x2,y2])
         
-        work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
+#         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
 #         
-#         queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
-#     queue.join()   
+        queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
+    queue.join()   
 #           
      
 #         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
