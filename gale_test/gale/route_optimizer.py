@@ -165,8 +165,7 @@ class CreateDistanceCallback(object):
     
     
     for from_node in xrange(num_locations):
-      
-[from_node] = {}
+      self.matrix[from_node] = {}
       for to_node in xrange(num_locations):
           
         
@@ -180,7 +179,7 @@ class CreateDistanceCallback(object):
     results = pool.map(matrix, cd)
     pool.close() 
     pool.join()
-    
+     
 #         try:
 #             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
 #         
