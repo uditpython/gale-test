@@ -7,7 +7,7 @@ queue=Queue.Queue()
 matrix = {}
 import threading
 import requests
-osrm_url = "http://localhost:5000/route/v1/driving/"
+
 def distance(input):
     lat1 = input[0]
     lon1 = input[1]
@@ -55,7 +55,7 @@ def distance_osrm(input):
     lon1 = input[1]
     lat2 = input[2]
     lon2 = input[3]
-    
+    osrm_url = "http://localhost:5000/route/v1/driving/"
     url = osrm_url + str(lon1) + str(",") + str(lat1) + str(";") + str(lon2) + str(",") + str(lat2)
     params = {'alternatives': 'true', 'geometries':'geojson'}
     results = requests.get(url, params=params).json()['routes']
