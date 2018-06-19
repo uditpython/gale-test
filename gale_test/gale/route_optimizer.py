@@ -150,15 +150,15 @@ class CreateDistanceCallback(object):
             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
         
         except:
-        
+        ##  if we need to change to osrm point to distance osrm
             self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
 
     import  datetime    
     
-    from multiprocessing.dummy import Pool as ThreadPool 
+#     from multiprocessing.dummy import Pool as ThreadPool 
     
     
-    pool = ThreadPool(8)
+#     pool = ThreadPool(8)
     cd = []
 #     create_workers()
     num_locations = len(locations)
