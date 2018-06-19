@@ -146,7 +146,7 @@ class CreateDistanceCallback(object):
     
     from multiprocessing import Pool
     cd = []
-    create_workers()
+#     create_workers()
     num_locations = len(locations)
     self.matrix = {}
     
@@ -162,12 +162,12 @@ class CreateDistanceCallback(object):
         y2 = locations[to_node][1]
         cd.append([from_node,to_node,x1,y1,x2,y2])
         
-#         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
+        work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
 #         if distance1([x1,y1,x2,y2]) > 40:
 #             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
 #         
-        queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
-    queue.join()   
+#         queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
+#     queue.join()   
 #           
      
 #         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
