@@ -158,7 +158,7 @@ class CreateDistanceCallback(object):
     from multiprocessing.dummy import Pool as ThreadPool 
     
     
-#     pool = ThreadPool(8)
+    pool = ThreadPool(8)
     cd = []
 #     create_workers()
     num_locations = len(locations)
