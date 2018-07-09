@@ -563,6 +563,7 @@ def route(request):
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
+        
         optimized_data += optimizer_result[0]
     
     
@@ -673,7 +674,9 @@ def route(request):
             
             seq_dp = deepcopy(data_init[node_index])
             if node_index > 0:
-                seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                
+#                 seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                seconds = int(i[j][4])
                 seconds = int(seconds)
                     
                 
@@ -717,7 +720,8 @@ def route(request):
                     seq_dp['RouteSequentialDrivingDistance'] =  str(0)
                     seq_dp['RouteSequentialPositionIndex'] = j
                 else:
-                    seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+#                     seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                    seconds = i[j][4]
                     seconds = int(seconds)
 
                     m, s = divmod(seconds, 60)
@@ -819,6 +823,7 @@ def route(request):
                 
                    
                 dict['TotalVolumetricWeight'] += volume[i[j-1][0]]
+        
         
         id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
