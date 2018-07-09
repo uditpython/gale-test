@@ -151,7 +151,7 @@ class CreateDistanceCallback(object):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 
     import  datetime    
     
