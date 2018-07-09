@@ -176,7 +176,7 @@ class CreateDistanceCallback(object):
         cordinates = [1,from_node,to_node,x1,y1,x2,y2]
 #         matrix(cordinates)
         cd.append(cordinates)
-    pool = ThreadPool(16) 
+    pool = ThreadPool(8) 
     results = pool.map(matrix, cd)
     pool.close() 
     pool.join()
