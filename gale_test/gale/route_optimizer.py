@@ -151,7 +151,7 @@ class CreateDistanceCallback(object):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 
     import  datetime    
     
@@ -374,7 +374,7 @@ def main(data,truck_options):
     horizon = 24 * 3600
     time = "Time"
     speed = int(truck_options['AverageSpeedOfVehicle'])
-
+    
     service_times = CreateServiceTimeCallback(demands, time_per_demand_unit)
     service_time_callback = service_times.ServiceTime
 
