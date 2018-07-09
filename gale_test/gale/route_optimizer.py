@@ -151,7 +151,7 @@ class CreateDistanceCallback(object):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+            self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
 
     import  datetime    
     
@@ -176,7 +176,7 @@ class CreateDistanceCallback(object):
         cordinates = [1,from_node,to_node,x1,y1,x2,y2]
 #         matrix(cordinates)
         cd.append(cordinates)
-    pool = ThreadPool(4) 
+    pool = ThreadPool(16) 
     results = pool.map(matrix, cd)
     pool.close() 
     pool.join()
