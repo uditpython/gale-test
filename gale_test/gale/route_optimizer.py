@@ -155,7 +155,7 @@ class CreateDistanceCallback(object):
 
     import  datetime    
     
-#     from multiprocessing.dummy import Pool as ThreadPool 
+    from multiprocessing.dummy import Pool as ThreadPool 
     
     
 #     pool = ThreadPool(8)
@@ -174,12 +174,12 @@ class CreateDistanceCallback(object):
         x2 = locations[to_node][0]
         y2 = locations[to_node][1]
         cordinates = [1,from_node,to_node,x1,y1,x2,y2]
-        matrix(cordinates)
-#         cd.append(cordinates)
-#     pool = ThreadPool(4) 
-#     results = pool.map(matrix, cd)
-#     pool.close() 
-#     pool.join()
+#         matrix(cordinates)
+        cd.append(cordinates)
+    pool = ThreadPool(4) 
+    results = pool.map(matrix, cd)
+    pool.close() 
+    pool.join()
 #      
 #         try:
 #             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
