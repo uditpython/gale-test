@@ -387,19 +387,29 @@ def main(data,truck_options):
 
     total_times = CreateTotalTimeCallback(service_time_callback, travel_time_callback)
     total_time_callback = total_times.TotalTime
-
+    duration = end_times[0] - start_times[0]
     routing.AddDimension(total_time_callback,  # total time function callback
                          horizon,
-                         horizon,
-                         fix_start_cumul_to_zero,
+                         duration,
+                         False,
                          time)
     # Add time window constraints.
     time_dimension = routing.GetDimensionOrDie(time)
     for location in range(1, num_locations):
       
-      start = start_times[location]
-      end = end_times[location]
-      time_dimension.CumulVar(location).SetRange(start, end)
+      start = 0
+      end = duration
+      location_idx = routing.NodeToIndex(location)
+      time_dimension.CumulVar(location_idx).SetRange(start, end)
+      routing.AddToAssignment(time_dimension.SlackVar(location_idx))
+      
+   
+    for vehicle_id in xrange(num_vehicles):
+        index = routing.Start(vehicle_id)
+        time_dimension.CumulVar(index).SetRange(0,
+                                                duration)
+        routing.AddToAssignment(time_dimension.SlackVar(index))
+      
     # Solve displays a solution if any.
     
 #     search_parameters.time_limit_ms = 30000
@@ -468,7 +478,7 @@ def main(data,truck_options):
           cum_weight.append(assignment.Value(load_var))
           cum_volume.append(assignment.Value(vol_var))
           time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
-          plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index],node_index))
+          plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var) + start_times[0]),str(assignment.Max(time_var) + start_times[0]),locations[node_index],node_index))
           plan_output += \
                     " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax}) -> ".format(
                         node_index=node_index,
@@ -498,7 +508,7 @@ def main(data,truck_options):
         cum_volume.append(assignment.Value(vol_var))
         time_range.append(str(assignment.Min(time_var))+ " - " + str(assignment.Max(time_var)))
 
-        plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var)),str(assignment.Max(time_var)),locations[node_index],node_index))
+        plan1.append((nodes[node_index],dist1,assignment.Value(load_var),assignment.Value(vol_var),str(assignment.Min(time_var) + start_times[0]),str(assignment.Max(time_var) + start_times[0]),locations[node_index],node_index))
 
         plan_output += \
                   " {node_index} Load({load}) Vol({vol}) Dist({dist}) Time({tmin}, {tmax})".format(
@@ -509,7 +519,7 @@ def main(data,truck_options):
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
 #         print plan_output
-#        
+#         
 #         print "\n"
 #         print dist, number_del
 #         print "\n"

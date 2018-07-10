@@ -470,7 +470,7 @@ def route(request):
            
     
     
-     
+    
     cluster_index = 1
     for i in data_points:
         try:
@@ -563,7 +563,6 @@ def route(request):
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
-        
         optimized_data += optimizer_result[0]
     
     
@@ -650,6 +649,7 @@ def route(request):
         
         result['TotalTravelDuration'] += (int(i[last_ind -1][4]) - prev_time)/60
         for j in range(len(i)):
+            
             node_index = i[j][0]
             geo_dict = {}
             geo_dict['DropPointCode'] = code[node_index]
@@ -673,10 +673,12 @@ def route(request):
                 pass
             
             seq_dp = deepcopy(data_init[node_index])
+            
             if node_index > 0:
                 
 #                 seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
-                seconds = int(i[j][4])
+                
+                seconds = int(i[j+1][4])
                 seconds = int(seconds)
                     
                 
@@ -720,8 +722,11 @@ def route(request):
                     seq_dp['RouteSequentialDrivingDistance'] =  str(0)
                     seq_dp['RouteSequentialPositionIndex'] = j
                 else:
-#                     seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
-                    seconds = i[j][4]
+                    
+                    seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                       
+#                     seconds = int(i[j][4]) + (3600/int(truck_options['AverageSpeedOfVehicle'])*i[j][1]) + int(truck_options['MHaltTimeAtDropPoint'])*60
+
                     seconds = int(seconds)
 
                     m, s = divmod(seconds, 60)
