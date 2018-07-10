@@ -676,9 +676,9 @@ def route(request):
             
             if node_index > 0:
                 
-#                 seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
                 
-                seconds = int(i[j+1][4])
+#                 seconds = int(i[j+1][4])
                 seconds = int(seconds)
                     
                 
