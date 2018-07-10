@@ -1,10 +1,7 @@
 import math
 from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
-import Queue
-import pdb
-queue=Queue.Queue()
-matrix = {}
+
 import threading
 import requests
 
@@ -88,37 +85,13 @@ def distance1(input):
     
     return float(dist)
 
-def create_workers():
-    for _ in range(56):
-        t = threading.Thread(target=work)
-        t.daemon = True
-        t.start()
 
 
 
-def work_temp(cordinates):
-    
-    try:
-        matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
-        
-    except:
-        
-        matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 
 
-def work():
-    while True:
-        cordinates = queue.get()
-        
-        try:
-            matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
-        except:
-            
-            matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
-        
+
        
-        queue.task_done()
-        
 # def parallel_dist(input):
 #     
 # #     import pdb
@@ -519,7 +492,7 @@ def main(data,truck_options):
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
 #         print plan_output
-#         
+#          
 #         print "\n"
 #         print dist, number_del
 #         print "\n"

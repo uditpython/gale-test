@@ -17,7 +17,7 @@ from copy import deepcopy
 from ortools.constraint_solver import pywrapcp
 from ortools.constraint_solver import routing_enums_pb2
 
-queue=Queue.Queue()
+
 
 
 def distance(lat1, lon1, lat2, lon2):
