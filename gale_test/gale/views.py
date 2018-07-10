@@ -694,7 +694,7 @@ def route(request):
                     seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
                 seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
                 seq_dp['RouteSequentialPositionIndex'] = j + 1
-                seq_dp['Index'] = j 
+                seq_dp['Index'] = j+1 
                 
             else:
                 
@@ -703,7 +703,7 @@ def route(request):
                 seq_dp['lat'] = seq_dp['Latitude']
                 seq_dp['lng'] = seq_dp['Longitude']
                 seq_dp['Name'] = 'Depot_1'
-                seq_dp['Index'] = -1
+                seq_dp['Index'] = j+1
                 if j == 0:
                     
                     seconds = int(reporting_time)
