@@ -446,6 +446,23 @@ def route(request):
                 VolumeCapacity = int(i['VmWtAllowed'])
                 selected_vehicle = i 
     
+    reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
+    reporting_time =  time.strptime(reporting_time.split(',')[0],'%H:%M')
+    
+    reporting_time =  int(datetime.timedelta(hours=reporting_time.tm_hour,minutes=reporting_time.tm_min,seconds=reporting_time.tm_sec).total_seconds())
+    loading_time = int( data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'])*60
+    
+    returning_time = data['UsersRoutePreferences']['ReturningTimeAtDepotPoint']
+    
+    returning_time =  time.strptime(returning_time.split(',')[0],'%H:%M')
+    
+    returning_time =  int(datetime.timedelta(hours=returning_time.tm_hour,minutes=returning_time.tm_min,seconds=returning_time.tm_sec).total_seconds())
+    start_times = [reporting_time + loading_time]
+    end_times = [returning_time]
+    
+    
+    
+    
     
     data_points = data['SelectedDropointsList']
     cluster_points = data['cluster_info']
@@ -473,6 +490,7 @@ def route(request):
     
     cluster_index = 1
     for i in data_points:
+        
         try:
             cluster_value[i['Code']]
             
@@ -484,21 +502,98 @@ def route(request):
                 check = temp_address
                 
                 if check in code:
+                    indices = [ind_chk for ind_chk, x in enumerate(code) if x == check]
                     
-                    ind = code.index(check)
+                    ind = indices[len(indices) -1 ]
+                    valid_chk = 0
+                    if demands[ind] + float( i['Wt_kgs']) > VehicleCapacity:
+                        valid_chk = 1
+                    if volume[ind] + float(i['DropItemVMwt']) > VolumeCapacity:
+                        valid_chk = 1
+                    if valid_chk == 0:
+                        demands[ind] = demands[ind] + float( i['Wt_kgs'])
+                        
+                        
+                        volume[ind] = volume[ind] + float(i['DropItemVMwt'])
+                        
+                        ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
+                        cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
+                        cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
+                        data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
+                        shipments[ind] = shipments[ind] + 1
+                    else:
+                        
+                        code.append(check)
+                        address.append(i['GoogleMapAddress'])
+                        
+                        try:
+    #                         loc = [float(i['lat']), float(i['lng'])]
+                            loc = [float(i['lat']), float(i['lng'])]
+                            locations.append(loc)
+                        except:
+                            import pdb
+                            pdb.set_trace()
+                        
+                        try:
+                            timeslots = i['TimeSlot']
+                            try:
+                                start_ind =  timeslots.index('AM')
+                                chk_am = 1
+                            except:
+                                start_ind =  timeslots.index('PM')
+                                chk_am = 0
+                            try:
+                                end_ind = timeslots[start_ind+3:].index('PM')
+                                chk_pm = 1
+                            except:
+                                
+                                end_ind = timeslots[start_ind+3:].index('AM')
+                                chk_pm = 0
+                            
+                            start_tm_str = timeslots[:start_ind]
+                            end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
+                            start_tm_ind = start_tm_str.index(':')
+                            end_tm_ind = end_tm_str.index(':')
+                            if chk_am == 1:
+                                start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                            else:
+                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                            if chk_pm == 1:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                            else:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                        except:
+                            
+                            start_times.append(reporting_time + loading_time)
+                            end_times.append(returning_time)
+                        
+                        i['DropItems'] = i['AirwaybillNo']+str("<br>")
+                        data_init.append(i)
+                        
+                        if i['Wt_kgs'] > VehicleCapacity:
+                            return
+                       
+                        if i['DropItemVMwt'] > VolumeCapacity:
+                            return
+                        
+                        
+                        demands.append(i['Wt_kgs'])
+                        shipments.append(1)
+                        volume.append(i['DropItemVMwt'])
+                        
+                        
+                        cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
+                        
+                        cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
+                        cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
+                        cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
+                        
+                        cluster_dict[cluster_value[i['Code']]]['demands'].append(i['Wt_kgs'])
+                        cluster_index += 1
+
+                        
+                        
                     
-                    demands[ind] = demands[ind] + float( i['Wt_kgs'])
-                    
-                    if demands[ind] > VehicleCapacity:
-                        return
-                    volume[ind] = volume[ind] + float(i['DropItemVMwt'])
-                    if volume[ind] > VolumeCapacity:
-                        return
-                    ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
-                    cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
-                    cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
-                    data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
-                    shipments[ind] = shipments[ind] + 1
                 else:
                     
                     code.append(check)
@@ -511,6 +606,39 @@ def route(request):
                     except:
                         import pdb
                         pdb.set_trace()
+                    
+                    try:
+                        timeslots = i['TimeSlot']
+                        try:
+                            start_ind =  timeslots.index('AM')
+                            chk_am = 1
+                        except:
+                            start_ind =  timeslots.index('PM')
+                            chk_am = 0
+                        try:
+                            end_ind = timeslots[start_ind+3:].index('PM')
+                            chk_pm = 1
+                        except:
+                            
+                            end_ind = timeslots[start_ind+3:].index('AM')
+                            chk_pm = 0
+                        
+                        start_tm_str = timeslots[:start_ind]
+                        end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
+                        start_tm_ind = start_tm_str.index(':')
+                        end_tm_ind = end_tm_str.index(':')
+                        if chk_am == 1:
+                            start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                        else:
+                            start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                        if chk_pm == 1:
+                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                        else:
+                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                    except:
+                        
+                        start_times.append(reporting_time + loading_time)
+                        end_times.append(returning_time)
                     
                     i['DropItems'] = i['AirwaybillNo']+str("<br>")
                     data_init.append(i)
@@ -539,22 +667,7 @@ def route(request):
         except:
             pass        
     
-    start_times =  [0] * len(locations)
-    reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
-    reporting_time =  time.strptime(reporting_time.split(',')[0],'%H:%M')
     
-    reporting_time =  int(datetime.timedelta(hours=reporting_time.tm_hour,minutes=reporting_time.tm_min,seconds=reporting_time.tm_sec).total_seconds())
-    loading_time = int( data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'])*60
-    
-    returning_time = data['UsersRoutePreferences']['ReturningTimeAtDepotPoint']
-    
-    returning_time =  time.strptime(returning_time.split(',')[0],'%H:%M')
-    
-    returning_time =  int(datetime.timedelta(hours=returning_time.tm_hour,minutes=returning_time.tm_min,seconds=returning_time.tm_sec).total_seconds())
-    
-    
-    start_times =  [reporting_time + loading_time] * len(locations)
-    end_times = [returning_time] * len(start_times)
     optimized_data = []
     for i in cluster_dict.keys():
         
@@ -581,6 +694,12 @@ def route(request):
    
     
     total_routes = len(optimized_data)
+    
+    
+    
+    
+    
+    
     result = {}
     result['AllTotalNetAmount'] = "0"
     result['AvgShipmentsCount'] = int(sum(shipments)/total_routes)

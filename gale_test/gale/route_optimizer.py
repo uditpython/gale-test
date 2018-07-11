@@ -259,7 +259,7 @@ def main(data,truck_options):
   depot = 0
   num_vehicles = 100
   search_time_limit = 400000
-  
+ 
 
   # Create routing model.
   if num_locations > 0:
@@ -368,10 +368,12 @@ def main(data,truck_options):
                          time)
     # Add time window constraints.
     time_dimension = routing.GetDimensionOrDie(time)
+    
     for location in range(1, num_locations):
       
-      start = 0
-      end = duration
+      start = start_times[location] - start_times[0]
+      end = start + end_times[location] - start_times[location] 
+        
       location_idx = routing.NodeToIndex(location)
       time_dimension.CumulVar(location_idx).SetRange(start, end)
       routing.AddToAssignment(time_dimension.SlackVar(location_idx))
@@ -385,9 +387,10 @@ def main(data,truck_options):
       
     # Solve displays a solution if any.
     
-#     search_parameters.time_limit_ms = 30000
+    #     search_parameters.time_limit_ms = 30000
 #     search_parameters.solution_limit = 100
 #     
+    
     assignment = routing.SolveWithParameters(search_parameters)
     if assignment:
       
@@ -492,7 +495,7 @@ def main(data,truck_options):
                       tmin=str(assignment.Min(time_var)),
                       tmax=str(assignment.Max(time_var)))
 #         print plan_output
-#          
+#           
 #         print "\n"
 #         print dist, number_del
 #         print "\n"
