@@ -404,6 +404,44 @@ def singluar_travel_routes(data):
 
 
 from django.views.decorators.csrf import csrf_exempt
+
+
+
+            
+
+@csrf_exempt
+def distance_matrix(request):
+    import route_optimizer  
+    from multiprocessing.dummy import Pool as ThreadPool 
+   
+    body = json.loads(request.body)
+    
+    matrix = body['matrix']
+    for i in matrix.keys():
+        matrix[int(i)] = matrix.pop(i)
+    cd= body['data']
+    def matri(cordinates):
+        
+        try:
+            matrix[cordinates[1]][cordinates[2]] = matrix[cordinates[2]][cordinates[1]]  
+        
+        except:
+        ##  if we need to change to osrm point to distance osrm
+            matrix[cordinates[1]][cordinates[2]] = route_optimizer.distance1(cordinates[3:])
+   
+    body = request.body
+    
+    pool = ThreadPool(16) 
+    results = pool.map(matri, cd)
+    pool.close() 
+    pool.join()#        cd.append(cordinates)
+    
+    return HttpResponse(json.dumps(matrix) , content_type="application/json")
+    #     pool = ThreadPool(16) 
+#     results = pool.map(matrix, cd)
+#     pool.close() 
+
+
 @csrf_exempt
 def route(request):
     
