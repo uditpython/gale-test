@@ -427,7 +427,7 @@ def distance_matrix(request):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            matrix[cordinates[1]][cordinates[2]] = route_optimizer.distance1(cordinates[3:])
+            matrix[cordinates[1]][cordinates[2]] = route_optimizer.distance_osrm(cordinates[3:])
    
     body = request.body
     
