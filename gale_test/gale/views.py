@@ -441,6 +441,27 @@ def distance_matrix(request):
 #     results = pool.map(matrix, cd)
 #     pool.close() 
 
+# @csrf_exempt
+# def barcode(request):
+#     from PDFLab import LabelPDF
+#     from reportlab.platypus.flowables import PageBreak
+#     story = []
+#     label = LabelPDF()
+#     pdf_flow = label.get_pdf_flows()
+# #     for i in range(2):
+#     story.extend(pdf_flow)
+#     story.append(PageBreak())
+#     doc, buff = label.get_doc() # last instance
+#     import pdb
+#     pdb.set_trace()
+# #     doc.build(story)
+#     response = HttpResponse(buff.getvalue(),content_type='application/pdf')
+#     response['Content-Disposition'] = 'attachment; filename={0}.pdf'.format('Label')
+#     response.rendered_content = 'Response is pdf doc which is not stored in log'
+#     return response
+
+        
+
 
 @csrf_exempt
 def route(request):
@@ -1031,14 +1052,14 @@ def route(request):
         
         
         trprtid = int(cursor.lastrowid)
-        
+        result['report_id'] = trprtid
         
         ### query for 
         
         querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
         
         values = ''
-        
+        result['summary_id'] = []
         for j in range(len(result['TravelRoutes'])):
             i = result['TravelRoutes'][j]
             values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['ID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
@@ -1046,6 +1067,7 @@ def route(request):
             
             conn.commit()
             trpsmryid = int(cursor.lastrowid)
+            result['summary_id'].append(trpsmryid)
             values_str = ''
             treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
             routes_len = len(i['SequencedDropPointsList'])
@@ -1083,7 +1105,7 @@ def route(request):
     
     
     
-    
+   
     
     info = {}
     info['Code'] = 'SUCCESS'
