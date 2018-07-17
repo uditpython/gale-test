@@ -1055,7 +1055,7 @@ def route(request):
         result['report_id'] = trprtid
         
         ### query for 
-        
+
         querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
         
         values = ''
@@ -1069,25 +1069,52 @@ def route(request):
             trpsmryid = int(cursor.lastrowid)
             result['summary_id'].append(trpsmryid)
             values_str = ''
-            treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
+            values_box = ''
+            treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
             routes_len = len(i['SequencedDropPointsList'])
+            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue])"
             for iroute in  range(routes_len): 
                 
                 routes = i['SequencedDropPointsList'][iroute]
+                chk_box = 0
                 if iroute == 0:
                     routes['DropItems'] = 'Arrival at Depot'
+                    chk_box = 1
                 elif iroute == 1:
                     routes['DropItems'] = 'Out For Delivery'
+                    chk_box = 1
                 elif iroute == routes_len -2:
-                    
+                    chk_box = 1
                     routes['DropItems'] = 'Return At Depot'
                 elif iroute == routes_len -1:
+                    chk_box = 1
                     routes['DropItems'] = 'Released from Depot'
+                address = routes['Address']    
+                try:    
                 
-                values_str += str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
+                    add_in = address.index("<br>")
+                    address = address[:add_in]
+                except:
+                    pass
+                address = address.replace("'","")
+                values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
+                
+                if chk_box == 0:
+                    airway_bill = routes['DropItems'].split("<br>")
+                    airway_bill = airway_bill[:-1]
+                    
+                    for airs in airway_bill:
+                    
+                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
             values_str = values_str[:len(values_str)-1]
+            
+            values_box = values_box[:len(values_box)-1]
             cursor.execute(treportdetailstr+"Values"+values_str)
             conn.commit()
+            
+            cursor.execute(treportroutebox+"Values"+values_box)
+            conn.commit()
+ 
             trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
             majorareas = str(i['MajorAreasCovered'])
             majorareas = majorareas.replace("u'","")
