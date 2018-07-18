@@ -1128,6 +1128,7 @@ def route(request):
                     chk_box = 1
                     routes['DropItems'] = 'Released from Depot'
                 address = routes['Address']    
+                
                 try:    
                 
                     add_in = address.index("<br>")
@@ -1141,9 +1142,10 @@ def route(request):
                     airway_bill = routes['DropItems'].split("<br>")
                     airway_bill = airway_bill[:-1]
                     
-                    for airs in airway_bill:
-                    
-                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
+                    for airse in airway_bill:
+                        airs1 = airse.split("_")
+                        for airs in airs1:
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
@@ -1151,6 +1153,7 @@ def route(request):
             conn.commit()
             
             cursor.execute(treportroutebox+"Values"+values_box)
+            
             conn.commit()
  
             trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
