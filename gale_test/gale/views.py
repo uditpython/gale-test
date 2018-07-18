@@ -441,26 +441,64 @@ def distance_matrix(request):
 #     results = pool.map(matrix, cd)
 #     pool.close() 
 
-# @csrf_exempt
-# def barcode(request):
-#     from PDFLab import LabelPDF
-#     from reportlab.platypus.flowables import PageBreak
-#     story = []
-#     label = LabelPDF()
-#     pdf_flow = label.get_pdf_flows()
-# #     for i in range(2):
-#     story.extend(pdf_flow)
-#     story.append(PageBreak())
-#     doc, buff = label.get_doc() # last instance
-#     import pdb
-#     pdb.set_trace()
-# #     doc.build(story)
-#     response = HttpResponse(buff.getvalue(),content_type='application/pdf')
-#     response['Content-Disposition'] = 'attachment; filename={0}.pdf'.format('Label')
-#     response.rendered_content = 'Response is pdf doc which is not stored in log'
-#     return response
+@csrf_exempt
+def barcode(request):
+    from reportlab.lib.pagesizes import A4
+    from reportlab.graphics.shapes import Drawing, String
+    from reportlab.graphics.barcode.eanbc import Ean13BarcodeWidget
+    from reportlab.graphics import renderPDF
+    from reportlab.pdfgen.canvas import Canvas
+    from reportlab.platypus.flowables import PageBreak
+    from cStringIO import StringIO
+    from barcode import label, fill_sheet
+    from reportlab.lib.units import inch, mm
+        # Make your response and prep to attach
+    filename = 'test'
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=%s.pdf' % (filename)
+    tmp = StringIO()
 
+    
+    canvas = Canvas(tmp, pagesize= (4*inch, 3*inch))
+    for i in range(0,1000):
+    
+        sticker = label('54320725860', 'SHIPPR-PRJ13' + str(i))
         
+        canvas.setFont("Helvetica-Bold", 12)
+        canvas.drawString(10, 65, "Shipment ID")
+        canvas.drawString(10, 50, "54320725860")
+        canvas.drawString(10, 35, "Delivery on")
+        canvas.drawString(10, 20, "18/07/2018")
+        canvas.drawString(145, 65, "Ship To:")
+        
+        address = "House No xyz street 123 Indiranagar Bangalore 560093"
+        address = address.split()
+        address_str = ""
+        address_str_test = ""
+        j = 0
+        for i in range(len(address)):
+            address_str_test += address[i] + str(" ")
+            
+            if len(address_str_test) > 25:
+                address_str_test = address[i] + str(" ")
+               
+                canvas.drawString(145, 50 - 15*j, address_str)
+                j += 1
+                address_str = address_str_test
+            else:
+                address_str = address_str_test
+        canvas.drawString(145, 50 - 15*j, address_str)
+        
+        
+        fill_sheet(canvas, sticker)
+        canvas.showPage()
+    canvas.save()
+    
+    pdf = tmp.getvalue()
+    tmp.close()
+    response.write(pdf)
+    return response
+
 
 
 @csrf_exempt
