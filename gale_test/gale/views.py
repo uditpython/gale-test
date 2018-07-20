@@ -452,6 +452,8 @@ def barcode(request):
     from cStringIO import StringIO
     from barcode import label, fill_sheet
     from reportlab.lib.units import inch, mm
+    
+    barcode_label = request.GET['barcode']
         # Make your response and prep to attach
     filename = 'test'
     response = HttpResponse(content_type='application/pdf')
@@ -460,9 +462,10 @@ def barcode(request):
 
     
     canvas = Canvas(tmp, pagesize= (4*inch, 3*inch))
-    for i in range(0,1000):
-    
-        sticker = label('54320725860', 'SHIPPR-PRJ13' + str(i))
+    for i in range(0,1):
+        barcode_label_len= 13-len(barcode_label)
+        barcode_label = "0"*barcode_label_len + barcode_label
+        sticker = label(barcode_label, 'SHIPPR-PRJ13')
         
         canvas.setFont("Helvetica-Bold", 12)
         canvas.drawString(10, 65, "Shipment ID")
