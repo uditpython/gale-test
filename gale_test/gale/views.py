@@ -500,6 +500,691 @@ def barcode(request):
     return response
 
 
+@csrf_exempt
+def noptimize(request):
+    import route_optimizer
+    import datetime
+    import time
+    body = request.body.decode('utf-8')
+    data = json.loads(body)
+    depot_data  =  data['DepotPoint']
+    
+    shipments = [0]
+    demands=  [0]
+    code = [depot_data['Code']]
+    data_init = [depot_data]
+    address = [depot_data['Address']]
+    volume = [0]
+    locations = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
+    
+    truck_options= data['UsersRoutePreferences']
+    max_weight = 0
+    max_vol = 0
+    for i in  truck_options['SelectedDeliveryVehicles']:
+        if i['Code'] == 'V400':
+            VehicleCapacity = int(i['WeightAllowed'])
+             
+            VolumeCapacity = int(i['VmWtAllowed']) 
+            selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V500':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed']) 
+                selected_vehicle = i
+    if VehicleCapacity == 0:
+        for i in  truck_options['SelectedDeliveryVehicles']:
+            if i['Code'] == 'V200':
+                VehicleCapacity = int(i['WeightAllowed'])
+                 
+                VolumeCapacity = int(i['VmWtAllowed'])
+                selected_vehicle = i 
+    VehicleCapacity = 100000
+    VolumeCapacity = 100000
+    reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
+    reporting_time =  time.strptime(reporting_time.split(',')[0],'%H:%M')
+    
+    reporting_time =  int(datetime.timedelta(hours=reporting_time.tm_hour,minutes=reporting_time.tm_min,seconds=reporting_time.tm_sec).total_seconds())
+    loading_time = int( data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'])*60
+    
+    returning_time = data['UsersRoutePreferences']['ReturningTimeAtDepotPoint']
+    
+    returning_time =  time.strptime(returning_time.split(',')[0],'%H:%M')
+    
+    returning_time =  int(datetime.timedelta(hours=returning_time.tm_hour,minutes=returning_time.tm_min,seconds=returning_time.tm_sec).total_seconds())
+    start_times = [reporting_time + loading_time]
+    end_times = [returning_time]
+    
+    
+    
+    
+    
+    data_points = data['SelectedDropointsList']
+    cluster_points = data['cluster_info']
+    cluster_dict = {}
+    cluster_value = {}
+    
+    for pt in data_points:
+        
+        cluster_value[pt['Code']] = pt['RouteName']
+        try:
+            cluster_dict[pt['RouteName']]['code'].append(pt['Code'])
+        except:
+            cluster_pt = {}
+            cluster_pt['code'] = [pt['Code']]
+            cluster_pt['cluster_value'] = [0]
+            
+            cluster_pt['locations'] = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
+            cluster_pt['volume'] = [0]
+            cluster_pt['address'] = [depot_data['Address']]
+            cluster_pt['demands'] = [0]
+            cluster_dict[pt['RouteName']] = cluster_pt
+     
+    
+    
+    cluster_index = 1
+    for i in data_points:
+        
+        try:
+            cluster_value[i['Code']]
+            
+            if i['GoogleMapAddress'] != '':
+                
+                temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
+                temp_address = ''.join(e for e in temp_address if e.isalnum())
+                temp_address =  temp_address[:400]
+                check = temp_address
+                
+                if check in code:
+                    indices = [ind_chk for ind_chk, x in enumerate(code) if x == check]
+                    
+                    ind = indices[len(indices) -1 ]
+                    valid_chk = 0
+                    if demands[ind] + float( i['Wt_kgs']) > VehicleCapacity:
+                        valid_chk = 1
+                    if volume[ind] + float(i['DropItemVMwt']) > VolumeCapacity:
+                        valid_chk = 1
+                    if valid_chk == 0:
+                        demands[ind] = demands[ind] + float( i['Wt_kgs'])
+                        
+                        
+                        volume[ind] = volume[ind] + float(i['DropItemVMwt'])
+                        
+                        ind_cluster = cluster_dict[cluster_value[i['Code']]]['cluster_value'].index(ind)
+                        cluster_dict[cluster_value[i['Code']]]['volume'][ind_cluster] +=  float(i['DropItemVMwt'])
+                        cluster_dict[cluster_value[i['Code']]]['demands'][ind_cluster] +=  float( i['Wt_kgs'])
+                        data_init[ind]['DropItems'] += i['AirwaybillNo']+str("<br>")
+                        shipments[ind] = shipments[ind] + 1
+                    else:
+                        
+                        code.append(check)
+                        address.append(i['GoogleMapAddress'])
+                        
+                        try:
+    #                         loc = [float(i['lat']), float(i['lng'])]
+                            loc = [float(i['lat']), float(i['lng'])]
+                            locations.append(loc)
+                        except:
+                            import pdb
+                            pdb.set_trace()
+                        
+                        try:
+                            timeslots = i['TimeSlot']
+                            try:
+                                start_ind =  timeslots.index('AM')
+                                chk_am = 1
+                            except:
+                                start_ind =  timeslots.index('PM')
+                                chk_am = 0
+                            try:
+                                end_ind = timeslots[start_ind+3:].index('PM')
+                                chk_pm = 1
+                            except:
+                                
+                                end_ind = timeslots[start_ind+3:].index('AM')
+                                chk_pm = 0
+                            
+                            start_tm_str = timeslots[:start_ind]
+                            end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
+                            start_tm_ind = start_tm_str.index(':')
+                            end_tm_ind = end_tm_str.index(':')
+                            if chk_am == 1:
+                                start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                            else:
+                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                            if chk_pm == 1:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                            else:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                        except:
+                            
+                            start_times.append(reporting_time + loading_time)
+                            end_times.append(returning_time)
+                        
+                        i['DropItems'] = i['AirwaybillNo']+str("<br>")
+                        data_init.append(i)
+                        
+                        if i['Wt_kgs'] > VehicleCapacity:
+                            return
+                       
+                        if i['DropItemVMwt'] > VolumeCapacity:
+                            return
+                        
+                        
+                        demands.append(i['Wt_kgs'])
+                        shipments.append(1)
+                        volume.append(i['DropItemVMwt'])
+                        
+                        
+                        cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
+                        
+                        cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
+                        cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
+                        cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
+                        
+                        cluster_dict[cluster_value[i['Code']]]['demands'].append(i['Wt_kgs'])
+                        cluster_index += 1
+
+                        
+                        
+                    
+                else:
+                    
+                    code.append(check)
+                    address.append(i['GoogleMapAddress'])
+                    
+                    try:
+#                         loc = [float(i['lat']), float(i['lng'])]
+                        loc = [float(i['lat']), float(i['lng'])]
+                        locations.append(loc)
+                    except:
+                        import pdb
+                        pdb.set_trace()
+                    
+                    try:
+                        timeslots = i['TimeSlot']
+                        try:
+                            start_ind =  timeslots.index('AM')
+                            chk_am = 1
+                        except:
+                            start_ind =  timeslots.index('PM')
+                            chk_am = 0
+                        try:
+                            end_ind = timeslots[start_ind+3:].index('PM')
+                            chk_pm = 1
+                        except:
+                            
+                            end_ind = timeslots[start_ind+3:].index('AM')
+                            chk_pm = 0
+                        
+                        start_tm_str = timeslots[:start_ind]
+                        end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
+                        start_tm_ind = start_tm_str.index(':')
+                        end_tm_ind = end_tm_str.index(':')
+                        if chk_am == 1:
+                            start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                        else:
+                            start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                        if chk_pm == 1:
+                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                        else:
+                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                    except:
+                        
+                        start_times.append(reporting_time + loading_time)
+                        end_times.append(returning_time)
+                    
+                    i['DropItems'] = i['AirwaybillNo']+str("<br>")
+                    data_init.append(i)
+                    
+                    if i['Wt_kgs'] > VehicleCapacity:
+                        return
+                   
+                    if i['DropItemVMwt'] > VolumeCapacity:
+                        return
+                    
+                    
+                    demands.append(i['Wt_kgs'])
+                    shipments.append(1)
+                    volume.append(i['DropItemVMwt'])
+                    
+                    
+                    cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
+                    
+                    cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
+                    cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
+                    cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
+                    
+                    cluster_dict[cluster_value[i['Code']]]['demands'].append(i['Wt_kgs'])
+                    cluster_index += 1
+                
+        except:
+            pass        
+    
+    
+    optimized_data = []
+    for i in cluster_dict.keys():
+        
+        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+        import pdb
+        pdb.set_trace()
+        optimizer_result =  route_optimizer.main(input_data,truck_options)
+        
+        truck_result = optimizer_result[1]
+        optimized_data += optimizer_result[0]
+    
+    
+    
+    #     cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
+    #                       r'Server=MILFOIL.arvixe.com;'
+    #                       r'Database=dbShipprTech;'
+    #                         r'uid=usrShipprTech;pwd=usr@ShipprTech')
+    # 
+    #     df = pd.read_sql_query('select * from [dbShipprTech].[dbo].[tDeliveryVehicle]', cnxn)
+    #         
+    #     final_df = df.loc[df['Code'] == truck_result['Code']]
+    #     final_df = final_df.to_dict(orient='records')[0]
+    #     final_df['UpdatedAt'] = None
+    #     final_df['CreatedAt'] = None
+   
+    
+    total_routes = len(optimized_data)
+    
+    
+    
+    
+    
+    
+    result = {}
+    result['AllTotalNetAmount'] = "0"
+    result['AvgShipmentsCount'] = int(sum(shipments)/total_routes)
+    result['DeliveryVehicleModels'] = [{'DeliveryVehicleModel': "Ace", 'DeliveryVehicleCount': total_routes}]
+    result['DepotLatitude'] = depot_data['Latitude']
+    result['DepotLongitude'] = depot_data['Longitude']
+    result['TotalDistanceTravelled'] = 0
+    result['TotalHaltTime'] = 0
+    result['TotalMassWt'] = sum(demands)
+    result['TotalTravelDuration'] = 0
+    result['TotalTravelTime'] = 0
+    result['DropPointsCount'] = 0
+    result['TotalVolumetricWt'] = sum(volume)
+    result['TravelRouteCount'] = total_routes
+    result['TravelRoutes'] = []
+    optimized_data_dict = []
+    id = 1
+    
+    today_date =  datetime.datetime.now().date()
+    today_date = datetime.datetime.combine(today_date, datetime.time(00, 00,00))
+#     import os
+#     os.environ['TZ']='Asia/Kolkata'
+#     epoch_format ='%Y-%m-%d %H:%M:%S'
+    truck_arrival = (today_date+datetime.timedelta(seconds = reporting_time - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
+    truck_departure = (today_date+datetime.timedelta(seconds = reporting_time+loading_time - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
+#     truck_arrival = int(time.mktime(time.strptime(truck_arrival,epoch_format)))
+#     truck_departure = int(time.mktime(time.strptime(truck_departure,epoch_format)))
+    
+    for i in optimized_data:
+        dict = {}
+        
+        prev_time = start_times[0]
+        last_ind = len(i)
+        dict['AllowedVolumetricWeight'] = ''
+        dict['DepotName'] = ''
+        dict['DropPointsGeoCoordinate'] = []
+        dict['ID'] = id
+        
+        
+        dict['LimitingParameter'] = "MSWT"
+        dict['MajorAreasCovered'] = []
+        dict['SequencedDropPointsList'] = []
+        
+         
+        
+        
+        dict['SuggestedDeliveryVehicle'] = {u'Model': u'Ace', u'DeliveryVehicleTypeCode': u'S', u'Code': u'V400', u'Description': None, u'Brand': u'Tata', u'UpdatedAt': None, u'LockedBy': None, u'IsDropped': False, u'CreatedBy': u'SYS', u'UpdatedBy': u'SYS', u'ShortName': u'Ace', u'StatusCode': u'ACTV', u'FullName': u'Tata Ace', u'CreatedAt': None, u'Dimensions': u'-'}
+       
+       
+        dict['TimeOfArrivalAtDepot'] = truck_arrival
+        dict['TimeOfOutForDeliveryFromDepot'] = truck_departure
+       
+        dict['TimeOfReleasedFromDepot'] = ''
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = ''
+        dict['TotalDistance'] = 0
+        dict['TotalDropItemsCount'] = 0
+        dict['TotalDroppointsCount'] = 0
+        dict['TotalDuration'] = 0
+        dict['TotalHaltTime'] = 0
+        dict['TotalMassWeight'] = 0
+        dict['TotalNetAmount'] = 0
+        dict['TotalQuantity'] = 0
+        dict['TotalTravelTime'] = 0
+        dict['TotalVolumetricWeight'] = 0
+        dict['TravelDate'] = None
+        
+        result['TotalTravelDuration'] += (int(i[last_ind -1][4]) - prev_time)/60
+        for j in range(len(i)):
+            
+            node_index = i[j][0]
+            geo_dict = {}
+            geo_dict['DropPointCode'] = code[node_index]
+            geo_dict['lat'] = locations[node_index][0]
+            geo_dict['lng'] = locations[node_index][1]
+            dict['DropPointsGeoCoordinate'].append(geo_dict)
+            
+            depot_address = address[node_index]
+            localities = [x for x, v in enumerate(depot_address) if v == ',']
+            try:
+                if  depot_address[localities[-1]+2:] != 'India':
+                    
+                    locality =  depot_address[localities[-3]+2: localities[-2]]
+                else:
+                    try:
+                        locality =  depot_address[localities[-4]+2: localities[-3]]
+                    except:
+                        pass
+                dict['MajorAreasCovered'].append(locality)
+            except:
+                pass
+            
+            seq_dp = deepcopy(data_init[node_index])
+            
+            if node_index > 0:
+                
+                seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                
+#                 seconds = int(i[j+1][4])
+                seconds = int(seconds)
+                    
+                
+                m, s = divmod(seconds, 60)
+                h, m = divmod(m, 60)
+                if h < 10:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
+                seq_dp['RouteSequentialPositionIndex'] = j + 1
+                seq_dp['Index'] = j+1 
+                
+            else:
+                
+                
+                
+                seq_dp['lat'] = seq_dp['Latitude']
+                seq_dp['lng'] = seq_dp['Longitude']
+                seq_dp['Name'] = 'Depot_1'
+                seq_dp['Index'] = j+1
+                if j == 0:
+                    
+                    seconds = int(reporting_time)
+                    m, s = divmod(seconds, 60)
+                    h, m = divmod(m, 60)
+                    
+                    if h < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                    if m < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                    
+                    seq_dp['RouteSequentialDrivingDistance'] =  str(0)
+                    seq_dp['RouteSequentialPositionIndex'] = j
+                else:
+                    
+                    seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
+                       
+#                     seconds = int(i[j][4]) + (3600/int(truck_options['AverageSpeedOfVehicle'])*i[j][1]) + int(truck_options['MHaltTimeAtDropPoint'])*60
+
+                    seconds = int(seconds)
+
+                    m, s = divmod(seconds, 60)
+                    h, m = divmod(m, 60)
+                    if h < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                    if m < 10:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                    else:
+                        seq_dp['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                    
+                    seq_dp['RouteSequentialDrivingDistance'] =  str(i[j][1])
+                    seq_dp['RouteSequentialPositionIndex'] = j + 1
+                    
+                    
+            try:
+                if j > 0:
+                    node_index_prev = i[j-1][0]
+                    
+                    seq_dp['Address'] += "<br>[<a target='_blank' href='https://www.google.com/maps/dir/" + str(locations[node_index_prev][0]) + "," +  str(locations[node_index_prev][1]) + "/" + str(locations[node_index][0]) + "," +  str(locations[node_index][1]) + "'>How To Reach Here</a>]"
+            except:
+                pass
+            seq_dp['RouteIndex'] = id -1
+            seq_dp['Route'] = id  - 1
+            dict['SequencedDropPointsList'].append(seq_dp)
+            if j == 0:
+                seq = deepcopy(seq_dp)
+                seconds_temp = seconds + int(loading_time)
+                m, s = divmod(seconds_temp, 60)
+                h, m = divmod(m, 60)
+                
+                if h < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str(m)
+                seq['RouteSequentialPositionIndex'] += 1
+                dict['SequencedDropPointsList'].append(seq)
+            if j == len(i) -1 :
+                seq = deepcopy(seq_dp)
+                seconds_temp = seconds + int(loading_time)
+                m, s = divmod(seconds_temp, 60)
+                h, m = divmod(m, 60)
+                
+                if h < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str("0") + str(h)+str(":")
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] = str(h)+str(":")
+                if m < 10:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str("0") + str(m)
+                else:
+                    seq['EstimatedTimeOfArrivalForDisplay'] += str(m)
+               
+                dict['SequencedDropPointsList'].append(seq)
+           
+#             seq_dp['Address'] = 
+#             seq_dp['Cluster'] =
+#             seq_dp['ClusterAngle'] =
+#             seq_dp['Code'] =
+#             seq_dp['DropItemETA'] =
+#             seq_dp['DropItemVMwt'] =
+#             seq_dp['DropItems'] =
+#             seq_dp['DropItemsCount'] =
+#             s
+#             seq_dp['GoogleMapAddress'] =
+#             seq_dp['HaltTime'] =
+#             seq_dp['Index'] =
+#             
+#             seq_dp['Name'] =
+#             seq_dp['RouteSequentialDrivingDistance'] =
+#             seq_dp['RouteSequentialPositionIndex'] =
+#             seq_dp['lat'] =
+#             seq_dp['lng'] =
+#             seq_dp['title'] =
+#             seq_dp['weight'] =
+#             
+#             
+            
+            if j > 0:
+                
+                dict['TotalDistance']  += i[j][1]
+                dict['TotalDropItemsCount'] += shipments[node_index]
+            if j > 1:
+                
+               
+                dict['TotalDroppointsCount'] += 1
+                dict['TotalDuration'] += (int(i[j][4]) - prev_time)/60
+                prev_time = int(i[j][4])
+                dict['TotalHaltTime'] += int(truck_options['MHaltTimeAtDropPoint'])
+                
+                dict['TotalMassWeight'] += demands[i[j-1][0]]
+                dict['TotalNetAmount'] = 0
+                dict['TotalQuantity'] = 0
+                
+                   
+                dict['TotalVolumetricWeight'] += volume[i[j-1][0]]
+        
+        
+        id += 1 
+        dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
+        
+        sec_time = dict['SequencedDropPointsList'][dict['TotalDroppointsCount'] + 2]['EstimatedTimeOfArrivalForDisplay']
+        sec_time = sec_time.split(":")
+        ts = int(sec_time[0])*3600 +  int(sec_time[1])*60
+        dict['TimeOfReturnFromForDeliveryAtDepot'] = (today_date+datetime.timedelta(seconds = ts - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
+        result['TotalHaltTime'] += dict['TotalHaltTime']
+        result['TotalDistanceTravelled'] += dict['TotalDistance'] 
+        result['DropPointsCount'] += dict['TotalDroppointsCount']
+        dict['MajorAreasCovered'] = list(set(dict['MajorAreasCovered']))
+        
+        result['TravelRoutes'].append(dict)
+    
+    
+    
+    result['TotalTravelTime'] = result['TotalTravelDuration'] - result['TotalHaltTime']
+            
+   
+#     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
+    try:
+        import pymssql
+        server = 'MILFOIL.arvixe.com'
+        user = 'usrShipprTech'
+        password = 'usr@ShipprTech'
+        
+        conn = pymssql.connect(server, user, password, "dbShipprTech")
+        cursor = conn.cursor(as_dict=True)
+    #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
+        
+        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+        
+        vmwt = ""
+        for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
+            vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
+        
+        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+        
+        cursor.execute(querytreport+"Values("+values+")")
+        
+        conn.commit()
+        
+        
+        trprtid = int(cursor.lastrowid)
+        result['report_id'] = trprtid
+        
+        ### query for 
+
+        querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
+        
+        values = ''
+        result['summary_id'] = []
+        for j in range(len(result['TravelRoutes'])):
+            i = result['TravelRoutes'][j]
+            values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['ID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
+            cursor.execute(querytreportstr+"Values"+values)
+            
+            conn.commit()
+            trpsmryid = int(cursor.lastrowid)
+            result['summary_id'].append(trpsmryid)
+            values_str = ''
+            values_box = ''
+            treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
+            routes_len = len(i['SequencedDropPointsList'])
+            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue])"
+            for iroute in  range(routes_len): 
+                
+                routes = i['SequencedDropPointsList'][iroute]
+                chk_box = 0
+                if iroute == 0:
+                    routes['DropItems'] = 'Arrival at Depot'
+                    chk_box = 1
+                elif iroute == 1:
+                    routes['DropItems'] = 'Out For Delivery'
+                    chk_box = 1
+                elif iroute == routes_len -2:
+                    chk_box = 1
+                    routes['DropItems'] = 'Return At Depot'
+                elif iroute == routes_len -1:
+                    chk_box = 1
+                    routes['DropItems'] = 'Released from Depot'
+                address = routes['Address']    
+                
+                try:    
+                
+                    add_in = address.index("<br>")
+                    address = address[:add_in]
+                except:
+                    pass
+                address = address.replace("'","")
+                values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
+                
+                if chk_box == 0:
+                    airway_bill = routes['DropItems'].split("<br>")
+                    airway_bill = airway_bill[:-1]
+                    
+                    for airse in airway_bill:
+                        airs1 = airse.split("_")
+                        for airs in airs1:
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
+            values_str = values_str[:len(values_str)-1]
+            
+            values_box = values_box[:len(values_box)-1]
+            cursor.execute(treportdetailstr+"Values"+values_str)
+            conn.commit()
+            
+            cursor.execute(treportroutebox+"Values"+values_box)
+            
+            conn.commit()
+ 
+            trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
+            majorareas = str(i['MajorAreasCovered'])
+            majorareas = majorareas.replace("u'","")
+            majorareas = majorareas.replace("'","")
+            valu_custom = str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) +  str("'") +"," + str("'") + majorareas + str("')")
+            cursor.execute(trptcustom+"Values"+valu_custom)
+            conn.commit()
+            
+        conn.close()
+        #cursor.execute("Values()") ;
+        ### report summary######
+    
+    except:
+        pass
+    
+    
+    
+   
+    
+    info = {}
+    info['Code'] = 'SUCCESS'
+    info['IsPositive'] = 'false'
+    info['message'] = ''
+    info['Yield'] = result
+    
+    
+    
+    return HttpResponse(json.dumps(info,) , content_type="application/json")
+
+
 
 @csrf_exempt
 def route(request):
@@ -824,7 +1509,7 @@ def route(request):
     truck_departure = (today_date+datetime.timedelta(seconds = reporting_time+loading_time - 48600)).strftime('%Y-%m-%d  %H:%M:%S')
 #     truck_arrival = int(time.mktime(time.strptime(truck_arrival,epoch_format)))
 #     truck_departure = int(time.mktime(time.strptime(truck_departure,epoch_format)))
-    
+    loc_name = {}
     for i in optimized_data:
         dict = {}
         
@@ -864,6 +1549,7 @@ def route(request):
         dict['TravelDate'] = None
         
         result['TotalTravelDuration'] += (int(i[last_ind -1][4]) - prev_time)/60
+        
         for j in range(len(i)):
             
             node_index = i[j][0]
@@ -885,8 +1571,19 @@ def route(request):
                     except:
                         pass
                 dict['MajorAreasCovered'].append(locality)
+                id_temp = "Route-" + str(id)
+                try:
+                    loc_name[id_temp][locality] += 1
+                except:
+                    try:
+                        loc_name[id_temp]
+                        loc_name[id_temp][locality] = 1
+                    except:
+                        loc_name[id_temp] = {}
+                        loc_name[id_temp][locality] = 1
             except:
                 pass
+            
             
             seq_dp = deepcopy(data_init[node_index])
             
@@ -1063,7 +1760,7 @@ def route(request):
     
     
     result['TotalTravelTime'] = result['TotalTravelDuration'] - result['TotalHaltTime']
-            
+    print loc_name
    
 #     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
     try:
