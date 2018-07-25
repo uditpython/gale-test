@@ -1751,115 +1751,116 @@ def route(request):
             
    
 #     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
-    try:
-        import pymssql
-        server = 'MILFOIL.arvixe.com'
-        user = 'usrShipprTech'
-        password = 'usr@ShipprTech'
-        
-        conn = pymssql.connect(server, user, password, "dbShipprTech")
-        cursor = conn.cursor(as_dict=True)
-    #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
-        
-        try:
-            planning_date = data['Planningdate']
-        except:
-            planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
-        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
-        
-        vmwt = ""
-        for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
-            vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
-        
-        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
-        
-        cursor.execute(querytreport+"Values("+values+")")
-        
-        conn.commit()
-        
-        
-        trprtid = int(cursor.lastrowid)
-        result['report_id'] = trprtid
-        
-        ### query for 
-
-        querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
-        
-        values = ''
-        result['summary_id'] = []
-        for j in range(len(result['TravelRoutes'])):
-            i = result['TravelRoutes'][j]
-            values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['ID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
-            cursor.execute(querytreportstr+"Values"+values)
-            
-            conn.commit()
-            trpsmryid = int(cursor.lastrowid)
-            result['summary_id'].append(trpsmryid)
-            values_str = ''
-            values_box = ''
-            treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
-            routes_len = len(i['SequencedDropPointsList'])
-            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue])"
-            for iroute in  range(routes_len): 
-                
-                routes = i['SequencedDropPointsList'][iroute]
-                chk_box = 0
-                if iroute == 0:
-                    routes['DropItems'] = 'Arrival at Depot'
-                    chk_box = 1
-                elif iroute == 1:
-                    routes['DropItems'] = 'Out For Delivery'
-                    chk_box = 1
-                elif iroute == routes_len -2:
-                    chk_box = 1
-                    routes['DropItems'] = 'Return At Depot'
-                elif iroute == routes_len -1:
-                    chk_box = 1
-                    routes['DropItems'] = 'Released from Depot'
-                address = routes['Address']    
-                
-                try:    
-                
-                    add_in = address.index("<br>")
-                    address = address[:add_in]
-                except:
-                    pass
-                address = address.replace("'","")
-                values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
-                
-                if chk_box == 0:
-                    airway_bill = routes['DropItems'].split("<br>")
-                    airway_bill = airway_bill[:-1]
-                    
-                    for airse in airway_bill:
-                        airs1 = airse.split("_")
-                        for airs in airs1:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
-            values_str = values_str[:len(values_str)-1]
-            
-            values_box = values_box[:len(values_box)-1]
-            cursor.execute(treportdetailstr+"Values"+values_str)
-            conn.commit()
-            
-            cursor.execute(treportroutebox+"Values"+values_box)
-            
-            conn.commit()
- 
-            trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
-            majorareas = str(i['MajorAreasCovered'])
-            majorareas = majorareas.replace("u'","")
-            majorareas = majorareas.replace("'","")
-            valu_custom = str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) +  str("'") +"," + str("'") + majorareas + str("')")
-            cursor.execute(trptcustom+"Values"+valu_custom)
-            conn.commit()
-            
-        conn.close()
-        #cursor.execute("Values()") ;
-        ### report summary######
-    
-    except:
-        pass
-    
+#     if  data['save_show'] != 1:
+#         try:
+#             import pymssql
+#             server = 'MILFOIL.arvixe.com'
+#             user = 'usrShipprTech'
+#             password = 'usr@ShipprTech'
+#             
+#             conn = pymssql.connect(server, user, password, "dbShipprTech")
+#             cursor = conn.cursor(as_dict=True)
+#         #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
+#             
+#             try:
+#                 planning_date = data['Planningdate']
+#             except:
+#                 planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
+#             querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+#             
+#             vmwt = ""
+#             for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
+#                 vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
+#             
+#             values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+#             
+#             cursor.execute(querytreport+"Values("+values+")")
+#             
+#             conn.commit()
+#             
+#             
+#             trprtid = int(cursor.lastrowid)
+#             result['report_id'] = trprtid
+#             
+#             ### query for 
+#     
+#             querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
+#             
+#             values = ''
+#             result['summary_id'] = []
+#             for j in range(len(result['TravelRoutes'])):
+#                 i = result['TravelRoutes'][j]
+#                 values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['ID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
+#                 cursor.execute(querytreportstr+"Values"+values)
+#                 
+#                 conn.commit()
+#                 trpsmryid = int(cursor.lastrowid)
+#                 result['summary_id'].append(trpsmryid)
+#                 values_str = ''
+#                 values_box = ''
+#                 treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
+#                 routes_len = len(i['SequencedDropPointsList'])
+#                 treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue])"
+#                 for iroute in  range(routes_len): 
+#                     
+#                     routes = i['SequencedDropPointsList'][iroute]
+#                     chk_box = 0
+#                     if iroute == 0:
+#                         routes['DropItems'] = 'Arrival at Depot'
+#                         chk_box = 1
+#                     elif iroute == 1:
+#                         routes['DropItems'] = 'Out For Delivery'
+#                         chk_box = 1
+#                     elif iroute == routes_len -2:
+#                         chk_box = 1
+#                         routes['DropItems'] = 'Return At Depot'
+#                     elif iroute == routes_len -1:
+#                         chk_box = 1
+#                         routes['DropItems'] = 'Released from Depot'
+#                     address = routes['Address']    
+#                     
+#                     try:    
+#                     
+#                         add_in = address.index("<br>")
+#                         address = address[:add_in]
+#                     except:
+#                         pass
+#                     address = address.replace("'","")
+#                     values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
+#                     
+#                     if chk_box == 0:
+#                         airway_bill = routes['DropItems'].split("<br>")
+#                         airway_bill = airway_bill[:-1]
+#                         
+#                         for airse in airway_bill:
+#                             airs1 = airse.split("_")
+#                             for airs in airs1:
+#                                 values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
+#                 values_str = values_str[:len(values_str)-1]
+#                 
+#                 values_box = values_box[:len(values_box)-1]
+#                 cursor.execute(treportdetailstr+"Values"+values_str)
+#                 conn.commit()
+#                 
+#                 cursor.execute(treportroutebox+"Values"+values_box)
+#                 
+#                 conn.commit()
+#      
+#                 trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
+#                 majorareas = str(i['MajorAreasCovered'])
+#                 majorareas = majorareas.replace("u'","")
+#                 majorareas = majorareas.replace("'","")
+#                 valu_custom = str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) +  str("'") +"," + str("'") + majorareas + str("')")
+#                 cursor.execute(trptcustom+"Values"+valu_custom)
+#                 conn.commit()
+#                 
+#             conn.close()
+#             #cursor.execute("Values()") ;
+#             ### report summary######
+#         
+#         except:
+#             pass
+#     
     
     
    
