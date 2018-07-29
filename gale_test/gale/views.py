@@ -1183,8 +1183,44 @@ def noptimize(request):
     info['Yield'] = result
     
     
-    
     return HttpResponse(json.dumps(info,) , content_type="application/json")
+
+
+@csrf_exempt
+def ReportInfo(request):
+    
+    report_id = int(request.body.decode('utf-8'))
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    data = collection.find_one({'_id': report_id })
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+        
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    
+    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id))
+    result = cursor.fetchall()
+    conn.close()
+    info = {}
+    for i in result:
+        i.pop('CreatedAt', None)
+        i.pop('UpdatedAt', None)
+        i['ReportDateIST'] = str(i['ReportDateIST'])
+        info[i['RouteCode']] = i
+        
+    data['DA'] = info
+    return HttpResponse(json.dumps(data) , content_type="application/json")
+
+
+    
+
 
 @csrf_exempt
 def route(request):
@@ -1869,7 +1905,22 @@ def route(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
-    
+    try:
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+        
+        db = connection.analytics
+        collection = db.shipprtech
+        result['_id'] = result['report_id']
+        
+        result['input_data'] = data
+        
+        collection.insert(result)
+        
+        result.pop('input_data', None)
+    except:
+        pass    
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")

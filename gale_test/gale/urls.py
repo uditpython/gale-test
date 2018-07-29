@@ -7,6 +7,7 @@ urlpatterns = [
               url(r'^route/$', views.route, ),
               url(r'^predefined_routes/$', views.noptimize, ),
               url(r'^dist/$', views.distance_matrix, ),
+              url(r'^report_info/$', views.ReportInfo, ),
             url(r'^barcode/$', views.barcode, ),
               
                        
