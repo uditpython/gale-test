@@ -1214,8 +1214,9 @@ def ReportInfo(request):
         i.pop('UpdatedAt', None)
         i['ReportDateIST'] = str(i['ReportDateIST'])
         info[i['RouteCode']] = i
-        
+    
     data['DA'] = info
+    
     return HttpResponse(json.dumps(data) , content_type="application/json")
 
 
@@ -1905,22 +1906,22 @@ def route(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
-    try:
-        import pymongo
-        from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
-        
-        db = connection.analytics
-        collection = db.shipprtech
-        result['_id'] = result['report_id']
-        
-        result['input_data'] = data
-        
-        collection.insert(result)
-        
-        result.pop('input_data', None)
-    except:
-        pass    
+#     try:
+#         import pymongo
+#         from pymongo import MongoClient
+#         connection = MongoClient('localhost:27017')
+#         
+#         db = connection.analytics
+#         collection = db.shipprtech
+#         result['_id'] = result['report_id']
+#         
+#         result['input_data'] = data
+#         
+#         collection.insert(result)
+#         
+#         result.pop('input_data', None)
+#     except:
+#         pass    
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
