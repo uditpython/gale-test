@@ -1077,13 +1077,17 @@ def noptimize(request):
         cursor = conn.cursor(as_dict=True)
     #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
         
-        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+        try:
+            planning_date = data['Planningdate']
+        except:
+            planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
+        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
         
         vmwt = ""
         for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
             vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
         
-        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
         
         cursor.execute(querytreport+"Values("+values+")")
         
@@ -1181,6 +1185,22 @@ def noptimize(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
+    try:
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+         
+        db = connection.analytics
+        collection = db.shipprtech
+        result['_id'] = result['report_id']
+         
+        result['input_data'] = data
+         
+        collection.insert(result)
+         
+        result.pop('input_data', None)
+    except:
+        pass    
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
@@ -1906,22 +1926,22 @@ def route(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
-#     try:
-#         import pymongo
-#         from pymongo import MongoClient
-#         connection = MongoClient('localhost:27017')
-#         
-#         db = connection.analytics
-#         collection = db.shipprtech
-#         result['_id'] = result['report_id']
-#         
-#         result['input_data'] = data
-#         
-#         collection.insert(result)
-#         
-#         result.pop('input_data', None)
-#     except:
-#         pass    
+    try:
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+         
+        db = connection.analytics
+        collection = db.shipprtech
+        result['_id'] = result['report_id']
+         
+        result['input_data'] = data
+         
+        collection.insert(result)
+         
+        result.pop('input_data', None)
+    except:
+        pass    
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
