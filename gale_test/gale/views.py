@@ -1065,7 +1065,7 @@ def noptimize(request):
     
     result['TotalTravelTime'] = result['TotalTravelDuration'] - result['TotalHaltTime']
             
-   
+    
 #     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
     try:
         import pymssql
@@ -1115,7 +1115,7 @@ def noptimize(request):
             values_box = ''
             treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
             routes_len = len(i['SequencedDropPointsList'])
-            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue])"
+            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems])"
             for iroute in  range(routes_len): 
                 
                 routes = i['SequencedDropPointsList'][iroute]
@@ -1150,7 +1150,7 @@ def noptimize(request):
                     for airse in airway_bill:
                         airs1 = airse.split("_")
                         for airs in airs1:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
