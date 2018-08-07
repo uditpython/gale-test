@@ -1882,6 +1882,7 @@ def route(request):
                 except:
                     pass
                 address = address.replace("'","")
+                routes['Name'] = routes['Name'].replace("'","")
                 values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
                 
                 if chk_box == 0:
