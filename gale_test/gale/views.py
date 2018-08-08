@@ -1081,7 +1081,7 @@ def noptimize(request):
         conn = pymssql.connect(server, user, password, "dbShipprTech")
         cursor = conn.cursor(as_dict=True)
     #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
-        
+          
         try:
             planning_date = data['Planningdate']
         except:
@@ -1090,7 +1090,7 @@ def noptimize(request):
         
         vmwt = ""
         for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
-            vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
+            vmwt += i['Code']+":"+str(i['VmWtAllowed']) + "|"
         
         values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
         
