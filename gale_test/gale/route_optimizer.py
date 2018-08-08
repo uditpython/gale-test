@@ -257,7 +257,12 @@ def main(data,truck_options):
   nodes = data[6]
   num_locations = len(locations)
   depot = 0
-  num_vehicles = 100
+  
+  try:
+      
+    num_vehicles = truck_options['number_of_trucks']
+  except:
+    num_vehicles = 100
   search_time_limit = 400000
  
 

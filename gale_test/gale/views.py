@@ -765,8 +765,12 @@ def noptimize(request):
         except:
             pass        
     
-    
+    for i in  truck_options['SelectedDeliveryVehicles']:
+        i['WeightAllowed'] = VehicleCapacity
+        i['VmWtAllowed'] = VolumeCapacity
+        
     optimized_data = []
+    truck_options['number_of_trucks'] = 1
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
@@ -775,6 +779,7 @@ def noptimize(request):
         
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
+       
     
     
     
@@ -1508,6 +1513,7 @@ def route(request):
     
     
     optimized_data = []
+    truck_options['number_of_trucks'] = 100
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
@@ -1896,6 +1902,7 @@ def route(request):
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
+            
             cursor.execute(treportdetailstr+"Values"+values_str)
             conn.commit()
             
