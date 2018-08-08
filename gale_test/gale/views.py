@@ -587,8 +587,9 @@ def noptimize(request):
     
     
     cluster_index = 1
+    amount = {}
     for i in data_points:
-        
+        amount[i['AirwaybillNo']] = i['NetAmount']
         try:
             cluster_value[i['Code']]
             
@@ -1154,12 +1155,14 @@ def noptimize(request):
                     
                     for airse in airway_bill:
                         airs1 = airse.split("_")
-                        for airs in airs1:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
+                        for airs in airs1:                            
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(amount[airs]) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
+            
             cursor.execute(treportdetailstr+"Values"+values_str)
+            
             conn.commit()
             
             cursor.execute(treportroutebox+"Values"+values_box)
@@ -1333,8 +1336,9 @@ def route(request):
     
     
     cluster_index = 1
+    amount = {}
     for i in data_points:
-        
+        amount[i['AirwaybillNo']] = i['NetAmount']
         try:
             cluster_value[i['Code']]
             
@@ -1898,7 +1902,7 @@ def route(request):
                     for airse in airway_bill:
                         airs1 = airse.split("_")
                         for airs in airs1:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(routes['NetAmount']) + str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(amount[airs]) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
