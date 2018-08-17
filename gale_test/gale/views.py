@@ -6,10 +6,17 @@ import time
 from django.shortcuts import render
 from django.http.response import HttpResponse
 import json
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except:
+    from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from gale_test.settings import NUMBER_OF_THREADS
-import Queue
+try:
+    import Queue
+except:
+    
+    import queue as Queue 
 import pyodbc 
 import pandas as pd
 import math
@@ -1194,6 +1201,7 @@ def noptimize(request):
     info['message'] = ''
     info['Yield'] = result
     try:
+        
         import pymongo
         from pymongo import MongoClient
         connection = MongoClient('localhost:27017')
@@ -1216,7 +1224,8 @@ def noptimize(request):
 
 @csrf_exempt
 def ReportInfo(request):
-    
+    import pdb
+    pdb.set_trace()
     report_id = int(request.body.decode('utf-8'))
     import pymongo
     from pymongo import MongoClient
@@ -1272,6 +1281,7 @@ def route(request):
     truck_options= data['UsersRoutePreferences']
     max_weight = 0
     max_vol = 0
+    
     for i in  truck_options['SelectedDeliveryVehicles']:
         if i['Code'] == 'V400':
             VehicleCapacity = int(i['WeightAllowed'])
@@ -1938,7 +1948,10 @@ def route(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
+    
     try:
+        import pdb
+        pdb.set_trace()
         import pymongo
         from pymongo import MongoClient
         connection = MongoClient('localhost:27017')

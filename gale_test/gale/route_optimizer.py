@@ -124,7 +124,7 @@ class CreateDistanceCallback(object):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+            self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
 
     import  datetime    
     
@@ -178,7 +178,7 @@ class CreateDistanceCallback(object):
     
 
   def Distance(self, from_node, to_node):
-
+    
     return int(self.matrix[from_node][to_node])
 
 
@@ -282,11 +282,53 @@ def main(data,truck_options):
 #     dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
     
-    routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
+#     routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
     demands_at_locations = CreateDemandCallback(demands)
     demands_callback = demands_at_locations.Demand
+    VehicleCapacity = []
+    VolumeCapacity = []
+    selected_cost = []
+    for i in  truck_options['SelectedDeliveryVehicles']:
+        if i['Code'] == 'V400':
+            VehicleCapacity.append(int(i['WeightAllowed']))
+             
+            VolumeCapacity.append(int(i['VmWtAllowed']))
+            selected_cost.append(1200)
+            selected_vehicle = i
+    
+        if i['Code'] == 'V500':
+                VehicleCapacity.append(int(i['WeightAllowed']))
+             
+                VolumeCapacity.append(int(i['VmWtAllowed']))
+                selected_cost.append(4750)
+                selected_vehicle = i
+#     if VehicleCapacity == 0:
+#         for i in  truck_options['SelectedDeliveryVehicles']:
+#             if i['Code'] == 'V200':
+#                 VehicleCapacity = int(i['WeightAllowed'])
+#                  
+#                 VolumeCapacity = int(i['VmWtAllowed'])
+#                 selected_vehicle = i 
 
-   
+    
+    
+    
+    capacity = []
+    cost = []
+    k = 0
+    volumetric = []
+    for i in range(num_vehicles/len(VehicleCapacity)):
+        for j in range(len(VehicleCapacity)):
+        
+            
+            capacity.append(VehicleCapacity[j])
+            volumetric.append(VolumeCapacity[j])
+            cost.append(selected_cost[j])
+        
+#             k += 1
+            
+    
+    
     
     maximum_dist = int(truck_options['MaxDistancePerVehicle'])
     NullDistanceStack = 0
@@ -294,57 +336,58 @@ def main(data,truck_options):
     distance_check = "Distances"
     routing.AddDimension(dist_callback, NullDistanceStack, maximum_dist,
                          fix_start_cumul_to_zero, distance_check)
+    NullCapacitySlack = 0
     
+    routing.AddDimensionWithVehicleCapacity(
+      demands_callback,  # demand callback
+      NullCapacitySlack,
+      capacity,  # capacity array
+      True,
+      'Capacity')
     
+    volume_at_locations = CreateVolumeCallback(volume)
+    volume_callback = volume_at_locations.Volume
+    routing.AddDimensionWithVehicleCapacity(
+      volume_callback,  # demand callback
+      NullCapacitySlack,
+      volumetric,  # capacity array
+      True,
+      'CapacityVolume')
+    distance_dimension = routing.GetDimensionOrDie(distance_check)
     
+
+  # Set vehicle costs for each vehicle, not homogenious.
+    
+         
     
     # Adding capacity dimension constraints.
     
-    VehicleCapacity = 0
-    VolumeCapacity = 0
-    
-    for i in  truck_options['SelectedDeliveryVehicles']:
-        if i['Code'] == 'V400':
-            VehicleCapacity = int(i['WeightAllowed'])
-             
-            VolumeCapacity = int(i['VmWtAllowed']) 
-            selected_vehicle = i
-    if VehicleCapacity == 0:
-        for i in  truck_options['SelectedDeliveryVehicles']:
-            if i['Code'] == 'V500':
-                VehicleCapacity = int(i['WeightAllowed'])
-                 
-                VolumeCapacity = int(i['VmWtAllowed']) 
-                selected_vehicle = i
-    if VehicleCapacity == 0:
-        for i in  truck_options['SelectedDeliveryVehicles']:
-            if i['Code'] == 'V200':
-                VehicleCapacity = int(i['WeightAllowed'])
-                 
-                VolumeCapacity = int(i['VmWtAllowed'])
-                selected_vehicle = i 
 
     
 
     
-    NullCapacitySlack = 0
+    
+    
+      
+    
     fix_start_cumul_to_zero = True
-    capacity = "Capacity"
-    routing.AddDimension(demands_callback, NullCapacitySlack, VehicleCapacity,
+    capacity = "Capacities"
+    routing.AddDimension(demands_callback, NullCapacitySlack, max(VehicleCapacity),
                          fix_start_cumul_to_zero, capacity)
+#     
     
     
     
+        
     ## Adding Volume constraint
-    volume_at_locations = CreateVolumeCallback(volume)
-    volume_callback = volume_at_locations.Volume
+   
     
      
     NullVolumeSlack = 0;
     fix_start_cumul_to_zero = True
     volumes = "Volume"
 
-    routing.AddDimension(volume_callback, NullVolumeSlack, VolumeCapacity,
+    routing.AddDimension(volume_callback, NullVolumeSlack, max(VolumeCapacity),
                          fix_start_cumul_to_zero, volumes)
     
     
@@ -381,13 +424,26 @@ def main(data,truck_options):
         
       location_idx = routing.NodeToIndex(location)
       time_dimension.CumulVar(location_idx).SetRange(start, end)
+      
       routing.AddToAssignment(time_dimension.SlackVar(location_idx))
       
+    vehicle_call_backs = [lambda i, j: dist_callback(i, j)*cost[vehicle] for vehicle in range(num_vehicles)]
    
+
+#         routing.SetVehicleCost(int(veh), vehicle_call_backs_cost[veh])  
+       
+        
+        
     for vehicle_id in xrange(num_vehicles):
         index = routing.Start(vehicle_id)
-        time_dimension.CumulVar(index).SetRange(0,
-                                                duration)
+#         routing.SetFixedCostOfVehicle(cost[vehicle_id], int(vehicle_id)) 
+        
+        
+        
+#         distance_dimension.CumulVar(index)
+        distance_dimension.SetSpanCostCoefficientForVehicle(cost[vehicle_id],vehicle_id)
+#         routing.SetArcCostEvaluatorOfVehicle(vehicle_call_backs[vehicle_id], vehicle_id) 
+        time_dimension.CumulVar(index).SetRange(0,duration)
         routing.AddToAssignment(time_dimension.SlackVar(index))
       
     # Solve displays a solution if any.
@@ -420,6 +476,7 @@ def main(data,truck_options):
       time_range = []
       weight = []
       cum_weight = []
+      
       for vehicle_nbr in range(num_vehicles):
         index = routing.Start(vehicle_nbr)
         plan_output = 'Route {0}:'.format(vehicle_nbr)
