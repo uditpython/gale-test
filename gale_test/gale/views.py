@@ -771,7 +771,7 @@ def noptimize(request):
         i['VmWtAllowed'] = VolumeCapacity
         
     optimized_data = []
-    truck_options['number_of_trucks'] = 1
+    truck_options['number_of_trucks'] = 1    
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
@@ -1147,6 +1147,7 @@ def noptimize(request):
                 except:
                     pass
                 address = address.replace("'","")
+                
                 values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
                 
                 if chk_box == 0:
@@ -1155,8 +1156,9 @@ def noptimize(request):
                     
                     for airse in airway_bill:
                         airs1 = airse.split("_")
-                        for airs in airs1:                            
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(amount[airs]) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
+                        for airs in airs1: 
+                                                      
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
@@ -1902,7 +1904,7 @@ def route(request):
                     for airse in airway_bill:
                         airs1 = airse.split("_")
                         for airs in airs1:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex'] -1 ) + str("'") +"," + str("'") + str(amount[airs]) + str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
