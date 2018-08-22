@@ -272,8 +272,7 @@ def main(data,truck_options):
     # The number of nodes of the VRP is num_locations.
     # Nodes are indexed from 0 to num_locations - 1. By default the start of
     # a route is node 0.
-    routing = pywrapcp.RoutingModel(num_locations, num_vehicles, depot)
-    search_parameters = pywrapcp.RoutingModel.DefaultSearchParameters()
+    
 
     # Callbacks to the distance function and travel time functions here.
     
@@ -328,8 +327,9 @@ def main(data,truck_options):
 #             k += 1
             
     
-    
-    
+    num_vehicles = len(capacity)
+    routing = pywrapcp.RoutingModel(num_locations, num_vehicles, depot)
+    search_parameters = pywrapcp.RoutingModel.DefaultSearchParameters()
     maximum_dist = int(truck_options['MaxDistancePerVehicle'])
     NullDistanceStack = 0
     fix_start_cumul_to_zero = True
