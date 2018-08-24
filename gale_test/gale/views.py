@@ -601,7 +601,7 @@ def noptimize(request):
                 
                 temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
                 temp_address = ''.join(e for e in temp_address if e.isalnum())
-                temp_address =  temp_address[:400] + "-" + i['Name']                
+                temp_address =  temp_address[:400] + "-" + i['RouteName']                
                 check = temp_address
                 
                 if check in code:
