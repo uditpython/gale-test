@@ -592,6 +592,10 @@ def noptimize(request):
         amount[i['AirwaybillNo']] = i['NetAmount']
         try:
             cluster_value[i['Code']]
+            if i['Wt_kgs'] < 0:
+                i['Wt_kgs'] = 0
+            if i['DropItemVMwt'] < 0:
+                i['DropItemVMwt'] = 0
             
             if i['GoogleMapAddress'] != '':
                 
