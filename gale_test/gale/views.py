@@ -601,7 +601,7 @@ def noptimize(request):
                 
                 temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
                 temp_address = ''.join(e for e in temp_address if e.isalnum())
-                temp_address =  temp_address[:400]
+                temp_address =  temp_address[:400] + "-" + i['Name']                
                 check = temp_address
                 
                 if check in code:
@@ -777,14 +777,14 @@ def noptimize(request):
     optimized_data = []
     truck_options['number_of_trucks'] = 1    
     for i in cluster_dict.keys():
-        
+       
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
-       
+        
     
     
     
