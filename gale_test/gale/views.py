@@ -589,7 +589,13 @@ def noptimize(request):
     cluster_index = 1
     amount = {}
     for i in data_points:
-        amount[i['AirwaybillNo']] = i['NetAmount']
+        
+        amount[i['AirwaybillNo']] = {}
+        amount[i['AirwaybillNo']]['amount'] = abs(i['NetAmount'])
+        amount[i['AirwaybillNo']]['cases'] = abs(i['cases'])
+        amount[i['AirwaybillNo']]['desc'] = i['Description']
+       
+        
         try:
             cluster_value[i['Code']]
             if i['Wt_kgs'] < 0:
@@ -1161,8 +1167,8 @@ def noptimize(request):
                     for airse in airway_bill:
                         airs1 = airse.split("_")
                         for airs in airs1: 
-                                                      
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]) + str("'") +"," + str("'") + str(routes['Description']) + str("'") +"," + str("'") + str(routes['cases']) + str("'),")
+                                        
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
