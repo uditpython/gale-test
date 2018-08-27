@@ -1199,7 +1199,7 @@ def noptimize(request):
     
     
    
-    
+    print result['report_id']
     info = {}
     info['Code'] = 'SUCCESS'
     info['IsPositive'] = 'false'
@@ -1217,7 +1217,9 @@ def noptimize(request):
     result['input_data'] = data
      
     collection.insert(result)
-     
+    report_id = result['report_id']
+    data = collection.find_one({'_id': report_id })
+    print data
     result.pop('input_data', None)
     
     
