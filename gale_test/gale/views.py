@@ -1205,22 +1205,20 @@ def noptimize(request):
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
-    try:
-        import pymongo
-        from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
-         
-        db = connection.analytics
-        collection = db.shipprtech
-        result['_id'] = result['report_id']
-         
-        result['input_data'] = data
-         
-        collection.insert(result)
-         
-        result.pop('input_data', None)
-    except:
-        pass    
+    
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+    result['_id'] = result['report_id']
+     
+    result['input_data'] = data
+     
+    collection.insert(result)
+     
+    result.pop('input_data', None)
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
