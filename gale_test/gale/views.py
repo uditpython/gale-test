@@ -1199,28 +1199,28 @@ def noptimize(request):
     
     
    
-    print result['report_id']
+    
     info = {}
     info['Code'] = 'SUCCESS'
     info['IsPositive'] = 'false'
     info['message'] = ''
     info['Yield'] = result
-    
-    import pymongo
-    from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
-     
-    db = connection.analytics
-    collection = db.shipprtech
-    result['_id'] = result['report_id']
-     
-    result['input_data'] = data
-     
-    collection.insert(result)
-    report_id = result['report_id']
-    data = collection.find_one({'_id': report_id })
-    print data
-    result.pop('input_data', None)
+    try:
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+         
+        db = connection.analytics
+        collection = db.shipprtech
+        result['_id'] = result['report_id']
+         
+        result['input_data'] = data
+         
+        collection.insert(result)
+         
+        result.pop('input_data', None)
+    except:
+        pass    
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
