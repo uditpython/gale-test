@@ -1284,6 +1284,7 @@ def route(request):
     truck_options= data['UsersRoutePreferences']
     max_weight = 0
     max_vol = 0
+    VehicleCapacity = 0
     for i in  truck_options['SelectedDeliveryVehicles']:
         if i['Code'] == 'V400':
             VehicleCapacity = int(i['WeightAllowed'])
