@@ -215,7 +215,6 @@ class Crawler:
         Crawler.images_list = images_list
         Crawler.explored_list = explored_list
 
-crawler = Crawler() 
 
 
 
@@ -1970,6 +1969,91 @@ def route(request):
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
+
+def GenerateSimpleBlocks(size = (55,37,30),allowed_orientation = [(1,1,1),(1,1,1),(1,1,1)],number_of_blocks = 100, container_size = (214,153,153)):
+    ## length = 0, breadth = 1, height = 2
+    
+    
+    
+    
+    
+    
+    container_length =  container_size[0]
+    container_width =  container_size[1]
+    container_height =  container_size[2]
+    
+#     for i in range(number_of_blocks):
+        ## 6 orientations
+    max_block = 0
+    max_orientation = []
+    
+    ## total 6 orientation 
+    for length in range(3):
+        if allowed_orientation[0][length] != 0:
+            
+            for width in range(3):
+                if width != length:
+                    if allowed_orientation[1][width] != 0:
+                        
+                        for height in range(3):
+                            if height not in [length, width]:
+                                if allowed_orientation[2][height] != 0:
+                                    block_length = 0
+                                    block_width = 0
+                                    block_height = 0
+                                    nx = 0
+                                    ny = 0
+                                    nz = 0
+                                    lengths_box = {}
+                                    lengths_box["length"] = size[length]
+                                    lengths_box["width"] = size[width]
+                                    lengths_box["height"] = size[height]
+                                    block_length += lengths_box["length"]
+                                    block_width += lengths_box["width"]
+                                    block_height += lengths_box["height"]
+                                    while block_length <= container_length:
+                                        
+                                        
+                                         
+                                        while block_width <= container_width:
+                                            
+                                            
+                                            while block_height <= container_height:
+                                                
+                                                nz += 1
+                                                block_height += lengths_box["height"]
+                                            
+                                            ny += 1    
+                                            block_width += lengths_box["width"]
+                                        nx += 1
+                                        block_length += lengths_box["length"]        
+                                    
+                                    total_block = nx*ny*nz
+                                    
+                                    if total_block > max_block:
+                                        max_block = total_block
+                                        max_orientation = [length,width,height]
+                                        
+                
+    return   (max_block,max_orientation)      
+
+
+def GenerateGeneralBlocks():
+
+
+    import pdb
+    pdb.set_trace()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
