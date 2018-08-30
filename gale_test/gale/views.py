@@ -1559,13 +1559,20 @@ def route(request):
     
     
     
-    
-    
+    try:
+        truck_name =  optimizer_result[1]['Name']
+        
+        if truck_name == 'Piaggio Ape':
+            truck_name = 'Ape'
+        elif truck_name == 'Tata Ace':
+            truck_name = 'Ace'
+    except:
+        truck_name = 'ACE'
     
     result = {}
     result['AllTotalNetAmount'] = "0"
     result['AvgShipmentsCount'] = int(sum(shipments)/total_routes)
-    result['DeliveryVehicleModels'] = [{'DeliveryVehicleModel': "Ace", 'DeliveryVehicleCount': total_routes}]
+    result['DeliveryVehicleModels'] = [{'DeliveryVehicleModel': truck_name, 'DeliveryVehicleCount': total_routes}]
     result['DepotLatitude'] = depot_data['Latitude']
     result['DepotLongitude'] = depot_data['Longitude']
     result['TotalDistanceTravelled'] = 0
@@ -1608,7 +1615,7 @@ def route(request):
          
         
         
-        dict['SuggestedDeliveryVehicle'] = {u'Model': u'Ace', u'DeliveryVehicleTypeCode': u'S', u'Code': u'V400', u'Description': None, u'Brand': u'Tata', u'UpdatedAt': None, u'LockedBy': None, u'IsDropped': False, u'CreatedBy': u'SYS', u'UpdatedBy': u'SYS', u'ShortName': u'Ace', u'StatusCode': u'ACTV', u'FullName': u'Tata Ace', u'CreatedAt': None, u'Dimensions': u'-'}
+        dict['SuggestedDeliveryVehicle'] = {u'Model': truck_name, u'DeliveryVehicleTypeCode': u'S', u'Code': u'V400', u'Description': None, u'Brand': u'Tata', u'UpdatedAt': None, u'LockedBy': None, u'IsDropped': False, u'CreatedBy': u'SYS', u'UpdatedBy': u'SYS', u'ShortName': u'Ace', u'StatusCode': u'ACTV', u'FullName': u'Tata Ace', u'CreatedAt': None, u'Dimensions': u'-'}
        
        
         dict['TimeOfArrivalAtDepot'] = truck_arrival
