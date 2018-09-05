@@ -1149,12 +1149,10 @@ def noptimize(request):
                 elif iroute == 1:
                     routes['DropItems'] = 'Out For Delivery'
                     chk_box = 1
-                elif iroute == routes_len -2:
-                    chk_box = 1
-                    routes['DropItems'] = 'Return At Depot'
                 elif iroute == routes_len -1:
                     chk_box = 1
-                    routes['DropItems'] = 'Released from Depot'
+                    routes['DropItems'] = 'Return At Depot'
+               
                 address = routes['Address']    
                 
                 try:    
