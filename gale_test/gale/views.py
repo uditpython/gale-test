@@ -6,6 +6,8 @@ import time
 from django.shortcuts import render
 from django.http.response import HttpResponse
 import json
+import pdb
+from pdb import Pdb
 try:
     from urlparse import urlparse
 except:
@@ -1280,7 +1282,7 @@ def route(request):
     truck_options= data['UsersRoutePreferences']
     max_weight = 0
     max_vol = 0
-    
+    VehicleCapacity = 0
     for i in  truck_options['SelectedDeliveryVehicles']:
         if i['Code'] == 'V400':
             VehicleCapacity = int(i['WeightAllowed'])
@@ -1301,6 +1303,7 @@ def route(request):
                  
                 VolumeCapacity = int(i['VmWtAllowed'])
                 selected_vehicle = i 
+    
     
     reporting_time =  data['UsersRoutePreferences']['ReportingTimeAtDepotPoint']
     reporting_time =  time.strptime(reporting_time.split(',')[0],'%H:%M')
@@ -2039,18 +2042,478 @@ def GenerateSimpleBlocks(size = (55,37,30),allowed_orientation = [(1,1,1),(1,1,1
 
 
 def GenerateGeneralBlocks():
+    
+    allowed_orientation = [(1,1,0),(1,1,0),(1,1,1)]
+    arrays = []
+    import csv
+    with open('gale/heavy.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            
+            arrays.append([row['Length/Item\n(CM)'],row['Width/Item\n(CM)'],row['Height/Item\n(CM)'],float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)'])])
+            
+    arrays.sort(key=lambda x: x[3],reverse=True)
+   
+    container_size = (214,153,153)
+    block = {}
+    i =0
+    for bl in arrays:
+        i += 1
+        block[i] = {}
+        block[i]["weight"] = float(bl[4])
+        block[i]["volume"] = float(bl[3])
+        block[i]["blocks"] = [i]
+        j = 0
+        for length in range(3):
+            if allowed_orientation[0][length] != 0:
+                
+                for width in range(3):
+                    if width != length:
+                        if allowed_orientation[1][width] != 0:
+                            
+                            for height in range(3):
+                                if height not in [length, width]:
+                                    if allowed_orientation[2][height] != 0:
+                                        
+                                        block[i][j] = {}
+                                        block[i][j][length] = {}
+                                        block[i][j][length] = float(bl[0])
+                                        block[i][j][width] = {}
+                                        block[i][j][width] = float(bl[1])
+                                        block[i][j][height] = {}
+                                        block[i][j][height] = float(bl[2])
+                                        block[i][j]["weight"] = float(bl[4])
+                                        block[i][j]["volume"] = float(bl[3])
+                                        block[i][j]["blocks"] = [i]
+                                        
+                                        j += 1
+                                    
+                                        
+    P = deepcopy(block)
+   
+    p_keys = P.keys()
+   
+    N = {}
+    try:
+        for keys in p_keys:
+            for bl_keys in block.keys():
+                
+                if bl_keys != keys:
+                    
+                    for i in P[keys].keys():
+                        if i not in ["volume","weight","blocks"]:
+                            for j in block[bl_keys].keys():
+                                if j not in ["volume","weight","blocks"]:
+                                    
+                                    new_data = MergeBlock_x(bl_keys,keys, block[bl_keys][j], P[keys][i],container_size)
+                                    if new_data != False:
+          ## insert into new lock if its not duplicated
+                                        
+                                        
+                                        blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                        if len(set(blocks)) == len(blocks):
+                                            new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-x"
+                                            
+                                            N[new_key] = {}
+                                            N[new_key]["left"] =  new_data[2]
+                                            N[new_key]["right"] =  new_data[3]
+                                            N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                            N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                            N[new_key][0] = new_data[2][0] + new_data[3][0]
+                                            N[new_key][1] = max(new_data[2][1],new_data[3][1])
+                                            N[new_key][2] = max(new_data[2][2],new_data[3][2])
+                                            N[new_key]["axis"] = 0
+                                            N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                    new_data = MergeBlock_y(bl_keys,keys, block[bl_keys][j], P[keys][i],container_size)  
+                                    if new_data != False:
+                                        
+                                        
+                                        blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                        if len(set(blocks)) == len(blocks):
+                                            new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-y"
+                                            N[new_key] = {}
+                                            N[new_key]["front"] =  new_data[2]
+                                            N[new_key]["back"] =  new_data[3]
+                                            N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                            N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                            N[new_key]["axis"] = 1
+                                            N[new_key][0] =  max(new_data[2][0],new_data[3][0])
+                                            N[new_key][1] = new_data[2][1] + new_data[3][1]
+                                            N[new_key][2] = max(new_data[2][2],new_data[3][2])
 
+                                            N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                    new_data = MergeBlock_z(bl_keys,keys, block[bl_keys][j], P[keys][i],container_size)  
+                                    if new_data != False:
+                                        blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                        if len(set(blocks)) == len(blocks):
+                                            new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-z"
+                                            N[new_key] = {}
+                                            N[new_key]["bottom"] =  new_data[2]
+                                            N[new_key]["top"] =  new_data[3]
+                                            N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                            N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                            N[new_key]["axis"] = 2
+                                            N[new_key][0] = max(new_data[2][0],new_data[3][0])
+                                            N[new_key][1] = max(new_data[2][1],new_data[3][1])
+                                            N[new_key][2] = new_data[2][2] + new_data[3][2]
 
+                                            N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+
+    except:
+        pass  
+    
+    block.update(N)
+    ## blocks in N are first transferred into the set P
+    P = deepcopy(N)
+    p_keys = P.keys()
+    
+    while len(p_keys) != 0:
+        
+        N = {}
+        for keys in p_keys:
+            
+            for bl_keys in block.keys():
+                
+                if bl_keys != keys:
+                    
+                    axis_chk = 0
+                    try:
+                        axis = block[bl_keys]['axis']
+                        axis_chk = 0
+                    except:
+                        axis_chk = 1
+                    if axis_chk == 2:
+                            blocks = block[bl_keys]["blocks"] + P[keys]["blocks"]
+#                             if len(set(blocks)) == len(blocks):
+#                                 
+#                                 new_data = MergeBlock_x(bl_keys,keys, block[bl_keys],  P[keys],container_size)
+#                                 
+#                                 if new_data != False:
+#                                     
+#                                     # remove duplicates 
+#                                     
+#                                         new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-x"
+#                                          
+#                                         N[new_key] = {}
+#                                         N[new_key]["left"] =  new_data[2]
+#                                         N[new_key]["right"] =  new_data[3]
+#                                         N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+#                                         N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+#                                         N[new_key][0] = new_data[2][0] + new_data[3][0]
+#                                         N[new_key][1] = max(new_data[2][1],new_data[3][1])
+#                                         N[new_key][2] = max(new_data[2][2],new_data[3][2])
+#                                         N[new_key]["axis"] = 0
+#                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                         
+#                                 new_data = MergeBlock_y(bl_keys,keys, block[bl_keys],  P[keys],container_size) 
+#                                 if new_data != False:
+#                                      
+#                                      
+#                                     blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                     if len(set(blocks)) == len(blocks):
+#                                         new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-y"
+#                                         N[new_key] = {}
+#                                         N[new_key]["front"] =  new_data[2]
+#                                         N[new_key]["back"] =  new_data[3]
+#                                         N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+#                                         N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+#                                         N[new_key]["axis"] = 1
+#                                         N[new_key][0] =  max(new_data[2][0],new_data[3][0])
+#                                         N[new_key][1] = new_data[2][1] + new_data[3][1]
+#                                         N[new_key][2] = max(new_data[2][2],new_data[3][2])
+#      
+#                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                 new_data = MergeBlock_z(bl_keys,keys, block[bl_keys],  P[keys],container_size)
+#                                 if new_data != False:
+#                                     blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                     if len(set(blocks)) == len(blocks):
+#                                         new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-z"
+#                                         N[new_key] = {}
+#                                         N[new_key]["bottom"] =  new_data[2]
+#                                         N[new_key]["top"] =  new_data[3]
+#                                         N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+#                                         N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+#                                         N[new_key]["axis"] = 2
+#                                         N[new_key][0] = max(new_data[2][0],new_data[3][0])
+#                                         N[new_key][1] = max(new_data[2][1],new_data[3][1])
+#                                         N[new_key][2] = new_data[2][2] + new_data[3][2]
+#      
+#                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+
+                           
+                           
+                    elif axis_chk == 1:
+                        
+                       for j in block[bl_keys].keys():
+                           
+                            
+                            if j not in ["volume","weight","blocks"]:
+                                
+                                new_data = MergeBlock_x(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
+                                if new_data != False:
+                                    blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                    # remove duplicates 
+                                    if len(set(blocks)) == len(blocks):
+                                        new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-x"
+                                        
+                                        N[new_key] = {}
+                                        N[new_key]["left"] =  new_data[2]
+                                        N[new_key]["right"] =  new_data[3]
+                                        N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                        N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                        N[new_key][0] = new_data[2][0] + new_data[3][0]
+                                        N[new_key][1] = max(new_data[2][1],new_data[3][1])
+                                        N[new_key][2] = max(new_data[2][2],new_data[3][2])
+                                        N[new_key]["axis"] = 0
+                                        N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                       
+                                new_data = MergeBlock_y(bl_keys,keys, block[bl_keys][j],  P[keys],container_size) 
+                                if new_data != False:
+                                    
+                                    
+                                    blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                    if len(set(blocks)) == len(blocks):
+                                        new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-y"
+                                        N[new_key] = {}
+                                        N[new_key]["front"] =  new_data[2]
+                                        N[new_key]["back"] =  new_data[3]
+                                        N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                        N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                        N[new_key]["axis"] = 1
+                                        N[new_key][0] =  max(new_data[2][0],new_data[3][0])
+                                        N[new_key][1] = new_data[2][1] + new_data[3][1]
+                                        N[new_key][2] = max(new_data[2][2],new_data[3][2])
+
+                                        N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                new_data = MergeBlock_z(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
+                                if new_data != False:
+                                    blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                    if len(set(blocks)) == len(blocks):
+                                        
+                                        new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-z"
+                                        N[new_key] = {}
+                                        N[new_key]["bottom"] =  new_data[2]
+                                        N[new_key]["top"] =  new_data[3]
+                                        N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+                                        N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+                                        N[new_key]["axis"] = 2
+                                        N[new_key][0] = max(new_data[2][0],new_data[3][0])
+                                        N[new_key][1] = max(new_data[2][1],new_data[3][1])
+                                        N[new_key][2] = new_data[2][2] + new_data[3][2]
+
+                                        N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+
+                       
+                     
+        block.update(N)
+    ## blocks in N are first transferred into the set P
+        P = deepcopy(N)
+        p_keys = P.keys()        
+    blk_itm = block.items()
+    blk_itm.sort(key=lambda x: x[1]['volume'],reverse = True)
+    space = [[[0,0,0], container_size]]
+    generate_freespace(blk_itm[0],space,container_size,block)
+               
+                                       
+#                         do it same for y axis
+#                         do it for z axis(check for height anf over balncing)s
+       
+       
+## empty space Node
+class Node(object):
+    def __init__(self, data=None, next_node=None):
+        self.data = data
+        if next_node== None:
+            self.linked_node = []
+        else:
+            self.linked_node = next_node
+
+    def get_data(self):
+        return self.data
+
+    def get_next(self):
+        return self.linked_node
+
+    def set_next(self, new_next):
+        self.linked_node = new_next
+                                     
+    
+def cluster():
+    
+    import csv
+    array = []
+    with open('gale/heavy.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            
+            array.append([row['Length/Item\n(CM)'],row['Width/Item\n(CM)'],row['Height/Item\n(CM)'],float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)'])])
+            
+    from sklearn.cluster import KMeans
+    model = KMeans(n_clusters = 10)
+    model.fit(array)
+    label = model.predict(array)
+    print label
+    import matplotlib
+   
+    import matplotlib.pyplot as plt
+    xs = array[:,0]
+    ys = array[:,2]
+    plt.scatter(xs,ys,c = labels)
+    plt.show()
+    
+    
+    
+### optimized number of routes    
+def generate_freespace(box_b, space,container_size,block):
     import pdb
     pdb.set_trace()
+    
+    
+def chk_volume(first_block, second_block,container_size,axis = 0):
+        if axis == 0:
+            block_len = first_block[0]+ second_block[0]
+            block_breadth = max(first_block[1],second_block[1])
+            block_height = max(first_block[2],second_block[2])
+            
+        elif axis == 1:
+            block_len = max(first_block[0],second_block[0])
+            block_breadth = first_block[1]+ second_block[1]
+            block_height = max(first_block[2],second_block[2])
+           
+        else:
+            block_len = max(first_block[0],second_block[0])
+            block_breadth = max(first_block[1],second_block[1])
+            block_height = first_block[2]+ second_block[2]
+            
+        if block_len > container_size[0]:
+            return False
+        if block_breadth > container_size[1]:
+            return False
+        if block_height > container_size[2]:
+            return False
+            
+        envolope_volume = (block_len)*(block_breadth)*(block_height)
+        
+        total_volume = first_block["volume"] + second_block["volume"]
+        
+        if total_volume/envolope_volume >= .98:
+            return True
+        else:
+            return False
+                                    
 
 
+def MergeBlock_x(first_original_block, second_original_block,first_block, second_block,container_size):
+    left_block = 0
+    right_block = 0
+    left_orig = 0
+    right_orig = 0
+    parm_chk = 0
+    try:
+        if first_block[1]*first_block[2] >= second_block[1]*second_block[2]:
+            if first_block[1] >= second_block[1]:
+                if chk_volume(first_block, second_block,container_size,0) == True:
+                    left_block = first_block
+                    right_block = second_block
+                    left_orig = first_original_block
+                    right_orig = second_original_block
+                    
+                    parm_chk = 1
+    except:
+        import pdb
+        pdb.set_trace()
+    
+    if parm_chk == 0:
+        if first_block[1]*first_block[2] <= second_block[1]*second_block[2]:
+            if first_block[1] <= second_block[1]:
+                if chk_volume(first_block, second_block,container_size,0) == True:
+                    left_block = second_block
+                    right_block = first_block
+                    left_orig = second_original_block
+                    right_orig = first_original_block
+                    parm_chk = 1
+                    
+                
+                
+    
+    if parm_chk == 0:
+        return False
+    else:
+        
+        return(left_orig,right_orig, left_block,right_block)
+
+def MergeBlock_y(first_original_block, second_original_block,first_block, second_block,container_size):
+    left_block = 0
+    right_block = 0
+    left_orig = 0
+    right_orig = 0
+    parm_chk = 0
+    
+    if first_block[0]*first_block[2] >= second_block[0]*second_block[2]:
+        if first_block[0] >= second_block[0]:
+            if chk_volume(first_block, second_block,container_size,1) == True:
+                left_block = first_block
+                right_block = second_block
+                left_orig = first_original_block
+                right_orig = second_original_block
+                
+                parm_chk = 1
+    if parm_chk == 0:
+        if first_block[0]*first_block[2] <= second_block[0]*second_block[2]:
+            if first_block[0] <= second_block[0]:
+                if chk_volume(first_block, second_block,container_size,1) == True:
+                    left_block = second_block
+                    right_block = first_block
+                    left_orig = second_original_block
+                    right_orig = first_original_block
+                    parm_chk = 1
+                    
+                
+                
+    
+    if parm_chk == 0:
+        return False
+    else:
+        
+        return(left_orig,right_orig, left_block,right_block)
 
 
+def MergeBlock_z(first_original_block, second_original_block,first_block, second_block,container_size):
+    left_block = 0
+    right_block = 0
+    left_orig = 0
+    right_orig = 0
+    parm_chk = 0
+    
+    
+    if first_block[0] >= second_block[0] and first_block[1] >= second_block[1]:
+        if chk_volume(first_block, second_block,container_size,2) == True:
+            left_block = first_block
+            right_block = second_block
+            left_orig = first_original_block
+            right_orig = second_original_block
+            parm_chk = 1
+    if parm_chk == 0:
+        
+        if first_block[0] <= second_block[0] and first_block[1] <= second_block[1]:
+            if chk_volume(first_block, second_block,container_size,2) == True:
+                left_block = second_block
+                right_block = first_block
+                left_orig = second_original_block
+                right_orig = first_original_block
+                parm_chk = 1
+                    
+                
+                
+    
+    if parm_chk == 0:
+        return False
+    else:
+        
+        return(left_orig,right_orig, left_block,right_block)
 
-
-
-
+def checkspace_util(block1, block2):
+    return block1, block2
 
 
 

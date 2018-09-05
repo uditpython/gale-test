@@ -229,6 +229,34 @@ class CreateTravelTimeCallback(object):
     
     
     return int(travel_time)
+
+
+class   CreateAfterCostCallback():
+ 
+    def __init__(self):
+        
+        self.matrix = {}
+ 
+    def calculate(self, to_node,vehicle):
+        if to_node == 0:
+            return 0
+        else:
+            try:
+                
+                ls = self.matrix[vehicle]
+                ls.append(to_node)
+                ls = list(set(ls))
+                
+                self.matrix[vehicle] = ls
+            except:
+                self.matrix[vehicle] =[to_node]
+            if len(self.matrix[vehicle]) > 20:
+                return 1000
+            else:
+                return 0
+
+
+
 # Create total_time callback (equals service time plus travel time).
 class CreateTotalTimeCallback(object):
   """Create callback to get total times between locations."""
@@ -260,7 +288,7 @@ def main(data,truck_options):
   
   try:
       
-    num_vehicles = truck_options['number_of_trucks']
+    num_vehicles = 20
   except:
     num_vehicles = 100
   search_time_limit = 400000
@@ -291,7 +319,7 @@ def main(data,truck_options):
         if i['Code'] == 'V400':
             VehicleCapacity.append(int(i['WeightAllowed']))
              
-            VolumeCapacity.append(int(i['VmWtAllowed']))
+            VolumeCapacity.append(1345)
             selected_cost.append(1200)
             selected_vehicle = i
     
@@ -310,7 +338,12 @@ def main(data,truck_options):
 #                 selected_vehicle = i 
 
     
-    
+    if VehicleCapacity == []:
+        VehicleCapacity.append(750)
+             
+        VolumeCapacity.append(983)
+        selected_cost.append(1200)
+        selected_vehicle = "i"
     
     capacity = []
     cost = []
@@ -426,9 +459,10 @@ def main(data,truck_options):
       time_dimension.CumulVar(location_idx).SetRange(start, end)
       
       routing.AddToAssignment(time_dimension.SlackVar(location_idx))
-      
-    vehicle_call_backs = [lambda i, j: dist_callback(i, j)*cost[vehicle] for vehicle in range(num_vehicles)]
-   
+    cost_after_lcoations = CreateAfterCostCallback()
+    cost_after_callback = cost_after_lcoations.calculate
+    vehicle_call_backs = [lambda i, j: cost_after_callback(j, vehicle) for vehicle in range(num_vehicles)]
+    
 
 #         routing.SetVehicleCost(int(veh), vehicle_call_backs_cost[veh])  
        
@@ -441,11 +475,11 @@ def main(data,truck_options):
         
         
 #         distance_dimension.CumulVar(index)
-        distance_dimension.SetSpanCostCoefficientForVehicle(cost[vehicle_id],vehicle_id)
-#         routing.SetArcCostEvaluatorOfVehicle(vehicle_call_backs[vehicle_id], vehicle_id) 
+#         distance_dimension.SetSpanCostCoefficientForVehicle(cost[vehicle_id],vehicle_id)
+        routing.SetArcCostEvaluatorOfVehicle(vehicle_call_backs[vehicle_id], vehicle_id) 
         time_dimension.CumulVar(index).SetRange(0,duration)
         routing.AddToAssignment(time_dimension.SlackVar(index))
-      
+     
     # Solve displays a solution if any.
     
     #     search_parameters.time_limit_ms = 30000
