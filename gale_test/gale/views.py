@@ -787,8 +787,13 @@ def noptimize(request):
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
-        
+       
         truck_result = optimizer_result[1]
+        
+        if i == '': 
+            optimizer_result[0][0].append("No Route Name")
+        else:
+            optimizer_result[0][0].append(i)
         optimized_data += optimizer_result[0]
         
     
@@ -846,11 +851,12 @@ def noptimize(request):
         dict = {}
         
         prev_time = start_times[0]
-        last_ind = len(i)
+        last_ind = len(i) - 1
         dict['AllowedVolumetricWeight'] = ''
         dict['DepotName'] = ''
         dict['DropPointsGeoCoordinate'] = []
-        dict['ID'] = id
+        
+        dict['ID'] = i[len(i)-1]
         
         
         dict['LimitingParameter'] = "MSWT"
@@ -881,7 +887,8 @@ def noptimize(request):
         dict['TravelDate'] = None
         
         result['TotalTravelDuration'] += (int(i[last_ind -1][4]) - prev_time)/60
-        for j in range(len(i)):
+        
+        for j in range(len(i)-1):
             
             node_index = i[j][0]
             geo_dict = {}
