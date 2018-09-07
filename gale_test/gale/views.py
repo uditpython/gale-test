@@ -855,7 +855,7 @@ def noptimize(request):
         dict['AllowedVolumetricWeight'] = ''
         dict['DepotName'] = ''
         dict['DropPointsGeoCoordinate'] = []
-        
+        id = i[len(i)-1]
         dict['ID'] = i[len(i)-1]
         
         
@@ -991,8 +991,8 @@ def noptimize(request):
                     seq_dp['Address'] += "<br>[<a target='_blank' href='https://www.google.com/maps/dir/" + str(locations[node_index_prev][0]) + "," +  str(locations[node_index_prev][1]) + "/" + str(locations[node_index][0]) + "," +  str(locations[node_index][1]) + "'>How To Reach Here</a>]"
             except:
                 pass
-            seq_dp['RouteIndex'] = id -1
-            seq_dp['Route'] = id  - 1
+            seq_dp['RouteIndex'] = id 
+            seq_dp['Route'] = id
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
                 seq = deepcopy(seq_dp)
@@ -1070,7 +1070,7 @@ def noptimize(request):
                 dict['TotalVolumetricWeight'] += volume[i[j-1][0]]
         
         
-        id += 1 
+#     id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
         
         sec_time = dict['SequencedDropPointsList'][dict['TotalDroppointsCount'] + 2]['EstimatedTimeOfArrivalForDisplay']
