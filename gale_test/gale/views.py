@@ -784,7 +784,8 @@ def noptimize(request):
     truck_options['number_of_trucks'] = 1    
     for i in cluster_dict.keys():
         
-        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], [start_times[0]+ 864000]*len(start_times),cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+        
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
@@ -795,7 +796,7 @@ def noptimize(request):
             else:
                 optimizer_result[0][0].append(i)
         optimized_data += optimizer_result[0]
-        
+            
     
     
     
