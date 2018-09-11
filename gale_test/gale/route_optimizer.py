@@ -105,7 +105,7 @@ def distance1(input):
 
 # Distance callback
 
-class CreateDistanceCallback(object):
+class CreateDistanceCallbackNEW(object):
   """Create callback to calculate distances and travel times between points."""
 
   
@@ -125,6 +125,88 @@ class CreateDistanceCallback(object):
         except:
         ##  if we need to change to osrm point to distance osrm
             self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+
+    import  datetime    
+    
+    from multiprocessing.dummy import Pool as ThreadPool 
+    
+    
+    pool = ThreadPool(8)
+    cd = []
+#     create_workers()
+    num_locations = len(locations)
+    
+    
+    for from_node in xrange(num_locations):
+      self.matrix[from_node] = {}
+      for to_node in xrange(num_locations):
+          
+        
+        x1 = locations[from_node][0]
+        y1 = locations[from_node][1]
+        x2 = locations[to_node][0]
+        y2 = locations[to_node][1]
+        cordinates = [1,from_node,to_node,x1,y1,x2,y2]
+#         matrix(cordinates)
+        cd.append(cordinates)
+    pool = ThreadPool(16) 
+    results = pool.map(matrix, cd)
+    pool.close() 
+    pool.join()#        cd.append(cordinates)
+#    pool = ThreadPool(4) 
+#    results = pool.map(matrix, cd)
+#    pool.close() 
+#    pool.join()
+#      
+#         try:
+#             self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
+#         
+#         except:
+#         
+#             self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
+#         work_temp([len(cd),from_node,to_node,x1,y1,x2,y2])
+#         if distance1([x1,y1,x2,y2]) > 40:
+#             print x1,y1,x2,y2,distance1([x1,y1,x2,y2])
+#         
+#         queue.put([len(cd),from_node,to_node,x1,y1,x2,y2])
+#     queue.join()   
+#           
+     
+#         self.matrix[from_node][to_node] = distance1([x1,y1,x2,y2])
+        
+    
+    
+
+  def Distance(self, from_node, to_node):
+
+    return int(self.matrix[from_node][to_node])
+
+
+
+
+
+
+
+class CreateDistanceCallback(object):
+  """Create callback to calculate distances and travel times between points."""
+
+  
+  
+  
+  
+  
+  def __init__(self, locations):
+    """Initialize distance array."""
+    self.matrix = {}
+    
+    def matrix(cordinates):
+    
+        try:
+            self.matrix[cordinates[1]][cordinates[2]] = self.matrix[cordinates[2]][cordinates[1]]  
+        
+        except:
+        ##  if we need to change to osrm point to distance osrm
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 
     import  datetime    
     
@@ -276,9 +358,10 @@ def main(data,truck_options):
     search_parameters = pywrapcp.RoutingModel.DefaultSearchParameters()
 
     # Callbacks to the distance function and travel time functions here.
-    
-    dist_between_locations = CreateDistanceCallback(locations)
-    
+    if num_vehicles == 1:
+        dist_between_locations = CreateDistanceCallbackNEW(locations)
+    else:
+        dist_between_locations = CreateDistanceCallback(locations)
 #     dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
     
