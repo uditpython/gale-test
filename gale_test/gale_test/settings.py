@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'gale',
 ]
-NUMBER_OF_THREADS = 8
+NUMBER_OF_THREADS = 4
   
 
 REST_FRAMEWORK = {
