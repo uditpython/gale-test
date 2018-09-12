@@ -856,9 +856,9 @@ def noptimize(request):
         dict['AllowedVolumetricWeight'] = ''
         dict['DepotName'] = ''
         dict['DropPointsGeoCoordinate'] = []
-        id = i[len(i)-1]
-        dict['ID'] = i[len(i)-1]
-        
+        #id = i[len(i)-1]
+        dict['ID'] = id
+        dict['NEWID'] = i[len(i)-1]
         
         dict['LimitingParameter'] = "MSWT"
         dict['MajorAreasCovered'] = []
@@ -992,8 +992,8 @@ def noptimize(request):
                     seq_dp['Address'] += "<br>[<a target='_blank' href='https://www.google.com/maps/dir/" + str(locations[node_index_prev][0]) + "," +  str(locations[node_index_prev][1]) + "/" + str(locations[node_index][0]) + "," +  str(locations[node_index][1]) + "'>How To Reach Here</a>]"
             except:
                 pass
-            seq_dp['RouteIndex'] = id 
-            seq_dp['Route'] = id
+            seq_dp['RouteIndex'] = id -1
+            seq_dp['Route'] = id  - 1
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
                 seq = deepcopy(seq_dp)
@@ -1071,7 +1071,7 @@ def noptimize(request):
                 dict['TotalVolumetricWeight'] += volume[i[j-1][0]]
         
         
-#     id += 1 
+        id += 1 
         dict['TotalTravelTime'] = dict['TotalDuration'] -  dict['TotalHaltTime'] 
         
         sec_time = dict['SequencedDropPointsList'][dict['TotalDroppointsCount'] + 2]['EstimatedTimeOfArrivalForDisplay']
@@ -1129,7 +1129,7 @@ def noptimize(request):
         result['summary_id'] = []
         for j in range(len(result['TravelRoutes'])):
             i = result['TravelRoutes'][j]
-            values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['ID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
+            values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['NEWID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
             cursor.execute(querytreportstr+"Values"+values)
             
             conn.commit()
@@ -1251,15 +1251,17 @@ def ReportInfo(request):
     conn = pymssql.connect(server, user, password, "dbShipprTech")
     cursor = conn.cursor(as_dict=True)
     
-    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id))
+    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id) + " order by ReportRouteSummaryID")
     result = cursor.fetchall()
     conn.close()
     info = {}
-    for i in result:
+    for j in range(len(result)):
+        i = result[j]
+        
         i.pop('CreatedAt', None)
         i.pop('UpdatedAt', None)
         i['ReportDateIST'] = str(i['ReportDateIST'])
-        info[i['RouteCode']] = i
+        info[j+1] = i
     
     data['DA'] = info
     
