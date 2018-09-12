@@ -1614,6 +1614,7 @@ def route(request):
         dict['DepotName'] = ''
         dict['DropPointsGeoCoordinate'] = []
         dict['ID'] = id
+        dict['NEWID'] = id
         
         
         dict['LimitingParameter'] = "MSWT"
