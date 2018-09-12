@@ -1174,7 +1174,7 @@ def noptimize(request):
                         airs1 = airse.split("_")
                         for airs in airs1: 
                                         
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['ID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
             values_str = values_str[:len(values_str)-1]
             
             values_box = values_box[:len(values_box)-1]
