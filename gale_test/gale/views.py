@@ -2053,12 +2053,13 @@ def GenerateGeneralBlocks():
             arrays.append([row['Length/Item\n(CM)'],row['Width/Item\n(CM)'],row['Height/Item\n(CM)'],float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)'])])
             
     arrays.sort(key=lambda x: x[3],reverse=True)
-   
+    arrays_list = []
     container_size = (214,153,153)
     block = {}
     i =0
     for bl in arrays:
         i += 1
+        arrays_list.append(i)
         block[i] = {}
         block[i]["weight"] = float(bl[4])
         block[i]["volume"] = float(bl[3])
@@ -2312,7 +2313,8 @@ def GenerateGeneralBlocks():
     blk_itm = block.items()
     blk_itm.sort(key=lambda x: x[1]['volume'],reverse = True)
     space = [[[0,0,0], container_size]]
-    generate_freespace(blk_itm[0],space,container_size,block)
+    
+    generate_freespace(blk_itm,space,container_size,arrays_list)
                
                                        
 #                         do it same for y axis
@@ -2320,22 +2322,21 @@ def GenerateGeneralBlocks():
        
        
 ## empty space Node
-class Node(object):
-    def __init__(self, data=None, next_node=None):
-        self.data = data
-        if next_node== None:
-            self.linked_node = []
-        else:
-            self.linked_node = next_node
+class SpaceNode(object):
+    def __init__(self, origin=None, top=None):
+        
+        self.origin = origin
+        self.upper_origin = top 
+        self.overlap_reg = []
 
-    def get_data(self):
-        return self.data
-
-    def get_next(self):
-        return self.linked_node
-
-    def set_next(self, new_next):
-        self.linked_node = new_next
+#     def get_data(self):
+#         return self.data
+# 
+#     def get_next(self):
+#         return self.linked_node
+# 
+#     def set_next(self, new_next):
+#         self.linked_node = new_next
                                      
     
 def cluster():
@@ -2361,14 +2362,149 @@ def cluster():
     plt.scatter(xs,ys,c = labels)
     plt.show()
     
+def comp_vol(space):
+    volume = 1
+    
+    for v in space:
+        for i in range(0,3):
+            
+            ## volume for free space
+            volume *= (v.upper_origin[i] - v.origin[i])
+            
+    
+    return volume
+def generate_space_nodes(box_b_dimension,space):
+    '''   space linked list node    '''
+    empty_space = []
+    
+    space_dims = []
+    for i in range(0,3):
+        space_dim = space.upper_origin[i] - space.origin[i]
+        space_dims.append(space_dim)
+    for i in range(0,3):
+        
+        diff_dim = space_dims[i] - box_b_dimension[i]
+        if diff_dim > 0:
+            if i == 0:
+                empty_space.append([diff_dim,space_dims[1],space_dims[2]])
+            elif i == 1:
+                empty_space.append([space_dims[0],diff_dim,space[1][2]])
+            elif i == 2:
+                empty_space.append([space[1][0],space[1][1],diff_dim])
+                
+    return  empty_space
+        
+    
+
+''' disection of space '''
+def space_dissect(space,box_b_dimension):
+    
+    for i in space:
+    
+        if box_b_dimension[0] >= i.origin[0] and  box_b_dimension[0] <= i.upper_origin[0]:
+             if box_b_dimension[1] >= i.origin[1] and  box_b_dimension[1] <= i.upper_origin[1]:
+                  if box_b_dimension[2] >= i.origin[2] and  box_b_dimension[2] <= i.upper_origin[2]:
+                    empty_spaces = generate_space_nodes(box_b_dimension,i)
+                
+def manhattan_dist(first,second):
+    dist = 0
+    
+    for i in range(0,3):
+        dist += abs(first[i] - second[i])
+    return dist
+def find_anchor(space, container_size):
+    min_dis = -1
+    anchor_corner = -1
+    new_space = []
+    new_space.append(space.origin)
+    new_space.append(space.upper_origin)
+    for i in range(0,2):
+        for j in range(0,2):
+            for k in range(0,2):
+                
+                
+                space_dim = (new_space[i][0], new_space[j][1], new_space[k][2])
+                for size in container_size:
+                    if min_dis == -1:
+                        min_dis = manhattan_dist(size,space_dim)
+                        anchor_corner = size
+                    else:
+                        temp_dis = manhattan_dist(size,space_dim)
+                        if min_dis > temp_dis:
+                            min_dis = temp_dis
+                            anchor_corner = size
+                    if  min_dis == 0:
+                        
+                        return(min_dis,anchor_corner)       
+    return(min_dis,anchor_corner)
     
     
-### optimized number of routes    
-def generate_freespace(box_b, space,container_size,block):
-    import pdb
-    pdb.set_trace()
+    
+            
+                
+def form_corner(container_size):
+    container_list = []
+    container_list.append((0,0,0))
+    container_list.append(container_size)
+    corners = []
+    
+        
+    for i in range(0,2):
+        for j in range(0,2):
+            for k in range(0,2):
+                new_array = []
+                new_array.append(container_list[i][0])
+                new_array.append(container_list[j][1])
+                new_array.append(container_list[k][2])
+                
+                corners.append(new_array)
+    
+    return corners
     
     
+    
+def selected_space_list(space_list, container_size):
+    selected_space = []
+    anchor_dist_comp = -1
+    for i in space_list:
+        
+        anchor,anchor_dist = find_anchor(i,container_size)  
+          
+        if anchor_dist_comp == -1:
+            selected_space = [i]
+            anchor_dist_comp = anchor_dist
+        elif anchor_dist_comp == anchor_dist :
+            selected_space.append(i)
+        elif anchor_dist_comp > anchor_dist :
+            selected_space = [i]
+            anchor_dist_comp = anchor_dist
+    return selected_space
+''' generate free space '''    
+def generate_freespace(box_b_list, space,container_size,arrays_list):
+    new_space_list = []
+    cont_vol = container_size[0]*container_size[1]*container_size[2]
+    container_corner = form_corner(container_size)
+    ''' create space node '''
+    sp_nd = SpaceNode(space[0][0],space[0][1])
+    space = [sp_nd]
+    space_resused = True
+    
+    while space_resused != False:
+        for box_b in box_b_list:
+            
+            box_volume = box_b[1]['volume']
+            space_vol = comp_vol(space)
+            if space_vol ==  box_volume:
+                return 
+            selected_space = selected_space_list(space, container_corner)
+            box_b_key = box_b[0]
+            '''cordinated to be find '''
+            
+            box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
+            space_dissect(selected_space,box_b_dimension)
+                      
+        
+        
 def chk_volume(first_block, second_block,container_size,axis = 0):
         if axis == 0:
             block_len = first_block[0]+ second_block[0]
