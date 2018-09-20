@@ -1210,6 +1210,13 @@ def noptimize(request):
     info['Code'] = 'SUCCESS'
     info['IsPositive'] = 'false'
     info['message'] = ''
+    for r in result['TravelRoutes']:
+        for k in r['SequencedDropPointsList']:
+            try:
+                k['Address'] =  k['FullAddress']
+            except:
+                pass
+
     info['Yield'] = result
     try:
         import pymongo
@@ -1978,6 +1985,13 @@ def route(request):
     info['Code'] = 'SUCCESS'
     info['IsPositive'] = 'false'
     info['message'] = ''
+    for r in result['TravelRoutes']:
+        for k in r['SequencedDropPointsList']:
+            try:
+                k['Address'] =  k['FullAddress']
+            except:
+                pass
+    
     info['Yield'] = result
     try:
         import pymongo
