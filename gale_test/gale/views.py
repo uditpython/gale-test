@@ -1258,6 +1258,12 @@ def ReportInfo(request):
     conn = pymssql.connect(server, user, password, "dbShipprTech")
     cursor = conn.cursor(as_dict=True)
     
+    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteSummary] where reportID = " + str(report_id) + " order by ID")
+    summary = cursor.fetchall()
+    summary_ind = []
+    for sum in summary:
+        summary_ind.append(sum['ID'])
+        
     cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id) + " order by ReportRouteSummaryID")
     result = cursor.fetchall()
     conn.close()
@@ -1268,7 +1274,9 @@ def ReportInfo(request):
         i.pop('CreatedAt', None)
         i.pop('UpdatedAt', None)
         i['ReportDateIST'] = str(i['ReportDateIST'])
-        info[j+1] = i
+        
+        index = summary_ind.index(i['ReportRouteSummaryID'])
+        info[index+1] = i
     
     data['DA'] = info
     
