@@ -1243,7 +1243,7 @@ def ReportInfo(request):
     conn = pymssql.connect(server, user, password, "dbShipprTech")
     cursor = conn.cursor(as_dict=True)
     
-    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id))
+    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id) + " order by ")
     result = cursor.fetchall()
     conn.close()
     info = {}
@@ -2323,11 +2323,20 @@ def GenerateGeneralBlocks():
        
 ## empty space Node
 class SpaceNode(object):
-    def __init__(self, origin=None, top=None):
+    def __init__(self, origin=None, top=None, root = None,linked_list = []):
         
         self.origin = origin
         self.upper_origin = top 
-        self.overlap_reg = []
+        self.root = root
+        self.linked_list = []
+class BoxNode(object):
+    def __init__(self, origin=None, top=None, desc = None):
+        
+        self.origin = origin
+        self.upper_origin = top 
+        self.desc = desc
+        
+        
 
 #     def get_data(self):
 #         return self.data
@@ -2363,48 +2372,84 @@ def cluster():
     plt.show()
     
 def comp_vol(space):
-    volume = 1
+    final_volume = 0
     
     for v in space:
+        volume = 1
         for i in range(0,3):
             
             ## volume for free space
             volume *= (v.upper_origin[i] - v.origin[i])
             
-    
-    return volume
+        final_volume += volume
+    return final_volume
 def generate_space_nodes(box_b_dimension,space):
     '''   space linked list node    '''
-    empty_space = []
     
+    final_space = []
     space_dims = []
     for i in range(0,3):
         space_dim = space.upper_origin[i] - space.origin[i]
         space_dims.append(space_dim)
+    t = 0
     for i in range(0,3):
-        
+       
         diff_dim = space_dims[i] - box_b_dimension[i]
         if diff_dim > 0:
+            
             if i == 0:
-                empty_space.append([diff_dim,space_dims[1],space_dims[2]])
-            elif i == 1:
-                empty_space.append([space_dims[0],diff_dim,space[1][2]])
-            elif i == 2:
-                empty_space.append([space[1][0],space[1][1],diff_dim])
+                origin = (space.origin[0] + diff_dim,space.origin[1],space.origin[2])
+                upper_origin = space.upper_origin
+                new_node = SpaceNode(origin,upper_origin)
+                final_space.append(new_node)
+                t += 1 
                 
-    return  empty_space
+            elif i == 1:
+                origin = (space.origin[0] ,space.origin[1]+ diff_dim,space.origin[2])
+                upper_origin = space.upper_origin
+                if t > 0:
+                    
+                    new_node = SpaceNode(origin,upper_origin,new_node)
+                else:
+                    new_node = SpaceNode(origin,upper_origin)
+                final_space.append(new_node)
+                    
+                
+            elif i == 2:
+                origin = (space.origin[0] ,space.origin[1],space.origin[2]+ diff_dim)
+                upper_origin = space.upper_origin
+                if t > 0:
+                    
+                    new_node = SpaceNode(origin,upper_origin,new_node)
+                else:
+                    new_node =  SpaceNode(origin,upper_origin)
+                final_space.append(new_node)
+    for i in final_space:
+        i.linked_list = final_space
+    return  final_space
         
-    
+def check_z_constraint(space,used_boxes):
+    import pdb
+    pdb.set_trace()
 
 ''' disection of space '''
-def space_dissect(space,box_b_dimension):
+def space_dissect(space,box_b_dimension,used_boxes):
+    space_nodes = []
+    
     
     for i in space:
-    
+        if i.origin[2] != 0:
+            chk_constraint = check_z_constraint(i,used_boxes)
+            
         if box_b_dimension[0] >= i.origin[0] and  box_b_dimension[0] <= i.upper_origin[0]:
              if box_b_dimension[1] >= i.origin[1] and  box_b_dimension[1] <= i.upper_origin[1]:
                   if box_b_dimension[2] >= i.origin[2] and  box_b_dimension[2] <= i.upper_origin[2]:
+                    
                     empty_spaces = generate_space_nodes(box_b_dimension,i)
+                    box = BoxNode(i.origin,box_b_dimension)
+                    space_nodes = [box,empty_spaces]
+    return space_nodes
+
                 
 def manhattan_dist(first,second):
     dist = 0
@@ -2468,7 +2513,7 @@ def selected_space_list(space_list, container_size):
     anchor_dist_comp = -1
     for i in space_list:
         
-        anchor,anchor_dist = find_anchor(i,container_size)  
+        anchor_dist,anchor = find_anchor(i,container_size)  
           
         if anchor_dist_comp == -1:
             selected_space = [i]
@@ -2488,22 +2533,39 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
     sp_nd = SpaceNode(space[0][0],space[0][1])
     space = [sp_nd]
     space_resused = True
-    
+    used_boxes = []
+    for ik in box_b_list:
+        print ik[0],ik[1]["volume"]
     while space_resused != False:
+        already_used  = set()
         for box_b in box_b_list:
             
             box_volume = box_b[1]['volume']
-            space_vol = comp_vol(space)
-            if space_vol ==  box_volume:
-                return 
-            selected_space = selected_space_list(space, container_corner)
-            box_b_key = box_b[0]
-            '''cordinated to be find '''
+#             space_vol = comp_vol(space)
+#             if space_vol ==  box_volume:
+#                 return 
             
-            box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
-            space_dissect(selected_space,box_b_dimension)
-                      
-        
+            if already_used.intersection(set(box_b[1]['blocks'])) == set([]):
+                
+                selected_space = selected_space_list(space, container_corner)
+                box_b_key = box_b[0]
+                '''cordinated to be find '''
+                
+                space = set(space).difference(set(selected_space))
+                box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
+                
+                
+                result = space_dissect(selected_space,box_b_dimension,used_boxes)
+                
+                
+                space.update(result[1])
+               
+                already_used = already_used.union(set(box_b[1]["blocks"]))
+                result[0].desc = box_b
+                
+                used_boxes.append(result[0])
+                
+                
         
 def chk_volume(first_block, second_block,container_size,axis = 0):
         if axis == 0:
