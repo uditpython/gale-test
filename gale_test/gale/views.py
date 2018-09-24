@@ -2042,15 +2042,15 @@ def GenerateSimpleBlocks(size = (55,37,30),allowed_orientation = [(1,1,1),(1,1,1
 
 
 def GenerateGeneralBlocks():
-    
-    allowed_orientation = [(1,1,0),(1,1,0),(1,1,1)]
+    ## z axis not allowed
+    allowed_orientation = [(1,1,0),(1,1,0),(0,0,1)]
     arrays = []
     import csv
-    with open('gale/heavy.csv') as csvfile:
+    with open('gale/heavy1.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             
-            arrays.append([row['Length/Item\n(CM)'],row['Width/Item\n(CM)'],row['Height/Item\n(CM)'],float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)'])])
+            arrays.append([float(row['Length/Item\n(CM)']),float(row['Width/Item\n(CM)']),float(row['Height/Item\n(CM)']),float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)']),row['Tags']])
             
     arrays.sort(key=lambda x: x[3],reverse=True)
     arrays_list = []
@@ -2061,9 +2061,11 @@ def GenerateGeneralBlocks():
         i += 1
         arrays_list.append(i)
         block[i] = {}
+        
         block[i]["weight"] = float(bl[4])
         block[i]["volume"] = float(bl[3])
         block[i]["blocks"] = [i]
+        block[i]["tags"] = bl[5]
         j = 0
         for length in range(3):
             if allowed_orientation[0][length] != 0:
@@ -2075,26 +2077,28 @@ def GenerateGeneralBlocks():
                             for height in range(3):
                                 if height not in [length, width]:
                                     if allowed_orientation[2][height] != 0:
+                                        bl1 = sorted(bl[0:3])
                                         
                                         block[i][j] = {}
                                         block[i][j][length] = {}
-                                        block[i][j][length] = float(bl[0])
+                                        block[i][j][length] = float(bl1[1])
                                         block[i][j][width] = {}
-                                        block[i][j][width] = float(bl[1])
+                                        block[i][j][width] = float(bl1[0])
                                         block[i][j][height] = {}
-                                        block[i][j][height] = float(bl[2])
+                                        block[i][j][height] = float(bl1[2])
                                         block[i][j]["weight"] = float(bl[4])
                                         block[i][j]["volume"] = float(bl[3])
                                         block[i][j]["blocks"] = [i]
-                                        
+                                        block[i][j]["tags"] = bl[5]
                                         j += 1
                                     
-                                        
+    
     P = deepcopy(block)
    
     p_keys = P.keys()
    
     N = {}
+   
     try:
         for keys in p_keys:
             for bl_keys in block.keys():
@@ -2102,9 +2106,9 @@ def GenerateGeneralBlocks():
                 if bl_keys != keys:
                     
                     for i in P[keys].keys():
-                        if i not in ["volume","weight","blocks"]:
+                        if i not in ["volume","weight","blocks","tags"]:
                             for j in block[bl_keys].keys():
-                                if j not in ["volume","weight","blocks"]:
+                                if j not in ["volume","weight","blocks","tags"]:
                                     
                                     new_data = MergeBlock_x(bl_keys,keys, block[bl_keys][j], P[keys][i],container_size)
                                     if new_data != False:
@@ -2157,19 +2161,21 @@ def GenerateGeneralBlocks():
                                             N[new_key][0] = max(new_data[2][0],new_data[3][0])
                                             N[new_key][1] = max(new_data[2][1],new_data[3][1])
                                             N[new_key][2] = new_data[2][2] + new_data[3][2]
-
+ 
                                             N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+                                            
 
     except:
         pass  
-    
+   
+   
     block.update(N)
     ## blocks in N are first transferred into the set P
     P = deepcopy(N)
     p_keys = P.keys()
     
-    while len(p_keys) != 0:
-        
+    while len(block.keys()) < 10000:
+        print len(block.keys())
         N = {}
         for keys in p_keys:
             
@@ -2245,12 +2251,19 @@ def GenerateGeneralBlocks():
                            
                     elif axis_chk == 1:
                         
-                       for j in block[bl_keys].keys():
+                       sk = block[bl_keys].keys()
+                       if 'axis' in sk:
+                           sk = [100]
+                      
+                       for j in sk:
                            
                             
-                            if j not in ["volume","weight","blocks"]:
+                            if j not in ["volume","weight","blocks","tags"]:
+                                if sk == [100]:
+                                    new_data = MergeBlock_x(bl_keys,keys, block[bl_keys],  P[keys],container_size)
+                                else:
+                                    new_data = MergeBlock_x(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
                                 
-                                new_data = MergeBlock_x(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
                                 if new_data != False:
                                     blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
                                     # remove duplicates 
@@ -2267,8 +2280,12 @@ def GenerateGeneralBlocks():
                                         N[new_key][2] = max(new_data[2][2],new_data[3][2])
                                         N[new_key]["axis"] = 0
                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
-                                       
-                                new_data = MergeBlock_y(bl_keys,keys, block[bl_keys][j],  P[keys],container_size) 
+                                if sk == [100]:
+                                    
+                                    new_data = MergeBlock_y(bl_keys,keys, block[bl_keys],  P[keys],container_size) 
+                                else:
+                                     new_data = MergeBlock_y(bl_keys,keys, block[bl_keys][j],  P[keys],container_size) 
+                               
                                 if new_data != False:
                                     
                                     
@@ -2286,23 +2303,23 @@ def GenerateGeneralBlocks():
                                         N[new_key][2] = max(new_data[2][2],new_data[3][2])
 
                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
-                                new_data = MergeBlock_z(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
-                                if new_data != False:
-                                    blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
-                                    if len(set(blocks)) == len(blocks):
-                                        
-                                        new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-z"
-                                        N[new_key] = {}
-                                        N[new_key]["bottom"] =  new_data[2]
-                                        N[new_key]["top"] =  new_data[3]
-                                        N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
-                                        N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
-                                        N[new_key]["axis"] = 2
-                                        N[new_key][0] = max(new_data[2][0],new_data[3][0])
-                                        N[new_key][1] = max(new_data[2][1],new_data[3][1])
-                                        N[new_key][2] = new_data[2][2] + new_data[3][2]
-
-                                        N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                 new_data = MergeBlock_z(bl_keys,keys, block[bl_keys][j],  P[keys],container_size)
+#                                 if new_data != False:
+#                                     blocks = new_data[2]["blocks"] + new_data[3]["blocks"]
+#                                     if len(set(blocks)) == len(blocks):
+#                                         
+#                                         new_key = str(new_data[0]) + "-" + str(new_data[1]) + "-z"
+#                                         N[new_key] = {}
+#                                         N[new_key]["bottom"] =  new_data[2]
+#                                         N[new_key]["top"] =  new_data[3]
+#                                         N[new_key]["weight"] = new_data[2]["weight"] + new_data[3]["weight"]
+#                                         N[new_key]["volume"] = new_data[2]["volume"] + new_data[3]["volume"]
+#                                         N[new_key]["axis"] = 2
+#                                         N[new_key][0] = max(new_data[2][0],new_data[3][0])
+#                                         N[new_key][1] = max(new_data[2][1],new_data[3][1])
+#                                         N[new_key][2] = new_data[2][2] + new_data[3][2]
+# 
+#                                         N[new_key]["blocks"] = new_data[2]["blocks"] + new_data[3]["blocks"]
 
                        
                      
@@ -2398,14 +2415,14 @@ def generate_space_nodes(box_b_dimension,space):
         if diff_dim > 0:
             
             if i == 0:
-                origin = (space.origin[0] + diff_dim,space.origin[1],space.origin[2])
+                origin = (space.origin[0] + box_b_dimension[i],space.origin[1],space.origin[2])
                 upper_origin = space.upper_origin
                 new_node = SpaceNode(origin,upper_origin)
                 final_space.append(new_node)
                 t += 1 
                 
             elif i == 1:
-                origin = (space.origin[0] ,space.origin[1]+ diff_dim,space.origin[2])
+                origin = (space.origin[0] ,space.origin[1]+  box_b_dimension[i],space.origin[2])
                 upper_origin = space.upper_origin
                 if t > 0:
                     
@@ -2416,7 +2433,7 @@ def generate_space_nodes(box_b_dimension,space):
                     
                 
             elif i == 2:
-                origin = (space.origin[0] ,space.origin[1],space.origin[2]+ diff_dim)
+                origin = (space.origin[0] ,space.origin[1],space.origin[2]+  box_b_dimension[i])
                 upper_origin = space.upper_origin
                 if t > 0:
                     
@@ -2428,9 +2445,13 @@ def generate_space_nodes(box_b_dimension,space):
         i.linked_list = final_space
     return  final_space
         
-def check_z_constraint(space,used_boxes):
-    import pdb
-    pdb.set_trace()
+def check_z_constraint(space,used_boxes,box_b_dimension):
+    boxes_below = []
+    for i in used_boxes:
+        import pdb
+        pdb.set_trace()
+    
+    
 
 ''' disection of space '''
 def space_dissect(space,box_b_dimension,used_boxes):
@@ -2438,16 +2459,19 @@ def space_dissect(space,box_b_dimension,used_boxes):
     
     
     for i in space:
-        if i.origin[2] != 0:
-            chk_constraint = check_z_constraint(i,used_boxes)
+        
+        
             
-        if box_b_dimension[0] >= i.origin[0] and  box_b_dimension[0] <= i.upper_origin[0]:
-             if box_b_dimension[1] >= i.origin[1] and  box_b_dimension[1] <= i.upper_origin[1]:
-                  if box_b_dimension[2] >= i.origin[2] and  box_b_dimension[2] <= i.upper_origin[2]:
-                    
-                    empty_spaces = generate_space_nodes(box_b_dimension,i)
-                    box = BoxNode(i.origin,box_b_dimension)
-                    space_nodes = [box,empty_spaces]
+        if i.upper_origin[0] - i.origin[0] >= box_b_dimension[0] :
+             if i.upper_origin[1] - i.origin[1] >= box_b_dimension[1] :
+                  if i.upper_origin[2] - i.origin[2] >= box_b_dimension[2] :
+                    chk_constraint = True
+                    if i.origin[2] != 0:
+                        chk_constraint = check_z_constraint(i,used_boxes,box_b_dimension)
+                    if chk_constraint == True:
+                        empty_spaces = generate_space_nodes(box_b_dimension,i)
+                        box = BoxNode(i.origin,box_b_dimension)
+                        space_nodes = [box,empty_spaces]
     return space_nodes
 
                 
@@ -2524,6 +2548,19 @@ def selected_space_list(space_list, container_size):
             selected_space = [i]
             anchor_dist_comp = anchor_dist
     return selected_space
+
+
+def find_bestfit(box, space_node):
+    
+    temp  = 0
+    for i in range(0,3):
+        temp1 = space_node.upper_origin[i] - (space_node.origin[i] + box[i])
+        if temp1 < 0:
+            return False 
+        temp += temp1
+    
+    return temp
+
 ''' generate free space '''    
 def generate_freespace(box_b_list, space,container_size,arrays_list):
     new_space_list = []
@@ -2534,12 +2571,14 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
     space = [sp_nd]
     space_resused = True
     used_boxes = []
-    for ik in box_b_list:
-        print ik[0],ik[1]["volume"]
+    
+    
+        
     while space_resused != False:
+       
         already_used  = set()
         for box_b in box_b_list:
-            
+           
             box_volume = box_b[1]['volume']
 #             space_vol = comp_vol(space)
 #             if space_vol ==  box_volume:
@@ -2552,20 +2591,40 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
                 '''cordinated to be find '''
                 
                 space = set(space).difference(set(selected_space))
-                box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
+                if "axis" in box_b[1]:
+                    box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
+                    
+                    result = space_dissect(selected_space,box_b_dimension,used_boxes)
+                else:
+                    best_fit = 0
+                    for k in selected_space:
+                        volumes = []
+                        for i in box_b[1].keys():
+                            
+                            if i in [0,1,2]:
+                                volume = 0 
+                                temp_best_fit = space_dissect([k],box_b[1][i], used_boxes)
+                                for v1 in temp_best_fit[1]:
+                                    
+                                    volume += (v1.upper_origin[0] - v1.origin[0])*(v1.upper_origin[1] - v1.origin[1])*(v1.upper_origin[2] - v1.origin[2])
+                                    
+                                if volume > best_fit:
+                                    best_fit = volume
+                                    result = temp_best_fit
+                                
                 
                 
-                result = space_dissect(selected_space,box_b_dimension,used_boxes)
                 
-                
-                space.update(result[1])
-               
-                already_used = already_used.union(set(box_b[1]["blocks"]))
-                result[0].desc = box_b
-                
-                used_boxes.append(result[0])
-                
-                
+                if len(result) > 0:
+                    space.update(result[1])
+                   
+                    already_used = already_used.union(set(box_b[1]["blocks"]))
+                    result[0].desc = box_b
+                    
+                    used_boxes.append(result[0])
+                else:
+                    
+                    space = selected_space
         
 def chk_volume(first_block, second_block,container_size,axis = 0):
         if axis == 0:
@@ -2599,7 +2658,7 @@ def chk_volume(first_block, second_block,container_size,axis = 0):
         else:
             return False
                                     
-
+        return False
 
 def MergeBlock_x(first_original_block, second_original_block,first_block, second_block,container_size):
     left_block = 0
@@ -2618,9 +2677,7 @@ def MergeBlock_x(first_original_block, second_original_block,first_block, second
                     
                     parm_chk = 1
     except:
-        import pdb
-        pdb.set_trace()
-    
+        return "spl"
     if parm_chk == 0:
         if first_block[1]*first_block[2] <= second_block[1]*second_block[2]:
             if first_block[1] <= second_block[1]:
@@ -2674,6 +2731,39 @@ def MergeBlock_y(first_original_block, second_original_block,first_block, second
     else:
         
         return(left_orig,right_orig, left_block,right_block)
+    
+def chk_constrint_multiple(below_block,top_block):
+    ''' define rules for different object type '''
+    if below_block["tags"] in ["furniture", "refrigerator"]:
+        if top_block["weight"] <= below_block["weight"]/2:
+            return True
+    elif below_block["tags"] in ["washingmc","microwave"]:
+        if top_block["weight"] <= below_block["weight"]:
+            return True
+    
+        
+        
+    return False
+
+
+    
+    
+    
+
+def chk_constrint(below_block,top_block):
+    ''' define rules for different object type '''
+    if below_block["tags"] in ["furniture", "refrigerator"]:
+        if top_block["weight"] <= below_block["weight"]/2:
+            return True
+    elif below_block["tags"] in ["washingmc","microwave"]:
+        if top_block["weight"] <= below_block["weight"]:
+            return True
+    
+        
+        
+    return False
+
+
 
 
 def MergeBlock_z(first_original_block, second_original_block,first_block, second_block,container_size):
@@ -2685,21 +2775,23 @@ def MergeBlock_z(first_original_block, second_original_block,first_block, second
     
     
     if first_block[0] >= second_block[0] and first_block[1] >= second_block[1]:
-        if chk_volume(first_block, second_block,container_size,2) == True:
-            left_block = first_block
-            right_block = second_block
-            left_orig = first_original_block
-            right_orig = second_original_block
-            parm_chk = 1
+        if chk_constrint(first_block,second_block) == True:
+            if chk_volume(first_block, second_block,container_size,2) == True:
+                left_block = first_block
+                right_block = second_block
+                left_orig = first_original_block
+                right_orig = second_original_block
+                parm_chk = 1
     if parm_chk == 0:
         
         if first_block[0] <= second_block[0] and first_block[1] <= second_block[1]:
-            if chk_volume(first_block, second_block,container_size,2) == True:
-                left_block = second_block
-                right_block = first_block
-                left_orig = second_original_block
-                right_orig = first_original_block
-                parm_chk = 1
+            if chk_constrint(second_block,first_block) == True:
+                if chk_volume(first_block, second_block,container_size,2) == True:
+                    left_block = second_block
+                    right_block = first_block
+                    left_orig = second_original_block
+                    right_orig = first_original_block
+                    parm_chk = 1
                     
                 
                 
