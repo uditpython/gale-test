@@ -2445,35 +2445,210 @@ def generate_space_nodes(box_b_dimension,space):
         i.linked_list = final_space
     return  final_space
         
-def check_z_constraint(space,used_boxes,box_b_dimension):
-    boxes_below = []
-    for i in used_boxes:
-        import pdb
-        pdb.set_trace()
+def check_z_constraint(space,used_boxes,box_dimension):
+    box_surface_area = box_dimension[0]*box_dimension[1]
+    box_height = space.origin[2] + box_dimension[2]
     
+    boxes_consider = []
+    
+    for i in used_boxes:
+        if i.origin[2] + i.upper_origin[2] == space.origin[2]:
+            
+            boxes_consider.append(i)
+            
+    
+    final_intersection = [] 
+    if boxes_consider != []:
+        for j in boxes_consider:
+            
+            intersection = []
+            for i in range(0,2):
+                
+                if space.origin[i] >= j.origin[i] :
+                    if space.origin[i] <= j.upper_origin[i] + j.origin[i]:
+                        if space.origin[i] + box_dimension[i] <= j.upper_origin[i] + j.origin[i]:
+                            intersection.append([space.origin[i],space.origin[i] + box_dimension[i]])
+                        else:
+                            intersection.append([space.origin[i],j.upper_origin[i]+ j.origin[i]])
+                else:    
+                    if space.origin[i] + box_dimension[i] <= j.upper_origin[i]+ j.origin[i]:
+                        if space.origin[i] + box_dimension[i] >= j.origin[i]:
+                            intersection.append([j.origin[i],space.origin[i] + box_dimension[i]])
+                    else:
+                        intersection.append([j.origin[i],j.upper_origin[i]+ j.origin[i]])
+            
+            if len(intersection) == 2:
+                final_intersection.append([j,intersection])
+           
+    for k in final
+    
+    
+''' intersection of spaces '''    
+def find_intersection(origin,box_dimension,linked_list,space):
+    
+    
+    final_intersections = []
+    
+    for j in linked_list:
+        if j != space:
+            intersection = []
+            
+            for i in range(0,3):
+                
+                if origin[i] >= j.origin[i] :
+                    if origin[i] <= j.upper_origin[i]:
+                        if origin[i] + box_dimension[i] <= j.upper_origin[i]:
+                            intersection.append([origin[i],origin[i] + box_dimension[i]])
+                        else:
+                            intersection.append([origin[i],j.upper_origin[i]])
+                else:    
+                    if origin[i] + box_dimension[i] <= j.upper_origin[i]:
+                        if origin[i] + box_dimension[i] >= j.origin[i]:
+                            intersection.append([j.origin[i],origin[i] + box_dimension[i]])
+                    else:
+                        intersection.append([j.origin[i],j.upper_origin[i]])
+            
+            if len(intersection) == 3:
+                final_intersections.append([j,intersection])
+            else:
+                final_intersections.append([j,[]])
+    return final_intersections
+                                                 
+#         if i.origin[1] >= j.origin[1] and i.origin[1] + box_dimension[1] >= j.upper_origin[1]
+#         if i.origin[0] >= j.origin[0] and i.origin[0] + box_dimension[0] >= j.upper_origin[0]
+
+def generate_temp_nodes(sp):
+    if sp[1] == []:
+        space_nodes_volume = 1
+        for i in range(0,3):
+            space_nodes_volume *= (sp[0].upper_origin[i] - sp[0].origin[i])
+        return space_nodes_volume
+    else:
+        space_nodes_volume  = 1
+        box_common_volume = 1
+        for i in range(0,3):
+            space_nodes_volume *= (sp[0].upper_origin[i] - sp[0].origin[i])
+            box_common_volume *= (sp[1][i][1] -sp[1][i][0])
+        
+    return space_nodes_volume - box_common_volume
+      
     
 
 ''' disection of space '''
-def space_dissect(space,box_b_dimension,used_boxes):
+def space_dissect(space,dimension,used_boxes,full_space):
     space_nodes = []
+    selected_space = 0
+    chk_volume = 0
     
+    full_space = full_space | set(space)
+    empty_space = []
     
-    for i in space:
-        
-        
+    for box_b_dimension in dimension:
+        for i in space:
             
-        if i.upper_origin[0] - i.origin[0] >= box_b_dimension[0] :
-             if i.upper_origin[1] - i.origin[1] >= box_b_dimension[1] :
-                  if i.upper_origin[2] - i.origin[2] >= box_b_dimension[2] :
-                    chk_constraint = True
-                    if i.origin[2] != 0:
-                        chk_constraint = check_z_constraint(i,used_boxes,box_b_dimension)
-                    if chk_constraint == True:
-                        empty_spaces = generate_space_nodes(box_b_dimension,i)
-                        box = BoxNode(i.origin,box_b_dimension)
-                        space_nodes = [box,empty_spaces]
+            
+                
+            if i.upper_origin[0] - i.origin[0] >= box_b_dimension[0] :
+                 if i.upper_origin[1] - i.origin[1] >= box_b_dimension[1] :
+                      if i.upper_origin[2] - i.origin[2] >= box_b_dimension[2] :
+                        
+                        chk_constraint = True
+                        if i.origin[2] != 0:
+                            import pdb
+                            pdb.set_trace()
+                            chk_constraint = check_z_constraint(i,used_boxes,box_b_dimension)
+                        if chk_constraint == True:
+                            empty_spaces = generate_space_nodes(box_b_dimension,i)
+                            if len(full_space) > 0:
+                                intersect_spaces = find_intersection(i.origin,box_b_dimension,full_space,i)
+                                if len(intersect_spaces) > 0:
+                                    volume = 0
+                                    for sp in intersect_spaces:
+                                        
+                                        volume += generate_temp_nodes(sp)
+                                    if chk_volume < volume:
+                                        selected_box = box_b_dimension
+                                        chk_volume = volume
+                                        selected_space = empty_spaces
+                                        selected_intersction = intersect_spaces
+                                        spc_ind = i
+                                else:
+                                    volume = 0
+                                    
+                                    for rn1 in empty_spaces:
+                                        v1 = 1
+                                        for rn in range(0,3):
+                                            v1 *= (rn1.upper_origin[rn] - rn1.origin[rn])
+                                        volume += v1
+                                    if chk_volume < volume:
+                                        selected_box = box_b_dimension
+                                        chk_volume = volume
+                                        selected_space = empty_spaces
+                                        selected_intersction = -1
+                                        spc_ind = i
+                                    
+    
+    
+    if selected_space == 0:
+        return []
+    
+    if selected_intersction == -1:
+        box = BoxNode(spc_ind.origin,selected_box)
+        space_nodes = [box,selected_space]
+                                    
+        return space_nodes
+    full_space = full_space | set(selected_space)
+    full_space.remove(spc_ind)
+    
+    for k in selected_intersction:
+        if k[1] != []:
+            sel_intersect = k[0]
+            
+            result = find_non_intersect(k)
+            full_space = full_space | set(result)
+            full_space.remove(sel_intersect)
+            del sel_intersect
+            
+    box = BoxNode(spc_ind.origin,selected_box)
+    space_nodes = [box,full_space]
+    del spc_ind
     return space_nodes
 
+
+def find_non_intersect(k):
+    node = k[0]
+    intersection = k[1]
+    
+    i = 0
+    space_nodes = []
+    if intersection[i][0] !=  node.origin[i]:
+        
+        sp_nd = SpaceNode(node.origin,(intersection[i][0],node.upper_origin[1],node.upper_origin[2]))
+        space_nodes.append(sp_nd)
+    if intersection[i][1] !=  node.upper_origin[i]:
+        
+        sp_nd = SpaceNode((intersection[i][1],node.origin[1],node.origin[2]),node.upper_origin)
+        space_nodes.append(sp_nd)
+    i += 1
+    if intersection[i][0] !=  node.origin[i]:
+        
+        sp_nd = SpaceNode(node.origin,(node.upper_origin[0],intersection[i][1],node.upper_origin[2]))
+        space_nodes.append(sp_nd)
+    if intersection[i][1] !=  node.upper_origin[i]:
+        
+        sp_nd = SpaceNode((node.origin[0],intersection[i][1],node.origin[2]),node.upper_origin)
+        space_nodes.append(sp_nd)
+    i += 1
+    if intersection[i][0] !=  node.origin[i]:
+        
+        sp_nd = SpaceNode(node.origin,(node.upper_origin[0],node.upper_origin[1],intersection[i][0]))
+        space_nodes.append(sp_nd)
+    if intersection[i][1] !=  node.upper_origin[i]:
+        
+        sp_nd = SpaceNode((node.origin[0],node.origin[1],intersection[i][1]),(intersection[0][0],node.upper_origin[1],node.upper_origin[2]))
+        space_nodes.append(sp_nd)
+    
+    return space_nodes
                 
 def manhattan_dist(first,second):
     dist = 0
@@ -2591,37 +2766,32 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
                 '''cordinated to be find '''
                 
                 space = set(space).difference(set(selected_space))
-                if "axis" in box_b[1]:
-                    box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2])
-                    
-                    result = space_dissect(selected_space,box_b_dimension,used_boxes)
-                else:
-                    best_fit = 0
-                    for k in selected_space:
-                        volumes = []
-                        for i in box_b[1].keys():
-                            
-                            if i in [0,1,2]:
-                                volume = 0 
-                                temp_best_fit = space_dissect([k],box_b[1][i], used_boxes)
-                                for v1 in temp_best_fit[1]:
-                                    
-                                    volume += (v1.upper_origin[0] - v1.origin[0])*(v1.upper_origin[1] - v1.origin[1])*(v1.upper_origin[2] - v1.origin[2])
-                                    
-                                if volume > best_fit:
-                                    best_fit = volume
-                                    result = temp_best_fit
-                                
                 
+                if "axis" in box_b[1]:
+                    box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2],box_b[1])
+                    
+                    result = space_dissect(selected_space,[box_b_dimension],used_boxes,space)
+                else:
+                    
+                    dimension = []
+                    for i in box_b[1].keys():
+                            
+                        if i in [0,1,2]:
+                            dimension.append((box_b[1][i][0],box_b[1][i][1],box_b[1][i][2],box_b[1][i]))
+                    result = space_dissect(selected_space,dimension,used_boxes,space)
+                    
                 
                 
                 if len(result) > 0:
+                    
                     space.update(result[1])
                    
                     already_used = already_used.union(set(box_b[1]["blocks"]))
+                    
                     result[0].desc = box_b
                     
                     used_boxes.append(result[0])
+                    used_boxes = list(set(used_boxes))
                 else:
                     
                     space = selected_space
@@ -2884,4 +3054,34 @@ def web_crawler(request):
         
     return HttpResponse(json.dumps(final_data) , content_type="application/json")
     
+    
+    
+def draw():
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+    
+    import pandas as pd
+    
+    # Read data from a csv
+    z_data = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/api_docs/mt_bruno_elevation.csv')
+    
+    data = [
+        go.Surface(
+            z=z_data.as_matrix()
+        )
+    ]
+    layout = go.Layout(
+        title='Mt Bruno Elevation',
+        autosize=False,
+        width=500,
+        height=500,
+        margin=dict(
+            l=65,
+            r=50,
+            b=65,
+            t=90
+        )
+    )
+    fig = go.Figure(data=data, layout=layout)
+    py.iplot(fig, filename='elevations-3d-surface')
     
