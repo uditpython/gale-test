@@ -2331,8 +2331,8 @@ def GenerateGeneralBlocks():
     blk_itm.sort(key=lambda x: x[1]['volume'],reverse = True)
     space = [[[0,0,0], container_size]]
     
-    generate_freespace(blk_itm,space,container_size,arrays_list)
-               
+    vol_utils = generate_freespace(blk_itm,space,container_size,arrays_list)
+    return vol_utils
                                        
 #                         do it same for y axis
 #                         do it for z axis(check for height anf over balncing)s
@@ -2448,13 +2448,17 @@ def generate_space_nodes(box_b_dimension,space):
 def check_z_constraint(space,used_boxes,box_dimension):
     box_surface_area = box_dimension[0]*box_dimension[1]
     box_height = space.origin[2] + box_dimension[2]
-    
+    final_status = False
     boxes_consider = []
-    
+    temp_boxes = []
     for i in used_boxes:
         if i.origin[2] + i.upper_origin[2] == space.origin[2]:
-            
-            boxes_consider.append(i)
+            if 'axis' in i.desc[1]:
+                boxes = form_indiviual_block(i.desc,i.origin)
+                temp_boxes += boxes
+                boxes_consider += boxes
+            else:
+                boxes_consider.append(i)
             
     
     final_intersection = [] 
@@ -2479,10 +2483,64 @@ def check_z_constraint(space,used_boxes,box_dimension):
             
             if len(intersection) == 2:
                 final_intersection.append([j,intersection])
-           
-    for k in final
+          
+    for k in final_intersection:
+        volume = 1
+        for i in k[1]:
+            
+            volume *= i[1] -  i[0]
+        wt_tuil = box_surface_area/volume*box_dimension[3]["weight"]
+        try:
+            below_tag = k[0].desc[1]["tags"]
+            below_box_wt =   k[0].desc[1]["weight"]
+        except:
+            below_tag = k[0].upper_origin["tags"]
+            below_box_wt =   k[0].upper_origin["weight"]
+        final_status = chk_constrint_z(below_tag, below_box_wt,wt_tuil)
+        
+        if final_status == False:
+            return False
+    
+        
+    if len(temp_boxes):
+        for temp in temp_boxes:
+            del temp
+    return final_status
     
     
+def form_indiviual_block(desc,origin):
+    blocks = []
+    try:
+        if  'axis' in desc[1]:
+            
+            if desc[1]['axis'] == 1:
+                blocks += form_indiviual_block(desc[1]["front"],origin)
+                origin1 = (origin[0], origin[1] + desc[1]["front"][1] , origin[2])
+                blocks += form_indiviual_block(desc[1]["back"],origin1)
+            elif desc[1]['axis'] == 0:
+                blocks += form_indiviual_block(desc[1]["left"],origin)
+                origin1 = (origin[0] + desc[1]["left"][0], origin[1]  , origin[2])
+                blocks += form_indiviual_block(desc[1]["right"],origin1)
+            
+            return blocks
+    except:
+        box = BoxNode(origin,desc)
+        return [box]
+         
+#         if desc['axis'] == 0:
+#     
+#             desc_left = form_indiviual_block(desc["left"])
+#             desc_right = form_indiviual_block(desc["back"])
+#         
+    
+    
+def chk_constrint_z(below_tag, below_box_wt,wt_tuil):
+    if below_tag in ["furniture", "refrigerator"]:
+        if wt_tuil <= below_box_wt/2:
+            return True
+    elif below_tag in ["washingmc","microwave","AC"]:
+        if wt_tuil <= below_box_wt:
+            return True
 ''' intersection of spaces '''    
 def find_intersection(origin,box_dimension,linked_list,space):
     
@@ -2554,8 +2612,7 @@ def space_dissect(space,dimension,used_boxes,full_space):
                         
                         chk_constraint = True
                         if i.origin[2] != 0:
-                            import pdb
-                            pdb.set_trace()
+                            
                             chk_constraint = check_z_constraint(i,used_boxes,box_b_dimension)
                         if chk_constraint == True:
                             empty_spaces = generate_space_nodes(box_b_dimension,i)
@@ -2749,53 +2806,60 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
     
     
         
-    while space_resused != False:
        
-        already_used  = set()
-        for box_b in box_b_list:
-           
-            box_volume = box_b[1]['volume']
+    already_used  = set()
+    for box_b in box_b_list:
+       
+        box_volume = box_b[1]['volume']
 #             space_vol = comp_vol(space)
 #             if space_vol ==  box_volume:
 #                 return 
-            
-            if already_used.intersection(set(box_b[1]['blocks'])) == set([]):
-                
-                selected_space = selected_space_list(space, container_corner)
-                box_b_key = box_b[0]
-                '''cordinated to be find '''
-                
-                space = set(space).difference(set(selected_space))
-                
-                if "axis" in box_b[1]:
-                    box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2],box_b[1])
-                    
-                    result = space_dissect(selected_space,[box_b_dimension],used_boxes,space)
-                else:
-                    
-                    dimension = []
-                    for i in box_b[1].keys():
-                            
-                        if i in [0,1,2]:
-                            dimension.append((box_b[1][i][0],box_b[1][i][1],box_b[1][i][2],box_b[1][i]))
-                    result = space_dissect(selected_space,dimension,used_boxes,space)
-                    
-                
-                
-                if len(result) > 0:
-                    
-                    space.update(result[1])
-                   
-                    already_used = already_used.union(set(box_b[1]["blocks"]))
-                    
-                    result[0].desc = box_b
-                    
-                    used_boxes.append(result[0])
-                    used_boxes = list(set(used_boxes))
-                else:
-                    
-                    space = selected_space
         
+        if already_used.intersection(set(box_b[1]['blocks'])) == set([]):
+            
+            selected_space = selected_space_list(space, container_corner)
+            box_b_key = box_b[0]
+            '''cordinated to be find '''
+            
+            space = set(space).difference(set(selected_space))
+            
+            if "axis" in box_b[1]:
+                box_b_dimension =  (box_b[1][0],box_b[1][1],box_b[1][2],box_b[1])
+                
+                result = space_dissect(selected_space,[box_b_dimension],used_boxes,space)
+            else:
+                
+                dimension = []
+                for i in box_b[1].keys():
+                        
+                    if i in [0,1,2]:
+                        dimension.append((box_b[1][i][0],box_b[1][i][1],box_b[1][i][2],box_b[1][i]))
+                result = space_dissect(selected_space,dimension,used_boxes,space)
+                
+            
+            
+            if len(result) > 0:
+                
+                space.update(result[1])
+               
+                already_used = already_used.union(set(box_b[1]["blocks"]))
+                
+                print already_used
+                result[0].desc = box_b
+                
+                used_boxes.append(result[0])
+                used_boxes = list(set(used_boxes))
+            else:
+                
+                space = selected_space
+    volume = 0
+    for i in used_boxes:
+        v1 = 1
+        for i1 in range(0,3):
+            v1 *= i.upper_origin[i1]
+        volume += v1
+    container_volume = container_size[0]*container_size[1]*container_size[2]
+    return round(volume/container_volume*100)  
 def chk_volume(first_block, second_block,container_size,axis = 0):
         if axis == 0:
             block_len = first_block[0]+ second_block[0]
@@ -2925,9 +2989,12 @@ def chk_constrint(below_block,top_block):
     if below_block["tags"] in ["furniture", "refrigerator"]:
         if top_block["weight"] <= below_block["weight"]/2:
             return True
-    elif below_block["tags"] in ["washingmc","microwave"]:
+    elif below_block["tags"] in ["washingmc","microwave","AC"]:
         if top_block["weight"] <= below_block["weight"]:
             return True
+    else:
+        import pdb
+        pdb.set_trace()
     
         
         
