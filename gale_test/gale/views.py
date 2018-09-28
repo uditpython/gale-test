@@ -1240,6 +1240,117 @@ def noptimize(request):
 
 
 @csrf_exempt
+def inventory_data(request):
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shippr_inventory
+    body = request.body.decode('utf-8')
+    body = json.loads(body)
+    delievery_date = body['date']
+    ProjectCode = body['Projects']
+    id =delievery_date + "-" + ProjectCode
+    final_data = {}
+    total_qty = 0
+    starting_inv = 0
+    number_sku = 0
+    info = {}
+    try:
+        data = collection.find_one({'_id': id })['inventory_data']
+    except:
+        final_data['received_qty'] = total_qty
+        final_data['starting_qty'] = starting_inv
+        final_data['ohd'] = total_qty + starting_inv
+        final_data['number_sku'] = number_sku
+        final_data['sku'] = info
+        
+        return HttpResponse(json.dumps(final_data) , content_type="application/json")
+    
+    
+    for i in data:
+    
+           
+        key = i['PRODUCT CODE']
+        if key != "":
+            try:
+                qty = float(i['INVOICE QTY'])
+            except:
+                 qty = 0
+            try:
+                info[key]
+                info[key]['qty'] += qty
+            except:
+                info[key] = {}
+                number_sku += 1
+                info[key]['desc'] = i['PRODUCT NAME']
+                info[key]['net_amount'] = i['NET AMT']
+                info[key]['rec'] = qty
+                info[key]['starting'] = 0
+                info[key]['ohd'] = qty
+                
+            total_qty += qty
+    final_data['received_qty'] = total_qty
+    final_data['starting_qty'] = starting_inv
+    final_data['ohd'] = total_qty + starting_inv
+    final_data['number_sku'] = number_sku
+    final_data['sku'] = info
+    
+    return HttpResponse(json.dumps(final_data) , content_type="application/json")
+   
+    
+
+
+@csrf_exempt
+def inventory(request):
+    delievery_date = request.POST['DeliveryDate']
+    ProjectCode = request.POST['ProjectCode']
+    import xlrd
+    keys = request.FILES.keys()[0]
+    xlsxfile  = request.FILES[keys].read()
+    book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
+    worksheet = book.sheet_by_index(0)
+    first_row = [] # Header
+    for col in range(worksheet.ncols):
+        first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
+    # tronsform the workbook to a list of dictionnaries
+    data =[]
+    for row in range(1, worksheet.nrows):
+        
+        elm = {}
+        for col in range(worksheet.ncols):
+            elm[first_row[col]]=worksheet.cell_value(row,col)
+        
+        data.append(elm)
+   
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+          
+    db = connection.analytics
+    collection = db.shippr_inventory
+    result = {}
+    result['_id'] = delievery_date + "-" + ProjectCode
+          
+    result['inventory_data'] = data
+    try:
+        collection.insert(result)
+    
+        data_final = {}
+        data_final['Code'] = 'Success'
+        data_final['message'] = str(len(data)) + ' rows has been created for above selected Project and Receiving Date' 
+    except:
+        collection.remove( {"_id":result['_id']});
+        collection.insert(result)
+    
+        data_final = {}
+        data_final['Code'] = 'Success'
+        data_final['message'] = str(len(data)) + ' rows has been created for above selected Project and Receiving Date. There was already Data Present for selected data and project. New data have overwritten old data' 
+    return HttpResponse(json.dumps(data_final) , content_type="application/json")
+
+
+@csrf_exempt
 def ReportInfo(request):
     
     report_id = int(request.body.decode('utf-8'))

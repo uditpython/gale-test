@@ -9,6 +9,8 @@ urlpatterns = [
               url(r'^dist/$', views.distance_matrix, ),
               url(r'^report_info/$', views.ReportInfo, ),
             url(r'^barcode/$', views.barcode, ),
+             url(r'^inventory_mongo/$', views.inventory, ),
+              url(r'^inventory_data/$', views.inventory_data, ),
               
                        
                        
