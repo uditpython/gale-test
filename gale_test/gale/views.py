@@ -1256,6 +1256,7 @@ def inventory_data(request):
     total_qty = 0
     starting_inv = 0
     number_sku = 0
+    ohd = 0
     info = {}
     try:
         data = collection.find_one({'_id': id })['inventory_data']
@@ -1268,10 +1269,47 @@ def inventory_data(request):
         
         return HttpResponse(json.dumps(final_data) , content_type="application/json")
     
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+   
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
     
+    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(delievery_date) + "' and DepotCode ='" + ProjectCode+ "' order by ID Desc")
+    reports = cursor.fetchall()
+    
+    
+    prev_data = {}
+    if len(reports) > 0:
+        report_id = reports[0]['ID']
+        cursor.execute("SELECT box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,box.DeliveredQuantity as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,box.FailedQuantity as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,box.RejectedQuantity as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq")
+        boxids = cursor.fetchall()
+        for box in boxids:
+            key =  box['box']
+            ind = key.index("-")
+            if ind != -1:
+                key = key[ind+1:]
+            if box['drv'] == "Driver NOT ASSIGNED":
+                try:
+                    prev_data[key]
+                    prev_data[key]["left"] += 0
+                except:
+                    prev_data[key] = {}
+                    prev_data[key]["left"] = 0
+            else:
+                try:
+                    prev_data[key]
+                    prev_data[key]["left"] += box['qty'] 
+                except:
+                    prev_data[key] = {}
+                    prev_data[key]["left"] = box['qty']
+            
+                    
     for i in data:
     
-           
+        
         key = i['PRODUCT CODE']
         if key != "":
             try:
@@ -1280,7 +1318,8 @@ def inventory_data(request):
                  qty = 0
             try:
                 info[key]
-                info[key]['qty'] += qty
+                info[key]['rec'] += qty
+                info[key]['ohd'] += qty
             except:
                 info[key] = {}
                 number_sku += 1
@@ -1289,11 +1328,17 @@ def inventory_data(request):
                 info[key]['rec'] = qty
                 info[key]['starting'] = 0
                 info[key]['ohd'] = qty
+            try:
+                info[key]['ohd'] -= prev_data[key]["left"]
+                    
+            except:
+                pass
                 
             total_qty += qty
+            ohd += info[key]['ohd']
     final_data['received_qty'] = total_qty
     final_data['starting_qty'] = starting_inv
-    final_data['ohd'] = total_qty + starting_inv
+    final_data['ohd'] = ohd
     final_data['number_sku'] = number_sku
     final_data['sku'] = info
     
@@ -1323,16 +1368,20 @@ def inventory(request):
             elm[first_row[col]]=worksheet.cell_value(row,col)
         
         data.append(elm)
-   
+    
     import pymongo
     from pymongo import MongoClient
     connection = MongoClient('localhost:27017')
           
     db = connection.analytics
     collection = db.shippr_inventory
+    id = delievery_date + "-" + ProjectCode
+    
+    
+    #data = collection.find_one({'_id': id })
     result = {}
-    result['_id'] = delievery_date + "-" + ProjectCode
-          
+    result['_id'] = id
+#     result['allocated'] = Fasle      
     result['inventory_data'] = data
     try:
         collection.insert(result)
