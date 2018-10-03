@@ -1261,6 +1261,10 @@ def inventory_data(request):
     collectionSum = db.shippr_inventory_summary
     idSum = ProjectCode
     data_sum = collectionSum.find_one({'_id': idSum })
+    data_mrp = db.shippr_mrp.find_one({'_id': ProjectCode })
+    mrp = {}
+    if data_mrp != None:
+        mrp = data_mrp['MRPList']
     sum_keys = {}
     if data_sum != None:
         data_sum = data_sum['inventory_data']
@@ -1315,7 +1319,7 @@ def inventory_data(request):
                     prev_data[key] = {}
                     prev_data[key]["left"] = box['qty']
             
-                    
+           
     for i in data:
     
         
@@ -1333,7 +1337,15 @@ def inventory_data(request):
                 info[key] = {}
                 number_sku += 1
                 info[key]['desc'] = i['PRODUCT NAME']
-                info[key]['net_amount'] = i['NET AMT']
+                
+                if mrp == {}:
+                    info[key]['mrp'] = "MRP NOT AVAILABLE"
+                else:
+                    try:
+                        
+                        info[key]['mrp'] =  mrp[ str(int(key))]['MRP']
+                    except:
+                        info[key]['mrp'] = "MRP NOT AVAILABLE"
                 info[key]['rec'] = qty
                 
                 try:
@@ -1359,9 +1371,50 @@ def inventory_data(request):
     
     return HttpResponse(json.dumps(final_data) , content_type="application/json")
    
+@csrf_exempt
+def price_mongo(request):
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
     
-
-
+    db = connection.analytics
+    collection = db.shippr_mrp
+    
+    ProjectCode = request.POST['ProjectCode']
+    import xlrd
+    keys = request.FILES.keys()[0]
+    xlsxfile  = request.FILES[keys].read()
+    book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
+    worksheet = book.sheet_by_index(0)
+    first_row = [] # Header
+    for col in range(worksheet.ncols):
+        first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
+    
+    info = {}
+    data = collection.find_one({'_id': ProjectCode })
+    if data != None:
+        info = data['MRPList']
+    for row in range(1, worksheet.nrows):
+        
+        elm = {}
+        for col in range(worksheet.ncols):
+            elm[first_row[col]]=worksheet.cell_value(row,col)
+        
+        info[str(int(elm['MARICO MAT']))]= elm
+             
+    
+        
+    
+    if data == None:
+        result = {}
+        result['_id'] =  ProjectCode
+        result['MRPList'] = info
+        collection.insert(result)
+    else:
+        collection.update({"_id": ProjectCode},{"MRPList":info})
+    
+    info['message'] = "Successfully Updated the MRP List"
+    return HttpResponse(json.dumps(info) , content_type="application/json")
 @csrf_exempt
 def inventory(request):
     delievery_date = request.POST['DeliveryDate']

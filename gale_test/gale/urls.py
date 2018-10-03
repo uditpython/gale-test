@@ -11,6 +11,7 @@ urlpatterns = [
             url(r'^barcode/$', views.barcode, ),
              url(r'^inventory_mongo/$', views.inventory, ),
               url(r'^inventory_data/$', views.inventory_data, ),
+               url(r'^price_mongo/$', views.price_mongo, ),
               
                        
                        
