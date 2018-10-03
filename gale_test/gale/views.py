@@ -1258,41 +1258,73 @@ def inventory_data(request):
     number_sku = 0
     ohd = 0
     info = {}
+    
     collectionSum = db.shippr_inventory_summary
     idSum = ProjectCode
+    collectionreport = db.report.find_one({'_id': id})
+    
     data_sum = collectionSum.find_one({'_id': idSum })
     data_mrp = db.shippr_mrp.find_one({'_id': ProjectCode })
     mrp = {}
     if data_mrp != None:
         mrp = data_mrp['MRPList']
-    sum_keys = {}
+    
     if data_sum != None:
         data_sum = data_sum['inventory_data']
-        for keys in data_sum:
-            sum_keys[keys['PRODUCT CODE']] = keys
+    else:
+        data_sum = {}
     
-    try:
-        data = collection.find_one({'_id': id })['inventory_data']
-    except:
-        final_data['received_qty'] = total_qty
-        final_data['starting_qty'] = starting_inv
-        final_data['ohd'] = total_qty + starting_inv
-        final_data['number_sku'] = number_sku
-        final_data['sku'] = info
         
-        return HttpResponse(json.dumps(final_data) , content_type="application/json")
     
-    import pymssql
-    server = 'MILFOIL.arvixe.com'
-    user = 'usrShipprTech'
-    password = 'usr@ShipprTech'
-   
-    conn = pymssql.connect(server, user, password, "dbShipprTech")
-    cursor = conn.cursor(as_dict=True)
+
+#         if collectionreport != None:
+#             data = data_sum
+#         else:
+
+
+    '''collection reprt already'''
+    if collectionreport == None:
+        data = collection.find_one({'_id': id })
+    else:
+        data = None
+    if data == None:
+        data = {}
+        
+        if data_sum == {}:
+            
+            final_data['received_qty'] = total_qty
+            final_data['starting_qty'] = starting_inv
+            final_data['ohd'] = total_qty + starting_inv
+            final_data['number_sku'] = number_sku
+            final_data['sku'] = info
+            
+            return HttpResponse(json.dumps(final_data) , content_type="application/json")
     
-    cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(delievery_date) + "' and DepotCode ='" + ProjectCode+ "' order by ID Desc")
-    reports = cursor.fetchall()
-    
+    else:
+        
+        data = data['inventory_data']
+        temp = {}
+        for i in data:
+            try:
+                temp[str(int(i['PRODUCT CODE']))] = i
+            except:
+                temp[str(i['PRODUCT CODE'])] = i
+        data = temp
+        
+    if collectionreport == None:
+        if data != {}:
+            import pymssql
+            server = 'MILFOIL.arvixe.com'
+            user = 'usrShipprTech'
+            password = 'usr@ShipprTech'
+           
+            conn = pymssql.connect(server, user, password, "dbShipprTech")
+            cursor = conn.cursor(as_dict=True)
+            
+            cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(delievery_date) + "' and DepotCode ='" + ProjectCode+ "' order by ID Desc")
+            reports = cursor.fetchall()
+        else:
+            reports = []
     
     prev_data = {}
     if len(reports) > 0:
@@ -1319,18 +1351,20 @@ def inventory_data(request):
                     prev_data[key] = {}
                     prev_data[key]["left"] = box['qty']
             
-           
-    for i in data:
+    ### creating data from present starting = 0
     
+    for j in data:
         
-        key = i['PRODUCT CODE']
+        
+        key = j
+        i = data[j]
         if key != "":
             try:
                 qty = float(i['INVOICE QTY'])
             except:
                  qty = 0
             try:
-                info[key]
+                
                 info[key]['rec'] += qty
                 info[key]['ohd'] += qty
             except:
@@ -1348,21 +1382,59 @@ def inventory_data(request):
                         info[key]['mrp'] = "MRP NOT AVAILABLE"
                 info[key]['rec'] = qty
                 
+                
+                info[key]['starting'] = 0
+                
+                info[key]['ohd'] = qty 
+            try:
+                info[key]['ohd'] -= prev_data[key]["left"]
+                ohd += qty - info[key]['ohd']
+                    
+            except:
+                ohd += qty
+                
+            total_qty += qty
+            
+    
+    for j in data_sum:
+        
+        
+        key = j
+        i = data_sum[j]
+        if key != "":
+            try:
+                qty = float(i['INVOICE QTY'])
+            except:
+                 qty = 0
+            try:
+                
+                info[key]['starting'] += qty
+                info[key]['ohd'] += qty
+            except:
+                info[key] = {}
+                number_sku += 1
+                info[key]['desc'] = i['PRODUCT NAME']
+                
+                if mrp == {}:
+                    info[key]['mrp'] = "MRP NOT AVAILABLE"
+                else:
+                    try:
+                        
+                        info[key]['mrp'] =  mrp[ str(int(key))]['MRP']
+                    except:
+                        info[key]['mrp'] = "MRP NOT AVAILABLE"
+                info[key]['rec'] = 0
                 try:
-                    info[key]['starting'] = sum_keys[key]['INVOICE QTY']
+                    info[key]['starting'] = qty
                     
                 except:
                     info[key]['starting'] = 0
-                starting_inv += info[key]['starting']
-                info[key]['ohd'] = qty + info[key]['starting']
-            try:
-                info[key]['ohd'] -= prev_data[key]["left"]
-                    
-            except:
-                pass
+                starting_inv += qty
+                info[key]['ohd'] = qty
                 
-            total_qty += qty
-            ohd += info[key]['ohd']
+            
+            ohd += qty
+
     final_data['received_qty'] = total_qty
     final_data['starting_qty'] = starting_inv
     final_data['ohd'] = ohd
@@ -1468,7 +1540,104 @@ def inventory(request):
         
     return HttpResponse(json.dumps(data_final) , content_type="application/json")
 
-# def cron_task():
+def cron_task():
+    import datetime
+    today_date = str(datetime.datetime.now().date())
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+          
+    db = connection.analytics
+    collection = db.shippr_inventory
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+   
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    
+    
+    info = {}
+    info['$regex'] = today_date
+    query = {}
+    query['_id'] = info
+    data = collection.find(query)
+   
+    for d in data:
+        collectionreport = db.report
+        try:
+            rep  = {}
+            rep['_id'] = d['_id']
+            collectionreport.insert(rep)
+        except:
+            pass
+        box_dict  = {}
+        id =  d['_id'][len(today_date)+1:]
+        
+        cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(today_date) + "' and DepotCode ='" + id+ "' order by ID Desc")
+        reports = cursor.fetchall()
+        if len(reports) > 0:
+            report_id = reports[0]['ID']
+            
+            cursor.execute("SELECT box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,ISNULL(box.DeliveredQuantity, 0)  as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,ISNULL(box.FailedQuantity, 0) as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,ISNULL(box.RejectedQuantity, 0)  as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq")
+            boxids = cursor.fetchall()
+            for box in boxids:
+                key =  box['box']
+                ind = key.index("-")
+                if ind != -1:
+                    key = key[ind+1:]
+                
+                if box['rej_reason'] != 'Damaged Item':
+                   returned_boxes = box['dlvrd_qty']
+                else:
+                   returned_boxes = box['dlvrd_qty'] + box['rej_qty']
+                try:
+                    box_dict[key] += returned_boxes
+                except:
+                    box_dict[key] = returned_boxes
+        info = {}   
+        for inv in d["inventory_data"]:
+            try:
+                box_key =  str(int(inv['PRODUCT CODE']))
+            except:
+                box_key = inv['PRODUCT CODE']
+            try:
+                
+                inv['INVOICE QTY'] -= box_dict[box_key]
+                
+            except:
+                pass
+            try:
+                info[str(int(inv['PRODUCT CODE']))] = inv 
+            except:
+                info[str(inv['PRODUCT CODE'])] = inv 
+        collection = db.shippr_inventory_summary
+        
+        data_sum = collection.find_one({'_id': id })
+        if data_sum == None:
+            result = {}
+            result['_id'] = id
+            result['inventory_data'] = info
+            
+            collection.insert(result)
+        else:
+            data = data_sum["inventory_data"]
+            data_keys = set(data.keys())
+            info_keys = set(info.keys())
+            intersect = info_keys.intersection(data_keys)
+            diff = info_keys - data_keys
+            
+            for i in intersect:
+                data[i]['INVOICE QTY'] += info[i]['INVOICE QTY']
+            
+            for i in diff:
+                data[str(i)] = info[i]
+            collection.update({"_id": id},{"inventory_data":data})
+            
+        
+    
+        
 #     info = {}
 #     for i in data:
 #         info[i['PRODUCT CODE']] = i
