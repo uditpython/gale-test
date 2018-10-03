@@ -1258,6 +1258,15 @@ def inventory_data(request):
     number_sku = 0
     ohd = 0
     info = {}
+    collectionSum = db.shippr_inventory_summary
+    idSum = ProjectCode
+    data_sum = collectionSum.find_one({'_id': idSum })
+    sum_keys = {}
+    if data_sum != None:
+        data_sum = data_sum['inventory_data']
+        for keys in data_sum:
+            sum_keys[keys['PRODUCT CODE']] = keys
+    
     try:
         data = collection.find_one({'_id': id })['inventory_data']
     except:
@@ -1326,8 +1335,14 @@ def inventory_data(request):
                 info[key]['desc'] = i['PRODUCT NAME']
                 info[key]['net_amount'] = i['NET AMT']
                 info[key]['rec'] = qty
-                info[key]['starting'] = 0
-                info[key]['ohd'] = qty
+                
+                try:
+                    info[key]['starting'] = sum_keys[key]['INVOICE QTY']
+                    
+                except:
+                    info[key]['starting'] = 0
+                starting_inv += info[key]['starting']
+                info[key]['ohd'] = qty + info[key]['starting']
             try:
                 info[key]['ohd'] -= prev_data[key]["left"]
                     
@@ -1396,8 +1411,39 @@ def inventory(request):
         data_final = {}
         data_final['Code'] = 'Success'
         data_final['message'] = str(len(data)) + ' rows has been created for above selected Project and Receiving Date. There was already Data Present for selected data and project. New data have overwritten old data' 
+    
+        
     return HttpResponse(json.dumps(data_final) , content_type="application/json")
 
+# def cron_task():
+#     info = {}
+#     for i in data:
+#         info[i['PRODUCT CODE']] = i
+#     
+#     collection = db.shippr_inventory_summary
+#     id = ProjectCode
+#     data_sum = collection.find_one({'_id': id })
+#     if data_sum == None:
+#         result['_id'] = id
+#         collection.insert(result)
+#     else:
+#         keys_already = []
+#         for i in data_sum['inventory_data']:
+#             try:
+#                 i['INVOICE QTY'] += info[i['PRODUCT CODE']]['INVOICE QTY']
+#             except:
+#                 pass
+#             keys_already.append(i['PRODUCT CODE'])
+#         keys_already = set(keys_already)
+#         
+#         info_keys = set(info.keys())
+#        
+#         diff = info_keys - keys_already
+#         
+#         for j in diff:
+#             data_sum['inventory_data'].append(info[j])
+#         
+#         collection.update({"_id": id},{"inventory_data":data_sum['inventory_data']})
 
 @csrf_exempt
 def ReportInfo(request):
