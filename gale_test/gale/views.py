@@ -1243,6 +1243,8 @@ def noptimize(request):
 def inventory_data(request):
     import pymongo
     from pymongo import MongoClient
+    import datetime
+    today_hour = datetime.datetime.now().hour*60 + datetime.datetime.now().minute
     connection = MongoClient('localhost:27017')
     
     db = connection.analytics
@@ -1329,10 +1331,11 @@ def inventory_data(request):
     prev_data = {}
     if len(reports) > 0:
         report_id = reports[0]['ID']
-        cursor.execute("SELECT box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,box.DeliveredQuantity as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,box.FailedQuantity as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,box.RejectedQuantity as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq")
+        cursor.execute("SELECT box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,ISNULL(box.DeliveredQuantity, 0)  as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,ISNULL(box.FailedQuantity, 0)  as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,ISNULL(box.RejectedQuantity,0) as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq")
         boxids = cursor.fetchall()
         for box in boxids:
             key =  box['box']
+                
             ind = key.index("-")
             if ind != -1:
                 key = key[ind+1:]
@@ -1344,13 +1347,22 @@ def inventory_data(request):
                     prev_data[key] = {}
                     prev_data[key]["left"] = 0
             else:
+                ohd_ret = box['qty']
+                if today_hour >= 810:
+                   
+                    if box['rej_reason'] != 'Damaged Item':
+                        
+                        ohd_ret = box['dlvrd_qty']
+                    else:
+                        ohd_ret = box['dlvrd_qty'] + box['rej_qty']
+                
                 try:
-                    prev_data[key]
-                    prev_data[key]["left"] += box['qty'] 
+                   
+                    prev_data[key]["left"] += ohd_ret
                 except:
                     prev_data[key] = {}
-                    prev_data[key]["left"] = box['qty']
-            
+                    prev_data[key]["left"] = ohd_ret
+                
     ### creating data from present starting = 0
     
     for j in data:
