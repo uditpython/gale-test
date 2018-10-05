@@ -66,9 +66,13 @@ for d in data:
         except:
             pass
         try:
-            info[str(int(inv['PRODUCT CODE']))] = inv 
+            temp_key = str(int(inv['PRODUCT CODE'])) 
         except:
-            info[str(inv['PRODUCT CODE'])] = inv 
+            temp_key = str(inv['PRODUCT CODE'])
+        try:
+            info[temp_key]["INVOICE QTY"] += inv["INVOICE QTY"]
+        except:
+            info[temp_key] = inv
     collection = db.shippr_inventory_summary
     
     data_sum = collection.find_one({'_id': id })
