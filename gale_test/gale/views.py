@@ -1314,19 +1314,17 @@ def inventory_data(request):
         data = temp
         
     if collectionreport == None:
-        if data != {}:
-            import pymssql
-            server = 'MILFOIL.arvixe.com'
-            user = 'usrShipprTech'
-            password = 'usr@ShipprTech'
-           
-            conn = pymssql.connect(server, user, password, "dbShipprTech")
-            cursor = conn.cursor(as_dict=True)
-            
-            cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(delievery_date) + "' and DepotCode ='" + ProjectCode+ "' order by ID Desc")
-            reports = cursor.fetchall()
-        else:
-            reports = []
+       
+        import pymssql
+        server = 'MILFOIL.arvixe.com'
+        user = 'usrShipprTech'
+        password = 'usr@ShipprTech'
+       
+        conn = pymssql.connect(server, user, password, "dbShipprTech")
+        cursor = conn.cursor(as_dict=True)
+        
+        cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReport] where ReportDateIST = '" + str(delievery_date) + "' and DepotCode ='" + ProjectCode+ "' order by ID Desc")
+        reports = cursor.fetchall()
     
     prev_data = {}
     if len(reports) > 0:
@@ -1422,6 +1420,8 @@ def inventory_data(request):
                 
                 info[key]['starting'] += qty
                 info[key]['ohd'] += qty
+                ohd += qty
+                
             except:
                 info[key] = {}
                 number_sku += 1
@@ -1443,9 +1443,18 @@ def inventory_data(request):
                     info[key]['starting'] = 0
                 starting_inv += qty
                 info[key]['ohd'] = qty
-                
+                if data = {}:
+                    try:
+                        info[key]['ohd'] -= prev_data[key]["left"]
+                        ohd += qty - info[key]['ohd']
+                        
+                    except:
+                        ohd += qty
+
+                else:
+                    ohd += qty
             
-            ohd += qty
+            
 
     final_data['received_qty'] = total_qty
     final_data['starting_qty'] = starting_inv
