@@ -1533,7 +1533,11 @@ def route(request):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-        
+        import pdb
+        pdb.set_trace()
+        info = {}
+        for i in range(len(input_data)):
+            info[input_data[6][i]]
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
@@ -2041,17 +2045,21 @@ def GenerateSimpleBlocks(size = (55,37,30),allowed_orientation = [(1,1,1),(1,1,1
     return   (max_block,max_orientation)      
 
 
-def GenerateGeneralBlocks():
+def GenerateGeneralBlocks(Route = None):
     ## z axis not allowed
     allowed_orientation = [(1,1,0),(1,1,0),(0,0,1)]
     arrays = []
+    
     import csv
-    with open('gale/heavy1.csv') as csvfile:
+    with open('gale/rty.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
+            if Route == None:
+                arrays.append([float(row['Length/Item\n(CM)']),float(row['Width/Item\n(CM)']),float(row['Height/Item\n(CM)']),float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)']),row['Tags']])
             
-            arrays.append([float(row['Length/Item\n(CM)']),float(row['Width/Item\n(CM)']),float(row['Height/Item\n(CM)']),float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)']),row['Tags']])
-            
+            elif int(row['Route']) == Route :
+                arrays.append([float(row['Length/Item\n(CM)']),float(row['Width/Item\n(CM)']),float(row['Height/Item\n(CM)']),float(row['Width/Item\n(CM)'])*float(row['Length/Item\n(CM)'])*float(row['Height/Item\n(CM)']),float(row['Weight/Item\n(KG)']),row['Tags']])
+                
     arrays.sort(key=lambda x: x[3],reverse=True)
     arrays_list = []
     container_size = (214,153,153)
@@ -2173,10 +2181,17 @@ def GenerateGeneralBlocks():
     ## blocks in N are first transferred into the set P
     P = deepcopy(N)
     p_keys = P.keys()
+    bb_new = {}
     
     while len(block.keys()) < 10000:
-        print len(block.keys())
+        
+        if bb_new == block.keys():
+            break
+        bb_new = block.keys()
+        
+
         N = {}
+        print p_keys
         for keys in p_keys:
             
             for bl_keys in block.keys():
@@ -2326,12 +2341,13 @@ def GenerateGeneralBlocks():
         block.update(N)
     ## blocks in N are first transferred into the set P
         P = deepcopy(N)
-        p_keys = P.keys()        
+        p_keys = P.keys()    
     blk_itm = block.items()
     blk_itm.sort(key=lambda x: x[1]['volume'],reverse = True)
     space = [[[0,0,0], container_size]]
     
     vol_utils = generate_freespace(blk_itm,space,container_size,arrays_list)
+    
     return vol_utils
                                        
 #                         do it same for y axis
@@ -2494,6 +2510,7 @@ def check_z_constraint(space,used_boxes,box_dimension):
             below_tag = k[0].desc[1]["tags"]
             below_box_wt =   k[0].desc[1]["weight"]
         except:
+            
             below_tag = k[0].upper_origin["tags"]
             below_box_wt =   k[0].upper_origin["weight"]
         final_status = chk_constrint_z(below_tag, below_box_wt,wt_tuil)
@@ -2510,6 +2527,8 @@ def check_z_constraint(space,used_boxes,box_dimension):
     
 def form_indiviual_block(desc,origin):
     blocks = []
+   
+    
     try:
         if  'axis' in desc[1]:
             
@@ -2520,12 +2539,32 @@ def form_indiviual_block(desc,origin):
             elif desc[1]['axis'] == 0:
                 blocks += form_indiviual_block(desc[1]["left"],origin)
                 origin1 = (origin[0] + desc[1]["left"][0], origin[1]  , origin[2])
+                
                 blocks += form_indiviual_block(desc[1]["right"],origin1)
             
             return blocks
     except:
-        box = BoxNode(origin,desc)
-        return [box]
+        try:
+           
+            if  'axis' in desc:
+                
+                if desc['axis'] == 1:
+                    blocks += form_indiviual_block(desc["front"],origin)
+                    origin1 = (origin[0], origin[1] + desc["front"][1] , origin[2])
+                    blocks += form_indiviual_block(desc["back"],origin1)
+                elif desc['axis'] == 0:
+                    blocks += form_indiviual_block(desc["left"],origin)
+                    origin1 = (origin[0] + desc["left"][0], origin[1]  , origin[2])
+                    
+                    blocks += form_indiviual_block(desc["right"],origin1)
+                
+                return blocks
+            else:
+                box = BoxNode(origin,desc)
+                return [box]
+        except:
+            box = BoxNode(origin,desc)
+            return [box]
          
 #         if desc['axis'] == 0:
 #     
@@ -2538,7 +2577,7 @@ def chk_constrint_z(below_tag, below_box_wt,wt_tuil):
     if below_tag in ["furniture", "refrigerator"]:
         if wt_tuil <= below_box_wt/2:
             return True
-    elif below_tag in ["washingmc","microwave","AC"]:
+    elif below_tag in ["washingmc","washingmctop","microwave","AC"]:
         if wt_tuil <= below_box_wt:
             return True
 ''' intersection of spaces '''    
@@ -2795,6 +2834,7 @@ def find_bestfit(box, space_node):
 
 ''' generate free space '''    
 def generate_freespace(box_b_list, space,container_size,arrays_list):
+    
     new_space_list = []
     cont_vol = container_size[0]*container_size[1]*container_size[2]
     container_corner = form_corner(container_size)
@@ -2859,7 +2899,9 @@ def generate_freespace(box_b_list, space,container_size,arrays_list):
             v1 *= i.upper_origin[i1]
         volume += v1
     container_volume = container_size[0]*container_size[1]*container_size[2]
-    return round(volume/container_volume*100)  
+   
+    output = float(len(already_used))/float(len(arrays_list))*100
+    return (round(volume/container_volume*100),output) 
 def chk_volume(first_block, second_block,container_size,axis = 0):
         if axis == 0:
             block_len = first_block[0]+ second_block[0]
@@ -2971,7 +3013,7 @@ def chk_constrint_multiple(below_block,top_block):
     if below_block["tags"] in ["furniture", "refrigerator"]:
         if top_block["weight"] <= below_block["weight"]/2:
             return True
-    elif below_block["tags"] in ["washingmc","microwave"]:
+    elif below_block["tags"] in ["washingmc","washingmctop","microwave"]:
         if top_block["weight"] <= below_block["weight"]:
             return True
     
@@ -2989,7 +3031,7 @@ def chk_constrint(below_block,top_block):
     if below_block["tags"] in ["furniture", "refrigerator"]:
         if top_block["weight"] <= below_block["weight"]/2:
             return True
-    elif below_block["tags"] in ["washingmc","microwave","AC"]:
+    elif below_block["tags"] in ["washingmc","washingmctop","microwave","AC"]:
         if top_block["weight"] <= below_block["weight"]:
             return True
     else:
