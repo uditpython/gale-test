@@ -14,7 +14,7 @@ password = 'usr@ShipprTech'
 conn = pymssql.connect(server, user, password, "dbShipprTech")
 cursor = conn.cursor(as_dict=True)
 
-today_date = '2018-10-03'
+
 info = {}
 info['$regex'] = today_date
 query = {}
