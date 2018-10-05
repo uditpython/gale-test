@@ -1443,7 +1443,7 @@ def inventory_data(request):
                     info[key]['starting'] = 0
                 starting_inv += qty
                 info[key]['ohd'] = qty
-                if data = {}:
+                if data == {}:
                     try:
                         info[key]['ohd'] -= prev_data[key]["left"]
                         ohd += qty - info[key]['ohd']
