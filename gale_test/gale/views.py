@@ -1269,6 +1269,10 @@ def route(request):
     import time
     body = request.body.decode('utf-8')
     data = json.loads(body)
+    
+    
+        
+    
     depot_data  =  data['DepotPoint']
     
     shipments = [0]
@@ -1345,8 +1349,10 @@ def route(request):
             cluster_dict[pt['NewRouteID']] = cluster_pt
            
     
-    
-    
+    info = {}
+#     info["distance_matrix"] = []
+    dist1 = []
+     
     cluster_index = 1
     amount = {}
     for i in data_points:
@@ -1535,9 +1541,66 @@ def route(request):
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         import pdb
         pdb.set_trace()
-        info = {}
-        for i in range(len(input_data)):
-            info[input_data[6][i]]
+        for i1 in range(len(cluster_dict[i]['locations'])):
+            
+            try:
+                new_key = "customer_" + str(i1+1)
+                info[new_key]["demand"] += cluster_dict[i]['demands'][i1]
+            except:
+                info[new_key] = {}
+                
+                info[new_key]["demand"] = cluster_dict[i]['demands'][i1]
+                cordinate = {}
+                cordinate["x"] = cluster_dict[i]['locations'][i1][0]
+                cordinate["y"] = cluster_dict[i]['locations'][i1][1]
+                info[new_key]["coordinates"] = cordinate
+                info[new_key]["service_time"] = 360
+                 
+                info[new_key]["ready_time"] = reporting_time
+                info[new_key]["due_time"] = returning_time
+           
+        wt = 0
+         
+        info["deport"] = {}
+        cordinate = {}
+        cordinate["x"] = depot_data["Latitude"]
+        cordinate["y"] = depot_data["Longitude"]
+        info["deport"]["coordinates"] = cordinate
+        info["deport"]["demand"] = 0
+        info["deport"]["service_time"] = 0.0
+                 
+        info["deport"]["ready_time"] = reporting_time
+        info["deport"]["due_time"] = returning_time
+        from route_optimizer import distance1
+        for i2 in info.keys():
+            wt += info[i2]["demand"]
+            dist = []
+            for j in info.keys():
+                 
+                
+                try:
+                    k = info[i2]["coordinates"]
+                    k1 = info[j]["coordinates"]
+                except:
+                    import pdb
+                    pdb.set_trace()
+                dist.append(distance1([float(k["x"]),float(k["y"]),float(k1["x"]),float(k1["y"])]))
+            dist1.append(dist)
+        info["distance_matrix"] = dist1
+        import pdb
+        pdb.set_trace()
+        import io
+        try:
+            to_unicode = unicode
+        except NameError:
+            to_unicode = str
+        with io.open('data2.json', 'w', encoding='utf8') as outfile:
+            str_ = json.dumps(info,
+                              indent=4, sort_keys=True,
+                              separators=(',', ': '), ensure_ascii=False)
+            outfile.write(to_unicode(str_))
+
+        
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         
         truck_result = optimizer_result[1]
@@ -2379,7 +2442,12 @@ class BoxNode(object):
 # 
 #     def set_next(self, new_next):
 #         self.linked_node = new_next
-                                     
+
+
+
+
+
+                              
     
 def cluster():
     

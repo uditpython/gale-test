@@ -52,7 +52,7 @@ def distance_osrm(input):
     lon1 = input[1]
     lat2 = input[2]
     lon2 = input[3]
-    osrm_url = "http://localhost:5000/route/v1/driving/"
+    osrm_url = "http://13.232.103.148:5000/route/v1/driving/"
     url = osrm_url + str(lon1) + str(",") + str(lat1) + str(";") + str(lon2) + str(",") + str(lat2)
     params = {'alternatives': 'true', 'geometries':'geojson'}
     results = requests.get(url, params=params).json()['routes']
@@ -361,7 +361,7 @@ def main(data,truck_options):
     if num_vehicles == 1:
         dist_between_locations = CreateDistanceCallbackNEW(locations)
     else:
-        dist_between_locations = CreateDistanceCallback(locations)
+        dist_between_locations = CreateDistanceCallbackNEW(locations)
 #     dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
     
