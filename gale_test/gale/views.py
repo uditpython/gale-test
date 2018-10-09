@@ -1398,7 +1398,7 @@ def inventory_data(request):
                 info[key]['ohd'] = qty 
             try:
                 info[key]['ohd'] -= prev_data[key]["left"]
-                ohd += qty - info[key]['ohd']
+                ohd += info[key]['ohd']
                     
             except:
                 ohd += qty
@@ -1446,7 +1446,7 @@ def inventory_data(request):
                 if data == {}:
                     try:
                         info[key]['ohd'] -= prev_data[key]["left"]
-                        ohd += qty - info[key]['ohd']
+                        ohd += info[key]['ohd']
                         
                     except:
                         ohd += qty
@@ -1455,7 +1455,6 @@ def inventory_data(request):
                     ohd += qty
             
             
-
     final_data['received_qty'] = total_qty
     final_data['starting_qty'] = starting_inv
     final_data['ohd'] = ohd
