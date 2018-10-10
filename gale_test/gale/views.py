@@ -916,7 +916,10 @@ def noptimize(request):
             seq_dp = deepcopy(data_init[node_index])
             
             if node_index > 0:
-                
+                if seq_dp['Name'] == None:
+                    seq_dp['Name'] = seq_dp['ConsigneeName']
+                    
+                    
                 seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
                 
 #                 seconds = int(i[j+1][4])
@@ -2139,7 +2142,8 @@ def route(request):
             seq_dp = deepcopy(data_init[node_index])
             
             if node_index > 0:
-                
+                if seq_dp['Name'] == None:
+                    seq_dp['Name'] = seq_dp['ConsigneeName']
                 seconds = reporting_time + loading_time + 3600/int(truck_options['AverageSpeedOfVehicle'])*(i[j][1] + dict['TotalDistance']) + int(truck_options['MHaltTimeAtDropPoint'])*60*(j-1)
                 
 #                 seconds = int(i[j+1][4])
