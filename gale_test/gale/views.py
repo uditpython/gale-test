@@ -1739,7 +1739,9 @@ def ReportInfo(request):
 
 @csrf_exempt
 def route(request):
-    
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf8')
     import route_optimizer
     import datetime
     import time
