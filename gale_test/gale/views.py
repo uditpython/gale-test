@@ -1297,8 +1297,14 @@ def create_excel(request):
             k['Delivered Qty'] = k2['dlvrd_qty']
             k['Rejected Qty'] = k2['rej_qty']
             k['Attempted Qty'] = k2['failedqty']
-            k['Attempted Reason'] = k2['failedreason']
-            k['Rejected Reason'] = k2['rej_reason']
+            if k2['failedqty'] > 0:
+                k['Attempted Reason'] = k2['failedreason']
+            else:
+                k['Attempted Reason'] = ''
+            if  k2['rej_qty'] > 0:
+                k['Rejected Reason'] = k2['rej_reason']
+            else:
+                 k['Rejected Reason'] = ''
         except:
             k['Delivered Qty'] = 0
             k['Rejected Qty'] = 0
