@@ -1287,20 +1287,24 @@ def create_excel(request):
     full_data =  data['full_data']
     field_id = data['field_id']
     
-    
     for k in full_data:
         key = ''
         for k1 in field_id:
             key += k[k1] + str("-")
         key = key[:-1]
-        
-        k2 = info[key]
-            
-        k['Delivered Qty'] = k2['dlvrd_qty']
-        k['Rejected Qty'] = k2['rej_qty']
-        k['Attempted Qty'] = k2['failedqty']
-        k['Attempted Reason'] = k2['failedreason']
-        k['Rejected Reason'] = k2['rej_reason']
+        try:
+            k2 = info[key]
+            k['Delivered Qty'] = k2['dlvrd_qty']
+            k['Rejected Qty'] = k2['rej_qty']
+            k['Attempted Qty'] = k2['failedqty']
+            k['Attempted Reason'] = k2['failedreason']
+            k['Rejected Reason'] = k2['rej_reason']
+        except:
+            k['Delivered Qty'] = 0
+            k['Rejected Qty'] = 0
+            k['Attempted Qty'] = 0
+            k['Attempted Reason'] = ''
+            k['Rejected Reason'] = ''
             
      
     
@@ -1612,6 +1616,7 @@ def price_mongo(request):
 @csrf_exempt
 def route_mongo(request):
     import xlrd
+    import datetime
     keys = request.FILES.keys()[0]
     xlsxfile  = request.FILES[keys].read()
     book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
@@ -1625,7 +1630,10 @@ def route_mongo(request):
         
         elm = {}
         for col in range(worksheet.ncols):
-            elm[first_row[col]]=worksheet.cell_value(row,col)
+            if col == 0:
+                elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+            else:
+                elm[first_row[col]]=worksheet.cell_value(row,col)
         
         final_data.append(elm)
         
@@ -1641,6 +1649,7 @@ def route_mongo(request):
     
     fields = json.loads(data['Fields'])
     field_final = []
+    
     for i in sorted(fields.keys()):
         
         if i.find('Shipment ID') != -1:
