@@ -504,12 +504,11 @@ def barcode(request):
 
 
 @csrf_exempt
-def noptimize(request):
+def noptimize(data,final_data):
     import route_optimizer
     import datetime
     import time
-    body = request.body.decode('utf-8')
-    data = json.loads(body)
+   
     depot_data  =  data['DepotPoint']
     
     shipments = [0]
@@ -1094,116 +1093,115 @@ def noptimize(request):
             
     
 #     result['TravelRoutes'] = singluar_travel_routes(result['TravelRoutes']) 
+    
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+    
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+#     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
+      
     try:
-        import pymssql
-        server = 'MILFOIL.arvixe.com'
-        user = 'usrShipprTech'
-        password = 'usr@ShipprTech'
+        planning_date = data['Planningdate']
+    except:
+        planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
+    querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+    
+    vmwt = ""
+    for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
+        vmwt += i['Code']+":"+str(i['VmWtAllowed']) + "|"
+    
+    values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+    
+    cursor.execute(querytreport+"Values("+values+")")
+    
+    conn.commit()
+    
+    
+    trprtid = int(cursor.lastrowid)
+    result['report_id'] = trprtid
+    
+    ### query for 
+
+    querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
+    
+    values = ''
+    result['summary_id'] = []
+    for j in range(len(result['TravelRoutes'])):
+        i = result['TravelRoutes'][j]
+        values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['NEWID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
+        cursor.execute(querytreportstr+"Values"+values)
         
-        conn = pymssql.connect(server, user, password, "dbShipprTech")
-        cursor = conn.cursor(as_dict=True)
-    #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
-          
-        try:
-            planning_date = data['Planningdate']
-        except:
-            planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
-        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+        conn.commit()
+        trpsmryid = int(cursor.lastrowid)
+        result['summary_id'].append(trpsmryid)
+        values_str = ''
+        values_box = ''
+        treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
+        routes_len = len(i['SequencedDropPointsList'])
+        treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems])"
+        for iroute in  range(routes_len): 
+            
+            routes = i['SequencedDropPointsList'][iroute]
+            chk_box = 0
+            if iroute == 0:
+                routes['DropItems'] = 'Arrival at Depot'
+                chk_box = 1
+            elif iroute == 1:
+                routes['DropItems'] = 'Out For Delivery'
+                chk_box = 1
+            elif iroute == routes_len -1:
+                chk_box = 1
+                routes['DropItems'] = 'Return At Depot'
+           
+            address = routes['Address']    
+            
+            try:    
+            
+                add_in = address.index("<br>")
+                address = address[:add_in]
+            except:
+                pass
+            address = address.replace("'","")
+            
+            values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
+            
+            if chk_box == 0:
+                airway_bill = routes['DropItems'].split("<br>")
+                airway_bill = airway_bill[:-1]
+                
+                for airse in airway_bill:
+                    airs1 = airse.split("_")
+                    for airs in airs1: 
+                                    
+                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
+        values_str = values_str[:len(values_str)-1]
         
-        vmwt = ""
-        for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
-            vmwt += i['Code']+":"+str(i['VmWtAllowed']) + "|"
+        values_box = values_box[:len(values_box)-1]
         
-        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
-        
-        cursor.execute(querytreport+"Values("+values+")")
+        cursor.execute(treportdetailstr+"Values"+values_str)
         
         conn.commit()
         
+        cursor.execute(treportroutebox+"Values"+values_box)
         
-        trprtid = int(cursor.lastrowid)
-        result['report_id'] = trprtid
-        
-        ### query for 
+        conn.commit()
 
-        querytreportstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteSummary]([ReportID],[RouteCode],[DVCode],[DVInfo],[TravelDistance],[DropPointsCount],[ShipmentsCount],[VolumetricWt],[MassWt],[TravelTimeTotalInMinutes],[TravelTimeHaltInMinutes],[TravelTimeRunningInMinutes],[DepotArrivalTime],[DepotDepartureTime],[DepotReturnTime],[NetAmount],[OnMapRouteColorInHexCode])"
+        trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
+        majorareas = str(i['MajorAreasCovered'])
+        majorareas = majorareas.replace("u'","")
+        majorareas = majorareas.replace("'","")
+        valu_custom = str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) +  str("'") +"," + str("'") + majorareas + str("')")
+        cursor.execute(trptcustom+"Values"+valu_custom)
+        conn.commit()
         
-        values = ''
-        result['summary_id'] = []
-        for j in range(len(result['TravelRoutes'])):
-            i = result['TravelRoutes'][j]
-            values = str("('") + str(trprtid) +  str("'") +"," + str("'") + str(i['NEWID']) + str("'") +"," + str("'") + str(i['SuggestedDeliveryVehicle']['Code']) +  str("'") +"," + str("'")  + str(i['SuggestedDeliveryVehicle']['FullName']) +  str("'") +"," + str("'") + str(i['TotalDistance']) + str("'") +"," + str("'") +str(i['TotalDroppointsCount']) +  str("'") +"," + str("'") + str(i['TotalDropItemsCount']) + str("'") +"," + str("'") +str(i['TotalVolumetricWeight']) + str("'") +"," + str("'") + str(i['TotalMassWeight']) + str("'") +"," + str("'") + str(i['TotalTravelTime']) + str("'") +"," + str("'") +str(i['TotalHaltTime']) + str("'") +"," + str("'") +str(i['TotalDuration']) +  str("'") +"," + str("'") + str(i['TimeOfArrivalAtDepot']) + str("'") +"," + str("'") + str(i['TimeOfOutForDeliveryFromDepot']) + str("'") +"," + str("'") + str(i['TimeOfReturnFromForDeliveryAtDepot']) + str("'") +"," + str("'") + str(i['TotalNetAmount']) + str("'") +"," + str("'") + '#ffffff' + str("')")
-            cursor.execute(querytreportstr+"Values"+values)
-            
-            conn.commit()
-            trpsmryid = int(cursor.lastrowid)
-            result['summary_id'].append(trpsmryid)
-            values_str = ''
-            values_box = ''
-            treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
-            routes_len = len(i['SequencedDropPointsList'])
-            treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems])"
-            for iroute in  range(routes_len): 
-                
-                routes = i['SequencedDropPointsList'][iroute]
-                chk_box = 0
-                if iroute == 0:
-                    routes['DropItems'] = 'Arrival at Depot'
-                    chk_box = 1
-                elif iroute == 1:
-                    routes['DropItems'] = 'Out For Delivery'
-                    chk_box = 1
-                elif iroute == routes_len -1:
-                    chk_box = 1
-                    routes['DropItems'] = 'Return At Depot'
-               
-                address = routes['Address']    
-                
-                try:    
-                
-                    add_in = address.index("<br>")
-                    address = address[:add_in]
-                except:
-                    pass
-                address = address.replace("'","")
-                
-                values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
-                
-                if chk_box == 0:
-                    airway_bill = routes['DropItems'].split("<br>")
-                    airway_bill = airway_bill[:-1]
-                    
-                    for airse in airway_bill:
-                        airs1 = airse.split("_")
-                        for airs in airs1: 
-                                        
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
-            values_str = values_str[:len(values_str)-1]
-            
-            values_box = values_box[:len(values_box)-1]
-            
-            cursor.execute(treportdetailstr+"Values"+values_str)
-            
-            conn.commit()
-            
-            cursor.execute(treportroutebox+"Values"+values_box)
-            
-            conn.commit()
- 
-            trptcustom = "Insert into [dbShipprTech].[usrTYP00].[tReportCustomized]([ReportID],[ReportRouteSummaryID],[AreaCovered])"
-            majorareas = str(i['MajorAreasCovered'])
-            majorareas = majorareas.replace("u'","")
-            majorareas = majorareas.replace("'","")
-            valu_custom = str("('") + str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) +  str("'") +"," + str("'") + majorareas + str("')")
-            cursor.execute(trptcustom+"Values"+valu_custom)
-            conn.commit()
-            
-        conn.close()
-        #cursor.execute("Values()") ;
-        ### report summary######
+    conn.close()
+    #cursor.execute("Values()") ;
+    ### report summary######
     
-    except:
-        pass
+    
     
     
     
@@ -1231,7 +1229,11 @@ def noptimize(request):
         result['_id'] = result['report_id']
          
         result['input_data'] = data
-         
+        result['full_data'] = final_data
+        result['field_id'] = data['field_id']
+            
+        result['first_row'] = data['first_row']
+
         collection.insert(result)
          
         result.pop('input_data', None)
@@ -1241,6 +1243,102 @@ def noptimize(request):
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
 
+@csrf_exempt
+def create_excel(request):
+    
+   
+    info = {}
+    report_id =  request.GET['report_id']
+    query = "SELECT  box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,box.DeliveredQuantity as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,box.FailedQuantity as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,box.RejectedQuantity as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode,"
+    query += " ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number,box.ReportID as rp_Id"
+    query +=" FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box "
+    query += "join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail"
+    query += " on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID "
+    query += "and box.Sequence = route_detail.Sequence "
+    query += "left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID"
+    query += " where box.ReportID  =" + report_id
+    query += "order by code,seq";
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+    
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    cursor.execute(query)
+    report_id = int(report_id)
+    
+    
+    for row in cursor.fetchall(): 
+        info[row['box']] = row
+        
+    #         row['reportdate'] = dt1
+    #         results.append(row) 
+    
+    
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    data = collection.find_one({'_id': report_id })
+    
+    full_data =  data['full_data']
+    field_id = data['field_id']
+    
+    
+    for k in full_data:
+        key = ''
+        for k1 in field_id:
+            key += k[k1] + str("-")
+        key = key[:-1]
+        
+        k2 = info[key]
+            
+        k['Delivered Qty'] = k2['dlvrd_qty']
+        k['Rejected Qty'] = k2['rej_qty']
+        k['Attempted Qty'] = k2['failedqty']
+        k['Attempted Reason'] = k2['failedreason']
+        k['Rejected Reason'] = k2['rej_reason']
+            
+     
+    
+   
+    keys = data['first_row'] + ['Delivered Qty','Rejected Qty','Attempted Qty','Attempted Reason','Rejected Reason']
+    import StringIO
+    output = StringIO.StringIO()
+    from xlsxwriter.workbook import Workbook
+    book = Workbook(output, {'in_memory': True})
+    bold = book.add_format({'bold': True})
+
+    worksheet = book.add_worksheet('Delivery Detail')       
+    
+    col = 0
+    # Iterate over the data and write it out row by row.
+    
+    for col in range(len(keys)):
+        worksheet.write(0, col, keys[col],bold)
+    
+    
+    row = 1    
+    
+    for f in full_data:
+        for col in range(len(keys)):
+            worksheet.write(row, col, f[keys[col]])
+        
+        row += 1
+#
+    book.close()
+    
+    # construct response
+    output.seek(0)
+    response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response['Content-Disposition'] = "attachment; filename=Delivery.xlsx"
+    
+    return response
+    
+    
 
 @csrf_exempt
 def inventory_data(request):
@@ -1510,6 +1608,54 @@ def price_mongo(request):
     
     info['message'] = "Successfully Updated the MRP List"
     return HttpResponse(json.dumps(info) , content_type="application/json")
+
+@csrf_exempt
+def route_mongo(request):
+    import xlrd
+    keys = request.FILES.keys()[0]
+    xlsxfile  = request.FILES[keys].read()
+    book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
+    worksheet = book.sheet_by_index(0)
+    first_row = [] # Header
+    for col in range(worksheet.ncols):
+        first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
+    # tronsform the workbook to a list of dictionnaries
+    final_data =[]
+    for row in range(1, worksheet.nrows):
+        
+        elm = {}
+        for col in range(worksheet.ncols):
+            elm[first_row[col]]=worksheet.cell_value(row,col)
+        
+        final_data.append(elm)
+        
+    data = request.POST
+    
+    data1 = {}
+    data1['DepotPoint'] = json.loads(data['DepotPoint'])
+    data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
+    data1['Planningdate'] = data['Planningdate']
+    data1['SelectedDropointsList'] = json.loads(data['SelectedDropointsList'])
+    data1['cluster_info'] =  json.loads(data['cluster_info'])
+    data1['IsOCOR'] = data['IsOCOR']
+    
+    fields = json.loads(data['Fields'])
+    field_final = []
+    for i in sorted(fields.keys()):
+        
+        if i.find('Shipment ID') != -1:
+            field_final.append(first_row[fields[i]])
+    
+    data1['field_id'] = field_final
+    data1['first_row'] = first_row
+    if  data['RouteName'] == 'true':
+        
+        return(noptimize(data1,final_data))
+    else:
+        
+        return(route(data1,final_data))
+
+
 @csrf_exempt
 def inventory(request):
     delievery_date = request.POST['DeliveryDate']
@@ -1738,15 +1884,15 @@ def ReportInfo(request):
 
 
 @csrf_exempt
-def route(request):
+def route(data,full_data = None):
     import sys
     reload(sys)
     sys.setdefaultencoding('utf8')
     import route_optimizer
     import datetime
     import time
-    body = request.body.decode('utf-8')
-    data = json.loads(body)
+#     body = request.body.decode('utf-8')
+#     data = json.loads(body)
     depot_data  =  data['DepotPoint']
     
     shipments = [0]
@@ -2343,7 +2489,8 @@ def route(request):
     values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
     
     cursor.execute(querytreport+"Values("+values+")")
-    
+    import pdb
+    pdb.set_trace()
     conn.commit()
     
     
@@ -2455,22 +2602,24 @@ def route(request):
                 pass
     
     info['Yield'] = result
-    try:
-        import pymongo
-        from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
-         
-        db = connection.analytics
-        collection = db.shipprtech
-        result['_id'] = result['report_id']
-         
-        result['input_data'] = data
-         
-        collection.insert(result)
-         
-        result.pop('input_data', None)
-    except:
-        pass    
+    
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+    result['_id'] = result['report_id']
+     
+    result['input_data'] = data
+    result['full_data'] = final_data
+    result['field_id'] = data['field_id']
+    result['first_row'] = data['first_row']
+
+     
+    collection.insert(result)
+     
+    result.pop('input_data', None)
     
     
     return HttpResponse(json.dumps(info,) , content_type="application/json")
