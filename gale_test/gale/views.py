@@ -1637,7 +1637,10 @@ def route_mongo(request):
         elm = {}
         for col in range(worksheet.ncols):
             if col == 0:
-                elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+                try:
+                    elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+                except:
+                    elm[first_row[col]]=worksheet.cell_value(row,col)
             else:
                 elm[first_row[col]]=worksheet.cell_value(row,col)
         
@@ -1899,7 +1902,7 @@ def ReportInfo(request):
 
 
 @csrf_exempt
-def route(data,full_data = None):
+def route(data,final_data = None):
     import sys
     reload(sys)
     sys.setdefaultencoding('utf8')
@@ -2504,8 +2507,7 @@ def route(data,full_data = None):
     values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
     
     cursor.execute(querytreport+"Values("+values+")")
-    import pdb
-    pdb.set_trace()
+    
     conn.commit()
     
     
