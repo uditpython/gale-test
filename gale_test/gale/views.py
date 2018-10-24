@@ -1290,7 +1290,7 @@ def create_excel(request):
     for k in full_data:
         key = ''
         for k1 in field_id:
-            key += k[k1] + str("-")
+            key += str(k[k1]) + str("-")
         key = key[:-1]
         try:
             k2 = info[key]
