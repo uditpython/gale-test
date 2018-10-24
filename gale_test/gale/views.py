@@ -1656,7 +1656,10 @@ def route_mongo(request):
     data1['cluster_info'] =  json.loads(data['cluster_info'])
     data1['IsOCOR'] = data['IsOCOR']
     
-    fields = json.loads(data['Fields'])
+    try:
+        fields = json.loads(data['Fields'])
+    except:
+        fields = {'Shipment ID': 0}
     field_final = []
     
     for i in sorted(fields.keys()):
