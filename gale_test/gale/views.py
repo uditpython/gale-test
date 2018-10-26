@@ -2007,7 +2007,7 @@ def route(data,final_data = None):
                 temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
                 temp_address = ''.join(e for e in temp_address if e.isalnum())
                 temp_address =  temp_address[:400]
-                check = temp_address
+                check = i['Code']
                 
                 if check in code:
                     indices = [ind_chk for ind_chk, x in enumerate(code) if x == check]
