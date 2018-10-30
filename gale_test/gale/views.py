@@ -996,6 +996,12 @@ def noptimize(data,final_data):
                 pass
             seq_dp['RouteIndex'] = id -1
             seq_dp['Route'] = id  - 1
+            try:
+                if node_index > 0:
+                    data_points[node_index -1 ]['RouteIndex'] = seq_dp['RouteIndex']
+            except:
+                pass
+ 
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
                 seq = deepcopy(seq_dp)
@@ -1897,7 +1903,7 @@ def ReportInfo(request):
         info[index+1] = i
     
     data['DA'] = info
-    
+    data["droplist"] = deepcopy(data["input_data"]["SelectedDropointsList"])
     return HttpResponse(json.dumps(data) , content_type="application/json")
 
 
@@ -1998,7 +2004,7 @@ def route(data,final_data = None):
         amount[i['AirwaybillNo']]['amount'] = abs(i['NetAmount'])
         amount[i['AirwaybillNo']]['cases'] = abs(i['cases'])
         amount[i['AirwaybillNo']]['desc'] = i['Description']
-
+        
         try:
             cluster_value[i['Code']]
             
@@ -2297,6 +2303,12 @@ def route(data,final_data = None):
         for j in range(len(i)):
             
             node_index = i[j][0]
+            try:
+                if node_index > 0:
+                    
+                    data['SelectedDropointsList'][node_index -1 ]['RouteIndex'] = id -1
+            except:
+                pass
             geo_dict = {}
             geo_dict['DropPointCode'] = code[node_index]
             geo_dict['lat'] = locations[node_index][0]
@@ -2400,6 +2412,7 @@ def route(data,final_data = None):
                 pass
             seq_dp['RouteIndex'] = id -1
             seq_dp['Route'] = id  - 1
+            
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
                 seq = deepcopy(seq_dp)
@@ -2618,7 +2631,7 @@ def route(data,final_data = None):
     
     
     
-   
+    result['SelectedDropointsList'] = data['SelectedDropointsList']
     
     info = {}
     info['Code'] = 'SUCCESS'
