@@ -2183,6 +2183,16 @@ def route(data,final_data = None):
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
+        chk = 0
+        for results in optimizer_result[0]:
+            if (len(results) - 2) == 1:
+                if (len(input_data[0]) - 1) > 1:
+                    chk = 1
+                    
+        if chk == 1:
+            truck_options['number_of_trucks'] = len(optimizer_result[0]) - 1
+            optimizer_result =  route_optimizer.main(input_data,truck_options)
+         
         
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
