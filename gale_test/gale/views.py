@@ -891,6 +891,13 @@ def noptimize(data,final_data):
         for j in range(len(i)-1):
             
             node_index = i[j][0]
+            try:
+                if node_index > 0:
+                    
+                    data['SelectedDropointsList'][node_index -1 ]['RouteIndex'] = id -1
+            except:
+                pass
+
             geo_dict = {}
             geo_dict['DropPointCode'] = code[node_index]
             geo_dict['lat'] = locations[node_index][0]
@@ -996,11 +1003,6 @@ def noptimize(data,final_data):
                 pass
             seq_dp['RouteIndex'] = id -1
             seq_dp['Route'] = id  - 1
-            try:
-                if node_index > 0:
-                    data_points[node_index -1 ]['RouteIndex'] = seq_dp['RouteIndex']
-            except:
-                pass
  
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
@@ -1210,7 +1212,8 @@ def noptimize(data,final_data):
     
     
     
-    
+    result['SelectedDropointsList'] = data['SelectedDropointsList']
+
    
     
     info = {}
@@ -2412,7 +2415,6 @@ def route(data,final_data = None):
                 pass
             seq_dp['RouteIndex'] = id -1
             seq_dp['Route'] = id  - 1
-            
             dict['SequencedDropPointsList'].append(seq_dp)
             if j == 0:
                 seq = deepcopy(seq_dp)
