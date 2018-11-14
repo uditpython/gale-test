@@ -1295,7 +1295,6 @@ def create_excel(request):
     
     full_data =  data['full_data']
     field_id = data['field_id']
-    
     for k in full_data:
         key = ''
         for k1 in field_id:
@@ -1641,30 +1640,6 @@ def route_mongo(request):
         first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
     # tronsform the workbook to a list of dictionnaries
     final_data =[]
-    for row in range(1, worksheet.nrows):
-        
-        elm = {}
-        for col in range(worksheet.ncols):
-            if col == 0:
-                try:
-                    elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
-                except:
-                    elm[first_row[col]]=worksheet.cell_value(row,col)
-            else:
-                elm[first_row[col]]=worksheet.cell_value(row,col)
-        
-        final_data.append(elm)
-        
-    data = request.POST
-    
-    data1 = {}
-    data1['DepotPoint'] = json.loads(data['DepotPoint'])
-    data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
-    data1['Planningdate'] = data['Planningdate']
-    data1['SelectedDropointsList'] = json.loads(data['SelectedDropointsList'])
-    data1['cluster_info'] =  json.loads(data['cluster_info'])
-    data1['IsOCOR'] = data['IsOCOR']
-    
     try:
         fields = json.loads(data['Fields'])
     except:
@@ -1675,6 +1650,36 @@ def route_mongo(request):
         
         if i.find('Shipment ID') != -1:
             field_final.append(first_row[fields[i]])
+    
+    ind =  first_row.index(field_final[0]) 
+    for row in range(1, worksheet.nrows):
+        
+        elm = {}
+        for col in range(worksheet.ncols):
+            if ind == col:
+                elm[first_row[col]]= str(worksheet.cell_value(row,col))
+            else:
+                if col == 0:
+                    try:
+                        elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+                    except:
+                        elm[first_row[col]]=worksheet.cell_value(row,col)
+                else:
+                    elm[first_row[col]]=worksheet.cell_value(row,col)
+            
+        final_data.append(elm)
+        
+    data = request.POST
+    
+    
+    data1 = {}
+    data1['DepotPoint'] = json.loads(data['DepotPoint'])
+    data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
+    data1['Planningdate'] = data['Planningdate']
+    data1['SelectedDropointsList'] = json.loads(data['SelectedDropointsList'])
+    data1['cluster_info'] =  json.loads(data['cluster_info'])
+    data1['IsOCOR'] = data['IsOCOR']
+    
     
     data1['field_id'] = field_final
     data1['first_row'] = first_row
@@ -2201,8 +2206,8 @@ def route(data,final_data = None):
         if chk == 1:
             truck_options['number_of_trucks'] = len(optimizer_result[0]) - 1
             optimizer_result =  route_optimizer.main(input_data,truck_options)
-         
         
+
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
     
