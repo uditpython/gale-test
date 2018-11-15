@@ -20,6 +20,7 @@ from ortools.constraint_solver import routing_enums_pb2
 
 
 
+
 def distance(lat1, lon1, lat2, lon2):
     from math import sin, cos, sqrt, atan2, radians
     
@@ -1295,11 +1296,18 @@ def create_excel(request):
     
     full_data =  data['full_data']
     field_id = data['field_id']
+    
     for k in full_data:
         key = ''
+        
         for k1 in field_id:
+            try:
+                k[k1] = str(int(float(k[k1])))
+            except:
+                k[k1] = k[k1]
             key += str(k[k1]) + str("-")
         key = key[:-1]
+        
         try:
             k2 = info[key]
             k['Delivered Qty'] = k2['dlvrd_qty']
