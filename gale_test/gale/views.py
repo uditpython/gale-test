@@ -1648,6 +1648,7 @@ def route_mongo(request):
         first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
     # tronsform the workbook to a list of dictionnaries
     final_data =[]
+    data = request.POST
     try:
         fields = json.loads(data['Fields'])
     except:
@@ -1658,13 +1659,16 @@ def route_mongo(request):
         
         if i.find('Shipment ID') != -1:
             field_final.append(first_row[fields[i]])
+    indlist = []
+    for kw in field_final:
     
-    ind =  first_row.index(field_final[0]) 
+        indlist.append(first_row.index(kw))
+   
     for row in range(1, worksheet.nrows):
         
         elm = {}
         for col in range(worksheet.ncols):
-            if ind == col:
+            if col in indlist:
                 elm[first_row[col]]= str(worksheet.cell_value(row,col))
             else:
                 if col == 0:
@@ -1677,7 +1681,7 @@ def route_mongo(request):
             
         final_data.append(elm)
         
-    data = request.POST
+    
     
     
     data1 = {}
