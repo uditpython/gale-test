@@ -594,6 +594,10 @@ def noptimize(data,final_data):
         amount[i['AirwaybillNo']]['amount'] = abs(i['NetAmount'])
         amount[i['AirwaybillNo']]['cases'] = abs(i['cases'])
         amount[i['AirwaybillNo']]['desc'] = i['Description']
+        if i['PaymentMode'] == '':
+            i['PaymentMode'] = 'COD'
+        amount[i['AirwaybillNo']]['PaymentMode'] = i['PaymentMode']
+
        
         
         try:
@@ -1150,7 +1154,7 @@ def noptimize(data,final_data):
         values_box = ''
         treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
         routes_len = len(i['SequencedDropPointsList'])
-        treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems])"
+        treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems],[PaymentModeCode])"
         for iroute in  range(routes_len): 
             
             routes = i['SequencedDropPointsList'][iroute]
@@ -1185,7 +1189,7 @@ def noptimize(data,final_data):
                     airs1 = airse.split("_")
                     for airs in airs1: 
                                     
-                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
+                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) +"'," + str("'") + str(amount[airs]["PaymentMode"])+ str("'),")
         values_str = values_str[:len(values_str)-1]
         
         values_box = values_box[:len(values_box)-1]
@@ -2020,10 +2024,14 @@ def route(data,final_data = None):
     cluster_index = 1
     amount = {}
     for i in data_points:
+        
         amount[i['AirwaybillNo']] = {}
         amount[i['AirwaybillNo']]['amount'] = abs(i['NetAmount'])
         amount[i['AirwaybillNo']]['cases'] = abs(i['cases'])
         amount[i['AirwaybillNo']]['desc'] = i['Description']
+        if i['PaymentMode'] == '':
+            i['PaymentMode'] = 'COD'
+        amount[i['AirwaybillNo']]['PaymentMode'] = i['PaymentMode']
         
         try:
             cluster_value[i['Code']]
@@ -2577,7 +2585,7 @@ def route(data,final_data = None):
         values_box = ''
         treportdetailstr = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteDetail]([DropPointName],[DropPointAddress],[ETA],[Sequence],[ReportID],[ReportRouteSummaryID],[DropPointCode],[DropPointLatitude],[DropPointLongitude],[DropShipmentsUID])"
         routes_len = len(i['SequencedDropPointsList'])
-        treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems])"
+        treportroutebox = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]([ReportID],[ReportRouteSummaryID],[RouteCode],[BoxID],[Sequence], [AmountDue],[Description],[NoOfItems],[PaymentModeCode])"
         for iroute in  range(routes_len): 
             
             routes = i['SequencedDropPointsList'][iroute]
@@ -2620,9 +2628,9 @@ def route(data,final_data = None):
                     for airs in airs1: 
                         
                         try:            
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) + str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) +"'," + str("'") + str(amount[airs]["PaymentMode"]) +  str("'),")
                         except:
-                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + "0" + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"])+ str("'),")
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + "0" + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"])+"'," + str("'") + str(amount[airs]["PaymentMode"])+ str("'),")
         values_str = values_str[:len(values_str)-1]
         
         values_box = values_box[:len(values_box)-1]
