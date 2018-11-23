@@ -1887,6 +1887,38 @@ def cron_task():
 #         
 #         collection.update({"_id": id},{"inventory_data":data_sum['inventory_data']})
 
+
+@csrf_exempt
+def redeliver(request):
+    
+    import json
+    full_data = json.loads(request.POST['data'])
+    report_id = int(request.POST['report_id'])
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    data = collection.find_one({'_id': report_id })['input_data']
+    info = {}
+    for i in data['SelectedDropointsList']:
+        info[i['AirwaybillNo']] = i
+        
+    data1 = []
+    for i in full_data:
+        j = info[i[0]]
+        j['cases'] = int(i[2])
+        data1.append(j)
+    
+    data['UsersRoutePreferences']['SelectedDeliveryVehicles'] = [json.loads(request.POST['selected_truck'])]
+    
+    data['SelectedDropointsList'] = data1
+    return route(data,[],report_id,)
+
+
+
+
 @csrf_exempt
 def ReportInfo(request):
     
@@ -1935,7 +1967,7 @@ def ReportInfo(request):
 
 
 @csrf_exempt
-def route(data,final_data = None):
+def route(data,final_data = None, report_id = None):
     import sys
     reload(sys)
     sys.setdefaultencoding('utf8')
@@ -1944,6 +1976,14 @@ def route(data,final_data = None):
     import time
 #     body = request.body.decode('utf-8')
 #     data = json.loads(body)
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+    if report_id != None:
+        new_data = collection.find_one({'_id': report_id })
     depot_data  =  data['DepotPoint']
     
     shipments = [0]
@@ -2297,7 +2337,16 @@ def route(data,final_data = None):
         dict['DepotName'] = ''
         dict['DropPointsGeoCoordinate'] = []
         dict['ID'] = id
-        dict['NEWID'] = id
+        
+        if report_id == None:
+            dict['NEWID'] = id
+        else:
+            
+            try:
+                
+                dict['NEWID'] = "REATTEMPT - " + str(id + new_data["reattempt"]) 
+            except:
+                dict['NEWID'] = "REATTEMPT - " + str(id) 
         
         
         dict['LimitingParameter'] = "MSWT"
@@ -2551,20 +2600,23 @@ def route(data,final_data = None):
         planning_date = data['Planningdate']
     except:
         planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
-    querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
-    
-    vmwt = ""
-    for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
-        vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
-    
-    values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
-    
-    cursor.execute(querytreport+"Values("+values+")")
-    
-    conn.commit()
-    
-    
-    trprtid = int(cursor.lastrowid)
+    if report_id == None:
+        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+        
+        vmwt = ""
+        for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
+            vmwt += i['Code']+":"+i['VmWtAllowed'] + "|"
+        
+        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+        
+        cursor.execute(querytreport+"Values("+values+")")
+        
+        conn.commit()
+        
+        
+        trprtid = int(cursor.lastrowid)
+    else:
+        trprtid = report_id
     result['report_id'] = trprtid
     
     ### query for 
@@ -2673,26 +2725,48 @@ def route(data,final_data = None):
     
     info['Yield'] = result
     
-    import pymongo
-    from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
-     
-    db = connection.analytics
-    collection = db.shipprtech
-    result['_id'] = result['report_id']
-     
-    result['input_data'] = data
-    result['full_data'] = final_data
-    result['field_id'] = data['field_id']
-    result['first_row'] = data['first_row']
-
-     
-    collection.insert(result)
-     
-    result.pop('input_data', None)
     
     
-    return HttpResponse(json.dumps(info,) , content_type="application/json")
+    if report_id == None:
+        result['_id'] = result['report_id']
+         
+        result['input_data'] = data
+        result['full_data'] = final_data
+        result['field_id'] = data['field_id']
+        result['first_row'] = data['first_row']
+        
+         
+        collection.insert(result)
+         
+        result.pop('input_data', None)
+    else:
+        
+        
+        new_data['TotalMassWt'] += result['TotalMassWt'] 
+        new_data['TotalHaltTime'] +=  result['TotalHaltTime']
+        new_data['TotalVolumetricWt'] += result['TotalVolumetricWt']
+       
+        new_data['TotalDistanceTravelled'] +=  result['TotalDistanceTravelled']
+        new_data['summary_id'] += result['summary_id']
+        new_data['TravelRouteCount'] +=  result['TravelRouteCount']
+        new_data['TravelRoutes'] += result['TravelRoutes']
+        new_data['TotalTravelDuration'] += result['TotalTravelDuration']
+         
+        new_data['TotalTravelTime'] += result['TotalTravelTime']
+        try:
+            new_data['reattempt'] += result['TravelRouteCount']
+        except:
+            new_data['reattempt'] = result['TravelRouteCount']
+            
+        collection.update({"_id": report_id}, new_data)
+        
+    if report_id == None:
+        return HttpResponse(json.dumps(info,) , content_type="application/json")
+        
+    return_info = info['Yield']
+    return_info['input_data'] = data
+    
+    return HttpResponse(json.dumps(return_info,) , content_type="application/json")
 
 
 

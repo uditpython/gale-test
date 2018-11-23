@@ -14,6 +14,7 @@ urlpatterns = [
               url(r'^inventory_data/$', views.inventory_data, ),
                url(r'^price_mongo/$', views.price_mongo, ),
                 url(r'^route_mongo/$', views.route_mongo, ),
+                url(r'^redeliver/$', views.redeliver, ),
               
                        
                        
