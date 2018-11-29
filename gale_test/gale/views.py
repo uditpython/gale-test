@@ -1687,7 +1687,7 @@ def route_mongo(request):
         
     
     
-    
+    import json
     data1 = {}
     data1['DepotPoint'] = json.loads(data['DepotPoint'])
     data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
@@ -1699,14 +1699,72 @@ def route_mongo(request):
     
     data1['field_id'] = field_final
     data1['first_row'] = first_row
-    if  data['RouteName'] == 'true':
+    
+    project_code = data1['DepotPoint']['Code']
+    
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+    
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    
+    query = "SELECT * FROM [dbShipprTech].[usrTYP00].[tRouteBoxRedelivery] redel join [dbShipprTech].[usrTYP00].[tReport] as report on redel.ReportID= report.ID where  redel.RedeliveryDate = '" + data1['Planningdate'] + "'and  redel.StatusCode = 'NEW' and report.DepotCode = '" +project_code  +"'"
+    cursor.execute(query)
+    full_data = cursor.fetchall()
+    conn.close()
+    
+    redel_data = {}
+    for i in full_data:
+        try:
+            redel_data[i['ReportID']].append(i)
+        except:
+            redel_data[i['ReportID']] = [i]
+    
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+    redelivery = []
+    for i in redel_data.keys():
+        redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
+    
+    info = {}
+    for i in redelivery:
+        info[i['AirwaybillNo']] = i
+#          
+    datared = []
+    for i in full_data:
         
-        return(noptimize(data1,final_data))
+        j = info[i['BoxID']]
+        j['cases'] = int(i['NoOfItems'])
+        j['AirwaybillNo'] = 'REATTEMPT - ' + j['AirwaybillNo']
+        
+        datared.append(j)
+    data1['SelectedDropointsList'] += datared
+    if  data['RouteName'] == 'true':
+        return_data = noptimize(data1,final_data)
+        
     else:
         
-        return(route(data1,final_data))
+        return_data = route(data1,final_data)
+     
+    
+    for report_id in redel_data:
+        report_id = int(report_id)
+        
+        keys = []
+        for i in redel_data[report_id]:
+            keys.append(i['BoxID'])
+        assign_redliver(keys, report_id)
 
+    
+    
 
+    return(return_data)
 @csrf_exempt
 def inventory(request):
     delievery_date = request.POST['DeliveryDate']
@@ -1892,6 +1950,7 @@ def cron_task():
 def redeliver(request):
     
     import json
+    
     full_data = json.loads(request.POST['data'])
     report_id = int(request.POST['report_id'])
     import pymongo
@@ -1914,9 +1973,34 @@ def redeliver(request):
     data['UsersRoutePreferences']['SelectedDeliveryVehicles'] = [json.loads(request.POST['selected_truck'])]
     
     data['SelectedDropointsList'] = data1
-    return route(data,[],report_id,)
+    data12 = route(data,[],report_id,)
+    
+    keys = []
+    for i in data1:
+        keys.append(i['AirwaybillNo'])
+    assign_redliver(keys, report_id)
+    
+    
+    return data12
 
 
+def assign_redliver(keys, reportid):
+    
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+        
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    query = "Update [dbShipprTech].[usrTYP00].[tRouteBoxRedelivery] set StatusCode = 'AssignedtoRoute' where reportID = " + str(reportid) + " and BoxID in ("
+    for i in keys:
+        query += " '"+ str(i) + "',"
+    query = query[:-1] + " )"
+    
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 
 
 @csrf_exempt
