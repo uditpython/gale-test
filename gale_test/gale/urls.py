@@ -15,6 +15,8 @@ urlpatterns = [
                url(r'^price_mongo/$', views.price_mongo, ),
                 url(r'^route_mongo/$', views.route_mongo, ),
                 url(r'^redeliver/$', views.redeliver, ),
+                url(r'^redelivery_points/$', views.redelivery_points, ),
+                
               
                        
                        

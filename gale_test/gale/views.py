@@ -1640,6 +1640,64 @@ def price_mongo(request):
     return HttpResponse(json.dumps(info) , content_type="application/json")
 
 @csrf_exempt
+def redelivery_points(request):
+    
+    data = request.POST
+    
+    project_code = data['ProjectCode']
+    planning_date = data['Planningdate']
+    
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+    
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    
+    query = "SELECT * FROM [dbShipprTech].[usrTYP00].[tRouteBoxRedelivery] redel join [dbShipprTech].[usrTYP00].[tReport] as report on redel.ReportID= report.ID where  redel.RedeliveryDate = '" + planning_date + "'and  redel.StatusCode = 'NEW' and report.DepotCode = '" +project_code  +"'"
+    cursor.execute(query)
+    full_data = cursor.fetchall()
+    conn.close()
+    
+    redel_data = {}
+    for i in full_data:
+        try:
+            redel_data[i['ReportID']].append(i)
+        except:
+            redel_data[i['ReportID']] = [i]
+    
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+    redelivery = []
+    for i in redel_data.keys():
+        redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
+    
+    info = {}
+    for i in redelivery:
+        info[i['AirwaybillNo']] = i
+#          
+    datared = []
+    for i in full_data:
+        
+        j = info[i['BoxID']]
+        j['cases'] = int(i['NoOfItems'])
+        j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
+        
+        datared.append(j)
+    info = {}
+    info['Code'] = 'Success'
+    info['Yield'] = datared
+    if len(datared) > 0:
+        info['Message'] = str(len(datared)) +" points are available for redelivery."
+    else:
+        info['Message'] = "No points are available for redelivery."
+    return HttpResponse(json.dumps(info) , content_type="application/json")
+@csrf_exempt
 def route_mongo(request):
     import xlrd
     import datetime
@@ -1706,45 +1764,51 @@ def route_mongo(request):
     server = 'MILFOIL.arvixe.com'
     user = 'usrShipprTech'
     password = 'usr@ShipprTech'
-    
+     
     conn = pymssql.connect(server, user, password, "dbShipprTech")
     cursor = conn.cursor(as_dict=True)
-    
+     
     query = "SELECT * FROM [dbShipprTech].[usrTYP00].[tRouteBoxRedelivery] redel join [dbShipprTech].[usrTYP00].[tReport] as report on redel.ReportID= report.ID where  redel.RedeliveryDate = '" + data1['Planningdate'] + "'and  redel.StatusCode = 'NEW' and report.DepotCode = '" +project_code  +"'"
     cursor.execute(query)
     full_data = cursor.fetchall()
     conn.close()
-    
+     
     redel_data = {}
     for i in full_data:
         try:
             redel_data[i['ReportID']].append(i)
         except:
             redel_data[i['ReportID']] = [i]
-    
+     
     import pymongo
     from pymongo import MongoClient
     connection = MongoClient('localhost:27017')
-     
+      
     db = connection.analytics
     collection = db.shipprtech
     redelivery = []
+    cluster_info = []
     for i in redel_data.keys():
         redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
-    
+        cluster_info += collection.find_one({'_id': i })['input_data']['cluster_info']
+     
     info = {}
     for i in redelivery:
         info[i['AirwaybillNo']] = i
 #          
     datared = []
+    
     for i in full_data:
-        
+         
         j = info[i['BoxID']]
         j['cases'] = int(i['NoOfItems'])
-        j['AirwaybillNo'] = 'REATTEMPT - ' + j['AirwaybillNo']
+        j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
         
         datared.append(j)
+    
     data1['SelectedDropointsList'] += datared
+    data1['cluster_info'] += cluster_info
+    
     if  data['RouteName'] == 'true':
         return_data = noptimize(data1,final_data)
         
@@ -2129,10 +2193,12 @@ def route(data,final_data = None, report_id = None):
     for pt in cluster_points:
         
         cluster_value[pt['DropPointCode']] = pt['NewRouteID']
+        
         try:
             cluster_dict[pt['NewRouteID']]['code'].append(pt['DropPointCode'])
         except:
             cluster_pt = {}
+            
             cluster_pt['code'] = [pt['DropPointCode']]
             cluster_pt['cluster_value'] = [0]
             
@@ -2263,6 +2329,7 @@ def route(data,final_data = None, report_id = None):
                 else:
                     
                     code.append(check)
+                    
                     address.append(i['GoogleMapAddress'])
                     
                     try:
@@ -2276,31 +2343,52 @@ def route(data,final_data = None, report_id = None):
                     try:
                         timeslots = i['TimeSlot']
                         try:
-                            start_ind =  timeslots.index('AM')
-                            chk_am = 1
-                        except:
-                            start_ind =  timeslots.index('PM')
-                            chk_am = 0
-                        try:
-                            end_ind = timeslots[start_ind+3:].index('PM')
-                            chk_pm = 1
-                        except:
+                            try:
+                                start_ind =  timeslots.index('AM')
+                                chk_am = 1
+                            except:
+                                start_ind =  timeslots.index('PM')
+                                chk_am = 0
+                            try:
+                                end_ind = timeslots[start_ind+3:].index('PM')
+                                chk_pm = 1
+                            except:
+                                
+                                end_ind = timeslots[start_ind+3:].index('AM')
+                                chk_pm = 0
                             
-                            end_ind = timeslots[start_ind+3:].index('AM')
-                            chk_pm = 0
-                        
-                        start_tm_str = timeslots[:start_ind]
-                        end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
-                        start_tm_ind = start_tm_str.index(':')
-                        end_tm_ind = end_tm_str.index(':')
-                        if chk_am == 1:
-                            start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
-                        else:
-                            start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
-                        if chk_pm == 1:
-                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
-                        else:
-                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                            start_tm_str = timeslots[:start_ind]
+                            end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
+                            start_tm_ind = start_tm_str.index(':')
+                            end_tm_ind = end_tm_str.index(':')
+                            if chk_am == 1:
+                                start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                            else:
+                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                            if chk_pm == 1:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                            else:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                        except:
+                            try:
+                                import re
+                                slot_ind = [m.start() for m in re.finditer(':', timeslots)]
+                                if len(slot_ind) > 0:
+                                    for slt in range(len(slot_ind)):
+                                        
+                                        hours = timeslots[slot_ind[slt]-2:slot_ind[slt]]
+                                        minutes =  timeslots[slot_ind[slt]+1:slot_ind[slt]+3]
+                                        if slt == 0:
+                                            start_times.append(3600*int(hours) + int(minutes)*60 )
+                                        if slt== 1:
+                                           end_times.append(3600*int(hours) + int(minutes)*60 )
+                                else:
+                                    start_times.append(reporting_time + loading_time)
+                                    end_times.append(returning_time)
+                            except:
+                                start_times.append(reporting_time + loading_time)
+                                end_times.append(returning_time)
+                            
                     except:
                         
                         start_times.append(reporting_time + loading_time)
@@ -2319,7 +2407,6 @@ def route(data,final_data = None, report_id = None):
                     demands.append(i['Wt_kgs'])
                     shipments.append(1)
                     volume.append(i['DropItemVMwt'])
-                    
                     
                     cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
                     
