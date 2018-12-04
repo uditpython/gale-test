@@ -1675,8 +1675,10 @@ def redelivery_points(request):
     collection = db.shipprtech
     redelivery = []
     for i in redel_data.keys():
-        redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
-    
+        try:
+            redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
+        except:
+            pass
     info = {}
     for i in redelivery:
         info[i['AirwaybillNo']] = i
@@ -1789,9 +1791,11 @@ def route_mongo(request):
     redelivery = []
     cluster_info = []
     for i in redel_data.keys():
-        redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
-        cluster_info += collection.find_one({'_id': i })['input_data']['cluster_info']
-     
+        try:
+            redelivery += collection.find_one({'_id': i })['input_data']['SelectedDropointsList']
+            cluster_info += collection.find_one({'_id': i })['input_data']['cluster_info']
+        except:
+            pass
     info = {}
     for i in redelivery:
         info[i['AirwaybillNo']] = i
