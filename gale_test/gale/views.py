@@ -1805,12 +1805,14 @@ def route_mongo(request):
     datared = []
     
     for i in full_data:
-         
-        j = info[i['BoxID']]
-        j['cases'] = int(i['NoOfItems'])
-        j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
-        
-        datared.append(j)
+        try:
+            j = info[i['BoxID']]
+            j['cases'] = int(i['NoOfItems'])
+            j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
+            
+            datared.append(j)
+        except:
+            pass
     
     data1['SelectedDropointsList'] += datared
     data1['cluster_info'] += cluster_info
