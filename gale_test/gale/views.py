@@ -1685,12 +1685,14 @@ def redelivery_points(request):
 #          
     datared = []
     for i in full_data:
-        
-        j = info[i['BoxID']]
-        j['cases'] = int(i['NoOfItems'])
-        j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
-        
-        datared.append(j)
+        try:
+            j = info[i['BoxID']]
+            j['cases'] = int(i['NoOfItems'])
+            j['AirwaybillNo'] = 'REDELIVERY - ' + j['AirwaybillNo']
+            
+            datared.append(j)
+        except:
+            pass
     info = {}
     info['Code'] = 'Success'
     info['Yield'] = datared
