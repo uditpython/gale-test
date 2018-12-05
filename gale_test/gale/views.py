@@ -1697,7 +1697,7 @@ def redelivery_points(request):
     info['Code'] = 'Success'
     info['Yield'] = datared
     if len(datared) > 0:
-        info['Message'] = str(len(datared)) +" points are available for redelivery. Continue New Shipment import and the redelivery locations will be appended to the newly imported deliveries.""
+        info['Message'] = str(len(datared)) +" points are available for redelivery. Continue New Shipment import and the redelivery locations will be appended to the newly imported deliveries."
     else:
         info['Message'] = "No points are available for redelivery."
     return HttpResponse(json.dumps(info) , content_type="application/json")
