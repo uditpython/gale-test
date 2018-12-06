@@ -124,7 +124,7 @@ class CreateDistanceCallbackNEW(object):
         
         except:
         ##  if we need to change to osrm point to distance osrm
-            self.matrix[cordinates[1]][cordinates[2]] = distance1(cordinates[3:])
+            self.matrix[cordinates[1]][cordinates[2]] = distance_osrm(cordinates[3:])
 
     import  datetime    
     
@@ -461,7 +461,7 @@ def main(data,truck_options):
       
       start = start_times[location] - start_times[0]
       end = start + end_times[location] - start_times[location] 
-        
+  
       location_idx = routing.NodeToIndex(location)
       time_dimension.CumulVar(location_idx).SetRange(start, end)
       routing.AddToAssignment(time_dimension.SlackVar(location_idx))
