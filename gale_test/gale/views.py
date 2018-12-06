@@ -577,7 +577,8 @@ def noptimize(data,final_data):
             cluster_pt = {}
             cluster_pt['code'] = [pt['Code']]
             cluster_pt['cluster_value'] = [0]
-            
+            cluster_pt['start_times'] = deepcopy(start_times)
+            cluster_pt['end_times'] = deepcopy(end_times)
             cluster_pt['locations'] = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
             cluster_pt['volume'] = [0]
             cluster_pt['address'] = [depot_data['Address']]
@@ -702,7 +703,8 @@ def noptimize(data,final_data):
                         
                         
                         cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
-                        
+                        cluster_dict[cluster_value[i['Code']]]['start_times'].append(start_times[-1])
+                        cluster_dict[cluster_value[i['Code']]]['end_times'].append(end_times[-1]) 
                         cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
                         cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                         cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
@@ -756,6 +758,7 @@ def noptimize(data,final_data):
                             else:
                                 start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
                         if chk_pm == 1:
+                            
                             if int(end_tm_str[:end_tm_ind]) == 12:
                                 end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
                             else:
@@ -784,7 +787,8 @@ def noptimize(data,final_data):
                     
                     
                     cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
-                    
+                    cluster_dict[cluster_value[i['Code']]]['start_times'].append(start_times[-1])
+                    cluster_dict[cluster_value[i['Code']]]['end_times'].append(end_times[-1]) 
                     cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
                     cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
@@ -803,7 +807,7 @@ def noptimize(data,final_data):
     truck_options['number_of_trucks'] = 1    
     for i in cluster_dict.keys():
         
-        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], [start_times[0]+ 864000]*len(start_times),cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], cluster_dict[i]['start_times'], cluster_dict[i]['end_times'],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
@@ -2164,7 +2168,8 @@ def route(data,final_data = None, report_id = None):
     address = [depot_data['Address']]
     volume = [0]
     locations = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
-    
+                
+
     truck_options= data['UsersRoutePreferences']
     max_weight = 0
     max_vol = 0
@@ -2224,7 +2229,8 @@ def route(data,final_data = None, report_id = None):
             
             cluster_pt['code'] = [pt['DropPointCode']]
             cluster_pt['cluster_value'] = [0]
-            
+            cluster_pt['start_times'] = deepcopy(start_times)
+            cluster_pt['end_times'] = deepcopy(end_times)
             cluster_pt['locations'] = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
             cluster_pt['volume'] = [0]
             cluster_pt['address'] = [depot_data['Address']]
@@ -2344,7 +2350,8 @@ def route(data,final_data = None, report_id = None):
                         
                         
                         cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
-                        
+                        cluster_dict[cluster_value[i['Code']]]['start_times'].append(start_times[-1])
+                        cluster_dict[cluster_value[i['Code']]]['end_times'].append(end_times[-1]) 
                         cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
                         cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                         cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
@@ -2444,7 +2451,8 @@ def route(data,final_data = None, report_id = None):
                     volume.append(i['DropItemVMwt'])
                     
                     cluster_dict[cluster_value[i['Code']]]['cluster_value'].append(cluster_index)
-                    
+                    cluster_dict[cluster_value[i['Code']]]['start_times'].append(start_times[-1])
+                    cluster_dict[cluster_value[i['Code']]]['end_times'].append(end_times[-1]) 
                     cluster_dict[cluster_value[i['Code']]]['locations'].append(loc)
                     cluster_dict[cluster_value[i['Code']]]['volume'].append(i['DropItemVMwt'])
                     cluster_dict[cluster_value[i['Code']]]['address'].append(i['GoogleMapAddress'])
@@ -2460,7 +2468,7 @@ def route(data,final_data = None, report_id = None):
     truck_options['number_of_trucks'] = 100
     for i in cluster_dict.keys():
         
-        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], start_times[0:len(cluster_dict[i]['locations'])], end_times[0:len(cluster_dict[i]['locations'])],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
+        input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], cluster_dict[i]['start_times'], cluster_dict[i]['end_times'],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
         
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         chk = 0
