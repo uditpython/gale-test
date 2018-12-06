@@ -670,9 +670,15 @@ def noptimize(data,final_data):
                             if chk_am == 1:
                                 start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
                             else:
-                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                                if int(start_tm_str[:start_tm_ind]) == 12:
+                                    start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                                else:
+                                    start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
                             if chk_pm == 1:
-                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                                if int(end_tm_str[:end_tm_ind]) == 12:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                                else:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
                             else:
                                 end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
                         except:
@@ -722,6 +728,7 @@ def noptimize(data,final_data):
                     
                     try:
                         timeslots = i['TimeSlot']
+                        
                         try:
                             start_ind =  timeslots.index('AM')
                             chk_am = 1
@@ -740,14 +747,22 @@ def noptimize(data,final_data):
                         end_tm_str =  timeslots[start_ind+3:start_ind+3+end_ind]
                         start_tm_ind = start_tm_str.index(':')
                         end_tm_ind = end_tm_str.index(':')
+                        
                         if chk_am == 1:
                             start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
                         else:
-                            start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                            if int(start_tm_str[:start_tm_ind]) == 12:
+                                start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                            else:
+                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
                         if chk_pm == 1:
-                            end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                            if int(end_tm_str[:end_tm_ind]) == 12:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                            else:
+                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
                         else:
                             end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                        
                     except:
                         
                         start_times.append(reporting_time + loading_time)
@@ -2297,9 +2312,15 @@ def route(data,final_data = None, report_id = None):
                             if chk_am == 1:
                                 start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
                             else:
-                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                                if int(start_tm_str[:start_tm_ind]) == 12:
+                                    start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                                else:
+                                    start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
                             if chk_pm == 1:
-                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                                if int(end_tm_str[:end_tm_ind]) == 12:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                                else:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
                             else:
                                 end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
                         except:
@@ -2372,9 +2393,15 @@ def route(data,final_data = None, report_id = None):
                             if chk_am == 1:
                                 start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
                             else:
-                                start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
+                                if int(start_tm_str[:start_tm_ind]) == 12:
+                                    start_times.append(3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60 )
+                                else:
+                                    start_times.append((3600*int(start_tm_str[:start_tm_ind]) + int(start_tm_str[start_tm_ind+1:])*60) + 12*3600)
                             if chk_pm == 1:
-                                end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
+                                if int(end_tm_str[:end_tm_ind]) == 12:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
+                                else:
+                                    end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 12*3600)
                             else:
                                 end_times.append((3600*int(end_tm_str[:end_tm_ind]) + int(end_tm_str[end_tm_ind+1:])*60)+ 0)
                         except:
