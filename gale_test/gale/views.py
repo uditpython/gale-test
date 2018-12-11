@@ -2472,7 +2472,7 @@ def route(data,final_data = None, report_id = None):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], cluster_dict[i]['start_times'], cluster_dict[i]['end_times'],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-        
+        print input_data
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         chk = 0
         for results in optimizer_result[0]:
