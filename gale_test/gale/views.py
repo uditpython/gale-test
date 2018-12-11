@@ -2067,7 +2067,7 @@ def redeliver(request):
     data1 = deepcopy(data['SelectedDropointsList']) 
     for i in data['SelectedDropointsList']:
         i['AirwaybillNo'] = "REATTEMPT - " + i['AirwaybillNo'] 
-    
+        i['Code'] = i['customercode']
     data12 = route(data,[],report_id,)
     
     keys = []
