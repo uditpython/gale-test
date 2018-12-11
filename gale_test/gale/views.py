@@ -2043,7 +2043,6 @@ def redeliver(request):
     import json
     
     full_data = json.loads(request.POST['data'])
-    print full_data
     report_id = int(request.POST['report_id'])
     import pymongo
     from pymongo import MongoClient
@@ -2068,6 +2067,7 @@ def redeliver(request):
     for i in data['SelectedDropointsList']:
         i['AirwaybillNo'] = "REATTEMPT - " + i['AirwaybillNo'] 
         i['Code'] = i['customercode']
+        i['RouteName'] = 1
     data12 = route(data,[],report_id,)
     
     keys = []
@@ -2473,7 +2473,7 @@ def route(data,final_data = None, report_id = None):
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], cluster_dict[i]['start_times'], cluster_dict[i]['end_times'],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
-        print input_data
+        
         optimizer_result =  route_optimizer.main(input_data,truck_options)
         chk = 0
         for results in optimizer_result[0]:
