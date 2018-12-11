@@ -2063,7 +2063,10 @@ def redeliver(request):
     
     data['UsersRoutePreferences']['SelectedDeliveryVehicles'] = [json.loads(request.POST['selected_truck'])]
     
-    data['SelectedDropointsList'] = data1
+    data1 = deepcopy(data['SelectedDropointsList']) 
+    for i in data['SelectedDropointsList']:
+        i['AirwaybillNo'] = "REATTEMPT - " + i['AirwaybillNo'] 
+    
     data12 = route(data,[],report_id,)
     
     keys = []
