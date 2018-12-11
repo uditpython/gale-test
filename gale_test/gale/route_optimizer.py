@@ -52,7 +52,7 @@ def distance_osrm(input):
     lon1 = input[1]
     lat2 = input[2]
     lon2 = input[3]
-    osrm_url = "http://13.232.103.148:5000/route/v1/driving/"
+    osrm_url = "http://localhost:5000/route/v1/driving/"
     url = osrm_url + str(lon1) + str(",") + str(lat1) + str(";") + str(lon2) + str(",") + str(lat2)
     params = {'alternatives': 'true', 'geometries':'geojson'}
     results = requests.get(url, params=params).json()['routes']
@@ -364,8 +364,8 @@ def main(data,truck_options):
         dist_between_locations = CreateDistanceCallback(locations)
 #     dist_between_locations.matrix = matrix
     dist_callback = dist_between_locations.Distance
-    routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
     
+    routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
     demands_at_locations = CreateDemandCallback(demands)
     demands_callback = demands_at_locations.Demand
 
@@ -454,7 +454,6 @@ def main(data,truck_options):
                          duration,
                          False,
                          time)
-#     routing.SetArcCostEvaluatorOfAllVehicles(dist_callback)
     # Add time window constraints.
     time_dimension = routing.GetDimensionOrDie(time)
     
