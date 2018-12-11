@@ -2043,6 +2043,7 @@ def redeliver(request):
     import json
     
     full_data = json.loads(request.POST['data'])
+    print full_data
     report_id = int(request.POST['report_id'])
     import pymongo
     from pymongo import MongoClient
