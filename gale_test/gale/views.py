@@ -2079,7 +2079,7 @@ def redeliver(request):
 
 
 def assign_redliver(keys, reportid):
-    
+    print keys
     import pymssql
     server = 'MILFOIL.arvixe.com'
     user = 'usrShipprTech'
