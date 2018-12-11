@@ -2063,7 +2063,8 @@ def redeliver(request):
     
     data['UsersRoutePreferences']['SelectedDeliveryVehicles'] = [json.loads(request.POST['selected_truck'])]
     
-    data1 = deepcopy(data['SelectedDropointsList']) 
+    data['SelectedDropointsList'] = deepcopy(data1) 
+    
     for i in data['SelectedDropointsList']:
         i['AirwaybillNo'] = "REATTEMPT - " + i['AirwaybillNo'] 
         i['Code'] = i['customercode']
