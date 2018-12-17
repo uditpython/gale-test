@@ -1721,7 +1721,64 @@ def redelivery_points(request):
         info['Message'] = "No points are available for redelivery."
     return HttpResponse(json.dumps(info) , content_type="application/json")
 @csrf_exempt
+def add_route(request):
+    data = request.POST
+    data1 = {}
+    data1['DepotPoint'] = json.loads(data['DepotPoint'])
+    data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
+    data1['Planningdate'] = data['Planningdate']
+    data1['SelectedDropointsList'] = json.loads(data['SelectedDropointsList'])
+    data1['cluster_info'] =  json.loads(data['cluster_info'])
+    data1['IsOCOR'] = data['IsOCOR']
+    report_id = int(data['ReportID'])
+    
+    data = route(data1,[],report_id,"ADD ROUTE")
+    data['Code'] = "NEW ROUTE"
+    data['ReportID'] = report_id
+    
+    return data
+#     import pymongo
+#     from pymongo import MongoClient
+#     connection = MongoClient('localhost:27017')
+#     
+#     db = connection.analytics
+#     collection = db.shipprtech
+#     data = collection.find_one({'_id': report_id })
+#     import pymssql
+#     server = 'MILFOIL.arvixe.com'
+#     user = 'usrShipprTech'
+#     password = 'usr@ShipprTech'
+#         
+#     conn = pymssql.connect(server, user, password, "dbShipprTech")
+#     cursor = conn.cursor(as_dict=True)
+#     
+#     cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteSummary] where reportID = " + str(report_id) + " order by ID")
+#     summary = cursor.fetchall()
+#     summary_ind = []
+#     for sum in summary:
+#         summary_ind.append(sum['ID'])
+#         
+#     cursor.execute("SELECT * from  [dbShipprTech].[usrTYP00].[tReportRouteResource] where reportID = " + str(report_id) + " order by ReportRouteSummaryID")
+#     result = cursor.fetchall()
+#     conn.close()
+#     info = {}
+#     for j in range(len(result)):
+#         i = result[j]
+#         
+#         i.pop('CreatedAt', None)
+#         i.pop('UpdatedAt', None)
+#         i['ReportDateIST'] = str(i['ReportDateIST'])
+#         
+#         index = summary_ind.index(i['ReportRouteSummaryID'])
+#         info[index+1] = i
+#     
+#     data['DA'] = info
+#     data["droplist"] = deepcopy(data["input_data"]["SelectedDropointsList"])
+ 
+
+@csrf_exempt
 def route_mongo(request):
+    import json
     import xlrd
     import datetime
     keys = request.FILES.keys()[0]
@@ -1734,10 +1791,8 @@ def route_mongo(request):
     # tronsform the workbook to a list of dictionnaries
     final_data =[]
     data = request.POST
-    try:
-        fields = json.loads(data['Fields'])
-    except:
-        fields = {'Shipment ID': 0}
+    
+    fields = json.loads(data['Fields'])
     field_final = []
     
     for i in sorted(fields.keys()):
@@ -1768,7 +1823,7 @@ def route_mongo(request):
         
     
     
-    import json
+    
     data1 = {}
     data1['DepotPoint'] = json.loads(data['DepotPoint'])
     data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
@@ -2147,7 +2202,7 @@ def ReportInfo(request):
 
 
 @csrf_exempt
-def route(data,final_data = None, report_id = None):
+def route(data,final_data = None, report_id = None,create_new_route = None):
     import sys
     reload(sys)
     sys.setdefaultencoding('utf8')
@@ -2162,6 +2217,7 @@ def route(data,final_data = None, report_id = None):
      
     db = connection.analytics
     collection = db.shipprtech
+    
     if report_id != None:
         new_data = collection.find_one({'_id': report_id })
     depot_data  =  data['DepotPoint']
@@ -2247,6 +2303,7 @@ def route(data,final_data = None, report_id = None):
     
     cluster_index = 1
     amount = {}
+    
     for i in data_points:
         
         amount[i['AirwaybillNo']] = {}
@@ -2258,8 +2315,10 @@ def route(data,final_data = None, report_id = None):
         amount[i['AirwaybillNo']]['PaymentMode'] = i['PaymentMode']
         
         try:
-            cluster_value[i['Code']]
-            
+            try:
+                cluster_value[i['Code']]
+            except:
+                cluster_value[i['Code']] = i['Cluster']
             if i['GoogleMapAddress'] != '':
                 
                 temp_address =  i['ConsigneeAddress'][:i['ConsigneeAddress'].index(',<br>')]
@@ -2481,11 +2540,13 @@ def route(data,final_data = None, report_id = None):
             if (len(results) - 2) == 1:
                 if (len(input_data[0]) - 1) > 1:
                     chk = 1
-                    
+              
         if chk == 1:
             truck_options['number_of_trucks'] = len(optimizer_result[0]) - 1
-            optimizer_result =  route_optimizer.main(input_data,truck_options)
-        
+            try:
+                optimizer_result =  route_optimizer.main(input_data,truck_options)
+            except:
+                pass
 
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
@@ -2560,12 +2621,19 @@ def route(data,final_data = None, report_id = None):
         if report_id == None:
             dict['NEWID'] = id
         else:
-            
-            try:
-                
-                dict['NEWID'] = "REATTEMPT - " + str(id + new_data["reattempt"]) 
-            except:
-                dict['NEWID'] = "REATTEMPT - " + str(id) 
+            if create_new_route != None:
+                try:
+                    
+                    dict['NEWID'] = "ADDED ROUTE - " + str(id + new_data["add_route"]) 
+                except:
+                    
+                    dict['NEWID'] = "ADDED ROUTE - " + str(id) 
+            else:
+                try:
+                    
+                    dict['NEWID'] = "REATTEMPT - " + str(id + new_data["reattempt"]) 
+                except:
+                    dict['NEWID'] = "REATTEMPT - " + str(id) 
         
         
         dict['LimitingParameter'] = "MSWT"
@@ -2972,11 +3040,16 @@ def route(data,final_data = None, report_id = None):
         new_data['TotalTravelDuration'] += result['TotalTravelDuration']
          
         new_data['TotalTravelTime'] += result['TotalTravelTime']
-        try:
-            new_data['reattempt'] += result['TravelRouteCount']
-        except:
-            new_data['reattempt'] = result['TravelRouteCount']
-            
+        if create_new_route == None:
+            try:
+                new_data['reattempt'] += result['TravelRouteCount']
+            except:
+                new_data['reattempt'] = result['TravelRouteCount']
+        else:
+            try:
+                new_data['add_route'] += result['TravelRouteCount']
+            except:
+                new_data['add_route'] = result['TravelRouteCount']
         collection.update({"_id": report_id}, new_data)
         
     if report_id == None:
@@ -2984,6 +3057,9 @@ def route(data,final_data = None, report_id = None):
         
     return_info = info['Yield']
     return_info['input_data'] = data
+    if create_new_route != None:
+        return_info['report_id'] = report_id
+        return_info['Code'] = "NEW ROUTE"
     
     return HttpResponse(json.dumps(return_info,) , content_type="application/json")
 
