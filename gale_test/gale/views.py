@@ -1791,8 +1791,10 @@ def route_mongo(request):
     # tronsform the workbook to a list of dictionnaries
     final_data =[]
     data = request.POST
-    
-    fields = json.loads(data['Fields'])
+    try:
+        fields = json.loads(data['Fields'])
+    except:
+        fields = {'Shipment ID': 0}
     field_final = []
     
     for i in sorted(fields.keys()):
