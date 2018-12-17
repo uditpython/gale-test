@@ -2626,7 +2626,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
             if create_new_route != None:
                 try:
                     
-                    dict['NEWID'] = "ADDED ROUTE - " + str(id + new_data["add_route"]) 
+                    dict['NEWID'] = "ADDED - " + str(id + new_data["add_route"]) 
                 except:
                     
                     dict['NEWID'] = "ADDED ROUTE - " + str(id) 
