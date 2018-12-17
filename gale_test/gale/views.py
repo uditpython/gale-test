@@ -1786,36 +1786,8 @@ def add_route(request):
     data1['cluster_info'] =  json.loads(data['cluster_info'])
     data1['IsOCOR'] = data['IsOCOR']
     report_id = int(data['ReportID'])
-    if  data['RouteName'] == 'true':
-        
-        import pymongo
-        from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
-          
-        db = connection.analytics
-        collection = db.shipprtech
-
-        new_data = collection.find_one({'_id': report_id })
-        allready_routes = []
-        for i in  new_data['TravelRoutes']:
-            allready_routes.append(i['NEWID'])
-        allready_routes = set(allready_routes)
-        
-        newroutes = []
-        for i in data1['SelectedDropointsList']:
-           newroutes.append(i['RouteName']) 
-        newroutes = set(newroutes)
-        commonroutes = list(newroutes.intersection(allready_routes))
-        
-        if len(commonroutes) > 0:
-            info = {}
-            info["Code"] = "ALREADY_PRESENT" 
-            info["Message"] = "Please remove already present routes " 
-            for i in commonroutes:
-                info["Message"] += str(i) + " "
-            info["Message"] += "From Excel and Upload it again."
-            return HttpResponse(json.dumps(info,) , content_type="application/json")
-#     
+    
+    
     import xlrd
     import datetime
     keys = request.FILES.keys()[0]
@@ -1859,6 +1831,37 @@ def add_route(request):
                     elm[first_row[col]]=worksheet.cell_value(row,col)
             
         final_data.append(elm)
+
+    if  data['RouteName'] == 'true':
+        
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+          
+        db = connection.analytics
+        collection = db.shipprtech
+
+        new_data = collection.find_one({'_id': report_id })
+        allready_routes = []
+        for i in  new_data['TravelRoutes']:
+            allready_routes.append(i['NEWID'])
+        allready_routes = set(allready_routes)
+        
+        newroutes = []
+        for i in data1['SelectedDropointsList']:
+           newroutes.append(i['RouteName']) 
+        newroutes = set(newroutes)
+        commonroutes = list(newroutes.intersection(allready_routes))
+        
+        if len(commonroutes) > 0:
+            info = {}
+            info["Code"] = "ALREADY_PRESENT" 
+            info["Message"] = "Please remove already present routes " 
+            for i in commonroutes:
+                info["Message"] += str(i) + " "
+            info["Message"] += "From Excel and Upload it again."
+            return HttpResponse(json.dumps(info,) , content_type="application/json")
+#     
 
        
         data = noptimize(data1,final_data,report_id,"ADD ROUTE")
