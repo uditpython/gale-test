@@ -505,7 +505,7 @@ def barcode(request):
 
 
 @csrf_exempt
-def noptimize(data,final_data):
+def noptimize(data,final_data = None, report_id = None,create_new_route = None):
     import route_optimizer
     import datetime
     import time
@@ -518,7 +518,17 @@ def noptimize(data,final_data):
     data_init = [depot_data]
     address = [depot_data['Address']]
     volume = [0]
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+     
+    db = connection.analytics
+    collection = db.shipprtech
+
     locations = [[float(depot_data['Latitude']), float(depot_data['Longitude'])]]
+    if report_id != None:
+        new_data = collection.find_one({'_id': report_id })
+
     
     truck_options= data['UsersRoutePreferences']
     max_weight = 0
@@ -883,6 +893,8 @@ def noptimize(data,final_data):
         dict['ID'] = id
         dict['NEWID'] = i[len(i)-1]
         
+
+        
         dict['LimitingParameter'] = "MSWT"
         dict['MajorAreasCovered'] = []
         dict['SequencedDropPointsList'] = []
@@ -1134,25 +1146,30 @@ def noptimize(data,final_data):
     conn = pymssql.connect(server, user, password, "dbShipprTech")
     cursor = conn.cursor(as_dict=True)
 #     cursor.execute('select * from [dbShipprTech].[usrTYP00].[tReport]')
-      
+    
     try:
         planning_date = data['Planningdate']
     except:
         planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
-    querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
-    
-    vmwt = ""
-    for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
-        vmwt += i['Code']+":"+str(i['VmWtAllowed']) + "|"
-    
-    values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
-    
-    cursor.execute(querytreport+"Values("+values+")")
-    
-    conn.commit()
-    
-    
-    trprtid = int(cursor.lastrowid)
+    if report_id == None:
+        querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
+        
+        vmwt = ""
+        for i in data['UsersRoutePreferences']['SelectedDeliveryVehicles']:
+            
+                        
+            vmwt += i['Code']+":"+str(i['VmWtAllowed']) + "|"
+        
+        values = str("'") + data['DepotPoint']['ClientCode'] + str("'") +"," + str("'") +data['DepotPoint']['Code'] + str("'") +"," + str("'") +planning_date +  str("'") +"," + str("'") +data['UsersRoutePreferences']['MHaltTimeAtDropPoint'] + str("'") +"," +  str("'") +"Load Time:" + data['UsersRoutePreferences']['LoadingTimeAtDepotPoint'] + "|Release Time:" +  data['UsersRoutePreferences']['ReleasingTimeAtDepotPoint'] + str("'") +"," +  str("'") +"Report Time:" + data['UsersRoutePreferences']['ReportingTimeAtDepotPoint'] + "|Return Time:" +  data['UsersRoutePreferences']['ReturningTimeAtDepotPoint'] + str("'") +"," + str("'") + data['UsersRoutePreferences']['AverageSpeedOfVehicle']  + str("'") +"," + str("'") +data['UsersRoutePreferences']['MaxDistancePerVehicle'] + str("'") +"," +str("'") +vmwt + str("'") 
+        
+        cursor.execute(querytreport+"Values("+values+")")
+        
+        conn.commit()
+        
+        
+        trprtid = int(cursor.lastrowid)
+    else:
+        trprtid = report_id
     result['report_id'] = trprtid
     
     ### query for 
@@ -1197,7 +1214,14 @@ def noptimize(data,final_data):
             except:
                 pass
             address = address.replace("'","")
-            
+            try:
+                routes['Name'] = routes['Name'].replace("'","")
+            except:
+                pass
+            try:
+                routes['DropItems']
+            except:
+                routes['DropItems'] = 'Return At Depot'
             values_str += str("('") + str(routes['Name']) + str("'") +"," + str("'") +str(address) + str("'") +"," + str("'") +str(routes['EstimatedTimeOfArrivalForDisplay'])+ str("'") +"," + str("'") +str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(routes['Code']) + str("'") +"," + str("'") +str(routes['lat']) + str("'") +"," + str("'") +str(routes['lng'] ) + str("'") +"," + str("'") +str(routes['DropItems']) + str("'),")
             
             if chk_box == 0:
@@ -1207,14 +1231,16 @@ def noptimize(data,final_data):
                 for airse in airway_bill:
                     airs1 = airse.split("_")
                     for airs in airs1: 
-                                    
-                        values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) +"'," + str("'") + str(amount[airs]["PaymentMode"])+ str("'),")
+                        
+                        try:            
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + str(amount[airs]["amount"]) + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"]) +"'," + str("'") + str(amount[airs]["PaymentMode"]) +  str("'),")
+                        except:
+                            values_box += str("('") +str(trprtid) + str("'") +"," + str("'") +str(trpsmryid) + str("'") +"," + str("'") +str(i['NEWID']) + str("'") +"," + str("'") +str(airs) + str("'") +"," + str("'") + str(routes['RouteSequentialPositionIndex']) + str("'") +"," + str("'") + "0" + str("'") +"," + str("'") + str(amount[airs]["desc"]) + str("'") +"," + str("'") + str(amount[airs]["cases"])+"'," + str("'") + str(amount[airs]["PaymentMode"])+ str("'),")
         values_str = values_str[:len(values_str)-1]
         
         values_box = values_box[:len(values_box)-1]
         
         cursor.execute(treportdetailstr+"Values"+values_str)
-        
         conn.commit()
         
         cursor.execute(treportroutebox+"Values"+values_box)
@@ -1237,8 +1263,6 @@ def noptimize(data,final_data):
     
     
     result['SelectedDropointsList'] = data['SelectedDropointsList']
-
-   
     
     info = {}
     info['Code'] = 'SUCCESS'
@@ -1250,31 +1274,61 @@ def noptimize(data,final_data):
                 k['Address'] =  k['FullAddress']
             except:
                 pass
-
+    
     info['Yield'] = result
-    try:
-        import pymongo
-        from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
-         
-        db = connection.analytics
-        collection = db.shipprtech
+    
+    
+    
+    if report_id == None:
         result['_id'] = result['report_id']
          
         result['input_data'] = data
         result['full_data'] = final_data
         result['field_id'] = data['field_id']
-            
         result['first_row'] = data['first_row']
-
+        
+         
         collection.insert(result)
          
         result.pop('input_data', None)
-    except:
-        pass    
+    else:
+        
+        new_data['full_data'] += final_data
+        
+        
+        new_data['TotalMassWt'] += result['TotalMassWt'] 
+        new_data['TotalHaltTime'] +=  result['TotalHaltTime']
+        new_data['TotalVolumetricWt'] += result['TotalVolumetricWt']
+       
+        new_data['TotalDistanceTravelled'] +=  result['TotalDistanceTravelled']
+        new_data['summary_id'] += result['summary_id']
+        new_data['TravelRouteCount'] +=  result['TravelRouteCount']
+        new_data['TravelRoutes'] += result['TravelRoutes']
+        new_data['TotalTravelDuration'] += result['TotalTravelDuration']
+         
+        new_data['TotalTravelTime'] += result['TotalTravelTime']
+        if create_new_route == None:
+            try:
+                new_data['reattempt'] += result['TravelRouteCount']
+            except:
+                new_data['reattempt'] = result['TravelRouteCount']
+        else:
+            try:
+                new_data['add_route'] += result['TravelRouteCount']
+            except:
+                new_data['add_route'] = result['TravelRouteCount']
+        collection.update({"_id": report_id}, new_data)
+        
+    if report_id == None:
+        return HttpResponse(json.dumps(info,) , content_type="application/json")
+        
+    return_info = info['Yield']
+    return_info['input_data'] = data
+    if create_new_route != None:
+        return_info['report_id'] = report_id
+        return_info['Code'] = "NEW ROUTE"
     
-    
-    return HttpResponse(json.dumps(info,) , content_type="application/json")
+    return HttpResponse(json.dumps(return_info,) , content_type="application/json")
 
 @csrf_exempt
 def create_excel(request):
@@ -1722,6 +1776,7 @@ def redelivery_points(request):
     return HttpResponse(json.dumps(info) , content_type="application/json")
 @csrf_exempt
 def add_route(request):
+    import json
     data = request.POST
     data1 = {}
     data1['DepotPoint'] = json.loads(data['DepotPoint'])
@@ -1731,8 +1786,87 @@ def add_route(request):
     data1['cluster_info'] =  json.loads(data['cluster_info'])
     data1['IsOCOR'] = data['IsOCOR']
     report_id = int(data['ReportID'])
+    if  data['RouteName'] == 'true':
+        
+        import pymongo
+        from pymongo import MongoClient
+        connection = MongoClient('localhost:27017')
+          
+        db = connection.analytics
+        collection = db.shipprtech
+
+        new_data = collection.find_one({'_id': report_id })
+        allready_routes = []
+        for i in  new_data['TravelRoutes']:
+            allready_routes.append(i['NEWID'])
+        allready_routes = set(allready_routes)
+        
+        newroutes = []
+        for i in data1['SelectedDropointsList']:
+           newroutes.append(i['RouteName']) 
+        newroutes = set(newroutes)
+        commonroutes = list(newroutes.intersection(allready_routes))
+        
+        if len(commonroutes) > 0:
+            info = {}
+            info["Code"] = "ALREADY_PRESENT" 
+            info["Message"] = "Please remove already present routes " 
+            for i in commonroutes:
+                info["Message"] += str(i) + " "
+            info["Message"] += "From Excel and Upload it again."
+            return HttpResponse(json.dumps(info,) , content_type="application/json")
+#     
+    import xlrd
+    import datetime
+    keys = request.FILES.keys()[0]
+    xlsxfile  = request.FILES[keys].read()
+    book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
+    worksheet = book.sheet_by_index(0)
+    first_row = [] # Header
+    for col in range(worksheet.ncols):
+        first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
+    # tronsform the workbook to a list of dictionnaries
+    final_data =[]
+    data = request.POST
+    try:
+        fields = json.loads(data['Fields'])
+    except:
+        fields = {'Shipment ID': 0}
+    field_final = []
     
-    data = route(data1,[],report_id,"ADD ROUTE")
+    for i in sorted(fields.keys()):
+        
+        if i.find('Shipment ID') != -1:
+            field_final.append(first_row[fields[i]])
+    indlist = []
+    for kw in field_final:
+    
+        indlist.append(first_row.index(kw))
+   
+    for row in range(1, worksheet.nrows):
+        
+        elm = {}
+        for col in range(worksheet.ncols):
+            if col in indlist:
+                elm[first_row[col]]= str(worksheet.cell_value(row,col))
+            else:
+                if col == 0:
+                    try:
+                        elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+                    except:
+                        elm[first_row[col]]=worksheet.cell_value(row,col)
+                else:
+                    elm[first_row[col]]=worksheet.cell_value(row,col)
+            
+        final_data.append(elm)
+
+       
+        data = noptimize(data1,final_data,report_id,"ADD ROUTE")
+        
+    else:
+        
+        data = route(data1,final_data,report_id,"ADD ROUTE")
+    
     data['Code'] = "NEW ROUTE"
     data['ReportID'] = report_id
     
@@ -1894,6 +2028,7 @@ def route_mongo(request):
     data1['cluster_info'] += cluster_info
     
     if  data['RouteName'] == 'true':
+        
         return_data = noptimize(data1,final_data)
         
     else:
@@ -3030,7 +3165,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
         result.pop('input_data', None)
     else:
         
-        
+        new_data['full_data'] += final_data
         new_data['TotalMassWt'] += result['TotalMassWt'] 
         new_data['TotalHaltTime'] +=  result['TotalHaltTime']
         new_data['TotalVolumetricWt'] += result['TotalVolumetricWt']
