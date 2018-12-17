@@ -2629,7 +2629,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
                     dict['NEWID'] = "ADDED - " + str(id + new_data["add_route"]) 
                 except:
                     
-                    dict['NEWID'] = "ADDED ROUTE - " + str(id) 
+                    dict['NEWID'] = "ADDED - " + str(id) 
             else:
                 try:
                     
