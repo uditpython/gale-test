@@ -1722,6 +1722,7 @@ def redelivery_points(request):
     return HttpResponse(json.dumps(info) , content_type="application/json")
 @csrf_exempt
 def route_mongo(request):
+    import json
     import xlrd
     import datetime
     keys = request.FILES.keys()[0]
@@ -1768,7 +1769,7 @@ def route_mongo(request):
         
     
     
-    import json
+    
     data1 = {}
     data1['DepotPoint'] = json.loads(data['DepotPoint'])
     data1['UsersRoutePreferences'] = json.loads(data['UsersRoutePreferences'])
