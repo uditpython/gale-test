@@ -475,7 +475,7 @@ def main(data,truck_options):
       
     # Solve displays a solution if any.
     
-    #     search_parameters.time_limit_ms = 30000
+    search_parameters.time_limit_ms = 300000
 #     search_parameters.solution_limit = 100
 #     
     
