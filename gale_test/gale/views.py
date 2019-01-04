@@ -1958,6 +1958,11 @@ def get_data(request):
     db = connection.analytics
     collection = db.shipprtech
     result = collection.find_one({'_id': _id })
+    if result == None:
+        result = {}
+        result["Code"] = "UNSUCCESS"
+        result["Message"] = "No Data found."
+        return HttpResponse(json.dumps(result) , content_type="application/json")
     try:
         result = result[data['report_id']]
         result["version"] = data['report_id']
@@ -2515,8 +2520,8 @@ def check_import(request):
         version = max(keys)
         info = {}
         if data[str(version)]["reports"] == []:
-            info['Code'] = "RECORD_FOUND"
-            info["Message"] = "There is an already imported data. Please creare route for new version."
+            info['Code'] = "ALREADY_PRESENT"
+            info["Message"] = "There is an already imported data. Please create route for new version."
         else:
             info['Code'] = "RECORD_NOT_FOUND"
     except:
