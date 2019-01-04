@@ -21,6 +21,7 @@ from ortools.constraint_solver import routing_enums_pb2
 
 
 
+
 def distance(lat1, lon1, lat2, lon2):
     from math import sin, cos, sqrt, atan2, radians
     
@@ -505,7 +506,7 @@ def barcode(request):
 
 
 @csrf_exempt
-def noptimize(data,final_data = None, report_id = None,create_new_route = None):
+def noptimize(data,final_data = None, report_id = None,create_new_route = None,report_version = None):
     import route_optimizer
     import datetime
     import time
@@ -1168,6 +1169,20 @@ def noptimize(data,final_data = None, report_id = None,create_new_route = None):
         
         
         trprtid = int(cursor.lastrowid)
+        if report_version != None:
+            _id = planning_date + str("-") + data['DepotPoint']['Code']
+            import pymongo
+            from pymongo import MongoClient
+            connection = MongoClient('localhost:27017')
+    
+            db = connection.analytics
+            collection = db.shipprtech
+            old_data = collection.find_one({'_id': _id })
+            
+            old_data[report_version]['reports'].append(trprtid)
+            
+            collection.update({"_id": _id}, old_data)
+
     else:
         trprtid = report_id
     result['report_id'] = trprtid
@@ -1773,6 +1788,21 @@ def redelivery_points(request):
         info['Message'] = str(len(datared)) +" points are available for redelivery. Continue New Shipment import and the redelivery locations will be appended to the newly imported deliveries."
     else:
         info['Message'] = "No points are available for redelivery."
+    
+    id = planning_date + str("-") + project_code
+    data = collection.find_one({'_id': id })
+    if data == None:
+        info['external_input'] = False
+    else:
+        keys = data.keys()
+        keys.remove("_id")
+        keys = map(int, keys)
+        version = max(keys)
+        if data[str(version)]["reports"] == []:
+            info['external_input'] =True
+        else:
+            info['external_input'] = False
+    
     return HttpResponse(json.dumps(info) , content_type="application/json")
 @csrf_exempt
 def add_route(request):
@@ -1911,10 +1941,69 @@ def add_route(request):
 #     
 #     data['DA'] = info
 #     data["droplist"] = deepcopy(data["input_data"]["SelectedDropointsList"])
- 
+
+
+
 
 @csrf_exempt
-def route_mongo(request):
+def get_data(request):
+    import json
+    data = request.POST
+    
+    _id = data['Planningdate'] + "-" + data['ProjectCode']
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    result = collection.find_one({'_id': _id })
+    try:
+        result = result[data['report_id']]
+        result["version"] = data['report_id']
+    except:
+        keys = result.keys()
+        keys.remove("_id")
+        keys = map(int, keys)
+        version = max(keys)
+        result = result[str(version )]
+        result["version"] = str(version )
+    result["Code"] = "SUCCESS"
+    result["Message"] = "Data Retrieval completed successfully."
+    return HttpResponse(json.dumps(result) , content_type="application/json")
+    
+    
+ 
+@csrf_exempt
+def searchreport(request):
+    data = request.POST
+    id =  data['ProjectDate'] + "-" + data['ProjectCode']
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    
+    old_data = collection.find_one({'_id': id })
+    if old_data != None:
+        keys = old_data.keys()
+        keys.remove("_id")
+        info = {}
+        info["Code"] = "RECORD_FOUND"
+        cd= []
+        for i in keys:
+            cd.append(["Version - " + i,old_data[i]["Created"],i])
+        info["Yield"] = cd
+        return HttpResponse(json.dumps(info) , content_type="application/json")
+
+    else:
+        info = {}
+        info["Code"] = "RECORD_NOT_FOUND"
+        return HttpResponse(json.dumps(info) , content_type="application/json")
+@csrf_exempt
+def upload_data(request):
+    
     import json
     import xlrd
     import datetime
@@ -1959,6 +2048,116 @@ def route_mongo(request):
                     elm[first_row[col]]=worksheet.cell_value(row,col)
             
         final_data.append(elm)
+    
+
+    info = {}
+    info['final_data'] = final_data
+    
+    for keys in data:
+        if keys in ['Planningdate','ProjectCode','Created']:
+            info[keys] = data[keys]
+        else:
+            try:
+                info[keys] = json.loads(data[keys])
+            except:
+                info[keys] = data[keys]
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    result = {}
+    result['_id'] = info['Planningdate'] + "-" + info['ProjectCode']
+    
+    old_data = collection.find_one({'_id': result['_id'] })
+    info['reports'] = []
+    
+    if old_data == None:
+        
+        result["1"] = info 
+        
+        collection.insert(result)
+        info["Message"] = "Uploaded New data. No older version present"
+    else:
+        
+        keys = old_data.keys()
+        keys.remove("_id")
+        keys = map(int, keys)
+        version = max(keys)
+        result = old_data
+        result[str(version+1)] = info
+        
+        collection.update({"_id": result["_id"]}, result)
+        
+        info["Message"] = "Older version present . Created newer version"
+    info["Code"] = "SUCCESS"
+    
+    return HttpResponse(json.dumps(info) , content_type="application/json")
+    
+@csrf_exempt
+def route_mongo(request):
+
+    import json
+    import xlrd
+    import datetime
+    data = request.POST
+    field_final = []
+    try:
+        fields = json.loads(data['Fields'])
+    except:
+        fields = {'Shipment ID': 0}
+    
+    first_row = []    
+    try:
+        
+        keys = request.FILES.keys()[0]
+        xlsxfile  = request.FILES[keys].read()
+        book = xlrd.open_workbook(filename=None, file_contents=xlsxfile)
+        worksheet = book.sheet_by_index(0)
+    # Header
+        for col in range(worksheet.ncols):
+            first_row.append( worksheet.cell_value(0,col).replace(".","").upper() )
+    # tronsform the workbook to a list of dictionnaries
+   
+    except:
+        data1 = json.loads(data['final_data'])
+        first_row =  data1[0].keys()
+        
+    
+    
+    
+    for i in sorted(fields.keys()):
+        
+        if i.find('Shipment ID') != -1:
+            field_final.append(first_row[fields[i]])
+    
+    indlist = []
+    for kw in field_final:
+        
+        indlist.append(first_row.index(kw))
+    try:
+        final_data = []
+        for row in range(1, worksheet.nrows):
+            
+            elm = {}
+            for col in range(worksheet.ncols):
+                if col in indlist:
+                    elm[first_row[col]]= str(worksheet.cell_value(row,col))
+                else:
+                    if col == 0:
+                        try:
+                            elm[first_row[col]]=str(datetime.datetime(*xlrd.xldate_as_tuple(worksheet.cell_value(row,col), book.datemode)))
+                        except:
+                            elm[first_row[col]]=worksheet.cell_value(row,col)
+                    else:
+                        elm[first_row[col]]=worksheet.cell_value(row,col)
+                
+            final_data.append(elm)
+    except:
+        
+        final_data = data1
+        
         
     
     
@@ -2030,13 +2229,18 @@ def route_mongo(request):
     data1['SelectedDropointsList'] += datared
     data1['cluster_info'] += cluster_info
     
+    if data["report_version"] == "null":
+        report_version = None
+    else:
+        
+        report_version = data["report_version"] 
     if  data['RouteName'] == 'true':
         
-        return_data = noptimize(data1,final_data)
+        return_data = noptimize(data1,final_data,None,None,report_version)
         
     else:
         
-        return_data = route(data1,final_data)
+        return_data = route(data1,final_data,None,None,report_version)
      
     
     for report_id in redel_data:
@@ -2049,7 +2253,7 @@ def route_mongo(request):
 
     
     
-
+    
     return(return_data)
 @csrf_exempt
 def inventory(request):
@@ -2292,7 +2496,34 @@ def assign_redliver(keys, reportid):
     cursor.execute(query)
     conn.commit()
     conn.close()
-
+@csrf_exempt
+def check_import(request):
+    
+    data = request.POST
+    id = data["ProjectDate"] + str("-") + data["ProjectCode"]
+    import pymongo
+    from pymongo import MongoClient
+    connection = MongoClient('localhost:27017')
+    
+    db = connection.analytics
+    collection = db.shipprtech
+    try:
+        data = collection.find_one({'_id': id })
+        keys = data.keys()
+        keys.remove("_id")
+        keys = map(int, keys)
+        version = max(keys)
+        info = {}
+        if data[str(version)]["reports"] == []:
+            info['Code'] = "RECORD_FOUND"
+            info["Message"] = "There is an already imported data. Please creare route for new version."
+        else:
+            info['Code'] = "RECORD_NOT_FOUND"
+    except:
+        info = {}
+        info['Code'] = "RECORD_NOT_FOUND"
+             
+    return HttpResponse(json.dumps(info) , content_type="application/json")
 
 @csrf_exempt
 def ReportInfo(request):
@@ -2342,7 +2573,7 @@ def ReportInfo(request):
 
 
 @csrf_exempt
-def route(data,final_data = None, report_id = None,create_new_route = None):
+def route(data,final_data = None, report_id = None,create_new_route = None,report_version = None):
     import sys
     reload(sys)
     sys.setdefaultencoding('utf8')
@@ -2670,6 +2901,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
     
     optimized_data = []
     truck_options['number_of_trucks'] = 100
+    
     for i in cluster_dict.keys():
         
         input_data = [ cluster_dict[i]['locations'], cluster_dict[i]['demands'], cluster_dict[i]['start_times'], cluster_dict[i]['end_times'],cluster_dict[i]['volume'],cluster_dict[i]['address'],cluster_dict[i]['cluster_value']]
@@ -2690,7 +2922,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
 
         truck_result = optimizer_result[1]
         optimized_data += optimizer_result[0]
-    
+        
     
     
     #     cnxn = pyodbc.connect(r'DRIVER={SQL Server};'
@@ -2749,6 +2981,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
 #     truck_departure = int(time.mktime(time.strptime(truck_departure,epoch_format)))
     
     for i in optimized_data:
+        
         dict = {}
         
         prev_time = start_times[0]
@@ -3027,6 +3260,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
         planning_date = data['Planningdate']
     except:
         planning_date = datetime.datetime.today().strftime('%Y-%m-%d')
+   
     if report_id == None:
         querytreport = "Insert into [dbShipprTech].[usrTYP00].[tReport]([ClientCode],[DepotCode],[ReportDateIST],[Setting_HaltsAtDropPoint],[Setting_HaltsAtDepotPoint],[Setting_TimingsAtDepot],[Setting_AverageSpeedInKMPH],[Setting_MaxAllowedDistanceInKM],[Setting_DV_AllowedVMwt])"
         
@@ -3042,6 +3276,20 @@ def route(data,final_data = None, report_id = None,create_new_route = None):
         
         
         trprtid = int(cursor.lastrowid)
+        if report_version != None:
+            _id = planning_date + str("-") + data['DepotPoint']['Code']
+            import pymongo
+            from pymongo import MongoClient
+            connection = MongoClient('localhost:27017')
+    
+            db = connection.analytics
+            collection = db.shipprtech
+            old_data = collection.find_one({'_id': _id })
+            
+            old_data[report_version]['reports'].append(trprtid)
+            
+            collection.update({"_id": _id}, old_data)
+            
     else:
         trprtid = report_id
     result['report_id'] = trprtid

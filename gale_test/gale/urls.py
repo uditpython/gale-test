@@ -17,8 +17,11 @@ urlpatterns = [
                 url(r'^redeliver/$', views.redeliver, ),
                 url(r'^redelivery_points/$', views.redelivery_points, ),
                  url(r'^add_route/$', views.add_route, ),
-                
-              
+                 url(r'^upload_data/$', views.upload_data, ),
+                  url(r'^get_data/$', views.get_data, ),
+                   url(r'^searchreport/$', views.searchreport, ),
+                url(r'^check_import/$', views.check_import, ),
+
                        
                        
              ]
