@@ -1960,7 +1960,7 @@ def get_data(request):
     result = collection.find_one({'_id': _id })
     if result == None:
         result = {}
-        result["Code"] = "UNSUCCESS"
+        result["Code"] = "ALREADY_PRESENT"
         result["Message"] = "No Data found."
         return HttpResponse(json.dumps(result) , content_type="application/json")
     try:
@@ -2520,7 +2520,7 @@ def check_import(request):
         version = max(keys)
         info = {}
         if data[str(version)]["reports"] == []:
-            info['Code'] = "ALREADY_PRESENT"
+            info['Code'] = "RECORD_FOUND"
             info["Message"] = "There is an already imported data. Please create route for new version."
         else:
             info['Code'] = "RECORD_NOT_FOUND"
