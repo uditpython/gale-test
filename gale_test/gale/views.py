@@ -521,7 +521,7 @@ def noptimize(data,final_data = None, report_id = None,create_new_route = None,r
     volume = [0]
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
      
     db = connection.analytics
     collection = db.shipprtech
@@ -1173,7 +1173,7 @@ def noptimize(data,final_data = None, report_id = None,create_new_route = None,r
             _id = planning_date + str("-") + data['DepotPoint']['Code']
             import pymongo
             from pymongo import MongoClient
-            connection = MongoClient('localhost:27017')
+            connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
             db = connection.analytics
             collection = db.shipprtech
@@ -1380,7 +1380,7 @@ def create_excel(request):
     
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -1464,7 +1464,7 @@ def inventory_data(request):
     from pymongo import MongoClient
     import datetime
     today_hour = datetime.datetime.now().hour*60 + datetime.datetime.now().minute
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shippr_inventory
@@ -1686,7 +1686,7 @@ def inventory_data(request):
 def price_mongo(request):
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shippr_mrp
@@ -1757,7 +1757,7 @@ def redelivery_points(request):
     
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
      
     db = connection.analytics
     collection = db.shipprtech
@@ -1866,7 +1866,7 @@ def add_route(request):
         
         import pymongo
         from pymongo import MongoClient
-        connection = MongoClient('localhost:27017')
+        connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
           
         db = connection.analytics
         collection = db.shipprtech
@@ -1897,7 +1897,7 @@ def add_route(request):
         data = noptimize(data1,final_data,report_id,"ADD ROUTE")
         
     else:
-        
+    
         data = route(data1,final_data,report_id,"ADD ROUTE")
     
     data['Code'] = "NEW ROUTE"
@@ -1953,7 +1953,7 @@ def get_data(request):
     _id = data['Planningdate'] + "-" + data['ProjectCode']
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -1985,7 +1985,7 @@ def searchreport(request):
     id =  data['ProjectDate'] + "-" + data['ProjectCode']
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -2068,7 +2068,7 @@ def upload_data(request):
                 info[keys] = data[keys]
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -2203,7 +2203,7 @@ def route_mongo(request):
      
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
       
     db = connection.analytics
     collection = db.shipprtech
@@ -2284,7 +2284,7 @@ def inventory(request):
     
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
           
     db = connection.analytics
     collection = db.shippr_inventory
@@ -2318,7 +2318,7 @@ def cron_task():
     today_date = str(datetime.datetime.now().date())
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
           
     db = connection.analytics
     collection = db.shippr_inventory
@@ -2450,7 +2450,7 @@ def redeliver(request):
     report_id = int(request.POST['report_id'])
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -2508,7 +2508,7 @@ def check_import(request):
     id = data["ProjectDate"] + str("-") + data["ProjectCode"]
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -2536,7 +2536,7 @@ def ReportInfo(request):
     report_id = int(request.body.decode('utf-8'))
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -2589,7 +2589,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None,repor
 #     data = json.loads(body)
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient('localhost:27017')
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
      
     db = connection.analytics
     collection = db.shipprtech
@@ -3285,7 +3285,7 @@ def route(data,final_data = None, report_id = None,create_new_route = None,repor
             _id = planning_date + str("-") + data['DepotPoint']['Code']
             import pymongo
             from pymongo import MongoClient
-            connection = MongoClient('localhost:27017')
+            connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
     
             db = connection.analytics
             collection = db.shipprtech
