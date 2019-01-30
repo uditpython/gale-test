@@ -2081,7 +2081,7 @@ def upload_data(request):
     if old_data == None:
         
         result["1"] = info 
-        
+        version = 0
         collection.insert(result)
         info["Message"] = "Uploaded New data. No older version present"
     else:
@@ -2096,8 +2096,33 @@ def upload_data(request):
         collection.update({"_id": result["_id"]}, result)
         
         info["Message"] = "Older version present . Created newer version"
-    info["Code"] = "SUCCESS"
     
+    present_time = str(datetime.datetime.now().replace(microsecond=0))
+    present_time_ist = str((datetime.datetime.now() + datetime.timedelta(hours = 5)+ datetime.timedelta(minutes = 30)).replace(microsecond=0))
+    
+    info["Code"] = "SUCCESS"
+    query = "Insert into [dbShipprTech].[usrTYP00].[tReportRouteBoxSLCTrail]([ProjectCode],[PlannedForDate],[Quantity],[BoxID],[SLCStateCode],[SLCStateCodeSequence],[SLCStateAcquiredAtDateTime],[InputDataVersion],[StatusCode],[CreatedBy],[CreatedAt],[UpdatedBy],[UpdatedAt],[LockedBy])"
+    values = ""
+    for i in info['SelectedDropointsList']:
+        values += "('" + str(info['ProjectCode']) + "'" + ",'" + str(info['Planningdate']) + "'" + ",'" + str(i['cases']) + "'" + ",'" + i['AirwaybillNo'] + "'" + ",'" + '6STEP_1' + "'" + ",'" + str(1) + "'" + ",'" + present_time_ist + "'"  + ",'" + str(version+1) + "'" + ",'" + 'NEW' + "'" + ",'" + "" + "'"+ ",'" + present_time + "'" + ",'" + '' + "'" + ",'" + present_time + "'" + ",'" + '' + "'),"    
+    
+    
+    
+    
+    import pymssql
+    server = 'MILFOIL.arvixe.com'
+    user = 'usrShipprTech'
+    password = 'usr@ShipprTech'
+        
+    conn = pymssql.connect(server, user, password, "dbShipprTech")
+    cursor = conn.cursor(as_dict=True)
+    cursor.execute(query+"Values"+values[:-1])
+    
+    
+    conn.commit()
+    conn.close()
+
+        
     return HttpResponse(json.dumps(info) , content_type="application/json")
     
 @csrf_exempt
