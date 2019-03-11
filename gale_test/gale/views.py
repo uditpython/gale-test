@@ -1578,16 +1578,21 @@ def inventory_data(request):
                     prev_data[key] = {}
                     prev_data[key]["left"] = 0
                     prev_data[key]["rej"] = 0
+                    prev_data[key]["out"] = 0
+                    
             else:
                 ohd_ret = box['qty']
                 if box['trp_status'] == "TRP_CLSD":
                    
-                    
+                    if box['dlvrd_qty'] == None:
+                        box['dlvrd_qty'] == 0
                     try:    
-                        ohd_ret = box['qty'] - box['dlvrd_qty']  
+                        ohd_ret =box['dlvrd_qty']  
                     except:
                         ohd_ret = box['qty']
                     
+                    
+               
                 try:
                    
                     prev_data[key]["left"] += ohd_ret
@@ -1598,6 +1603,10 @@ def inventory_data(request):
                             prev_data[key]["rej"] += box['rej_qty']
                         except:
                             prev_data[key]["rej"] = box['rej_qty']
+                    if box['trp_status'] == "TRP_CLSD":
+                        prev_data[key]["out"] += 0
+                    else:
+                        prev_data[key]["out"] +=  box['qty']
                 except:
                     prev_data[key] = {}
                     prev_data[key]["left"] = ohd_ret
@@ -1606,7 +1615,14 @@ def inventory_data(request):
                         prev_data[key]["rej"] = box['rej_qty']
                     else:
                         prev_data[key]["rej"] = 0
-                
+                    
+                    if box['trp_status'] == "TRP_CLSD":
+                        prev_data[key]["out"] = 0
+                    else:
+                        try:
+                            prev_data[key]["out"] +=  box['qty']
+                        except:
+                            prev_data[key]["out"] =  box['qty']
     ### creating data from present starting = 0
     for j in data:
         
@@ -1645,12 +1661,14 @@ def inventory_data(request):
                 info[key]['ohd'] = qty 
             
             try:
+                
                 info[key]['ohd'] -= prev_data[key]["left"]
+                
                 
                 ohd += info[key]['ohd']
                 info[key]["rej"] +=  prev_data[key]["rej"]
-                info[key]["out"] += prev_data[key]["left"]
-                out += prev_data[key]["left"]
+                info[key]["out"] += prev_data[key]["out"]
+                out += prev_data[key]["out"]
                 rej +=  prev_data[key]["rej"]
                 
             except:
@@ -1701,8 +1719,8 @@ def inventory_data(request):
                         info[key]['ohd'] -= prev_data[key]["left"]
                         ohd += info[key]['ohd']
                         info[key]["rej"] +=  prev_data[key]["rej"]
-                        info[key]["out"] += prev_data[key]["left"]
-                        out += prev_data[key]["left"]
+                        info[key]["out"] += prev_data[key]["out"]
+                        out += prev_data[key]["out"]
                         rej +=  prev_data[key]["rej"]
 
                         
@@ -1723,6 +1741,7 @@ def inventory_data(request):
     final_data['sku'] = info
     
     return HttpResponse(json.dumps(final_data) , content_type="application/json")
+
    
 @csrf_exempt
 def price_mongo(request):
