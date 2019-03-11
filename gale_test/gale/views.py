@@ -1380,7 +1380,7 @@ def create_excel(request):
     
     import pymongo
     from pymongo import MongoClient
-    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@13.232.103.148/analytics")
     
     db = connection.analytics
     collection = db.shipprtech
@@ -1388,11 +1388,13 @@ def create_excel(request):
     
     full_data =  data['full_data']
     field_id = data['field_id']
-    
+   
     for k in full_data:
         key = ''
         
         for k1 in field_id:
+            import pdb
+            pdb.set_trace()
             try:
                 k[k1] = str(int(float(k[k1])))
             except:
@@ -1402,6 +1404,7 @@ def create_excel(request):
         
         try:
             k2 = info[key]
+            
             k['Delivered Qty'] = k2['dlvrd_qty']
             k['Rejected Qty'] = k2['rej_qty']
             k['Attempted Qty'] = k2['failedqty']
@@ -1464,12 +1467,13 @@ def inventory_data(request):
     from pymongo import MongoClient
     import datetime
     today_hour = datetime.datetime.now().hour*60 + datetime.datetime.now().minute
-    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@localhost/analytics")
+    connection = MongoClient("mongodb://ShipprAnalytics:Shippr123@13.232.103.148/analytics")
     
     db = connection.analytics
     collection = db.shippr_inventory
     body = request.body.decode('utf-8')
     body = json.loads(body)
+    
     delievery_date = body['date']
     ProjectCode = body['Projects']
     id =delievery_date + "-" + ProjectCode
@@ -1478,6 +1482,8 @@ def inventory_data(request):
     starting_inv = 0
     number_sku = 0
     ohd = 0
+    rej = 0
+    out = 0
     info = {}
     
     collectionSum = db.shippr_inventory_summary
@@ -1547,41 +1553,61 @@ def inventory_data(request):
     
     prev_data = {}
     if len(reports) > 0:
+        
         report_id = reports[0]['ID']
-        cursor.execute("SELECT box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,ISNULL(box.DeliveredQuantity, 0)  as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,ISNULL(box.FailedQuantity, 0)  as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,ISNULL(box.RejectedQuantity,0) as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq")
+        query = "SELECT trip.statuscode as trp_status, box.RouteCode as code, box.BoxID as box, box.AmountDue as amountdue,box.AmountPaid as amntpaid,ISNULL(box.DeliveredQuantity, 0)  as dlvrd_qty,box.DeliveryStateReasonText as dlvd_reason, box.Description as Dsc, box.DeliveryStateReasonText as text,ISNULL(box.FailedQuantity, 0)  as failedqty,box.FailedReasonText as failedreason,box.NoOfItems as qty,ISNULL(box.RejectedQuantity,0) as rej_qty, box.RejectedReasonText as rej_reason,box.Sequence as seq,route_detail.DropPointCode as DropPointCode, ISNULL(rs.DAName, 'DA NOT ASSIGNED') as da, ISNULL(rs.DriverName, 'Driver NOT ASSIGNED') as drv, rs.DriverContactNumber as drv_number, rs.DAContactNumber as da_number,rs.DVRCNumber as vehicle_number FROM[dbShipprTech].[usrTYP00].[tReportRouteBoxDelivery]  box join[dbShipprTech].[usrTYP00].[tReportRouteDetail] route_detail on box.ReportRouteSummaryID = route_detail.ReportRouteSummaryID and box.Sequence = route_detail.Sequence left join[dbShipprTech].[usrTYP00].[tReportRouteResource] rs on   box.ReportRouteSummaryID = rs.ReportRouteSummaryID left join [dbShipprTech].[usrTYP00].[tReportRouteTrip] trip on box.ReportRouteSummaryID = trip.ReportRouteSummaryID where box.ReportID  = '" + str(report_id) + "' order by code,seq"
+        
+        cursor.execute(query)
         boxids = cursor.fetchall()
         for box in boxids:
             key =  box['box']
                 
             ind = key.index("-")
+            
             if ind != -1:
                 key = key[ind+1:]
-            if box['drv'] == "Driver NOT ASSIGNED":
+                ind1 = key.index("-")
+                key = key[:ind1]
+                
+            
+            if box['trp_status'] in [None, "ACTV"]:
                 try:
                     prev_data[key]
                     prev_data[key]["left"] += 0
                 except:
                     prev_data[key] = {}
                     prev_data[key]["left"] = 0
+                    prev_data[key]["rej"] = 0
             else:
                 ohd_ret = box['qty']
-                if today_hour >= 810:
+                if box['trp_status'] == "TRP_CLSD":
                    
-                    if box['rej_reason'] != 'Damaged Item':
-                        
-                        ohd_ret = box['dlvrd_qty']
-                    else:
-                        ohd_ret = box['dlvrd_qty'] + box['rej_qty']
-                
+                    
+                    try:    
+                        ohd_ret = box['qty'] - box['dlvrd_qty']  
+                    except:
+                        ohd_ret = box['qty']
+                    
                 try:
                    
                     prev_data[key]["left"] += ohd_ret
+                    
+                    if box['rej_reason'] == 'Damaged Item':
+                        
+                        try:
+                            prev_data[key]["rej"] += box['rej_qty']
+                        except:
+                            prev_data[key]["rej"] = box['rej_qty']
                 except:
                     prev_data[key] = {}
                     prev_data[key]["left"] = ohd_ret
+                    if box['rej_reason'] == 'Damaged Item':
+                        
+                        prev_data[key]["rej"] = box['rej_qty']
+                    else:
+                        prev_data[key]["rej"] = 0
                 
     ### creating data from present starting = 0
-    
     for j in data:
         
         
@@ -1613,12 +1639,20 @@ def inventory_data(request):
                 
                 
                 info[key]['starting'] = 0
+                info[key]["rej"] = 0
+                info[key]["out"] = 0
                 
                 info[key]['ohd'] = qty 
+            
             try:
                 info[key]['ohd'] -= prev_data[key]["left"]
+                
                 ohd += info[key]['ohd']
-                    
+                info[key]["rej"] +=  prev_data[key]["rej"]
+                info[key]["out"] += prev_data[key]["left"]
+                out += prev_data[key]["left"]
+                rej +=  prev_data[key]["rej"]
+                
             except:
                 ohd += qty
                 
@@ -1666,6 +1700,11 @@ def inventory_data(request):
                     try:
                         info[key]['ohd'] -= prev_data[key]["left"]
                         ohd += info[key]['ohd']
+                        info[key]["rej"] +=  prev_data[key]["rej"]
+                        info[key]["out"] += prev_data[key]["left"]
+                        out += prev_data[key]["left"]
+                        rej +=  prev_data[key]["rej"]
+
                         
                     except:
                         ohd += qty
@@ -1677,6 +1716,9 @@ def inventory_data(request):
     final_data['received_qty'] = total_qty
     final_data['starting_qty'] = starting_inv
     final_data['ohd'] = ohd
+    final_data['rej'] = rej
+    final_data['outbound'] = out
+    
     final_data['number_sku'] = number_sku
     final_data['sku'] = info
     
